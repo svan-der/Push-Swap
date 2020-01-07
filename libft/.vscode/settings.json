@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"ft_printf.h": "c",
+		"mathlib.h": "c",
+		"libft.h": "c",
+		"list.h": "c",
+		"ntoa.h": "c",
+		"fndm.h": "c"
+	}
+}
