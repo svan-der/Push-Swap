@@ -6,7 +6,7 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/11 15:22:00 by svan-der       #+#    #+#                 #
-#    Updated: 2020/01/06 17:54:32 by svan-der      ########   odam.nl          #
+#    Updated: 2020/01/10 13:50:57 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIB_SRC = $(addprefix srcs/,ft_memchr.c ft_putnbr_fd.c ft_striter.c\
 	ft_isascii.c ft_memset.c ft_tolower.c\
 	ft_isdigit.c ft_strcmp.c ft_min_max.c ft_numlen.c\
 	ft_strcpy.c ft_strncat.c ft_strsplit.c\
-	ft_strdel.c ft_memalloc.c \
+	ft_strdel.c ft_memalloc.c get_next_line.c\
 	ft_memccpy.c ft_putnbr.c \
 	ft_strtrim.c ft_strarrdel.c ft_find_word.c ft_lstmap.c\
 	ft_count_words.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c\

@@ -6,37 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:18:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/10 12:15:10 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/10 18:42:07 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "checker.h"
-
-void	sort_int_tab(int *tab, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	j;
-	int				temp;
-
-	i = 0;
-	j = 0;
-	while (i < (size - 1))
-	{
-		j = i;
-		while (j < size)
-		{
-			if (tab[i] > tab[j])
-			{
-				temp = tab[i];
-				tab[i] = tab[j];
-				tab[j] = temp;
-			}
-			j += 1;
-		}
-		i += 1;
-	}
-}
 
 t_stack		*create_stack(int num)
 {
@@ -72,16 +47,18 @@ void	fill_stack(t_stack **stack_a, int num)
 	return ;
 }
 
-void 	print_stack(t_stack *stack)
+void	print_stack(t_stack *stack_a)
 {
 	t_stack *tail;
 
-	while (stack != NULL)
+	while (stack_a != NULL)
 	{
-		tail = stack;
-		printf("|%d|\n", stack->num);
-		stack = stack->next;
+		tail = stack_a;
+		printf("|%d|\n", stack_a->num);
+		stack_a = stack_a->next;
 	}
+	printf(" --\n");
+	printf(" A\n");
 }
 
 int		add_num(char *str, int i, int neg, t_format *stvar)
@@ -123,7 +100,7 @@ int		check_num(char *str, t_format *stvar)
 	}
 	if (ft_strnequ(str, "214748364", 9))
 		if ((str[i + 9] > '6' && !neg) || (str[i + 9] > '8' && neg))
-			return (0);
+			return (-1);
 	return (add_num(&str[i], i, neg, stvar));
 }
 
@@ -131,10 +108,10 @@ int		main(int argc, char **argv)
 {
 
 	t_format	stvar;
-	char 		*str;
-	int 		ret;
-	int 		i;
-	
+	char		*str;
+	int			ret;
+	int			i;
+
 	i = 1;
 	ft_bzero(&stvar, sizeof(t_format));
 	stvar.argc = argc;
@@ -144,10 +121,11 @@ int		main(int argc, char **argv)
 	{
 		str = argv[i];
 		ret = check_num(str, &stvar);
-		if (ret == 0)
-			return (0);
+		if (ret == -1)
+			return (printf("Error\n"));
 		i++;
 	}
 	print_stack(stvar.stack_a);
+	get_instruction(&stvar, argv);
 	return (1);
 }
