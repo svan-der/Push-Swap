@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 12:24:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/10 18:58:51 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/14 11:17:02 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_instructions(t_inst *inst_lst)
 	{
 		tail = inst_lst;
 		printf("operation: |%s|\n", inst_lst->operation);
-		free(inst_lst->operation);
+		// free(inst_lst->operation);
 		inst_lst = inst_lst->next;
 	}
 	printf("OK\n");
@@ -85,7 +85,7 @@ int		check_instruction(char *line)
 		return (1);
 	if (ft_strequ(line, "rrr"))
 		return (1);
-	else if (ft_strequ(line, "finish"))
+	else if (ft_strequ(line, ""))
 		return (0);
 	return (-1);
 }
@@ -111,8 +111,8 @@ int		get_instruction(t_format *stvar, char **argv)
 		}
 		if (ret == 0)
 			break ;
-		ret = get_next_line(0, &line);
 		put_instruction(&stvar->inst_lst, line);
+		ret = get_next_line(0, &line);
 	}
 	print_instructions(stvar->inst_lst);
 	return (1);
