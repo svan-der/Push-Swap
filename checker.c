@@ -6,25 +6,32 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 12:24:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/14 11:17:02 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/14 11:59:29 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include <stdio.h>
 
-void	print_instructions(t_inst *inst_lst)
+int		print_instructions(t_inst *inst_lst, int ret)
 {
 	t_inst *tail;
 
 	while (inst_lst != NULL)
 	{
 		tail = inst_lst;
-		printf("operation: |%s|\n", inst_lst->operation);
-		// free(inst_lst->operation);
+		if (ret != -1)
+			printf("operation: |%s|\n", inst_lst->operation);
+		if (inst_lst->next != NULL)
+			free(inst_lst->operation);
 		inst_lst = inst_lst->next;
 	}
-	printf("OK\n");
+	if (ret != -1)
+		printf("OK\n");
+	else
+		printf("Error\n");
+	printf("ret is: %d", ret);
+	return (1);
 }
 
 t_inst	*create_instruction(char *line)
@@ -105,15 +112,12 @@ int		get_instruction(t_format *stvar, char **argv)
 	{
 		ret = check_instruction(line);
 		if (ret == -1)
-		{
-			printf("KO");
-			return (0);
-		}
+			return (print_instructions(stvar->inst_lst, ret));
 		if (ret == 0)
 			break ;
 		put_instruction(&stvar->inst_lst, line);
 		ret = get_next_line(0, &line);
 	}
-	print_instructions(stvar->inst_lst);
+	print_instructions(stvar->inst_lst, ret);
 	return (1);
 }

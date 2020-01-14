@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:18:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/10 18:42:07 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/14 13:55:37 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,25 @@ void	fill_stack(t_stack **stack_a, int num)
 	return ;
 }
 
-void	print_stack(t_stack *stack_a)
+int		print_stack(t_stack *stack_a, int ret)
 {
 	t_stack *tail;
 
 	while (stack_a != NULL)
 	{
 		tail = stack_a;
-		printf("|%d|\n", stack_a->num);
+		if (ret != -1)
+			printf("|%d|\n", stack_a->num);
+		if (stack_a->next != NULL)
+			free(stack_a);
 		stack_a = stack_a->next;
 	}
-	printf(" --\n");
-	printf(" A\n");
+	if (ret != -1)
+	{
+		printf(" --\n");
+		printf(" A\n");
+	}
+	return (1);
 }
 
 int		add_num(char *str, int i, int neg, t_format *stvar)
@@ -73,6 +80,8 @@ int		add_num(char *str, int i, int neg, t_format *stvar)
 		num += str[i] - '0';
 		i++;
 	}
+	if (str[i] != '\0')
+		return (-1);
 	num *= neg;
 	fill_stack(&stvar->stack_a, num);
 	return (1);
@@ -98,8 +107,8 @@ int		check_num(char *str, t_format *stvar)
 		else if (str[i] != '-' || str[i] != '+')
 			return (-1);
 	}
-	if (ft_strnequ(str, "214748364", 9))
-		if ((str[i + 9] > '6' && !neg) || (str[i + 9] > '8' && neg))
+	if (ft_strnequ(&str[i], "214748364", 9))
+		if ((str[i + 9] > '6' && neg != -1) || (str[i + 9] > '8' && neg == -1))
 			return (-1);
 	return (add_num(&str[i], i, neg, stvar));
 }
@@ -122,10 +131,10 @@ int		main(int argc, char **argv)
 		str = argv[i];
 		ret = check_num(str, &stvar);
 		if (ret == -1)
-			return (printf("Error\n"));
+			return (print_stack(stvar.stack_a, ret));
 		i++;
 	}
-	print_stack(stvar.stack_a);
+	return (print_stack(stvar.stack_a, ret));
 	get_instruction(&stvar, argv);
 	return (1);
 }

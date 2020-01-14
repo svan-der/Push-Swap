@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:24:14 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/10 17:35:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/14 11:40:36 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ typedef struct	s_format
 }				t_format;
 
 int		get_instruction(t_format *stvar, char **argv);
+int		print_error(t_inst *inst_lst);
 #endif
