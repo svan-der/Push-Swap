@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 12:24:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/14 11:59:29 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/14 18:43:22 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,14 @@ void	put_instruction(t_inst **inst_lst, char *line)
 	return ;
 }
 
-int		check_instruction(char *line)
+int		check_instruction(t_format *stvar, char *line)
 {
 	if (ft_strequ(line, "sa"))
-		return (1);
+	{
+		printf("here\n");
+		// return (1);
+		return (sort_sa(stvar->stack_a, stvar->stack_b));
+	}
 	if (ft_strequ(line, "sb"))
 		return (1);
 	if (ft_strequ(line, "ss"))
@@ -110,7 +114,8 @@ int		get_instruction(t_format *stvar, char **argv)
 	ft_bzero(&inst, sizeof(t_inst));
 	while (ret)
 	{
-		ret = check_instruction(line);
+		printf("begin\n");
+		ret = check_instruction(stvar, line);
 		if (ret == -1)
 			return (print_instructions(stvar->inst_lst, ret));
 		if (ret == 0)
