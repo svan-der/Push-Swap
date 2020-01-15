@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 12:24:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/14 18:43:22 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/15 15:49:39 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,12 @@ int		check_instruction(t_format *stvar, char *line)
 	if (ft_strequ(line, "sa"))
 	{
 		printf("here\n");
-		// return (1);
-		return (sort_sa(stvar->stack_a, stvar->stack_b));
+		return (swap_a(stvar->stack_a));
 	}
 	if (ft_strequ(line, "sb"))
-		return (1);
+		return (swap_b(stvar->stack_b));
 	if (ft_strequ(line, "ss"))
-		return (1);
+		return (swap_ss(stvar->stack_a, stvar->stack_b));
 	if (ft_strequ(line, "pa"))
 		return (1);
 	if (ft_strequ(line, "pb"))

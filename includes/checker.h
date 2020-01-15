@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:24:14 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/14 18:42:57 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/15 15:48:06 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ typedef struct	s_format
 int		get_instruction(t_format *stvar, char **argv);
 int		print_instructions(t_inst *inst_lst, int ret);
 void	sort_and_check(t_inst *inst_lst, int ret);
-int		sort_sa(t_stack *stack_a, t_stack *stack_b);
+int		swap_a(t_stack *stack_a);
+int		swap_b(t_stack *stack_b);
+int		swap_ss(t_stack *stack_a, t_stack *stack_b);
 int		print_stack(t_stack *stack_a, int ret);
+int		print_stack_b(t_stack *stack_b, int ret);
 #endif
