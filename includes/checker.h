@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:24:14 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/15 15:48:06 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/17 17:05:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct		s_stack
 	size_t			len;
 	struct s_stack	*prev;
 	struct s_stack	*next;
+	struct s_stack	*tail;
 }					t_stack;
 
 typedef struct	s_format
@@ -51,4 +52,11 @@ int		swap_b(t_stack *stack_b);
 int		swap_ss(t_stack *stack_a, t_stack *stack_b);
 int		print_stack(t_stack *stack_a, int ret);
 int		print_stack_b(t_stack *stack_b, int ret);
+int		push_a(t_stack *stack_a, t_stack *stack_b);
+int		push_b(t_stack *stack_a, t_stack *stack_b);
+void	fill_stack(t_stack **stack_a, int num);
+t_stack	*create_stack(int num);
+void	fill_stack_begin(t_stack **stack_a, int num);
+void	print_backwards(t_stack *stack);
+void    ft_stackaddend(t_stack **stack_lst, t_stack *new);
 #endif

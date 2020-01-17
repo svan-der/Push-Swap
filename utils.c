@@ -6,12 +6,48 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/15 15:49:02 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/17 17:33:54 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "checker.h"
+
+void	print_backwards(t_stack *stack)
+{
+	t_stack *tmp;
+
+	tmp = stack;
+	if (stack == NULL)
+		return ;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	while (tmp != NULL)
+	{
+		printf("stack number:|%d|\n", tmp->num);
+		tmp = tmp->prev;
+	}
+}
+
+void	fill_stack_begin(t_stack **stack, int num)
+{
+	t_stack *tmp;
+
+	tmp = create_stack(num);
+	tmp->tail = *stack;
+	printf("stack-tail num in begin: %d\n", num);
+	if (*stack == NULL)
+	{
+		printf("stack_b is NULL\n");
+		*stack = tmp;
+		printf("stack-b num: %d\n", tmp->num);
+		return ;
+	}
+	// ft_stackaddend(stack, tmp);
+	tmp->next = *stack;
+	(*stack)->prev = tmp;
+	*stack = tmp;
+}
 
 int		swap_a(t_stack *stack_a)
 {
@@ -78,15 +114,9 @@ int		print_stack_b(t_stack *stack_b, int ret)
 	}
 	else
 		printf("Error\n");
+	// stack_b ? (stack_b = stack_b->next) : 0;
 	return (1);
 }
-
-
-
-
-
-
-
 
 
 // void	sort_and_check(t_inst *inst_lst, int ret)

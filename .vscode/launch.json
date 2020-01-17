@@ -9,25 +9,12 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/a.out",
-			"args": ["3", "sa"],
-			"stopAtEntry": false,
+			"args": ["80", "29"],
+			"stopAtEntry": true,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "lldb"
-		},
-		{
-			"name": "gcc build and debug active file",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${fileDirname}/${fileBasenameNoExtension}",
-			"args": [],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false,
-			"MIMode": "lldb",
-			"preLaunchTask": "gcc build active file"
 		}
 	]
 }

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:18:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/14 19:05:09 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/17 16:20:17 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,27 @@ t_stack		*create_stack(int num)
 	stack->num = num;
 	stack->len = ft_numlen(num);
 	stack->next = NULL;
+	stack->prev = NULL;
 	return (stack);
 }
 
 void	fill_stack(t_stack **stack_a, int num)
 {
 	t_stack *stack;
-	t_stack *tail;
 
-	tail = *stack_a;
 	stack = create_stack(num);
+	stack->tail = *stack_a;
 	if (*stack_a == NULL)
 	{
-		stack->prev = NULL;
+		// stack->prev = NULL;
 		*stack_a = stack;
 		return ;
 	}
-	else
-		while (tail->next != NULL)
-			tail = tail->next;
-	tail->next = stack;
-	stack->prev = tail;
-	return ;
+	while (stack->tail->next != NULL)
+		stack->tail = stack->tail->next;
+	printf("stack-tail num: %d\n", stack->tail->num);
+	stack->tail->next = stack;
+	stack->prev = stack->tail;
 }
 
 int		print_stack(t_stack *stack_a, int ret)
@@ -56,17 +55,18 @@ int		print_stack(t_stack *stack_a, int ret)
 		tail = stack_a;
 		if (ret != -1)
 			printf("|%d|\n", stack_a->num);
-		// if (stack_a->next != NULL)
-		// 	free(stack_a);
+		if (stack_a->next != NULL)
+			free(stack_a);
 		stack_a = stack_a->next;
 	}
 	if (ret != -1)
 	{
 		printf(" --\n");
-		printf(" A\n");
+		printf(" A\n\n");
 	}
 	else
 		printf("Error\n");
+	stack_a ? (stack_a = stack_a->next) : 0;
 	return (1);
 }
 
@@ -115,6 +115,11 @@ int		check_num(char *str, t_format *stvar)
 	return (add_num(&str[i], i, neg, stvar));
 }
 
+void	debug(t_format *stvar)
+{
+	push_b(stvar->stack_a, stvar->stack_b);
+}
+
 int		main(int argc, char **argv)
 {
 	t_format	stvar;
@@ -135,7 +140,8 @@ int		main(int argc, char **argv)
 			return (print_stack(stvar.stack_a, ret));
 		i++;
 	}
+	debug(&stvar);
 	// print_stack(stvar.stack_a, ret);
-	get_instruction(&stvar, argv);
+	// get_instruction(&stvar, argv);
 	return (1);
 }

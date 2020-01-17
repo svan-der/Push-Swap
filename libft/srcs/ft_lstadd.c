@@ -6,7 +6,7 @@
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/24 16:31:14 by svan-der       #+#    #+#                */
-/*   Updated: 2019/11/11 17:15:59 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/16 17:27:11 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,4 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (alst)
-	{
-		new->next = *alst;
-		*alst = new;
-	}
 }
