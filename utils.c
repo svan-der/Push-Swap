@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/22 13:39:02 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/22 15:18:33 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,19 @@ int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 	temp = *stack_a;
 	temp1 = *stack_b;
 	printf("inside swap ss\n");
-	if (stack_a && (*stack_a)->next != NULL)
+	if (temp && temp->next != NULL)
 		temp = swap_a(stack_a);
-	if ((temp1 != NULL))
+	if ((temp1 != NULL && temp1->next != NULL))
 	{
 		printf("in swap_b\n");
 		temp1 = swap_b(stack_b);
 	}
-	*stack_a = temp;
-	*stack_b = temp1;
+	if (temp != NULL)
+		*stack_a = temp;
+	if (temp1 != NULL && temp1->next != NULL)
+		*stack_b = temp1;
+	print_stack(*stack_a, 1);
+	print_stack_b(*stack_b, 1);
 	return (1);
 }
 

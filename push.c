@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/22 13:49:20 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/22 13:57:01 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,12 +144,10 @@ int	push_b(t_stack **new_a, t_stack **new_b)
 	}
 	*new_b = stack_b;
 	*new_a = stack_a;
+	// print_stack_b(*new_b, 1);
 	// print_stack(*stack_a, 1);
 	// printf("that was stack_a\n\n");
-	// push_b(stack_a, stack_b);
-	// print_stack_b(*stack_b, 1);
-	// push_b(stack_a, stack_b);
-	// push_a(stack_a, stack_b);
+	// print_stack(*new_a, 1);
 	return (1);
 }
 
