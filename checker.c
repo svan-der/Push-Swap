@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 12:24:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/22 13:57:43 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/22 16:10:46 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,10 @@ void	put_instruction(t_inst **inst_lst, char *line)
 
 int		check_instruction(t_stack **stack_a, t_stack **stack_b, char *line)
 {
-	(void)stack_b;
-	// if (ft_strequ(line, "sa"))
-	// {
-	// 	printf("here\n");
-	// 	return ((swap_a(*stack_a) != NULL));
-	// }
+	if (ft_strequ(line, "sa"))
+	{
+		return (swap_a(stack_a));
+	}
 	// if (ft_strequ(line, "sb"))
 	// 	return (swap_b(stvar->stack_b) != NULL);
 	if (ft_strequ(line, "ss"))

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/22 15:18:33 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/22 16:19:59 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,43 +48,43 @@ void	fill_stack_begin(t_stack **stack, int num)
 	*stack = tmp;
 }
 
-t_stack	*swap_a(t_stack **new)
+int	swap_a(t_stack **stack_a)
 {
 	t_stack *temp;
-	t_stack *stack_a;
+	t_stack *new;
 
-	stack_a = *new;
-	if (stack_a && stack_a->next != NULL)
+	new = *stack_a;
+	if (new && new->next != NULL)
 	{
-		temp = stack_a->next;
+		temp = new->next;
 		printf("sort list:|%d|\n", temp->num);
-		stack_a->next = temp->next;
-		printf("sort list:|%d|\n", stack_a->num);
-		temp->next = stack_a;
+		new->next = temp->next;
+		printf("sort list:|%d|\n", new->num);
+		temp->next = new;
 		printf("sort list:|%d|\n", temp->num);
-		stack_a = temp;
-		printf("sort list:|%d|\n", stack_a->num);
+		new = temp;
+		printf("sort list:|%d|\n", new->num);
 	}
-	// print_stack(stack_a, 1);
-	return (stack_a);
+	*stack_a = new;
+	return (1);
 }
 
-t_stack	*swap_b(t_stack **new)
+int	swap_b(t_stack **stack_b)
 {
 	t_stack *temp;
-	t_stack *stack_b;
+	t_stack *new;
 
-	stack_b = *new;
-	temp = stack_b->next;
+	new = *stack_b;
+	temp = new->next;
 	printf("sort list:|%d|\n", temp->num);
-	stack_b->next = temp->next;
-	printf("sort list:|%d|\n", stack_b->num);
-	temp->next = stack_b;
+	new->next = temp->next;
+	printf("sort list:|%d|\n", new->num);
+	temp->next = new;
 	printf("sort list:|%d|\n", temp->num);
-	stack_b = temp;
-	printf("sort list:|%d|\n", stack_b->num);
-	// print_stack_b(stack_b, 1);
-	return (stack_b);
+	new = temp;
+	printf("sort list:|%d|\n", new->num);
+	*stack_b = new;
+	return (1);
 }
 
 int		swap_ss(t_stack **stack_a, t_stack **stack_b)
@@ -96,16 +96,12 @@ int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 	temp1 = *stack_b;
 	printf("inside swap ss\n");
 	if (temp && temp->next != NULL)
-		temp = swap_a(stack_a);
+		swap_a(stack_a);
 	if ((temp1 != NULL && temp1->next != NULL))
 	{
 		printf("in swap_b\n");
-		temp1 = swap_b(stack_b);
+		swap_b(stack_b);
 	}
-	if (temp != NULL)
-		*stack_a = temp;
-	if (temp1 != NULL && temp1->next != NULL)
-		*stack_b = temp1;
 	print_stack(*stack_a, 1);
 	print_stack_b(*stack_b, 1);
 	return (1);
