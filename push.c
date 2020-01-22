@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/22 12:31:10 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/22 13:49:20 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,14 @@ void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
 	the next of my "element" will be the entierty of list b
 */
 
-int	push_b(t_stack *stack_a, t_stack *stack_b)
+int	push_b(t_stack **new_a, t_stack **new_b)
 {
 	t_stack *tmp;
-	t_stack *stack;
+	t_stack *stack_a;
+	t_stack *stack_b;
 
-	stack = NULL;
+	stack_a = *new_a;
+	stack_b = *new_b;
 	if (stack_a == NULL)
 		return (0);
 	if (stack_a != NULL)
@@ -135,15 +137,16 @@ int	push_b(t_stack *stack_a, t_stack *stack_b)
 		tmp = stack_a->next;
 		stack_a->next = NULL;
 		printf("in stack_a:|%d|\n", stack_a->num);
-		fill_stack_begin(&stack, stack_a->num);
+		fill_stack_begin(&stack_b, stack_a->num);
 		stack_a = tmp;
 		if (stack_a && stack_a->next == NULL)
 			stack_a->prev = NULL;
 	}
-	stack_b = stack;
+	*new_b = stack_b;
+	*new_a = stack_a;
 	// print_stack(*stack_a, 1);
-	printf("that was stack_a\n\n");
-	push_b(stack_a, stack_b);
+	// printf("that was stack_a\n\n");
+	// push_b(stack_a, stack_b);
 	// print_stack_b(*stack_b, 1);
 	// push_b(stack_a, stack_b);
 	// push_a(stack_a, stack_b);
