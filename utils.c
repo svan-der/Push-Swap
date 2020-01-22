@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/22 16:19:59 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/22 16:52:24 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	swap_a(t_stack **stack_a)
 		printf("sort list:|%d|\n", new->num);
 	}
 	*stack_a = new;
+	print_stack(*stack_a, 1);
 	return (1);
 }
 
@@ -75,15 +76,19 @@ int	swap_b(t_stack **stack_b)
 	t_stack *new;
 
 	new = *stack_b;
-	temp = new->next;
-	printf("sort list:|%d|\n", temp->num);
-	new->next = temp->next;
-	printf("sort list:|%d|\n", new->num);
-	temp->next = new;
-	printf("sort list:|%d|\n", temp->num);
-	new = temp;
-	printf("sort list:|%d|\n", new->num);
-	*stack_b = new;
+	if (new && new->next != NULL)
+	{
+		temp = new->next;
+		printf("sort list:|%d|\n", temp->num);
+		new->next = temp->next;
+		printf("sort list:|%d|\n", new->num);
+		temp->next = new;
+		printf("sort list:|%d|\n", temp->num);
+		new = temp;
+		printf("sort list:|%d|\n", new->num);
+		*stack_b = new;
+	}
+	print_stack(*stack_b, 1);
 	return (1);
 }
 
