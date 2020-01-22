@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/17 17:33:54 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/22 13:39:02 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,17 @@ void	fill_stack_begin(t_stack **stack, int num)
 		printf("stack-b num: %d\n", tmp->num);
 		return ;
 	}
-	// ft_stackaddend(stack, tmp);
 	tmp->next = *stack;
 	(*stack)->prev = tmp;
 	*stack = tmp;
 }
 
-int		swap_a(t_stack *stack_a)
+t_stack	*swap_a(t_stack **new)
 {
 	t_stack *temp;
+	t_stack *stack_a;
 
+	stack_a = *new;
 	if (stack_a && stack_a->next != NULL)
 	{
 		temp = stack_a->next;
@@ -64,35 +65,45 @@ int		swap_a(t_stack *stack_a)
 		stack_a = temp;
 		printf("sort list:|%d|\n", stack_a->num);
 	}
-	print_stack(stack_a, 1);
-	return (1);
+	// print_stack(stack_a, 1);
+	return (stack_a);
 }
 
-int		swap_b(t_stack *stack_b)
+t_stack	*swap_b(t_stack **new)
 {
 	t_stack *temp;
+	t_stack *stack_b;
 
-	if (stack_b && stack_b->next != NULL)
-	{
-		temp = stack_b->next;
-		printf("sort list:|%d|\n", temp->num);
-		stack_b->next = temp->next;
-		printf("sort list:|%d|\n", stack_b->num);
-		temp->next = stack_b;
-		printf("sort list:|%d|\n", temp->num);
-		stack_b = temp;
-		printf("sort list:|%d|\n", stack_b->num);
-	}
-	print_stack(stack_b, 1);
-	return (1);
+	stack_b = *new;
+	temp = stack_b->next;
+	printf("sort list:|%d|\n", temp->num);
+	stack_b->next = temp->next;
+	printf("sort list:|%d|\n", stack_b->num);
+	temp->next = stack_b;
+	printf("sort list:|%d|\n", temp->num);
+	stack_b = temp;
+	printf("sort list:|%d|\n", stack_b->num);
+	// print_stack_b(stack_b, 1);
+	return (stack_b);
 }
 
-int		swap_ss(t_stack *stack_a, t_stack *stack_b)
+int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 {
-	swap_a(stack_a);
-	swap_b(stack_b);
-	print_stack(stack_a, 1);
-	print_stack_b(stack_b, 1);
+	t_stack *temp;
+	t_stack *temp1;
+
+	temp = *stack_a;
+	temp1 = *stack_b;
+	printf("inside swap ss\n");
+	if (stack_a && (*stack_a)->next != NULL)
+		temp = swap_a(stack_a);
+	if ((temp1 != NULL))
+	{
+		printf("in swap_b\n");
+		temp1 = swap_b(stack_b);
+	}
+	*stack_a = temp;
+	*stack_b = temp1;
 	return (1);
 }
 
@@ -114,49 +125,6 @@ int		print_stack_b(t_stack *stack_b, int ret)
 	}
 	else
 		printf("Error\n");
-	// stack_b ? (stack_b = stack_b->next) : 0;
+	stack_b ? (stack_b = stack_b->next) : 0;
 	return (1);
 }
-
-
-// void	sort_and_check(t_inst *inst_lst, int ret)
-// {
-	
-// }
-
-
-
-
-
-// void	sort_sa()
-
-// void	sort_sa()
-
-// void	sort_pa()
-
-// void	sort_pa()
-
-// void	sort_ra()
-
-
-// if (ft_strequ(line, "sa"))
-// 		return (1);
-// 	if (ft_strequ(line, "sb"))
-// 		return (1);
-// 	if (ft_strequ(line, "ss"))
-// 		return (1);
-// 	if (ft_strequ(line, "pa"))
-// 		return (1);
-// 	if (ft_strequ(line, "pb"))
-// 		return (1);
-// 	if (ft_strequ(line, "ra"))
-// 		return (1);
-// 	if (ft_strequ(line, "rb"))
-// 		return (1);
-// 	if (ft_strequ(line, "rr"))
-// 		return (1);
-// 	if (ft_strequ(line, "rra"))
-// 		return (1);
-// 	if (ft_strequ(line, "rrb"))
-// 		return (1);
-// 	if (ft_strequ(line, "rrr"))

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:18:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/17 16:20:17 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/22 12:56:06 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	fill_stack(t_stack **stack_a, int num)
 	}
 	while (stack->tail->next != NULL)
 		stack->tail = stack->tail->next;
-	printf("stack-tail num: %d\n", stack->tail->num);
+	// printf("stack-tail num: %d\n", stack->tail->num);
 	stack->tail->next = stack;
 	stack->prev = stack->tail;
 }
@@ -55,8 +55,8 @@ int		print_stack(t_stack *stack_a, int ret)
 		tail = stack_a;
 		if (ret != -1)
 			printf("|%d|\n", stack_a->num);
-		if (stack_a->next != NULL)
-			free(stack_a);
+		// if (stack_a->next != NULL)
+		// 	free(stack_a);
 		stack_a = stack_a->next;
 	}
 	if (ret != -1)
@@ -66,7 +66,7 @@ int		print_stack(t_stack *stack_a, int ret)
 	}
 	else
 		printf("Error\n");
-	stack_a ? (stack_a = stack_a->next) : 0;
+	// stack_a ? (stack_a = stack_a->next) : 0;
 	return (1);
 }
 
@@ -115,10 +115,19 @@ int		check_num(char *str, t_format *stvar)
 	return (add_num(&str[i], i, neg, stvar));
 }
 
-void	debug(t_format *stvar)
-{
-	push_b(stvar->stack_a, stvar->stack_b);
-}
+// void	debug(t_stack **stack_a, t_stack **stack_b)
+// {
+// 	t_stack *temp;
+// 	t_stack *temp1;
+
+// 	temp = *stack_a;
+// 	temp1 = *stack_b;
+// 	// push_b(stvar->stack_a, stvar->stack_b);
+// 	// push_a(stvar->stack_a, stvar->stack_b);
+// 	swap_ss(stack_a, stack_b);
+// 	// *stack_a = temp;
+// 	// print_stack(temp, 1);
+// }
 
 int		main(int argc, char **argv)
 {
@@ -140,8 +149,9 @@ int		main(int argc, char **argv)
 			return (print_stack(stvar.stack_a, ret));
 		i++;
 	}
-	debug(&stvar);
 	// print_stack(stvar.stack_a, ret);
-	// get_instruction(&stvar, argv);
+	// debug(&stvar.stack_a, &stvar.stack_b);
+	print_stack(stvar.stack_a, 1);
+	get_instruction(&stvar);
 	return (1);
 }

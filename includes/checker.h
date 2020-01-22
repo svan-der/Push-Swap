@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:24:14 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/17 17:05:57 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/22 13:12:58 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ typedef struct	s_format
 	t_stack		*stack_b;
 }				t_format;
 
-int		get_instruction(t_format *stvar, char **argv);
+int		get_instruction(t_format *stvar);
 int		print_instructions(t_inst *inst_lst, int ret);
 void	sort_and_check(t_inst *inst_lst, int ret);
-int		swap_a(t_stack *stack_a);
-int		swap_b(t_stack *stack_b);
-int		swap_ss(t_stack *stack_a, t_stack *stack_b);
+t_stack *swap_a(t_stack **stack_a);
+t_stack	*swap_b(t_stack **stack_b);
+int		swap_ss(t_stack **stack_a, t_stack **stack_b);
 int		print_stack(t_stack *stack_a, int ret);
 int		print_stack_b(t_stack *stack_b, int ret);
 int		push_a(t_stack *stack_a, t_stack *stack_b);
@@ -58,5 +58,6 @@ void	fill_stack(t_stack **stack_a, int num);
 t_stack	*create_stack(int num);
 void	fill_stack_begin(t_stack **stack_a, int num);
 void	print_backwards(t_stack *stack);
-void    ft_stackaddend(t_stack **stack_lst, t_stack *new);
+void	ft_stackaddend(t_stack **stack_lst, t_stack *new);
+void	debug(t_stack **stack_a, t_stack **stack_b);
 #endif

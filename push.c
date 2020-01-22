@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/17 17:24:11 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/22 12:31:10 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_stack	*ft_stackpop(t_stack **stack_lst)
 	return (tmp);
 }
 
-void 	stack_push(t_stack **stack, t_stack *new)
+void	stack_push(t_stack **stack, t_stack *new)
 {
 	if (*stack == NULL)
 	{
@@ -95,7 +95,7 @@ void 	stack_push(t_stack **stack, t_stack *new)
 	*stack = new;
 }
 
-void        ft_stackaddend(t_stack **stack_lst, t_stack *new)
+void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
 {
     t_stack  *temp;
     if (*stack_lst == NULL)
@@ -121,45 +121,89 @@ void        ft_stackaddend(t_stack **stack_lst, t_stack *new)
 	the next of my "element" will be the entierty of list b
 */
 
-int		push_b(t_stack *stack_a, t_stack *stack_b)
+int	push_b(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack *tmp;
 	t_stack *stack;
 
-	stack = stack_a;
+	stack = NULL;
 	if (stack_a == NULL)
 		return (0);
 	if (stack_a != NULL)
 	{
 		printf("here push b\n\n");
-		tmp = stack->next;
+		tmp = stack_a->next;
 		stack_a->next = NULL;
-		printf("in stack_a:|%d|\n", stack->num);
-		fill_stack_begin(&stack_b, stack->num);
+		printf("in stack_a:|%d|\n", stack_a->num);
+		fill_stack_begin(&stack, stack_a->num);
 		stack_a = tmp;
 		if (stack_a && stack_a->next == NULL)
 			stack_a->prev = NULL;
 	}
-	print_stack(stack_a, 1);
+	stack_b = stack;
+	// print_stack(*stack_a, 1);
 	printf("that was stack_a\n\n");
-	print_stack_b(stack_b, 1);
 	push_b(stack_a, stack_b);
+	// print_stack_b(*stack_b, 1);
+	// push_b(stack_a, stack_b);
+	// push_a(stack_a, stack_b);
 	return (1);
 }
 
+
+
+// t_stack	*push_b(t_stack *stack_a, t_stack *stack_b)
+// {
+// 	t_stack *tmp;
+// 	t_stack *stack;
+
+// 	stack = NULL;
+// 	if (stack_a == NULL)
+// 		return (stack_b);
+// 	if (stack_a != NULL)
+// 	{
+// 		printf("here push b\n\n");
+// 		tmp = stack_a->next;
+// 		stack_a->next = NULL;
+// 		printf("in stack_a:|%d|\n", stack_a->num);
+// 		fill_stack_begin(&stack, stack_a->num);
+// 		stack_a = tmp;
+// 		if (stack_a && stack_a->next == NULL)
+// 			stack_a->prev = NULL;
+// 	}
+// 	stack_b = stack;
+// 	// print_stack(*stack_a, 1);
+// 	printf("that was stack_a\n\n");
+// 	// print_stack_b(*stack_b, 1);
+// 	// push_b(stack_a, stack_b);
+// 	// push_a(stack_a, stack_b);
+// 	return (stack_b);
+// }
+
 int		push_a(t_stack *stack_a, t_stack *stack_b)
 {
-	printf("here\n");
-	(void)stack_a;
-	(void)stack_b;
+	t_stack *tmp;
+
+	tmp = stack_a->prev;
 	if (stack_b == NULL)
 		return (0);
-	stack_b->num = 3;
-	// printf("sort list:|%d|\n", stack_b->num);
-	// if (stack_b != NULL)
-	// {
-	// 	printf("here now\n");
-	// 	stack_a->prev = stack_b;
-	// }
+	if (stack_b != NULL)
+	{
+		printf("here push b\n\n");
+		tmp = stack_b->next;
+		stack_b->next = NULL;
+		printf("in stack_b:|%d|\n", stack_b->num);
+		if (stack_a == NULL && stack_a->next == NULL)
+			fill_stack_begin(&stack_a, stack_b->num);
+		// fill_stack_begin(&stack_a, stack_b->num);
+		stack_b = tmp;
+		if (stack_b && stack_b->next == NULL)
+			stack_b->prev = NULL;
+	}
+	print_stack(stack_a, 1);
+	printf("that was stack_a\n\n");
+	print_stack_b(stack_b, 1);
+	push_a(stack_a, stack_b);
 	return (1);
 }
+
