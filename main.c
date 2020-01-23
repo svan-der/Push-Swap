@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:18:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/22 12:56:06 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/23 17:19:00 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ void	fill_stack(t_stack **stack_a, int num)
 
 	stack = create_stack(num);
 	stack->tail = *stack_a;
+	if (*stack_a != NULL)
+		printf("this is tail num: %i\n", stack->tail->num);
 	if (*stack_a == NULL)
 	{
 		// stack->prev = NULL;
+		// (*stack_a)->tail = stack;
 		*stack_a = stack;
 		return ;
 	}
@@ -44,6 +47,8 @@ void	fill_stack(t_stack **stack_a, int num)
 	// printf("stack-tail num: %d\n", stack->tail->num);
 	stack->tail->next = stack;
 	stack->prev = stack->tail;
+	if (stack->next == NULL)
+		(*stack_a)->tail = stack->tail;
 }
 
 int		print_stack(t_stack *stack_a, int ret)
@@ -115,19 +120,22 @@ int		check_num(char *str, t_format *stvar)
 	return (add_num(&str[i], i, neg, stvar));
 }
 
-// void	debug(t_stack **stack_a, t_stack **stack_b)
-// {
-// 	t_stack *temp;
-// 	t_stack *temp1;
+void	debug(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack *temp;
+	t_stack *temp1;
 
-// 	temp = *stack_a;
-// 	temp1 = *stack_b;
-// 	// push_b(stvar->stack_a, stvar->stack_b);
-// 	// push_a(stvar->stack_a, stvar->stack_b);
-// 	swap_ss(stack_a, stack_b);
-// 	// *stack_a = temp;
-// 	// print_stack(temp, 1);
-// }
+	temp = *stack_a;
+	temp1 = *stack_b;
+	// push_b(stvar->stack_a, stvar->stack_b);
+	// push_a(stvar->stack_a, stvar->stack_b);
+	fill_stack(stack_a, 10);
+	// fill_stack(stack_a, 50);
+	rotate_a(stack_a);
+	// rotate_a(stack_a);
+	// *stack_a = temp;
+	// print_stack(temp, 1);
+}
 
 int		main(int argc, char **argv)
 {
@@ -150,8 +158,8 @@ int		main(int argc, char **argv)
 		i++;
 	}
 	// print_stack(stvar.stack_a, ret);
-	// debug(&stvar.stack_a, &stvar.stack_b);
-	print_stack(stvar.stack_a, 1);
-	get_instruction(&stvar);
+	debug(&stvar.stack_a, &stvar.stack_b);
+	// print_stack(stvar.stack_a, 1);
+	// get_instruction(&stvar);
 	return (1);
 }
