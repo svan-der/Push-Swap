@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/24 16:39:40 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/24 17:34:06 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ void	add_node(t_stack **stack_b, t_stack *new)
 t_stack	*ft_stackpop(t_stack **stack_lst)
 {
 	t_stack *tmp;
+	t_stack *new;
 
+	new = *stack_lst;
 	tmp = *stack_lst;
 	printf("same\n");
 	if ((*stack_lst)->next == *stack_lst)
@@ -69,12 +71,15 @@ t_stack	*ft_stackpop(t_stack **stack_lst)
 	else
 	{
 		printf("same\n");
-		(*stack_lst)->prev->next = (*stack_lst)->next;
-		(*stack_lst)->prev->prev = (*stack_lst)->prev;
-		*stack_lst = (*stack_lst)->next;
+		if ((new)->prev)
+			(new)->prev->next = (new->next);
+		if ((new)->prev)
+			(new)->prev->prev = (new)->prev;
+		new = (new)->next;
 	}
 	tmp->prev = NULL;
 	tmp->next = NULL;
+	*stack_lst = new;
 	return (tmp);
 }
 

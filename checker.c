@@ -6,12 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 12:24:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/23 16:35:25 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/24 16:56:00 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-#include <stdio.h>
+// #include "checker.h"
+// #include <stdio.h>
 
 // int		check_sorted(t_stack *stack_a, t_stack *stack_b)
 // {
@@ -116,7 +116,7 @@
 // 	if (ft_strequ(line, "ra"))
 // 	{
 // 		printf("in rotate a\n");
-// 		return (rotate_a(stack_a));
+// 		return (rotate_a(stack_a, &(*stack_a)->tail));
 // 		// return (1);
 // 	}
 // 	// if (ft_strequ(line, "rb"))
