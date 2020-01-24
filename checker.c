@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 12:24:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/24 17:41:07 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/24 17:50:36 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ int		check_instruction(t_stack **stack_a, t_stack **stack_b, char *line)
 		return (rotate_a(stack_a, &(*stack_a)->tail));
 		// return (1);
 	}
-	// if (ft_strequ(line, "rb"))
-	// 	return (1);
+	if (ft_strequ(line, "rb"))
+		return (rotate_b(stack_b));
 	// if (ft_strequ(line, "rr"))
 	// 	return (1);
 	// if (ft_strequ(line, "rra"))
