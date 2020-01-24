@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:18:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/24 16:56:28 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/24 17:38:29 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,13 @@ void	debug(t_stack **stack_a, t_stack **stack_b)
 	// push_a(stvar->stack_a, stvar->stack_b);
 	fill_stack(stack_a, 10);
 	// fill_stack(stack_a, 50);
+	rotate_a(stack_a, &(*stack_a)->tail);
+	rotate_a(stack_a, &(*stack_a)->tail);
+	rotate_a(stack_a, &(*stack_a)->tail);
+	rotate_a(stack_a, &(*stack_a)->tail);
+	rotate_a(stack_a, &(*stack_a)->tail);
+	rotate_a(stack_a, &(*stack_a)->tail);
+	rotate_a(stack_a, &(*stack_a)->tail);
 	rotate_a(stack_a, &(*stack_a)->tail);
 	rotate_a(stack_a, &(*stack_a)->tail);
 	rotate_a(stack_a, &(*stack_a)->tail);
