@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:15:26 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/24 17:38:00 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/24 17:42:44 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,22 @@ int     rotate_a(t_stack **stack_a, t_stack **tail)
     t_stack *last;
     t_stack *temp;
 
-    last = (*tail);
-    if (last)
-    {
-        last->next = NULL;
-        last->tail = NULL;
-    }
-    printf("in rotate a function\n");
     temp = (*stack_a);
-    new = ft_stackpop(&temp);
-    new->prev = last;
-    temp->prev = NULL;
-    ft_stackaddend(&temp, new);
-    *stack_a = temp;
-    print_stack(*stack_a, 1);
+    last = (*tail);
+    if (temp && temp->next)
+    {
+        if (last)
+        {
+            last->next = NULL;
+            last->tail = NULL;
+        }
+        printf("in rotate a function\n");
+        new = ft_stackpop(&temp);
+        new->prev = last;
+        temp->prev = NULL;
+        ft_stackaddend(&temp, new);
+        *stack_a = temp;
+        print_stack(*stack_a, 1);
+    }
     return (1);
 }

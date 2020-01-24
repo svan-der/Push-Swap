@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:18:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/24 17:38:29 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/24 17:41:01 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,8 +167,8 @@ int		main(int argc, char **argv)
 			return (print_stack(stvar.stack_a, ret));
 		i++;
 	}
-	debug(&stvar.stack_a, &stvar.stack_b);
+	// debug(&stvar.stack_a, &stvar.stack_b);
 	// print_stack(stvar.stack_a, 1);
-	// get_instruction(&stvar);
+	get_instruction(&stvar);
 	return (1);
 }
