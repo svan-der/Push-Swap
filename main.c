@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:18:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/23 17:19:00 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/24 16:49:24 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,25 @@ t_stack		*create_stack(int num)
 void	fill_stack(t_stack **stack_a, int num)
 {
 	t_stack *stack;
+	t_stack *tail;
 
 	stack = create_stack(num);
 	stack->tail = *stack_a;
+	tail = stack;
 	if (*stack_a != NULL)
 		printf("this is tail num: %i\n", stack->tail->num);
 	if (*stack_a == NULL)
 	{
 		// stack->prev = NULL;
-		// (*stack_a)->tail = stack;
 		*stack_a = stack;
+		(*stack_a)->tail = stack;
 		return ;
 	}
+	fill_stack_begin(&(*stack_a)->tail, num);
 	while (stack->tail->next != NULL)
 		stack->tail = stack->tail->next;
-	// printf("stack-tail num: %d\n", stack->tail->num);
 	stack->tail->next = stack;
 	stack->prev = stack->tail;
-	if (stack->next == NULL)
-		(*stack_a)->tail = stack->tail;
 }
 
 int		print_stack(t_stack *stack_a, int ret)
@@ -131,10 +131,10 @@ void	debug(t_stack **stack_a, t_stack **stack_b)
 	// push_a(stvar->stack_a, stvar->stack_b);
 	fill_stack(stack_a, 10);
 	// fill_stack(stack_a, 50);
-	rotate_a(stack_a);
+	rotate_a(stack_a, &(*stack_a)->tail);
 	// rotate_a(stack_a);
 	// *stack_a = temp;
-	// print_stack(temp, 1);
+	print_stack(*stack_a, 1);
 }
 
 int		main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/22 17:37:49 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/24 16:39:40 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ t_stack	*ft_stackpop(t_stack **stack_lst)
 	t_stack *tmp;
 
 	tmp = *stack_lst;
-	printf("same");
+	printf("same\n");
 	if ((*stack_lst)->next == *stack_lst)
 	{
-		printf("same");
+		printf("same\n");
 		*stack_lst = NULL;
 	}
 	else
 	{
-		printf("same");
+		printf("same\n");
 		(*stack_lst)->prev->next = (*stack_lst)->next;
 		(*stack_lst)->prev->prev = (*stack_lst)->prev;
 		*stack_lst = (*stack_lst)->next;
@@ -95,9 +95,15 @@ void	stack_push(t_stack **stack, t_stack *new)
 	*stack = new;
 }
 
+// void	stack_delete_end(t_stack **stack, t_stack *node)
+// {
+
+// }
+
 void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
 {
     t_stack  *temp;
+
     if (*stack_lst == NULL)
     {
         *stack_lst = new;
@@ -105,7 +111,9 @@ void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
     }
     temp = *stack_lst;
     while (temp->next != NULL)
+	{
         temp = temp->next;
+	}
     temp->next = new;
 }
 
