@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/25 16:13:14 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/25 16:42:56 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	fill_stack_begin(t_stack **stack, int num)
 		printf("stack-b num: %d\n", tmp->num);
 		return ;
 	}
-	// printf("tail is num:%i\n", tmp->tail->num);
-	// (*stack)->tail = tmp;
 	tmp->next = *stack;
 	(*stack)->prev = tmp;
 	*stack = tmp;
@@ -134,6 +132,5 @@ int		print_stack_b(t_stack *stack_b, int ret)
 	}
 	else
 		printf("Error\n");
-	// stack_b ? (stack_b = stack_b->next) : 0;
 	return (1);
 }

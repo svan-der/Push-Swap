@@ -6,37 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/25 15:48:29 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/25 18:09:53 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include <stdio.h>
-
-// void	ft_stackpop(t_stack **stack_lst, t_stack *elem)
-// {
-// 	t_stack	*next;
-
-// 	printf("in stackpop\n");
-// 	if (stack_lst && elem)
-// 	{
-// 		printf("in the function\n");
-// 		next = (*stack_lst)->next;
-// 		printf("elem to be popped:%d\n\n", elem->num);
-// 		printf("list elem:%d\n\n", (*stack_lst)->num);
-// 		if ((*stack_lst)->num == elem->num)
-// 		{
-// 			printf("inside fpop\n");
-// 			*stack_lst = next;
-// 		}
-// 		else
-// 		{
-// 			printf("pop else\n");
-// 			printf("next elem:%d\n", next->num);
-// 			ft_stackpop(&(*stack_lst)->next, elem);
-// 		}
-// 	}
-// }
 
 void	add_node(t_stack **stack_b, t_stack *new)
 {
@@ -46,14 +21,6 @@ void	add_node(t_stack **stack_b, t_stack *new)
 		*stack_b = new;
 	}
 }
-
-// void 	stack_push(t_stack **stack, t_stack *new)
-// {
-// 	if (*stack)
-// 		stack_push(&(*stack)->next, new);
-// 	else
-// 		*stack = new;
-// }
 
 t_stack	*ft_stackpop(t_stack **stack_lst)
 {
@@ -65,18 +32,11 @@ t_stack	*ft_stackpop(t_stack **stack_lst)
 	printf("same\n");
 	if ((*stack_lst)->next == *stack_lst)
 	{
-		printf("same\n");
+		printf("stack_lst is NULL\n");
 		*stack_lst = NULL;
 	}
 	else
-	{
-		printf("same\n");
-		if ((new)->prev)
-			(new)->prev->next = (new->next);
-		if ((new)->prev)
-			(new)->prev->prev = (new)->prev;
 		new = (new)->next;
-	}
 	tmp->prev = NULL;
 	tmp->next = NULL;
 	tmp->tail = NULL;
@@ -100,11 +60,6 @@ void	stack_push(t_stack **stack, t_stack *new)
 	}
 	*stack = new;
 }
-
-// void	stack_delete_end(t_stack **stack, t_stack *node)
-// {
-
-// }
 
 void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
 {
@@ -144,9 +99,9 @@ int	push_b(t_stack **stack_a, t_stack **stack_b)
 
 	new_a = *stack_a;
 	new_b = *stack_b;
-	tail = new_a->tail;
 	if (new_a == NULL)
 		return (0);
+	tail = new_a->tail;
 	printf("here push b\n\n");
 	tmp = new_a->next;
 	new_a->next = NULL;
@@ -167,6 +122,7 @@ int	push_b(t_stack **stack_a, t_stack **stack_b)
 int		push_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *tmp;
+	t_stack *tail;
 	t_stack *new_a;
 	t_stack *new_b;
 
@@ -174,14 +130,15 @@ int		push_a(t_stack **stack_a, t_stack **stack_b)
 	new_a = *stack_a;
 	if (new_b == NULL)
 		return (0);
+	tail = new_b->tail;
 	printf("here push b\n\n");
 	tmp = new_b->next;
 	new_b->next = NULL;
 	printf("in stack_b:|%d|\n", new_b->num);
-	// if (*stack_a == NULL && (*stack_a)->next == NULL)
-	// 	fill_stack_begin(stack_a, new_a->num);
 	fill_stack_begin(&new_a, new_b->num);
 	new_b = tmp;
+	if (new_b)
+		new_b->tail = (tail != NULL) ? tail : NULL;
 	if (new_b && new_b->next == NULL)
 		new_b->prev = NULL;
 	*stack_b = new_b;
