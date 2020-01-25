@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/24 17:34:06 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/25 15:48:29 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ t_stack	*ft_stackpop(t_stack **stack_lst)
 	}
 	tmp->prev = NULL;
 	tmp->next = NULL;
+	tmp->tail = NULL;
 	*stack_lst = new;
 	return (tmp);
 }
@@ -137,12 +138,13 @@ void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
 int	push_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *tmp;
+	t_stack *tail;
 	t_stack *new_a;
 	t_stack *new_b;
 
-	(void)new_b;
 	new_a = *stack_a;
 	new_b = *stack_b;
+	tail = new_a->tail;
 	if (new_a == NULL)
 		return (0);
 	printf("here push b\n\n");
@@ -150,13 +152,13 @@ int	push_b(t_stack **stack_a, t_stack **stack_b)
 	new_a->next = NULL;
 	printf("in stack_a:|%d|\n", new_a->num);
 	fill_stack_begin(&new_b, new_a->num);
-	// if (new_b == NULL && new_b->next == NULL)
-	// 	fill_stack_begin(&new_b, new_a->num);
 	new_a = tmp;
+	if (new_a)
+		new_a->tail = (tail != NULL) ? tail : NULL;
 	if (new_a && new_a->next == NULL)
 		new_a->prev = NULL;
-	*stack_b = new_b;
 	*stack_a = new_a;
+	*stack_b = new_b;
 	print_stack_b(*stack_b, 1);
 	print_stack(*stack_a, 1);
 	return (1);

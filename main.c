@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:18:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/24 17:41:01 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/25 15:56:40 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_stack		*create_stack(int num)
 	stack->len = ft_numlen(num);
 	stack->next = NULL;
 	stack->prev = NULL;
+	stack->tail = NULL;
 	return (stack);
 }
 
@@ -127,24 +128,19 @@ void	debug(t_stack **stack_a, t_stack **stack_b)
 
 	temp = *stack_a;
 	temp1 = *stack_b;
-	// push_b(stvar->stack_a, stvar->stack_b);
-	// push_a(stvar->stack_a, stvar->stack_b);
 	fill_stack(stack_a, 10);
-	// fill_stack(stack_a, 50);
-	rotate_a(stack_a, &(*stack_a)->tail);
-	rotate_a(stack_a, &(*stack_a)->tail);
-	rotate_a(stack_a, &(*stack_a)->tail);
-	rotate_a(stack_a, &(*stack_a)->tail);
-	rotate_a(stack_a, &(*stack_a)->tail);
-	rotate_a(stack_a, &(*stack_a)->tail);
-	rotate_a(stack_a, &(*stack_a)->tail);
-	rotate_a(stack_a, &(*stack_a)->tail);
-	rotate_a(stack_a, &(*stack_a)->tail);
-	rotate_a(stack_a, &(*stack_a)->tail);
-	rotate_a(stack_a, &(*stack_a)->tail);
+	rotate_rr(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	rotate_rr(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	rotate_rr(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	rotate_rr(stack_a, stack_b);
 	// rotate_a(stack_a);
 	// *stack_a = temp;
 	print_stack(*stack_a, 1);
+	print_stack_b(*stack_b, 1);
 }
 
 int		main(int argc, char **argv)
@@ -167,8 +163,8 @@ int		main(int argc, char **argv)
 			return (print_stack(stvar.stack_a, ret));
 		i++;
 	}
-	// debug(&stvar.stack_a, &stvar.stack_b);
+	debug(&stvar.stack_a, &stvar.stack_b);
 	// print_stack(stvar.stack_a, 1);
-	get_instruction(&stvar);
+	// get_instruction(&stvar);
 	return (1);
 }

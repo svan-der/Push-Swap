@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/22 16:52:24 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/25 16:13:14 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ void	print_backwards(t_stack *stack)
 void	fill_stack_begin(t_stack **stack, int num)
 {
 	t_stack *tmp;
+	t_stack *tail;
 
+	tail = (*stack == NULL || (!(*stack)->next)) ? *stack : (*stack)->tail;
 	tmp = create_stack(num);
-	tmp->tail = *stack;
-	printf("stack-tail num in begin: %d\n", num);
+	printf("num is: %d\n", num);
 	if (*stack == NULL)
 	{
 		printf("stack_b is NULL\n");
@@ -43,9 +44,12 @@ void	fill_stack_begin(t_stack **stack, int num)
 		printf("stack-b num: %d\n", tmp->num);
 		return ;
 	}
+	// printf("tail is num:%i\n", tmp->tail->num);
+	// (*stack)->tail = tmp;
 	tmp->next = *stack;
 	(*stack)->prev = tmp;
 	*stack = tmp;
+	(*stack)->tail = tail;
 }
 
 int	swap_a(t_stack **stack_a)
@@ -130,6 +134,6 @@ int		print_stack_b(t_stack *stack_b, int ret)
 	}
 	else
 		printf("Error\n");
-	stack_b ? (stack_b = stack_b->next) : 0;
+	// stack_b ? (stack_b = stack_b->next) : 0;
 	return (1);
 }
