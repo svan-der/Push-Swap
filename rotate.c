@@ -6,46 +6,43 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:15:26 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/28 16:39:08 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/28 17:15:29 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include <stdio.h>
 
-// int		rotate_reva(t_stack **stack_a)
-// {
-// 	t_stack *new;
-// 	t_stack *last;
-// 	t_stack *temp;
+int		rotate_revb(t_stack **stack_b)
+{
+	t_stack *new;
+	t_stack *last;
+	t_stack *temp;
+	t_stack *ttail;
 
-// 	new = (*stack_a);
-// 	temp = (*stack_a);
-// 	if (temp && temp->next)
-// 	{
-// 		last = ((*stack_a)->tail->next);
-// 		if (last)
-// 		{
-// 			// last->next = NULL;
-// 			// last->tail = NULL;
-// 			// last->tail->prev = temp->next;
-// 			// last->tail->next = last->tail->prev;
-// 			// last->tail->next = last->tail;
-// 			// last->next->next = last->prev;
-// 		}
-// 		printf("in rotate a function\n");
-// 		stack_push(&temp, temp->tail);
-// 		if (temp)
-// 			temp->prev = NULL;
-// 		temp->tail = last;
-// 		// temp->tail->next = NULL;
-// 		// temp->tail->next =
-// 		*stack_a = temp;
-// 		print_stack(*stack_a, 1);
-// 		printf("\n");
-// 	}
-// 	return (1);
-// }
+	temp = (*stack_b);
+	new = (*stack_b);
+	if (temp && temp->next)
+	{
+		last = ((*stack_b)->tail);
+		ttail = last;
+		if (last)
+		{
+			last = last->next;
+			last->prev = NULL;
+			last->next = NULL;
+		}
+		ttail->next = NULL;
+		printf("in rotate b function\n");
+		stack_push(&temp, ttail);
+		ttail->prev = NULL;
+		reverse_list(&last);
+		*stack_b = temp;
+		print_stack(*stack_b, 1);
+		printf("\n");
+	}
+	return (1);
+}
 
 int		rotate_rr(t_stack **stack_a, t_stack **stack_b)
 {
@@ -74,6 +71,8 @@ void	reverse_list(t_stack **new)
 
 	tmp = NULL;
 	new_list = *new;
+	if (new_list && !new_list->next)
+		return ;
 	new_list->prev->next = NULL;
 	while (new_list != NULL)
 	{
@@ -109,9 +108,9 @@ int		rotate_reva(t_stack **stack_a)
 		printf("in rotate b function\n");
 		stack_push(&temp, ttail);
 		ttail->prev = NULL;
-		last = new;
 		reverse_list(&last);
-		*stack_a = temp;
+		(*stack_a)->tail = temp;
+		*stack_a = ttail;
 		print_stack(*stack_a, 1);
 		printf("\n");
 	}
