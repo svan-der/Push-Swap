@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/25 18:09:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/01/27 18:02:18 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,22 @@ void	stack_push(t_stack **stack, t_stack *new)
 	{
 		new->prev = (*stack)->prev;
 		new->next = (*stack);
-		(*stack)->prev->next = new;
-		(*stack)->prev = new;
+		(*stack)->next->next = NULL;
+		// new->tail->next = (*stack);
+		// new->tail = (*stack)->tail->prev;
+		new->tail->prev = NULL;
+		// new->tail->next = (*stack);
+		// (*stack)->prev->next = new;
+		(*stack)->prev = new; 
+	}
+	// new->tail->prev = (*stack)->prev;
+	// (*stack)->tail = new->tail;
+	// new->tail->next->nex = new->tail->prev;
+	// ft_stackaddend(&new->tail, new->tail->prev);
+	// new->tail = (*stack);
+	while (new->next != NULL)
+	{
+		new = new->next;
 	}
 	*stack = new;
 }
