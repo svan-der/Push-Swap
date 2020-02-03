@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/03 11:01:36 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/03 11:15:20 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	swap_b(t_stack **stack_b)
 		printf("sort list:|%d|\n", new->num);
 		*stack_b = new;
 	}
-	print_stack(*stack_b, 1);
+	print_stack_b(*stack_b, 1);
 	return (1);
 }
 

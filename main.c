@@ -6,32 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:18:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/03 11:08:19 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/03 12:54:08 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "checker.h"
-
-// void	fill_stack_begin(t_stack **stack, int num)
-// {
-// 	t_stack *tmp;
-// 	// t_stack *tail;
-
-// 	// tail = (*stack == NULL || (!(*stack)->next)) ? *stack : (*stack)->tail;
-// 	tmp = create_stack(num);
-// 	printf("num is: %d\n", num);
-// 	if (*stack == NULL)
-// 	{
-// 		printf("stack_b is NULL\n");
-// 		*stack = tmp;
-// 		printf("stack-b num: %d\n", tmp->num);
-// 		return ;
-// 	}
-// 	tmp->next = *stack;
-// 	(*stack)->prev = tmp;
-// 	*stack = tmp;
-// }
 
 t_stack		*create_stack(int num)
 {
@@ -59,7 +39,7 @@ void	fill_stack(t_stack **stack_a, int num)
 		return ;
 	}
 	fill_stack_begin(stack_a, num);
-	stack->prev = stack->tail;
+	// stack->prev = stack->tail;
 }
 
 int		print_stack(t_stack *stack_a, int ret)
@@ -134,20 +114,15 @@ void	debug(t_stack **stack_a, t_stack **stack_b)
 {
 	print_stack(*stack_a, 1);
 	print_stack_b(*stack_b, 1);
+	swap_a(stack_a);
 	push_b(stack_a, stack_b);
-	push_a(stack_a, stack_b);
+	// rotate_a(stack_a);
 	push_b(stack_a, stack_b);
-	push_a(stack_a, stack_b);
+	swap_b(stack_b);
 	push_b(stack_a, stack_b);
-	push_a(stack_a, stack_b);
-	push_b(stack_a, stack_b);
-	push_b(stack_a, stack_b);
-	push_b(stack_a, stack_b);
-	push_b(stack_a, stack_b);
-	push_b(stack_a, stack_b);
-	push_a(stack_a, stack_b);
-	push_a(stack_a, stack_b);
-	push_a(stack_a, stack_b);
+	rotate_b(stack_b);
+	swap_ss(stack_a, stack_b);
+	rotate_rr(stack_a, stack_b);
 }
 // 	// rotate_rr(stack_a, stack_b);
 // 	// push_b(stack_a, stack_b);
@@ -156,7 +131,6 @@ void	debug(t_stack **stack_a, t_stack **stack_b)
 // 	// rotate_rr(stack_a, stack_b);
 // 	// push_a(stack_a, stack_b);
 // 	print_stack(*stack_a, 1);
-// 	rotate_rr(stack_a, stack_b);
 // 	rotate_reva(stack_a);
 // 	push_b(stack_a, stack_b);
 // 	rotate_revb(stack_b);

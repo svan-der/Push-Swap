@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/03 11:00:13 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/03 11:36:56 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ t_stack	*ft_stackpop(t_stack **stack_lst)
 		new = (new)->next;
 	tmp->prev = NULL;
 	tmp->next = NULL;
-	tmp->tail = NULL;
 	*stack_lst = new;
 	return (tmp);
 }
@@ -56,8 +55,6 @@ void	stack_push(t_stack **stack, t_stack *new)
 		new->prev = (*stack)->prev;
 		new->next = (*stack);
 		(*stack)->next->next = NULL;
-		if (new->tail && new->tail->next)
-			new->tail->prev = NULL;
 		(*stack)->prev = new;
 	}
 	while (new->next != NULL)

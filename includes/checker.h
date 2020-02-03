@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:24:14 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/03 10:37:17 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/03 11:36:14 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct		s_stack
 	size_t			len;
 	struct s_stack	*prev;
 	struct s_stack	*next;
-	struct s_stack	*tail;
 }					t_stack;
 
 typedef struct	s_format
