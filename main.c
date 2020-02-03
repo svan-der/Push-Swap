@@ -6,12 +6,32 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:18:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/28 16:56:23 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/03 11:08:19 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "checker.h"
+
+// void	fill_stack_begin(t_stack **stack, int num)
+// {
+// 	t_stack *tmp;
+// 	// t_stack *tail;
+
+// 	// tail = (*stack == NULL || (!(*stack)->next)) ? *stack : (*stack)->tail;
+// 	tmp = create_stack(num);
+// 	printf("num is: %d\n", num);
+// 	if (*stack == NULL)
+// 	{
+// 		printf("stack_b is NULL\n");
+// 		*stack = tmp;
+// 		printf("stack-b num: %d\n", tmp->num);
+// 		return ;
+// 	}
+// 	tmp->next = *stack;
+// 	(*stack)->prev = tmp;
+// 	*stack = tmp;
+// }
 
 t_stack		*create_stack(int num)
 {
@@ -24,31 +44,21 @@ t_stack		*create_stack(int num)
 	stack->len = ft_numlen(num);
 	stack->next = NULL;
 	stack->prev = NULL;
-	stack->tail = NULL;
 	return (stack);
 }
 
 void	fill_stack(t_stack **stack_a, int num)
 {
 	t_stack *stack;
-	t_stack *tail;
 
 	stack = create_stack(num);
-	stack->tail = *stack_a;
-	tail = stack;
-	if (*stack_a != NULL)
-		printf("this is tail num: %i\n", stack->tail->num);
 	if (*stack_a == NULL)
 	{
-		// stack->prev = NULL;
+		stack->prev = NULL;
 		*stack_a = stack;
-		(*stack_a)->tail = stack;
 		return ;
 	}
-	fill_stack_begin(&(*stack_a)->tail, num);
-	while (stack->tail->next != NULL)
-		stack->tail = stack->tail->next;
-	stack->tail->next = stack;
+	fill_stack_begin(stack_a, num);
 	stack->prev = stack->tail;
 }
 
@@ -72,7 +82,6 @@ int		print_stack(t_stack *stack_a, int ret)
 	}
 	else
 		printf("Error\n");
-	// stack_a ? (stack_a = stack_a->next) : 0;
 	return (1);
 }
 
@@ -123,29 +132,36 @@ int		check_num(char *str, t_format *stvar)
 
 void	debug(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *temp;
-	t_stack *temp1;
-
-	temp = *stack_a;
-	temp1 = *stack_b;
-	// fill_stack(stack_a, 10);
-	// rotate_rr(stack_a, stack_b);
-	// push_b(stack_a, stack_b);
-	// push_b(stack_a, stack_b);
-	// push_a(stack_a, stack_b);
-	// rotate_rr(stack_a, stack_b);
-	// push_b(stack_a, stack_b);
-	// rotate_rr(stack_a, stack_b);
-	// push_b(stack_a, stack_b);
-	// rotate_rr(stack_a, stack_b);
-	// push_a(stack_a, stack_b);
-	print_stack(*stack_a, 1);
-	rotate_reva(stack_a);
-	push_b(stack_a, stack_b);
-	rotate_revb(stack_b);
 	print_stack(*stack_a, 1);
 	print_stack_b(*stack_b, 1);
+	push_b(stack_a, stack_b);
+	push_a(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	push_a(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	push_a(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	push_a(stack_a, stack_b);
+	push_a(stack_a, stack_b);
+	push_a(stack_a, stack_b);
 }
+// 	// rotate_rr(stack_a, stack_b);
+// 	// push_b(stack_a, stack_b);
+// 	// rotate_rr(stack_a, stack_b);
+// 	// push_b(stack_a, stack_b);
+// 	// rotate_rr(stack_a, stack_b);
+// 	// push_a(stack_a, stack_b);
+// 	print_stack(*stack_a, 1);
+// 	rotate_rr(stack_a, stack_b);
+// 	rotate_reva(stack_a);
+// 	push_b(stack_a, stack_b);
+// 	rotate_revb(stack_b);
+// 	push_b(stack_a, stack_b);
+// 	rotate_reva(stack_a);
 
 int		main(int argc, char **argv)
 {

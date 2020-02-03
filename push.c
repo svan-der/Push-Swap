@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/27 18:02:18 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/03 11:00:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,12 @@ void	stack_push(t_stack **stack, t_stack *new)
 		new->prev = (*stack)->prev;
 		new->next = (*stack);
 		(*stack)->next->next = NULL;
-		// new->tail->next = (*stack);
-		// new->tail = (*stack)->tail->prev;
-		new->tail->prev = NULL;
-		// new->tail->next = (*stack);
-		// (*stack)->prev->next = new;
-		(*stack)->prev = new; 
+		if (new->tail && new->tail->next)
+			new->tail->prev = NULL;
+		(*stack)->prev = new;
 	}
-	// new->tail->prev = (*stack)->prev;
-	// (*stack)->tail = new->tail;
-	// new->tail->next->nex = new->tail->prev;
-	// ft_stackaddend(&new->tail, new->tail->prev);
-	// new->tail = (*stack);
 	while (new->next != NULL)
-	{
 		new = new->next;
-	}
 	*stack = new;
 }
 
@@ -107,7 +97,6 @@ void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
 int	push_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *tmp;
-	t_stack *tail;
 	t_stack *new_a;
 	t_stack *new_b;
 
@@ -115,15 +104,12 @@ int	push_b(t_stack **stack_a, t_stack **stack_b)
 	new_b = *stack_b;
 	if (new_a == NULL)
 		return (0);
-	tail = new_a->tail;
 	printf("here push b\n\n");
 	tmp = new_a->next;
 	new_a->next = NULL;
 	printf("in stack_a:|%d|\n", new_a->num);
 	fill_stack_begin(&new_b, new_a->num);
 	new_a = tmp;
-	if (new_a)
-		new_a->tail = (tail != NULL) ? tail : NULL;
 	if (new_a && new_a->next == NULL)
 		new_a->prev = NULL;
 	*stack_a = new_a;
@@ -136,7 +122,6 @@ int	push_b(t_stack **stack_a, t_stack **stack_b)
 int		push_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *tmp;
-	t_stack *tail;
 	t_stack *new_a;
 	t_stack *new_b;
 
@@ -144,15 +129,12 @@ int		push_a(t_stack **stack_a, t_stack **stack_b)
 	new_a = *stack_a;
 	if (new_b == NULL)
 		return (0);
-	tail = new_b->tail;
 	printf("here push b\n\n");
 	tmp = new_b->next;
 	new_b->next = NULL;
 	printf("in stack_b:|%d|\n", new_b->num);
 	fill_stack_begin(&new_a, new_b->num);
 	new_b = tmp;
-	if (new_b)
-		new_b->tail = (tail != NULL) ? tail : NULL;
 	if (new_b && new_b->next == NULL)
 		new_b->prev = NULL;
 	*stack_b = new_b;
