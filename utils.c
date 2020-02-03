@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/03 11:15:20 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/03 17:48:44 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,15 @@ int	swap_b(t_stack **stack_b)
 	if (new && new->next != NULL)
 	{
 		temp = new->next;
+		new->prev = new->next;
+		temp->next->prev = new;
 		printf("sort list:|%d|\n", temp->num);
 		new->next = temp->next;
 		printf("sort list:|%d|\n", new->num);
 		temp->next = new;
 		printf("sort list:|%d|\n", temp->num);
 		new = temp;
+		new->prev = NULL;
 		printf("sort list:|%d|\n", new->num);
 		*stack_b = new;
 	}
