@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/03 17:48:44 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/04 16:04:25 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,19 @@ int	swap_a(t_stack **stack_a)
 	if (new && new->next != NULL)
 	{
 		temp = new->next;
+		new->prev = new->next;
+		if (temp->next != NULL)
+			temp->next->prev = new;
 		printf("sort list:|%d|\n", temp->num);
 		new->next = temp->next;
 		printf("sort list:|%d|\n", new->num);
 		temp->next = new;
 		printf("sort list:|%d|\n", temp->num);
 		new = temp;
+		new->prev = NULL;
 		printf("sort list:|%d|\n", new->num);
+		*stack_a = new;
 	}
-	*stack_a = new;
 	print_stack(*stack_a, 1);
 	return (1);
 }
@@ -79,7 +83,8 @@ int	swap_b(t_stack **stack_b)
 	{
 		temp = new->next;
 		new->prev = new->next;
-		temp->next->prev = new;
+		if (temp->next != NULL)
+			temp->next->prev = new;
 		printf("sort list:|%d|\n", temp->num);
 		new->next = temp->next;
 		printf("sort list:|%d|\n", new->num);
@@ -102,7 +107,7 @@ int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 	temp = *stack_a;
 	temp1 = *stack_b;
 	printf("inside swap ss\n");
-	if (temp && temp->next != NULL)
+	if (temp != NULL && temp->next != NULL)
 		swap_a(stack_a);
 	if ((temp1 != NULL && temp1->next != NULL))
 	{

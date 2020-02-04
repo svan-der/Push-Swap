@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/03 11:36:56 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/04 16:25:14 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	push_b(t_stack **stack_a, t_stack **stack_b)
 	printf("in stack_a:|%d|\n", new_a->num);
 	fill_stack_begin(&new_b, new_a->num);
 	new_a = tmp;
-	if (new_a && new_a->next == NULL)
+	if (new_a && new_a->next != NULL)
 		new_a->prev = NULL;
 	*stack_a = new_a;
 	*stack_b = new_b;
@@ -132,7 +132,7 @@ int		push_a(t_stack **stack_a, t_stack **stack_b)
 	printf("in stack_b:|%d|\n", new_b->num);
 	fill_stack_begin(&new_a, new_b->num);
 	new_b = tmp;
-	if (new_b && new_b->next == NULL)
+	if (new_b && new_b->next != NULL)
 		new_b->prev = NULL;
 	*stack_b = new_b;
 	*stack_a = new_a;

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:24:14 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/03 11:36:14 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/04 12:19:53 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ void	stack_push(t_stack **stack, t_stack *new);
 void	debug(t_stack **stack_a, t_stack **stack_b);
 t_stack	*ft_stackpop(t_stack **stack_lst);
 t_stack	*reverse_list(t_stack **new);
+int		check_sorted(t_stack *stack_a, t_stack *stack_b);
 #endif
