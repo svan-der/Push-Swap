@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:15:26 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/03 18:01:22 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/04 11:32:55 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,24 +106,21 @@ int		rotate_reva(t_stack **stack_a)
 	t_stack *temp;
 	t_stack *new;
 
-	new = NULL;
 	if (*stack_a == NULL)
 		return (0);
+	new = *stack_a;
 	temp = *stack_a;
-	while (temp->next->next)
-		temp = temp->next;
-	temp = temp->next;
-	new = temp->prev;
-	temp->prev = NULL;
-	while (new->next->next)
-	{
+	while (new->next->next != NULL)
 		new = new->next;
-	}
-	new->prev = NULL;
-	// (*stack_a)->prev = new;
-	new->next = *stack_a;
-	*stack_a = new;
-	temp->next = NULL;
+	temp = new->next;
+	new->next = NULL;
+	temp->next = new->prev;
+	temp->prev = NULL;
+	if (temp->next)
+		temp->next->prev = temp;
+	if (!temp->next)
+		temp->next = new;
+	(*stack_a) = temp;
 	print_stack(*stack_a, 1);
 	printf("\n");
 	return (1);
