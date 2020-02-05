@@ -6,34 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:15:26 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/04 16:09:20 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/04 16:33:02 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include <stdio.h>
-
-// t_stack	*reverse_list(t_stack **new)
-// {
-// 	t_stack *tmp;
-// 	t_stack *new_list;
-
-// 	tmp = NULL;
-// 	new_list = *new;
-// 	if (new_list && !new_list->next)
-// 		return (*new);
-// 	// new_list->prev->next = NULL;
-// 	while (new_list != NULL)
-// 	{
-// 		tmp = new_list->prev;
-// 		new_list->prev = new_list->next;
-// 		new_list->next = tmp;
-// 		new_list = new_list->prev;
-// 	}
-// 	if (tmp != NULL)
-// 		new = &tmp->prev;
-// 	return (*new);
-// }
 
 int		rotate_rr(t_stack **stack_a, t_stack **stack_b)
 {

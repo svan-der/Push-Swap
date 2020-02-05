@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 16:18:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/04 16:12:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/04 16:42:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,6 @@ void	fill_stack(t_stack **stack_a, int num)
 	}
 	fill_stack_begin(stack_a, num);
 	// stack->prev = stack->tail;
-}
-
-int		print_stack(t_stack *stack_a, int ret)
-{
-	t_stack *tail;
-
-	while (stack_a != NULL)
-	{
-		tail = stack_a;
-		if (ret != -1)
-			printf("|%d|\n", stack_a->num);
-		// if (stack_a->next != NULL)
-		// 	free(stack_a);
-		stack_a = stack_a->next;
-	}
-	if (ret != -1)
-	{
-		printf(" --\n");
-		printf(" A\n\n");
-	}
-	else
-		printf("Error\n");
-	return (1);
 }
 
 int		add_num(char *str, int i, int neg, t_format *stvar)
@@ -182,10 +159,10 @@ int		main(int argc, char **argv)
 			return (print_stack(stvar.stack_a, ret));
 		i++;
 	}
-	debug(&stvar.stack_a, &stvar.stack_b);
+	// debug(&stvar.stack_a, &stvar.stack_b);
 	print_stack(stvar.stack_a, 1);
 	print_stack_b(stvar.stack_b, 1);
 	// print(&stvar.stack_a, &stvar.stack_b);
-	// get_instruction(&stvar);
+	get_instruction(&stvar);
 	return (1);
 }

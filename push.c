@@ -6,80 +6,86 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/04 16:25:14 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/04 16:41:47 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include <stdio.h>
 
-void	add_node(t_stack **stack_b, t_stack *new)
+int		swap_a(t_stack **stack_a)
 {
-	if (stack_b)
-	{
-		new->next = *stack_b;
-		*stack_b = new;
-	}
-}
-
-t_stack	*ft_stackpop(t_stack **stack_lst)
-{
-	t_stack *tmp;
+	t_stack *temp;
 	t_stack *new;
 
-	new = *stack_lst;
-	tmp = *stack_lst;
-	printf("same\n");
-	if ((*stack_lst)->next == *stack_lst)
+	new = *stack_a;
+	if (new && new->next != NULL)
 	{
-		printf("stack_lst is NULL\n");
-		*stack_lst = NULL;
+		temp = new->next;
+		new->prev = new->next;
+		if (temp->next != NULL)
+			temp->next->prev = new;
+		printf("sort list:|%d|\n", temp->num);
+		new->next = temp->next;
+		printf("sort list:|%d|\n", new->num);
+		temp->next = new;
+		printf("sort list:|%d|\n", temp->num);
+		new = temp;
+		new->prev = NULL;
+		printf("sort list:|%d|\n", new->num);
+		*stack_a = new;
 	}
-	else
-		new = (new)->next;
-	tmp->prev = NULL;
-	tmp->next = NULL;
-	*stack_lst = new;
-	return (tmp);
+	print_stack(*stack_a, 1);
+	return (1);
 }
 
-void	stack_push(t_stack **stack, t_stack *new)
+int		swap_b(t_stack **stack_b)
 {
-	if (*stack == NULL)
+	t_stack *temp;
+	t_stack *new;
+
+	new = *stack_b;
+	if (new && new->next != NULL)
 	{
-		new->prev = new;
-		new->next = new;
+		temp = new->next;
+		new->prev = new->next;
+		if (temp->next != NULL)
+			temp->next->prev = new;
+		printf("sort list:|%d|\n", temp->num);
+		new->next = temp->next;
+		printf("sort list:|%d|\n", new->num);
+		temp->next = new;
+		printf("sort list:|%d|\n", temp->num);
+		new = temp;
+		new->prev = NULL;
+		printf("sort list:|%d|\n", new->num);
+		*stack_b = new;
 	}
-	else
-	{
-		new->prev = (*stack)->prev;
-		new->next = (*stack);
-		(*stack)->next->next = NULL;
-		(*stack)->prev = new;
-	}
-	while (new->next != NULL)
-		new = new->next;
-	*stack = new;
+	print_stack_b(*stack_b, 1);
+	return (1);
 }
 
-void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
+int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 {
-    t_stack  *temp;
+	t_stack *temp;
+	t_stack *temp1;
 
-    if (*stack_lst == NULL)
-    {
-        *stack_lst = new;
-        return ;
-    }
-    temp = *stack_lst;
-    while (temp->next != NULL)
+	temp = *stack_a;
+	temp1 = *stack_b;
+	printf("inside swap ss\n");
+	if (temp != NULL && temp->next != NULL)
+		swap_a(stack_a);
+	if ((temp1 != NULL && temp1->next != NULL))
 	{
-        temp = temp->next;
+		printf("in swap_b\n");
+		swap_b(stack_b);
 	}
-    temp->next = new;
+	print_stack(*stack_a, 1);
+	print_stack_b(*stack_b, 1);
+	return (1);
 }
 
-/*
+/**
 	the obective of this function is to take the first element of list A
 	and plkace it to the biginning of list b
 
@@ -89,9 +95,9 @@ void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
 
 	stack b
 	the next of my "element" will be the entierty of list b
-*/
+**/
 
-int	push_b(t_stack **stack_a, t_stack **stack_b)
+int		push_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *tmp;
 	t_stack *new_a;
@@ -140,4 +146,3 @@ int		push_a(t_stack **stack_a, t_stack **stack_b)
 	print_stack_b(*stack_b, 1);
 	return (1);
 }
-
