@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.h                                        :+:    :+:            */
+/*   ft_lstadd.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
+/*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/06 14:39:14 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 13:16:43 by svan-der      ########   odam.nl         */
+/*   Created: 2019/02/24 16:31:14 by svan-der       #+#    #+#                */
+/*   Updated: 2020/02/08 17:16:42 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "psw_env.h"
+#include "list.h"
 
-int     main(int argc, char **argv);
-#endif
+void	ft_lstadd(t_list **alst, t_list *new)
+{
+	if (alst)
+	{
+		new->next = *alst;
+		*alst = new;
+	}
+}

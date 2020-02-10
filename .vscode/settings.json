@@ -1,6 +1,17 @@
 {
 	"files.associations": {
 		"checker.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"get_next_line.h": "c",
+		"libft.h": "c",
+		"psw_env.h": "c",
+		"list.h": "c",
+		"push_swap.h": "c",
+		"ft_printf.h": "c",
+		"ftoa.h": "c",
+		"fndm.h": "c",
+		"ntoa.h": "c",
+		"libdefs.h": "c",
+		"mathlib.h": "c"
 	}
 }

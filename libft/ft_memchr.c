@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.h                                        :+:    :+:            */
+/*   ft_memchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
+/*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/06 14:39:14 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 13:16:43 by svan-der      ########   odam.nl         */
+/*   Created: 2019/01/22 18:01:10 by svan-der       #+#    #+#                */
+/*   Updated: 2020/02/08 17:11:17 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "psw_env.h"
+#include "libft.h"
 
-int     main(int argc, char **argv);
-#endif
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	unsigned char	*s2;
+	size_t			i;
+
+	i = 0;
+	s2 = (unsigned char *)s;
+	while (i < n)
+	{
+		if (s2[i] == (unsigned char)c)
+			return (s2 + i);
+		i++;
+	}
+	return (NULL);
+}

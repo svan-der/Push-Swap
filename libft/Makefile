@@ -6,13 +6,17 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/11 15:22:00 by svan-der       #+#    #+#                 #
-#    Updated: 2020/01/10 13:50:57 by svan-der      ########   odam.nl          #
+#    Updated: 2020/02/10 11:47:38 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-HEADER = ./includes
-LIB_SRC = $(addprefix srcs/,ft_memchr.c ft_putnbr_fd.c ft_striter.c\
+CC = gcc
+FLAGS = -g -Wall -Wextra -Werror
+LIB_HEADER = -Iincludes/
+PRINT_HEADER = -I./includes/ft_printf
+
+LIB_SRC = ft_memchr.c ft_putnbr_fd.c ft_striter.c\
 	ft_strnew.c ft_atoi.c ft_abs.c ft_pow.c\
 	ft_memcmp.c ft_putstr.c ft_itoa.c ft_gridset.c\
 	ft_bzero.c ft_memcpy.c ft_putstr_fd.c ft_strjoin.c ft_strrchr.c\
@@ -25,34 +29,47 @@ LIB_SRC = $(addprefix srcs/,ft_memchr.c ft_putnbr_fd.c ft_striter.c\
 	ft_memccpy.c ft_putnbr.c \
 	ft_strtrim.c ft_strarrdel.c ft_find_word.c ft_lstmap.c\
 	ft_count_words.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c\
-	ft_lstadd.c ft_lstiter.c ft_memdup.c)\
+	ft_lstadd.c ft_lstiter.c ft_memdup.c\
 
-SRCDIR = srcs
-OBJ = $(LIB_SRC:.c=.o)
-HEADERS = -I$(HEADER)
+PRINT_SRC = dispatch.c finish.c frac.c ft_ftoap.c ft_ldtoap.c\
+			ft_ftoap.c ft_ldtoap.c ft_printf.c ft_vprintf.c\
+			ftoa.c getarg.c ntoap.c padding.c parsing.c utils.c\
+
+OBJ = $(LIB_SRC:%.c=%.o)		
+PRINT_DIR = ft_printf/
+PRINT_OBJ = $(PRINT_SRC:%.c=$(PRINT_DIR)%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+$(NAME): $(OBJ) $(PRINT_OBJ)
+	@echo "$(PURPLE)Compiling libft$(RESET)"
+	ar rcs $(NAME) $(OBJ) $(PRINT_OBJ)
+	@echo "$(GREEN)Libft ready!$(RESET)"
 
-$(OBJ): $(SRCDIR)%.o: $(SRCDIR)%.c
-	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
+$(PRINT_DIR)%.o: %.c
+	$(CC) $(FLAGS) $(PRINT_HEADER) $(LIB_HEADER) -c -o $@ $<
 
-$(LIB_OBJ): $(LIB_DIR)%.o: $(LIB_DIR)%.c
-	$(CC) $(CFLAGS) -I$(LIBHEADER) -c $< -o $@
+%.o: %.c
+	$(CC) $(FLAGS) $(LIB_HEADER) -c -o $@ $<	
 
 clean:
+	@echo "$(RED)Deleting object files...$(RESET)"
 	rm -f $(OBJ)
-	rm -f $(LIB_OBJ)
+	rm -f $(PRINT_OBJ)
+	@echo "$(GREEN)Libft clean!$(RESET)"
 
 fclean: clean
+	@echo "$(RED)Deleting executables...$(RESET)"
 	rm -f $(NAME)
-	rm -f $(LIB)
+	@echo "$(GREEN)Libft fclean!$(RESET)"
 
 re: fclean all
 
 rebug: fclean debug
 
 .PHONY: all so clean fclean re debug rebug libft
+
+RED	= \033[0;31m
+PURPLE = \033[0;35m
+GREEN =	\033[0;32m
+RESET = \033[0m

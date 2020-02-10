@@ -1,18 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.h                                        :+:    :+:            */
+/*   exec_checker.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/06 14:39:14 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 13:16:43 by svan-der      ########   odam.nl         */
+/*   Created: 2020/02/10 14:34:26 by svan-der       #+#    #+#                */
+/*   Updated: 2020/02/10 14:34:28 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "psw_env.h"
-
-int     main(int argc, char **argv);
-#endif
