@@ -6,7 +6,7 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/02/04 16:50:47 by svan-der       #+#    #+#                 #
-#    Updated: 2020/02/10 14:33:02 by svan-der      ########   odam.nl          #
+#    Updated: 2020/02/10 15:05:54 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,26 +17,25 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 DFLAGS = $(CFLAGS) -g
 
-HEADERS = -Iincludes/
+HEADERS = -Iincludes
 
-LIB_HEADER = -I./libft/includes/
+LIB_HEADER = -I./libft/includes
 LIB_BINARY = -L./libft -lft
 LIB = libft/libft.a
 
 SRCDIR = srcs/
-CHK_DIR = checker/
-PSW_DIR = push_swap/
+CHK_DIR = chkr/
+PSW_DIR = psw/
 
 SRCS = print_stack.c push.c rotate.c utils.c init_ins.c init_stack.c\
 
-CHK_SRC = checker.c exec_checker.c\
+CHK_SRC = $(addprefix $(CHK_DIR), checker.c exec_checker.c)
 	
-PSW_SRC = push_swap.c\
+PSW_SRC = $(addprefix $(PSW_DIR), push_swap.c)
 
 OBJ = $(SRCS:%.c=$(SRCDIR)%.o)
-CHK_OBJ =$(CHK_SRC:%.c=$(CHK_DIR)%.o)
-PSW_OBJ = $(PSW_SRC:%.c=$(PSW_DIR)%.o)
-
+CHK_OBJ =$(CHK_SRC:%.c=$(SRCDIR)%.o)
+PSW_OBJ = $(PSW_SRC:%.c=$(SRCDIR)%.o)
 
 all: $(LIB) $(NAME_CHK) $(NAME_PSW) 
 
@@ -49,14 +48,9 @@ $(LIB):
 $(SRCDIR)%.o: %.c
 		$(CC) $(CFLAGS) $(HEADERS) $(LIB_HEADER) -c $< -o $@
 
-# %.o: %.c
-# 	$(CC) $(CFLAGS) $(HEADERS) $(LIB_HEADER) -c -o $@ $<
-	
 $(CHK_DIR)%.o: %.c
 		$(CC) $(CFLAGS) $(HEADERS) $(LIB_HEADER) -c $< -o $@
 		
-# %.o: %.c
-# 	$(CC) $(CFLAGS) $(HEADERS) $(LIB_HEADER) -c -o $@ $<
 
 $(NAME_CHK): $(OBJ) $(CHK_OBJ) $(LIB)
 		echo "$(PURPLE)Compiling checker$(RESET)"

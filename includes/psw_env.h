@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/10 14:26:52 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/11 12:30:22 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/includes/libft.h"
 # include "../libft/includes/libdefs.h"
 # include "../libft/includes/mathlib.h"
+# include "../libft/includes/get_next_line.h"
 # include "checker.h"
 # include "push_swap.h"
 
@@ -38,8 +39,12 @@ typedef struct		s_stack
 typedef struct		s_format
 {
 	int				argc;
-	size_t			*max;
-	size_t			*min;
+	int				index;
+	int				sort_index;
+	int				*partition;
+	int				median;
+	int				max;
+	int				min;
 	t_list			*argv;
 	t_inst			*inst_lst;
 	t_stack			*stack_a;
