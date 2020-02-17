@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:10:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/11 12:18:35 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/12 15:12:32 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,6 @@ int		main(int argc, char **argv)
 	// debug(&stvar.stack_a, &stvar.stack_b);
 	print_stack(stvar.stack_a, 1);
 	print_stack_b(stvar.stack_b, 1);
-	// stvar.stack_b = (t_stack *)malloc(sizeof(t_stack));
-	// ft_bzero(stvar.stack_b, sizeof(t_format));
 	stvar.argc -= 1;
 	stvar.index = stvar.argc;
 	push_swap(&stvar);

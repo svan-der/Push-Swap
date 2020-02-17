@@ -6,7 +6,7 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/11 15:22:00 by svan-der       #+#    #+#                 #
-#    Updated: 2020/02/10 11:47:38 by svan-der      ########   odam.nl          #
+#    Updated: 2020/02/13 16:52:35 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ LIB_SRC = ft_memchr.c ft_putnbr_fd.c ft_striter.c\
 	ft_memccpy.c ft_putnbr.c \
 	ft_strtrim.c ft_strarrdel.c ft_find_word.c ft_lstmap.c\
 	ft_count_words.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c\
-	ft_lstadd.c ft_lstiter.c ft_memdup.c\
+	ft_lstadd.c ft_lstiter.c ft_memdup.c ft_intround.c\
 
 PRINT_SRC = dispatch.c finish.c frac.c ft_ftoap.c ft_ldtoap.c\
 			ft_ftoap.c ft_ldtoap.c ft_printf.c ft_vprintf.c\

@@ -6,7 +6,7 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/02/04 16:50:47 by svan-der       #+#    #+#                 #
-#    Updated: 2020/02/10 15:05:54 by svan-der      ########   odam.nl          #
+#    Updated: 2020/02/13 17:00:09 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,6 @@ $(SRCDIR)%.o: %.c
 $(CHK_DIR)%.o: %.c
 		$(CC) $(CFLAGS) $(HEADERS) $(LIB_HEADER) -c $< -o $@
 		
-
 $(NAME_CHK): $(OBJ) $(CHK_OBJ) $(LIB)
 		echo "$(PURPLE)Compiling checker$(RESET)"
 		$(CC) $(CFLAGS) $(HEADERS) $(CHK_OBJ) $(OBJ) $(LIB_BINARY) -o $@
@@ -62,7 +61,7 @@ $(PSW_DIR)%.o: %.c
 
 $(NAME_PSW): $(OBJ) $(PSW_OBJ) $(LIB)
 		echo "$(PURPLE)Compiling push_swap$(RESET)"
-		$(CC) $(CFLAGS) $(HEADERS) $(PSW_OBJ) $(LIB_BINARY) -o $@
+		$(CC) $(CFLAGS) $(HEADERS) $(LIB_HEADER) $(PSW_OBJ) $(LIB_BINARY) -o $@
 		echo "$(GREEN)Push_swap is ready!$(RESET)"
 
 clean:

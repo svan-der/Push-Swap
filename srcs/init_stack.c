@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/10 14:27:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/12 17:27:38 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	fill_stack(t_stack **stack_a, int num)
 		return ;
 	}
 	fill_stack_begin(stack_a, num);
-	// stack->prev = stack->tail;
 }
 
 int		add_num(char *str, int i, int neg, t_format *stvar)

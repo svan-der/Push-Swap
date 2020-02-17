@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 16:42:11 by svan-der       #+#    #+#                */
-/*   Updated: 2019/12/23 10:18:25 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/13 16:55:16 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ double		ft_dabs(double n);
 t_ldbl		ft_ldabs(t_ldbl n);
 t_ull		ft_abs(t_llong n);
 t_u128		ft_pow(t_u128 n, t_u128 pow);
+int			ft_intround(double n);
 #endif
