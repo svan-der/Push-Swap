@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/17 16:57:59 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/18 17:38:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,35 +44,138 @@
 	
 // }
 
-void	part_sort(t_stack *stack_a, t_format *stvar)
+// void	part_sort(t_stack *stack_a, t_format *stvar)
+// {
+// 	t_stack *temp;
+// 	int		median;
+// 	int		num;
+// 	int		i;
+
+// 	i = 1;
+// 	temp = stack_a;
+// 	median = stvar->median;
+// 	if (stack_a == NULL)
+// 		return ;
+// 	num = stack_a->num;
+// 	if (num < median && num)
+// 	{
+// 		push_b(&temp, &stvar->stack_b);
+// 		stvar->index -= 1;
+// 		temp->prev = stack_a->prev;
+// 		temp->prev->next = temp;
+// 		stack_a = temp;
+// 		if (temp != NULL)
+// 			part_sort(stack_a, stvar);
+// 	}
+// 	else
+// 	{
+// 		if (temp != NULL)
+// 			part_sort(stack_a->next, stvar);
+// 	}
+// }
+
+void	print_array(int *list, int argc)
+{
+	int i;
+
+	i = 0;
+	while (i < argc)
+	{
+		printf("this is number:%i\n", list[i]);
+		list[i];
+		i++;
+	}
+}
+
+// int		*pre_sort(int *list, t_format *stvar, int i, int *partition)
+// {
+// 	int 	temp;
+// 	int		median;
+// 	int		num;
+
+// 	temp = list[i];
+// 	median = stvar->median;
+// 	if (list == NULL)
+// 		return (partition);
+// 	num = list[i];
+// 	if (num < median && num && index > 3)
+// 	{
+// 		// stvar->partition[i] = &temp;
+// 		partition[i] = temp;
+// 		stvar->index -= 1;
+// 		i++;
+// 		if (temp != NULL)
+// 			pre_sort(list, stvar, i, partition);
+// 	}
+// 	else
+// 	{
+// 		i++;
+// 		if (temp != NULL)
+// 			pre_sort(list, stvar, i, partition);
+// 	}
+// 	return (partition);
+// }
+
+int		*part_sort(t_stack *stack_a, t_format *stvar, int i, int *partition)
 {
 	t_stack *temp;
 	int		median;
 	int		num;
-	int		i;
 
-	i = 1;
 	temp = stack_a;
 	median = stvar->median;
 	if (stack_a == NULL)
-		return ;
+		return (partition);
 	num = stack_a->num;
 	if (num < median && num)
 	{
+		partition[i] = temp->num;
+		ft_putstr("pb\n");
 		push_b(&temp, &stvar->stack_b);
 		stvar->index -= 1;
 		temp->prev = stack_a->prev;
 		temp->prev->next = temp;
 		stack_a = temp;
+		i++;
 		if (temp != NULL)
-			part_sort(stack_a, stvar);
+			part_sort(stack_a, stvar, i, partition);
 	}
 	else
 	{
 		if (temp != NULL)
-			part_sort(stack_a->next, stvar);
+			part_sort(stack_a->next, stvar, i, partition);
 	}
+	return (partition);
 }
+
+// int		*pre_sort_array(int *list, t_format *stvar, int i, int *partition)
+// {
+// 	int 	temp;
+// 	int		median;
+// 	int		num;
+
+// 	temp = list[i];
+// 	median = stvar->median;
+// 	if (list == NULL)
+// 		return (partition);
+// 	num = list[i];
+// 	if (num < median && num && index > 3)
+// 	{
+// 		// stvar->partition[i] = &temp;
+// 		partition[i] = temp;
+// 		stvar->index -= 1;
+// 		i++;
+// 		if (temp != NULL)
+// 			pre_sort(list, stvar, i, partition);
+// 	}
+// 	else
+// 	{
+// 		i++;
+// 		if (temp != NULL)
+// 			pre_sort(list, stvar, i, partition);
+// 	}
+// 	return (partition);
+// }
 
 int		ft_intround(double n)
 {
@@ -89,7 +192,7 @@ int		ft_intround(double n)
 	return (n);
 }
 
-int		split_stack(t_stack *stack_a, int argc)
+int		find_median(t_stack *stack_a, int argc)
 {
 	int 	i;
 	double	j;
@@ -115,7 +218,32 @@ int		split_stack(t_stack *stack_a, int argc)
 		temp = temp->next;
 		num = temp->num;
 		median = ((median + num) / 2);
-		printf("this is median: %f", median);
+		printf("this is median: %f\n", median);
+	}
+	return (ft_intround(median));
+}
+
+int		find_median_array(int *list, int argc)
+{
+	int 	i;
+	double	j;
+	int		num;
+	double	median;
+
+	num = 0;
+	i = 0;
+	j = (argc / 2);
+	if (argc % 2 == 0)
+		j -= 1;
+	printf("this is median:|%f|\n", j);
+	i = j;
+	median = list[i];
+	if (argc % 2 == 0)
+	{
+		i++;
+		num = list[i];
+		median = ((median + num) / 2);
+		printf("this is median: %f\n", median);
 	}
 	return (ft_intround(median));
 }
@@ -188,19 +316,6 @@ int		split_stack(t_stack *stack_a, int argc)
 // 	stack_a = sorted_merge(temp, temp1);
 // }
 
-void	print_array(int *list, int argc)
-{
-	int i;
-
-	i = 0;
-	while (i < argc)
-	{
-		printf("this is num:%i\n", list[i]);
-		list[i];
-		i++;
-	}
-}
-
 void	insertion_sort(int *list, int argc)
 {
 	int i;
@@ -223,17 +338,16 @@ void	insertion_sort(int *list, int argc)
 		printf("this is elem :%i\n", list[j + 1]);
 		i++;
 	}
-	print_array(list, 6);
 }
 
-int		*lst_cpy(int *new_list, t_stack *stack)
+int		*lst_cpy(int *new_list, t_stack *stack, int argc)
 {
 	t_stack *current;
 	int		i;
 	int		j;
 
 	new_list = NULL;
-	new_list = (int *)malloc(sizeof(int*) * 5);
+	new_list = (int *)malloc(sizeof(int *) * (argc - 1));
 	current = stack;
 	i = 0;
 	j = 0;
@@ -246,30 +360,56 @@ int		*lst_cpy(int *new_list, t_stack *stack)
 	return (new_list);
 }
 
+void	fill_part(int *partition, int *lst)
+{
+	int i;
+
+	i = 0;
+	while (i < 3)
+	{
+		partition[i] = lst[i]; 
+		i++;
+	}
+
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*res;
+	res = (char *)malloc(size * count);
+	if (!res)
+		return (NULL);
+	ft_bzero(res, count * size);
+	return (res);
+}
+
+// void	sort_three(t_stack *stack_a, int *partition, int *sorted)
+// {
+	
+// }
+
 int		run_pw(t_format *stvar)
 {
-	t_stack **temp;
 	int		*temp1;
-	int		n;
+	int		**partition;
 	int		ret;
-	t_inst	inst;
 	int		i;
 
 	i = 0;
-	n = stvar->argc;
+	partition = NULL;
 	stvar->stack_b = stvar->stack_a;
-	temp1 = lst_cpy(temp1, stvar->stack_a);
+	temp1 = lst_cpy(temp1, stvar->stack_a, stvar->argc);
 	insertion_sort(temp1, stvar->argc);
+	stvar->median = find_median_array(temp1, stvar->argc);
 	print_array(temp1, stvar->argc);
-	ft_bzero(&inst, sizeof(t_inst));
 	print_stack(stvar->stack_a, 1);
-	stvar->median = ret;
-	part_sort(stvar->stack_a, stvar);
-	// // sort_v
-	// print_instructions(stvar->inst_lst, ret);
-	// print_stack(stvar->stack_a, 1);
-	// print_stack_b(stvar->stack_b, 1);
-	// ret = check_sorted(stvar->stack_a, stvar->stack_b);
-	// printf("This is ret after check_sorted:%d\n", ret);
+	partition = ft_calloc(stvar->argc, sizeof(int));
+	while (stvar->index > 3)
+	{
+		partition[i] = ft_calloc(stvar->argc, sizeof(int));
+		partition[i] = part_sort(stvar->stack_a, stvar, 0, partition[i]);
+		print_array(partition[i], 6);
+		print_stack(stvar->stack_a, 1);
+	}
 	return (1);
 }
