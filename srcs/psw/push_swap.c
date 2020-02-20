@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/18 17:38:15 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/20 17:21:28 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,37 +116,69 @@ void	print_array(int *list, int argc)
 // 	return (partition);
 // }
 
+// int		*part_sort_copy(t_stack *stack_a, t_format *stvar, int i, int *partition)
+// {
+// 	t_stack *temp;
+// 	int		median;
+// 	int		num;
+
+// 	temp = stack_a;
+// 	median = stvar->median;
+// 	if (stack_a == NULL)
+// 		return (partition);
+// 	num = stack_a->num;
+// 	if (num < median && num)
+// 	{
+// 		partition[i] = temp->num;
+// 		ft_putstr("pb\n");
+// 		push_b(&temp, &stvar->stack_b);
+// 		stvar->index -= 1;
+// 		temp->prev = stack_a->prev;
+// 		temp->prev->next = temp;
+// 		stack_a = temp;
+// 		i++;
+// 		if (temp != NULL)
+// 			part_sort(stack_a, stvar, i, partition);
+// 	}
+// 	else
+// 	{
+// 		if (temp != NULL)
+// 			part_sort(stack_a->next, stvar, i, partition);
+// 	}
+// 	return (partition);
+// }
+
 int		*part_sort(t_stack *stack_a, t_format *stvar, int i, int *partition)
 {
 	t_stack *temp;
 	int		median;
 	int		num;
+	int		j;
 
 	temp = stack_a;
 	median = stvar->median;
 	if (stack_a == NULL)
 		return (partition);
-	num = stack_a->num;
-	if (num < median && num)
+	j = 0;
+	while (j != stvar->argc)
 	{
-		partition[i] = temp->num;
-		ft_putstr("pb\n");
-		push_b(&temp, &stvar->stack_b);
-		stvar->index -= 1;
-		temp->prev = stack_a->prev;
-		temp->prev->next = temp;
-		stack_a = temp;
-		i++;
-		if (temp != NULL)
-			part_sort(stack_a, stvar, i, partition);
-	}
-	else
-	{
-		if (temp != NULL)
-			part_sort(stack_a->next, stvar, i, partition);
+		j++;
+		num = stack_a->num;
+		if (num < median && num)
+		{
+			partition[i] = stack_a->num;
+			ft_putstr("pb\n");
+			push_b(&stack_a, &stvar->stack_b);
+			stvar->index -= 1;
+			// stack_a = temp;
+			i++;
+		}
+		else
+			rotate_a(&stack_a);
 	}
 	return (partition);
 }
+
 
 // int		*pre_sort_array(int *list, t_format *stvar, int i, int *partition)
 // {
