@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/21 15:55:55 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/21 16:56:45 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,13 +200,15 @@ int		part_sort(t_stack *stack_a, t_format *stvar, t_part *part_var, int *partiti
 			if (stvar->stack_b->next == NULL)
 				stvar->stack_b->prev == NULL;
 			stvar->index -= 1;
+			if (part_var->min > partition[i] || !part_var->min)
+				part_var->min = partition[i];
+			if (part_var->max < partition[i] || !part_var->max)
+				part_var->max = partition[i];
 			i++;
 		}
 		else
 			rotate_a(&stack_a);
 	}
-	part_var->min = partition[i - 3];
-	part_var->max = partition[i - 1];
 	return (i);
 }
 
@@ -436,7 +438,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 void	sort_threeb(t_stack *stack, t_format *stvar, int min, int max)
 {
-	if (stack->num == min && stack->next->num != max)
+	if (stack->num == max && stack->next->num != min)
 		return ;
 	else if (stack->num == max)
 	{
