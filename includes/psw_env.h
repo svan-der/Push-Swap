@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/18 12:53:50 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/21 13:28:00 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ typedef struct		s_inst
 	struct s_inst	*prev;
 	struct s_inst	*next;
 }					t_inst;
+
+typedef struct		s_part
+{
+	int				**part;
+	int				max;
+	int				min;
+}					t_part;
 
 typedef struct		s_stack
 {
