@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/25 17:51:35 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/26 15:31:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void push_back(t_stack *stack, t_format *stvar, int argc)
 	}
 }
 
-int part_sort(t_format *stvar, t_part *part_var, int *partition)
+void	part_sort(t_format *stvar, t_part *part_var, int *partition)
 {
 	t_stack *temp;
 	int num;
@@ -61,7 +61,7 @@ int part_sort(t_format *stvar, t_part *part_var, int *partition)
 	temp = stvar->stack_a;
 	argc = ft_min_size(stvar->index, stvar->argc);
 	if (temp == NULL)
-		return (partition);
+		return ;
 	j = 0;
 	while (j < argc)
 	{
@@ -88,7 +88,6 @@ int part_sort(t_format *stvar, t_part *part_var, int *partition)
 	}
 	stvar->stack_a = temp;
 	part_var->len = i;
-	return (i);
 }
 
 int find_median(t_stack *stack, int argc, int index)
@@ -137,28 +136,18 @@ int ft_intround(double n)
 	return (n);
 }
 
-int find_median_array(int *list, int argc, int index)
+int find_median_array(int *list, int index)
 {
 	int i;
 	double j;
 	double median;
 
-	if (index == argc)
-	{
-		j = (double)argc / 2;
-		if (argc % 2 == 0)
-			j -= 1;
-	}
-	else
-	{
-		j = (double)index / 2;
-		if (index % 2 == 0)
-			j -= 1;
-		j = (double)argc - j;
-	}
+	j = (double)index / 2;
+	if (index % 2 == 0)
+		j -= 1;
 	i = j;
 	median = list[i];
-	print_array(list, argc);
+	print_array(list, index);
 	return (median);
 }
 
@@ -307,18 +296,19 @@ int run_pw(t_format *stvar)
 	i = 0;
 	ret = 0;
 	bzero(&part_var, sizeof(t_part));
-	partition = &part_var.part;
+	partition = ft_memalloc(sizeof(int **));
+	// partition = &part_var.part;
 	temp1 = lst_cpy(temp1, stvar->stack_a, stvar->argc);
 	insertion_sort(temp1, stvar->argc, &stvar->min, &stvar->max);
-	stvar->median = find_median_array(temp1, stvar->argc, stvar->index);
+	stvar->median = find_median_array(temp1, stvar->index);
 	free(temp1);
 	print_array(temp1, stvar->argc);
 	print_stack(stvar->stack_a, 1);
-	partition = ft_calloc(stvar->argc, sizeof(int));
 	while (stvar->index > 3)
 	{
 		partition[i] = ft_calloc(stvar->argc, sizeof(int));
-		ret += part_sort(stvar, &part_var, partition[i]);
+		// part_var.len = ft_calloc(stvar->argc, sizeof(int));
+		part_sort(stvar, &part_var, partition[i]);
 		// print_array(partition[i], ret);
 		// print_stack(stvar->stack_a, 1);
 		// if (stvar->index <= 3)
@@ -329,7 +319,7 @@ int run_pw(t_format *stvar)
 		temp1 = lst_cpy(temp1, stvar->stack_a, stvar->index);
 		insertion_sort(temp1, stvar->index, &stvar->min, &stvar->max);
 		print_array(temp1, stvar->index);
-		stvar->median = find_median_array(temp1, stvar->argc, stvar->index);
+		stvar->median = find_median_array(temp1, stvar->index);
 		free(temp1);
 		i++;
 	}
@@ -355,5 +345,11 @@ int run_pw(t_format *stvar)
 	// 	push_back(stvar->stack_b, stvar);
 	// 	ret += 3;
 	// }
+	i -= 1;
+	while (i)
+	{
+		print_array(partition[i], part_var.len);
+		i--;
+	}
 	return (1);
 }
