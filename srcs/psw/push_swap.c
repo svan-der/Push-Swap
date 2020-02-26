@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/26 15:31:15 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/26 18:00:42 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void push_back(t_stack *stack, t_format *stvar, int argc)
 	}
 }
 
-void	part_sort(t_format *stvar, t_part *part_var, int *partition)
+void	part_sort(t_format *stvar, t_part *part_var, int *partition, int *part_len)
 {
 	t_stack *temp;
 	int num;
@@ -69,7 +69,7 @@ void	part_sort(t_format *stvar, t_part *part_var, int *partition)
 			break ;
 		j++;
 		num = temp->num;
-		if (num < stvar->median && num)
+		if (num <= stvar->median && num)
 		{
 			partition[i] = temp->num;
 			ft_putstr("pb\n");
@@ -87,7 +87,7 @@ void	part_sort(t_format *stvar, t_part *part_var, int *partition)
 			rotate_a(&temp);
 	}
 	stvar->stack_a = temp;
-	part_var->len = i;
+	*part_len = i;
 }
 
 int find_median(t_stack *stack, int argc, int index)
@@ -289,7 +289,8 @@ int run_pw(t_format *stvar)
 	int *temp1;
 	int **partition;
 	t_part part_var;
-	int	part_len;
+	int	len;
+	int	**parts_len;
 	int ret;
 	int i;
 
@@ -297,6 +298,7 @@ int run_pw(t_format *stvar)
 	ret = 0;
 	bzero(&part_var, sizeof(t_part));
 	partition = ft_memalloc(sizeof(int **));
+	parts_len = ft_memalloc(sizeof(int **));
 	// partition = &part_var.part;
 	temp1 = lst_cpy(temp1, stvar->stack_a, stvar->argc);
 	insertion_sort(temp1, stvar->argc, &stvar->min, &stvar->max);
@@ -307,15 +309,13 @@ int run_pw(t_format *stvar)
 	while (stvar->index > 3)
 	{
 		partition[i] = ft_calloc(stvar->argc, sizeof(int));
-		// part_var.len = ft_calloc(stvar->argc, sizeof(int));
-		part_sort(stvar, &part_var, partition[i]);
-		// print_array(partition[i], ret);
-		// print_stack(stvar->stack_a, 1);
-		// if (stvar->index <= 3)
-		// {
-		// 	sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
-		// 	break ;
-		// }
+		parts_len[i] = ft_calloc(stvar->argc, sizeof(int));
+		part_sort(stvar, &part_var, partition[i], parts_len[i]);
+		if (stvar->index <= 3)
+		{
+			sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
+			break ;
+		}
 		temp1 = lst_cpy(temp1, stvar->stack_a, stvar->index);
 		insertion_sort(temp1, stvar->index, &stvar->min, &stvar->max);
 		print_array(temp1, stvar->index);
@@ -323,17 +323,18 @@ int run_pw(t_format *stvar)
 		free(temp1);
 		i++;
 	}
-	// part_len = stvar->argc / (i * 2);
-	// if (stvar->index == stvar->sort_index)
-	// {
-	// 	if (part_len <= 3)
-	// 		sort_threeb(&stvar->stack_b, stvar, part_var.min, part_var.max);
-	// 	else
-	// 	{
-	// 		stvar->median = find_median_array(partition[i], part_len, stvar->index);
-	// 	}
-	// 	push_back(stvar->stack_b, stvar, part_len);
-	// }
+	i = 2;
+	len = stvar->argc / (i * 2);
+	if (stvar->index == stvar->sort_index)
+	{
+		if (len <= 3)
+			sort_threeb(&stvar->stack_b, stvar, part_var.min, part_var.max);
+		else
+		{
+			stvar->median = find_median_array(partition[i], parts_len[i]);
+		}
+		push_back(stvar->stack_b, stvar, parts_len[i]);
+	}
 	// while (stvar->index > 3)
 	// 	*part_len = stvar->index / 2;
 	// while (stvar->index != stvar->argc)
@@ -345,11 +346,12 @@ int run_pw(t_format *stvar)
 	// 	push_back(stvar->stack_b, stvar);
 	// 	ret += 3;
 	// }
-	i -= 1;
-	while (i)
-	{
-		print_array(partition[i], part_var.len);
-		i--;
-	}
+	// print_stack_b(stvar->stack_b, 1);
+	// i -= 1;
+	// while (i)
+	// {
+	// 	print_array(partition[i], stvar->argc);
+	// 	i--;
+	// }
 	return (1);
 }
