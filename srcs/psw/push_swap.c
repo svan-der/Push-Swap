@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/27 13:37:41 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/27 15:51:53 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,23 +289,18 @@ void sort_three(t_stack **temp, t_format *stvar, int min, int max)
 int run_pw(t_format *stvar)
 {
 	int *temp1;
-	int **partition;
 	t_part *part_var;
-	int	len;
-	int	**parts_len;
+	t_part *new;
+	int len;
 	int ret;
 	int i;
 
 	i = 0;
 	ret = 0;
-	// bzero(&part_var, sizeof(t_part));
-	partition = ft_memalloc(sizeof(int **));
-	parts_len = ft_memalloc(sizeof(int **));
 	part_var = (t_part *)ft_memalloc(sizeof(t_part *));
 	ft_bzero(part_var, sizeof(t_part));
 	if (!part_var)
 		return (0);
-	// partition = &part_var.part;
 	temp1 = lst_cpy(temp1, stvar->stack_a, stvar->argc);
 	insertion_sort(temp1, stvar->argc, &stvar->min, &stvar->max);
 	stvar->median = find_median_array(temp1, stvar->index);
@@ -314,10 +309,7 @@ int run_pw(t_format *stvar)
 	print_stack(stvar->stack_a, 1);
 	while (stvar->index > 3)
 	{
-		// partition[i] = ft_calloc(stvar->argc, sizeof(int));
-		// parts_len[i] = ft_calloc(stvar->argc, sizeof(int));
-		part_var->parts = ft_calloc(stvar->argc, sizeof(int));
-		// part_sort(stvar, &part_var, partition[i], parts_len[i]);
+		part_var->parts = ft_calloc(stvar->argc / (i + 1 * 2), sizeof(int));
 		part_sort(stvar, part_var);
 		if (stvar->index <= 3)
 		{
@@ -327,14 +319,28 @@ int run_pw(t_format *stvar)
 		temp1 = lst_cpy(temp1, stvar->stack_a, stvar->index);
 		insertion_sort(temp1, stvar->index, &stvar->min, &stvar->max);
 		print_array(temp1, stvar->index);
-		print_array(part_var->parts, 6);
+		printf("\n\n");
+		print_array(part_var->parts, part_var->len);
+		printf("that was partition\n\n");
 		stvar->median = find_median_array(temp1, stvar->index);
 		free(temp1);
-		part_var = (t_part *)ft_memalloc(sizeof(t_part));
+		new = (t_part *)ft_memalloc(sizeof(t_part));
+		if (part_var)
+		{
+			part_var->next = NULL;
+			part_var->prev = new;
+			new->next = part_var;
+			part_var = new;
+		}
 		i++;
 	}
-	// i = 2;
-	// len = stvar->argc / (i * 2);
+	while (part_var)
+	{
+		print_array(part_var->parts, part_var->len);
+		printf("\n\n");
+		part_var = part_var->next;
+	}
+	// len = stvar->argc / (1 + i * 2);
 	// if (stvar->index == stvar->sort_index)
 	// {
 	// 	if (len <= 3)
