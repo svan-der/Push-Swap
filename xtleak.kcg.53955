@@ -1,0 +1,603 @@
+# callgrind format
+version: 1
+creator: xtree-1
+pid: 53955
+cmd: ./a.out
+
+positions: line
+event: RB : Reachable Bytes
+event: PB : Possibly lost Bytes
+event: IB : Indirectly lost Bytes
+event: DB : Definitely lost Bytes (direct plus indirect)
+event: DIB : Definitely Indirectly lost Bytes (subset of DB)
+event: RBk : reachable Blocks
+event: PBk : Possibly lost Blocks
+event: IBk : Indirectly lost Blocks
+event: DBk : Definitely lost Blocks
+event: iRB : increase Reachable Bytes
+event: iPB : increase Possibly lost Bytes
+event: iIB : increase Indirectly lost Bytes
+event: iDB : increase Definitely lost Bytes
+event: iDIB : increase Definitely Indirectly lost Bytes
+event: iRBk : increase reachable Blocks
+event: iPBk : increase Possibly lost Blocks
+event: iIBk : increase Indirectly lost Blocks
+event: iDBk : increase Definitely lost Blocks
+event: dRB : decrease Reachable Bytes
+event: dPB : decrease Possibly lost Bytes
+event: dIB : decrease Indirectly lost Bytes
+event: dDB : decrease Definitely lost Bytes
+event: dDIB : decrease Definitely Indirectly lost Bytes
+event: dRBk : decrease reachable Blocks
+event: dPBk : decrease Possibly lost Blocks
+event: dIBk : decrease Indirectly lost Blocks
+event: dDBk : decrease Definitely lost Blocks
+events: RB  PB  IB  DB  DIB  RBk  PBk  IBk  DBk  iRB  iPB  iIB  iDB  iDIB  iRBk  iPBk  iIBk  iDBk  dRB  dPB  dIB  dDB  dDIB  dRBk  dPBk  dIBk  dDBk 
+fl=(1) UnknownFile???
+fn=(1) _os_object_init
+0
+cfi=(1)
+cfn=(2) environ_init
+calls=0 0
+0 24 0 0 0 0 1 0 0 0 24 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(2)
+0
+cfi=(1)
+cfn=(3) _dyld_objc_notify_register
+calls=0 0
+0 24 0 0 0 0 1 0 0 0 24 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(3)
+0
+cfi=(1)
+cfn=(4) dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*))
+calls=0 0
+0 24 0 0 0 0 1 0 0 0 24 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(4)
+0
+cfi=(1)
+cfn=(5) dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool)
+calls=0 0
+0 24 0 0 0 0 1 0 0 0 24 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(5)
+0
+cfi=(1)
+cfn=(6) __objc_personality_v0
+calls=0 0
+0 24 0 0 0 0 1 0 0 0 24 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(6)
+0
+cfi=(1)
+cfn=(7) objc_image_info* getDataSection<objc_image_info>(mach_header_64 const*, char const*, unsigned long*, unsigned long*)
+calls=0 0
+0 24 0 0 0 0 1 0 0 0 24 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(7)
+0
+cfi=(1)
+cfn=(8) objc_opt::objc_stringhash_t::getIndex(char const*) const
+calls=0 0
+0 24 0 0 0 0 1 0 0 0 24 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(8)
+0
+cfi=(1)
+cfn=(9) std::__1::__hash_table<std::__1::__hash_value_type<unsigned long, objc_references_support::ObjectAssociationMap*>, std::__1::__unordered_map_hasher<unsigned long, std::__1::__hash_value_type<unsigned long, objc_references_support::ObjectAssociationMap*>, objc_references_support::DisguisedPointerHash, true>, std::__1::__unordered_map_equal<unsigned long, std::__1::__hash_value_type<unsigned long, objc_references_support::ObjectAssociationMap*>, objc_references_support::DisguisedPointerEqual, true>, objc_references_support::ObjcAllocator<std::__1::__hash_value_type<unsigned long, objc_references_support::ObjectAssociationMap*> > >::__rehash(unsigned long)
+calls=0 0
+0 24 0 0 0 0 1 0 0 0 24 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(9)
+0
+cfi=(1)
+cfn=(10) NXCreateHashTableFromZone
+calls=0 0
+0 24 0 0 0 0 1 0 0 0 24 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(10)
+0
+cfi=(1)
+cfn=(10)
+calls=0 0
+0 24 0 0 0 0 1 0 0 0 24 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(10)
+0
+cfi=(1)
+cfn=(11) malloc_zone_malloc
+calls=0 0
+0 24 0 0 0 0 1 0 0 0 24 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(11)
+0 24 0 0 0 0 1 0 0 0 24 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+
+fl=(1)
+fn=(3)
+0
+cfi=(1)
+cfn=(4)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(4)
+0
+cfi=(1)
+cfn=(5)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(5)
+0
+cfi=(1)
+cfn=(6)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(6)
+0
+cfi=(1)
+cfn=(7)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(7)
+0
+cfi=(1)
+cfn=(8)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(8)
+0
+cfi=(1)
+cfn=(9)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(9)
+0
+cfi=(1)
+cfn=(10)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(10)
+0
+cfi=(1)
+cfn=(10)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(10)
+0
+cfi=(1)
+cfn=(12) hashPrototype(void const*, void const*)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(12)
+0
+cfi=(1)
+cfn=(13) isEqualPrototype(void const*, void const*, void const*)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(13)
+0
+cfi=(1)
+cfn=(11)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(11)
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+
+fl=(1)
+fn=(3)
+0
+cfi=(1)
+cfn=(4)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(4)
+0
+cfi=(1)
+cfn=(5)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(5)
+0
+cfi=(1)
+cfn=(6)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(6)
+0
+cfi=(1)
+cfn=(7)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(7)
+0
+cfi=(1)
+cfn=(8)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(8)
+0
+cfi=(1)
+cfn=(9)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(9)
+0
+cfi=(1)
+cfn=(10)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(10)
+0
+cfi=(1)
+cfn=(10)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(10)
+0
+cfi=(1)
+cfn=(12)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(12)
+0
+cfi=(1)
+cfn=(14) NXHashInsert
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(14)
+0
+cfi=(1)
+cfn=(11)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(11)
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+
+fl=(1)
+fn=(3)
+0
+cfi=(1)
+cfn=(4)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(4)
+0
+cfi=(1)
+cfn=(5)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(5)
+0
+cfi=(1)
+cfn=(6)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(6)
+0
+cfi=(1)
+cfn=(7)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(7)
+0
+cfi=(1)
+cfn=(8)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(8)
+0
+cfi=(1)
+cfn=(9)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(9)
+0
+cfi=(1)
+cfn=(10)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(10)
+0
+cfi=(1)
+cfn=(10)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(10)
+0
+cfi=(1)
+cfn=(12)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(12)
+0
+cfi=(1)
+cfn=(14)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(14)
+0
+cfi=(1)
+cfn=(15) malloc
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(15)
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+
+fl=(1)
+fn=(1)
+0
+cfi=(1)
+cfn=(2)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(2)
+0
+cfi=(1)
+cfn=(3)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(3)
+0
+cfi=(1)
+cfn=(4)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(4)
+0
+cfi=(1)
+cfn=(5)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(5)
+0
+cfi=(1)
+cfn=(6)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(6)
+0
+cfi=(1)
+cfn=(7)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(7)
+0
+cfi=(1)
+cfn=(8)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(8)
+0
+cfi=(1)
+cfn=(9)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(9)
+0
+cfi=(1)
+cfn=(10)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(10)
+0
+cfi=(1)
+cfn=(16) NXHashGet
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(16)
+0
+cfi=(1)
+cfn=(15)
+calls=0 0
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(15)
+0 32 0 0 0 0 1 0 0 0 32 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+
+fl=(1)
+fn=(5)
+0
+cfi=(1)
+cfn=(6)
+calls=0 0
+0 48 0 0 0 0 1 0 0 0 48 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(6)
+0
+cfi=(1)
+cfn=(7)
+calls=0 0
+0 48 0 0 0 0 1 0 0 0 48 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(7)
+0
+cfi=(1)
+cfn=(8)
+calls=0 0
+0 48 0 0 0 0 1 0 0 0 48 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(8)
+0
+cfi=(1)
+cfn=(9)
+calls=0 0
+0 48 0 0 0 0 1 0 0 0 48 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(9)
+0
+cfi=(1)
+cfn=(10)
+calls=0 0
+0 48 0 0 0 0 1 0 0 0 48 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(10)
+0
+cfi=(1)
+cfn=(10)
+calls=0 0
+0 48 0 0 0 0 1 0 0 0 48 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(10)
+0
+cfi=(1)
+cfn=(12)
+calls=0 0
+0 48 0 0 0 0 1 0 0 0 48 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(12)
+0
+cfi=(1)
+cfn=(14)
+calls=0 0
+0 48 0 0 0 0 1 0 0 0 48 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(14)
+0
+cfi=(1)
+cfn=(17) TimeLogger::log(char const*)
+calls=0 0
+0 48 0 0 0 0 1 0 0 0 48 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(17)
+0
+cfi=(1)
+cfn=(18) remapClass(objc_class*)
+calls=0 0
+0 48 0 0 0 0 1 0 0 0 48 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(18)
+0
+cfi=(1)
+cfn=(19) malloc_zone_calloc
+calls=0 0
+0 48 0 0 0 0 1 0 0 0 48 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(19)
+0 48 0 0 0 0 1 0 0 0 48 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+
+fl=(1)
+fn=(20) ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&)
+0
+cfi=(1)
+cfn=(21) ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&)
+calls=0 0
+0 0 48 0 0 0 0 2 0 0 0 48 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(21)
+0
+cfi=(1)
+cfn=(22) libSystem_initializer
+calls=0 0
+0 0 48 0 0 0 0 2 0 0 0 48 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(22)
+0
+cfi=(1)
+cfn=(23) libdispatch_init
+calls=0 0
+0 0 48 0 0 0 0 2 0 0 0 48 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(23)
+0
+cfi=(1)
+cfn=(1)
+calls=0 0
+0 0 48 0 0 0 0 2 0 0 0 48 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(1)
+0
+cfi=(1)
+cfn=(2)
+calls=0 0
+0 0 48 0 0 0 0 2 0 0 0 48 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(2)
+0
+cfi=(1)
+cfn=(3)
+calls=0 0
+0 0 48 0 0 0 0 2 0 0 0 48 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(3)
+0
+cfi=(1)
+cfn=(4)
+calls=0 0
+0 0 48 0 0 0 0 2 0 0 0 48 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(4)
+0
+cfi=(1)
+cfn=(5)
+calls=0 0
+0 0 48 0 0 0 0 2 0 0 0 48 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(5)
+0
+cfi=(1)
+cfn=(6)
+calls=0 0
+0 0 48 0 0 0 0 2 0 0 0 48 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(6)
+0
+cfi=(1)
+cfn=(24) map_images_nolock
+calls=0 0
+0 0 48 0 0 0 0 2 0 0 0 48 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(24)
+0
+cfi=(1)
+cfn=(25) calloc
+calls=0 0
+0 0 48 0 0 0 0 2 0 0 0 48 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0
+fl=(1)
+fn=(25)
+0 0 48 0 0 0 0 2 0 0 0 48 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0
+
+totals: 200 48 0 0 0 6 2 0 0 200 48 0 0 0 6 2 0 0 0 0 0 0 0 0 0 0 0

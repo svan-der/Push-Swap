@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/27 12:10:05 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/02/28 15:06:04 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct		s_format
 	int				median;
 	int				max;
 	int				min;
+	int				total_ins;
 	t_list			*argv;
 	t_inst			*inst_lst;
 	t_stack			*stack_a;
