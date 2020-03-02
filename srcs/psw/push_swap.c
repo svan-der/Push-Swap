@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/02 15:23:12 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/02 16:08:50 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,8 +373,8 @@ void	sort_two(t_stack **stack_a, t_stack **stack_b)
 {
 	if ((*stack_b)->num < (*stack_b)->next->num)
 		swap_b(stack_b);
-	push_b(stack_b, stack_a);
-	push_b(stack_b, stack_a);
+	push_a(stack_a, stack_b);
+	push_a(stack_a, stack_b);
 }
 
 void	sort_short(t_format *stvar, t_part **part_var)
@@ -384,7 +384,7 @@ void	sort_short(t_format *stvar, t_part **part_var)
 	else if ((*part_var)->len == 2)
 		sort_two(&stvar->stack_a, &stvar->stack_b);
 	else
-		push_b(&stvar->stack_a, &stvar->stack_b);
+		push_a(&stvar->stack_a, &stvar->stack_b);
 	*part_var = (*part_var)->next;
 }
 
@@ -436,15 +436,11 @@ int run_pw(t_format *stvar)
 	while (stvar->index != stvar->argc && part_var != NULL)
 	{
 		if (stvar->index == stvar->sort_index && part_var->len <= 3)
-		{
 			sort_short(stvar, &part_var);
-		}
 		else
 		{
 			insertion_sort(part_var->parts, part_var->len, &part_var->min, &part_var->max);
 			stvar->median = find_median_array(part_var->parts, part_var->len);
-			part_var->min = 0;
-			part_var->max = 0;
 			push_back(stvar, part_var, part_var->len);
 		}
 	}
