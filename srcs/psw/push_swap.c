@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/02 16:08:50 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/02 16:21:40 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,6 @@ void	part_sort(t_format *stvar, t_part *part_var, int argc)
 	j = 0;
 	while (j < argc)
 	{
-		if (stvar->index <= 3)
-			break ;
 		j++;
 		num = temp->num;
 		if (num < stvar->median && num)
