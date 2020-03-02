@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/28 18:55:23 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/02 15:23:12 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void sort_three(t_stack **temp, t_format *stvar, int min, int max)
 		else
 		{
 			stvar->total_ins += 2;
-			rotate_revb(&stack);
 			swap_b(&stack);
+			rotate_revb(&stack);
 		}
 	}
 	else if (stack->num != max && stack->num != min)
@@ -118,6 +118,23 @@ void	push_back(t_format *stvar, t_part *part_var, int argc)
 	sort_three(&stvar->stack_a, stvar, min, max);
 }
 
+void	set_min_max(t_part *part_var)
+{
+	int i;
+
+	i = 0;
+	part_var->min = 0;
+	part_var->max = 0;
+	while (i < part_var->len)
+	{
+		if (part_var->min > part_var->parts[i] || !part_var->min)
+			part_var->min = part_var->parts[i];
+		if (part_var->max < part_var->parts[i] || !part_var->max)
+			part_var->max = part_var->parts[i];
+		i++;
+	}
+}
+
 void	part_sort(t_format *stvar, t_part *part_var, int argc)
 {
 	t_stack *temp;
@@ -136,7 +153,7 @@ void	part_sort(t_format *stvar, t_part *part_var, int argc)
 			break ;
 		j++;
 		num = temp->num;
-		if (num <= stvar->median && num)
+		if (num < stvar->median && num)
 		{
 			part_var->parts[i] = temp->num;
 			ft_putstr("pb\n");
@@ -145,18 +162,14 @@ void	part_sort(t_format *stvar, t_part *part_var, int argc)
 			if (stvar->stack_b->next == NULL)
 				stvar->stack_b->prev == NULL;
 			stvar->index -= 1;
-			if (part_var->min > part_var->parts[i] || !part_var->min)
-				part_var->min = part_var->parts[i];
-			if (part_var->max < part_var->parts[i] || !part_var->max)
-				part_var->max = part_var->parts[i];
 			i++;
+			part_var->len = i;
 		}
 		else
 			rotate_a(&temp);
 		stvar->total_ins += 1;
 	}
 	stvar->stack_a = temp;
-	part_var->len = i;
 }
 
 int find_median(t_stack *stack, int argc, int index)
@@ -242,8 +255,11 @@ void insertion_sort(int *list, int argc, int *min, int *max)
 		printf("this is elem :%i\n", list[j + 1]);
 		i++;
 	}
-	*min = list[argc - 3];
-	*max = list[argc - 1];
+	if (argc >= 3)
+	{
+		*min = list[argc - 3];
+		*max = list[argc - 1];
+	}
 }
 
 int *lst_cpy(t_stack *stack, int argc)
@@ -253,7 +269,7 @@ int *lst_cpy(t_stack *stack, int argc)
 	int i;
 	int j;
 
-	// new_list = NULL;
+	new_list = NULL;
 	new_list = (int *)malloc(sizeof(int *) * (argc - 1));
 	current = stack;
 	i = 0;
@@ -278,7 +294,7 @@ void *ft_calloc(size_t count, size_t size)
 	return (res);
 }
 
-void sort_threeb(t_stack **temp, t_format *stvar, int min, int max)
+void sort_threeb(t_stack **temp, t_format *stvar, int min, int max, int len)
 {
 	t_stack *stack;
 
@@ -349,8 +365,27 @@ void sort_threeb(t_stack **temp, t_format *stvar, int min, int max)
 		}
 	}
 	*temp = stack;
-	stvar->sort_index += 3;
-	stvar->index += 3;
+	stvar->sort_index += len;
+	stvar->index += len;
+}
+
+void	sort_two(t_stack **stack_a, t_stack **stack_b)
+{
+	if ((*stack_b)->num < (*stack_b)->next->num)
+		swap_b(stack_b);
+	push_b(stack_b, stack_a);
+	push_b(stack_b, stack_a);
+}
+
+void	sort_short(t_format *stvar, t_part **part_var)
+{
+	if ((*part_var)->len == 3)
+		sort_threeb(&stvar->stack_b, stvar, (*part_var)->min, (*part_var)->max, (*part_var)->len);
+	else if ((*part_var)->len == 2)
+		sort_two(&stvar->stack_a, &stvar->stack_b);
+	else
+		push_b(&stvar->stack_a, &stvar->stack_b);
+	*part_var = (*part_var)->next;
 }
 
 int run_pw(t_format *stvar)
@@ -373,12 +408,11 @@ int run_pw(t_format *stvar)
 	stvar->median = find_median_array(temp1, stvar->index);
 	if (temp1)
 		free(temp1);
-	// print_array(temp1, stvar->argc);
-	// print_stack(stvar->stack_a, 1);
 	while (stvar->index > 3)
 	{
 		part_var->parts = ft_calloc(stvar->argc / (i + 1 * 2), sizeof(int));
 		part_sort(stvar, part_var, ft_min_size(stvar->index, stvar->argc));
+		set_min_max(part_var);
 		if (stvar->index <= 3)
 		{
 			sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
@@ -386,10 +420,6 @@ int run_pw(t_format *stvar)
 		}
 		temp1 = lst_cpy(stvar->stack_a, stvar->index);
 		insertion_sort(temp1, stvar->index, &stvar->min, &stvar->max);
-		// print_array(temp1, stvar->index);
-		// printf("\n\n");
-		// print_array(part_var->parts, part_var->len);
-		// printf("that was partition\n\n");
 		stvar->median = find_median_array(temp1, stvar->index);
 		if (temp1)
 			free(temp1);
@@ -405,11 +435,9 @@ int run_pw(t_format *stvar)
 	}
 	while (stvar->index != stvar->argc && part_var != NULL)
 	{
-		// print_array(part_var->parts, part_var->len);
 		if (stvar->index == stvar->sort_index && part_var->len <= 3)
 		{
-			sort_threeb(&stvar->stack_b, stvar, part_var->min, part_var->max);
-			part_var = part_var->next;
+			sort_short(stvar, &part_var);
 		}
 		else
 		{
