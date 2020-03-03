@@ -6,11 +6,11 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:10:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/12 15:12:32 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/03 18:19:05 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "psw_env.h"
+#include "push_swap.h"
 
 void	debug(t_stack **stack_a, t_stack **stack_b)
 {

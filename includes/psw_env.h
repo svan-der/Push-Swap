@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/28 15:06:04 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/03 18:18:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "../libft/includes/mathlib.h"
 # include "../libft/includes/get_next_line.h"
 # include "checker.h"
-# include "push_swap.h"
 
 typedef struct		s_inst
 {
@@ -27,16 +26,6 @@ typedef struct		s_inst
 	struct s_inst	*prev;
 	struct s_inst	*next;
 }					t_inst;
-
-typedef struct		s_part
-{
-	int				*parts;
-	int				len;
-	int				max;
-	int				min;
-	struct s_part	*prev;
-	struct s_part	*next;
-}					t_part;
 
 typedef struct		s_stack
 {
