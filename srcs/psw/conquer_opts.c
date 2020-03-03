@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/03 18:18:50 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/03 18:31:06 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void insertion_sort(int *list, int argc, int *min, int *max)
 		j = i - 1;
 		while (j >= 0 && list[j] > temp)
 		{
-			printf("this is elem 1:%i and elem2:%i\n", list[j + 1], list[j]);
+			// printf("this is elem 1:%i and elem2:%i\n", list[j + 1], list[j]);
 			list[j + 1] = list[j];
-			printf("this is elem %i\n", list[j + 1]);
+			// printf("this is elem %i\n", list[j + 1]);
 			j--;
 		}
 		list[j + 1] = temp;
-		printf("this is elem :%i\n", list[j + 1]);
+		// printf("this is elem :%i\n", list[j + 1]);
 		i++;
 	}
 	if (argc >= 3)
@@ -39,6 +39,7 @@ void insertion_sort(int *list, int argc, int *min, int *max)
 		*min = list[0];
 		*max = list[argc - 1];
 	}
+	print_array(list, argc);
 }
 
 void	part_sort(t_format *stvar, t_part *part_var, int argc)

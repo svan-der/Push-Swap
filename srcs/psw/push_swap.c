@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/03 18:08:33 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/03 18:43:32 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,16 +170,14 @@ void *ft_calloc(size_t count, size_t size)
 
 int run_pw(t_format *stvar)
 {
-	t_part *part_var;
+	t_part part_var;
 
-	part_var = (t_part *)ft_memalloc(sizeof(t_part *));
-	ft_bzero(part_var, sizeof(t_part));
-	if (!part_var)
-		return (0);
+	// part_var = (t_part)ft_memalloc(sizeof(t_part));
+	// ft_bzero(&part_var, sizeof(t_part));
 	if (stvar->argc > 3)
 	{
-		divide_list(stvar, part_var);
-		conquer_list(stvar, part_var);
+		divide_list(stvar, &part_var);
+		conquer_list(stvar, &part_var);
 	}
 	else
 		sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
