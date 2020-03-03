@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/03 18:31:06 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/03 18:53:51 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void insertion_sort(int *list, int argc, int *min, int *max)
 	}
 	if (argc >= 3)
 	{
-		*min = list[0];
+		*min = list[argc - 3];
 		*max = list[argc - 1];
 	}
 	print_array(list, argc);
@@ -214,23 +214,23 @@ void sort_three(t_stack **temp, t_format *stvar, int min, int max)
 		else if (stack->next->num == max)
 		{
 			stvar->total_ins += 2;
-			rotate_revb(&stack);
-			swap_b(&stack);
+			rotate_reva(&stack);
+			swap_a(&stack);
 		}
-		print_stack_b(stack, 1);
+		print_stack(stack, 1);
 	}
 	else if (stack->num == max)
 	{
 		if (stack->next->num == min)
 		{
 			stvar->total_ins += 1;
-			rotate_b(&stack);
+			rotate_a(&stack);
 		}
 		else
 		{
 			stvar->total_ins += 2;
-			swap_b(&stack);
-			rotate_revb(&stack);
+			swap_a(&stack);
+			rotate_reva(&stack);
 		}
 	}
 	else if (stack->num != max && stack->num != min)
