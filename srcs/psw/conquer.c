@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:35:59 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/03 18:18:44 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/05 17:29:19 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,13 @@ void	conquer_list(t_format *stvar, t_part *part_var)
 	while (stvar->index != stvar->argc && stvar->sort_index < stvar->argc)
 	{
 		if (part_var->next == NULL && part_var->len > 3)
+		{
+			insertion_sort(part_var->parts, part_var->len, &part_var->min, &part_var->max);
+			stvar->median = find_median_array(part_var->parts, part_var->len, stvar->sort_index, stvar->index);
 			push_back(stvar, part_var, ft_min_size(part_var->len, 6));
-		else if (stvar->index == stvar->sort_index && part_var->len <= 3)
+			set_min_max(part_var);
+		}
+		if (stvar->index == stvar->sort_index && part_var->len <= 3)
 			sort_short(stvar, &part_var);
 		else
 		{
@@ -78,5 +83,6 @@ void	conquer_list(t_format *stvar, t_part *part_var)
 			push_back(stvar, part_var, part_var->len);
 			set_min_max(part_var);
 		}
+		part_var = part_var->next;
 	}
 }

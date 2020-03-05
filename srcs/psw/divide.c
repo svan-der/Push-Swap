@@ -6,28 +6,30 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/03 18:46:28 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/05 17:23:26 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		*set_parts(t_part *part_var, int i, int argc)
+int		*set_parts(t_part **part_var, int i, int argc)
 {
 	t_part *new;
 
 	new = (t_part *)ft_memalloc(sizeof(t_part));
 	if (i == 0)
-		part_var = new;
+	{
+		(*part_var)->next = NULL;
+	}
 	else
 	{
-		(part_var)->next = NULL;
-		(part_var)->prev = new;
-		new->next = (part_var);
-		(part_var) = new;
+		(*part_var)->next = NULL;
+		(*part_var)->prev = new;
+		new->next = (*part_var);
+		(*part_var) = new;
 	}
-	part_var->parts = ft_calloc(argc / (i + 1 * 2), sizeof(int));
-	return (part_var->parts);
+	(*part_var)->parts = ft_calloc(argc / (i + 1 * 2), sizeof(int));
+	return ((*part_var)->parts);
 }
 
 void	divide_and_presort(t_format *stvar, t_part *part_var)
@@ -51,9 +53,18 @@ void	divide_and_presort(t_format *stvar, t_part *part_var)
 		temp1 = lst_cpy(stvar->stack_a, stvar->index);
 		insertion_sort(temp1, stvar->index, &stvar->min, &stvar->max);
 		stvar->median = find_median_array(temp1, stvar->index, stvar->sort_index, part_var->len);
-		if (temp1)
-			free(temp1);
+		ft_memdel(&temp1);
 		i++;
+	}
+	conquer_list(stvar, part_var);
+}
+
+void		ft_memdel(void **ap)
+{
+	if (*ap)
+	{
+		free(*ap);
+		*ap = NULL;
 	}
 }
 
@@ -66,7 +77,6 @@ void	divide_list(t_format *stvar, t_part *part_var)
 	temp1 = lst_cpy(stvar->stack_a, stvar->argc);
 	insertion_sort(temp1, stvar->argc, &stvar->min, &stvar->max);
 	stvar->median = find_median_array(temp1, stvar->index, stvar->sort_index, part_var->len);
-	if (temp1)
-		free(temp1);
+	ft_memdel(&temp1);
 	divide_and_presort(stvar, part_var);
 }

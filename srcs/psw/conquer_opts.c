@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/03 18:53:51 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/05 17:14:51 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,6 @@ void	sort_short(t_format *stvar, t_part **part_var)
 		stvar->sort_index += 1;
 		stvar->index += 1;
 	}
-	*part_var = (*part_var)->next;
 }
 
 void sort_three(t_stack **temp, t_format *stvar, int min, int max)
