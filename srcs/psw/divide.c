@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/05 17:23:26 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/05 17:49:24 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	divide_and_presort(t_format *stvar, t_part *part_var)
 		}
 		temp1 = lst_cpy(stvar->stack_a, stvar->index);
 		insertion_sort(temp1, stvar->index, &stvar->min, &stvar->max);
-		stvar->median = find_median_array(temp1, stvar->index, stvar->sort_index, part_var->len);
+		stvar->median = find_median_array(temp1, stvar->index);
 		ft_memdel(&temp1);
 		i++;
 	}
@@ -76,7 +76,7 @@ void	divide_list(t_format *stvar, t_part *part_var)
 	i = 0;
 	temp1 = lst_cpy(stvar->stack_a, stvar->argc);
 	insertion_sort(temp1, stvar->argc, &stvar->min, &stvar->max);
-	stvar->median = find_median_array(temp1, stvar->index, stvar->sort_index, part_var->len);
+	stvar->median = find_median_array(temp1, stvar->index);
 	ft_memdel(&temp1);
 	divide_and_presort(stvar, part_var);
 }

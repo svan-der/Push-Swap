@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/05 17:22:08 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/05 17:55:50 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	set_min_max(t_part *part_var)
 // 	return (median);
 // }
 
-int find_median_array(int *list, int index, int sort, int b_len)
+int find_median_array(int *list, int index)
 {
 	int i;
 	double j;

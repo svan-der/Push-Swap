@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:10:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/03 18:19:05 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/06 15:33:41 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		push_swap(t_format *stvar)
 	if (ret == 1)
 		return (print_stack(stvar->stack_a, ret));
 	run_pw(stvar);
-	return (print_stack(stvar->stack_a, ret));
+	return (print_stack(stvar->stack_a, 1));
 }
 
 int		main(int argc, char **argv)
