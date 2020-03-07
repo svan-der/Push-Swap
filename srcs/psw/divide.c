@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 15:11:52 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/07 21:29:30 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,21 @@ void	divide_and_presort(t_format *stvar, t_part *part_var)
 	{
 		part_var->parts = set_parts(&part_var, i, stvar->argc);
 		part_sort(stvar, part_var, ft_min_size(stvar->index, stvar->argc));
-		set_min_max(part_var);
-		b_len += part_var->len;
-		if (stvar->index <= 3)
-		{
-			sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
-			break ;
-		}
-		temp1 = lst_cpy(stvar->stack_a, stvar->index);
-		insertion_sort(temp1, stvar->index, &stvar->min, &stvar->max);
-		stvar->median = find_median_array(temp1, stvar->index);
-		if (temp1 != NULL)
-			ft_memdel(&temp1);
+		// set_min_max(part_var);
+		// b_len += part_var->len;
+		// if (stvar->index <= 3)
+		// {
+		// 	sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
+		// 	break ;
+		// }
+		// temp1 = lst_cpy(stvar->stack_a, stvar->index);
+		// insertion_sort(temp1, stvar->index, &stvar->min, &stvar->max);
+		// stvar->median = find_median_array(temp1, stvar->index);
+		// if (temp1 != NULL)
+		// 	ft_memdel(&temp1);
 		i++;
 	}
-	conquer_list(stvar, part_var);
+	// conquer_list(stvar, part_var);
 }
 
 void		ft_memdel(void **ap)

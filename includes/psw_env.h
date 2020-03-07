@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 16:44:30 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/07 22:05:10 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct		s_inst
 
 typedef struct		s_stack
 {
-	int				num;
+	int				*num;
 	size_t			len;
 	struct s_stack	*prev;
 	struct s_stack	*next;
@@ -72,11 +72,12 @@ void				fill_stack_begin(t_stack **stack_a, t_stack *new);
 void				print_backwards(t_stack *stack);
 void				ft_stackaddend(t_stack **stack_lst, t_stack *new);
 void				stack_push(t_stack **stack, t_stack *new);
-t_stack				*ft_stackpop(t_stack **stack_lst);
+// t_stack				*ft_stackpop(t_stack **stack_lst);
 t_stack				*reverse_list(t_stack **new);
 int					check_sorted(t_stack *stack_a, t_stack *stack_b);
 int					check_argv(char *str, t_format *stvar);
-void				debug(t_stack **stack_a, t_stack **stack_b);
+// void				debug(t_stack **stack_a, t_stack **stack_b);
+void				debug(t_format *stvar);
 int					run_checker(t_format *stvar);
 int					check_instruction(t_stack **stack_a, t_stack **stack_b, char *line);
 #endif

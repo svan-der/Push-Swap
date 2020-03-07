@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 16:52:29 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/07 20:12:39 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_stack		*create_stack(int num)
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
 		return (NULL);
-	stack->num = num;
 	stack->len = ft_numlen(num);
+	stack->num = (int *)ft_memdup(&num, stack->len);
 	stack->next = NULL;
 	stack->prev = NULL;
 	return (stack);

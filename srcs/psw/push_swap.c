@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/05 17:55:50 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/07 21:38:25 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,15 +142,13 @@ int *lst_cpy(t_stack *stack, int argc)
 	int i;
 	int j;
 
-	// new_list = NULL;
-	// new_list = (int *)malloc(sizeof(int) * (argc - 1));
 	new_list = (int *)malloc(sizeof(int));
 	current = stack;
 	i = 0;
 	j = 0;
 	while (current != NULL)
 	{
-		new_list[i] = current->num;
+		new_list[i] = (*current->num);
 		current = current->next;
 		i++;
 	}
@@ -177,10 +175,10 @@ int run_pw(t_format *stvar)
 	if (stvar->argc > 3)
 	{
 		divide_list(stvar, part_var);
-		conquer_list(stvar, part_var);
+		// conquer_list(stvar, part_var);
 	}
-	else
-		sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
+	// else
+	// 	sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
 	printf("total number of instructions:|%i|\n\n", stvar->total_ins);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/05 17:49:56 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/07 21:29:25 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,8 @@ void	part_sort(t_format *stvar, t_part *part_var, int argc);
 void    insertion_sort(int *list, int argc, int *min, int *max);
 void	conquer_list(t_format *stvar, t_part *part_var);
 void	push_back(t_format *stvar, t_part *part_var, int argc, int sum);
+void	ft_stackpop(t_stack **aparent, t_stack *elem);
+void	ft_stackdel(t_stack **stack_lst, void (*del)(int *, size_t));
+void    ft_stackdelone(t_stack **alst, void (*del)(int *, size_t));
 
 #endif
