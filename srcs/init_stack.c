@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/12 17:27:38 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/07 16:52:29 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_stack		*create_stack(int num)
 	t_stack *stack;
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
-	if (!stack)
-		return (0);
+	if (stack == NULL)
+		return (NULL);
 	stack->num = num;
 	stack->len = ft_numlen(num);
 	stack->next = NULL;
@@ -27,18 +27,21 @@ t_stack		*create_stack(int num)
 	return (stack);
 }
 
-void	fill_stack(t_stack **stack_a, int num)
+int	stack_addnew(t_stack **stack, int num)
 {
-	t_stack *stack;
+	t_stack *new;
 
-	stack = create_stack(num);
-	if (*stack_a == NULL)
+	new = create_stack(num);
+	if (!new)
+		return (0);
+	if (*stack == NULL)
 	{
-		stack->prev = NULL;
-		*stack_a = stack;
-		return ;
+		*stack = new;
+		(*stack)->prev = NULL;
+		return (1);
 	}
-	fill_stack_begin(stack_a, num);
+	if (*stack != NULL)
+		fill_stack_begin(stack, new);
 }
 
 int		add_num(char *str, int i, int neg, t_format *stvar)
@@ -56,7 +59,7 @@ int		add_num(char *str, int i, int neg, t_format *stvar)
 	if (str[i] != '\0')
 		return (-1);
 	num *= neg;
-	fill_stack(&stvar->stack_a, num);
+	stack_addnew(&stvar->stack_a, num);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/05 17:49:24 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/07 15:11:52 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int		*set_parts(t_part **part_var, int i, int argc)
 		new->next = (*part_var);
 		(*part_var) = new;
 	}
-	(*part_var)->parts = ft_calloc(argc / (i + 1 * 2), sizeof(int));
+	(*part_var)->parts = (int *)ft_memalloc(sizeof(int));
+	// (*part_var)->parts = ft_calloc(argc / (i + 1 * 2), sizeof(int));
 	return ((*part_var)->parts);
 }
 
@@ -53,7 +54,8 @@ void	divide_and_presort(t_format *stvar, t_part *part_var)
 		temp1 = lst_cpy(stvar->stack_a, stvar->index);
 		insertion_sort(temp1, stvar->index, &stvar->min, &stvar->max);
 		stvar->median = find_median_array(temp1, stvar->index);
-		ft_memdel(&temp1);
+		if (temp1 != NULL)
+			ft_memdel(&temp1);
 		i++;
 	}
 	conquer_list(stvar, part_var);
@@ -77,6 +79,7 @@ void	divide_list(t_format *stvar, t_part *part_var)
 	temp1 = lst_cpy(stvar->stack_a, stvar->argc);
 	insertion_sort(temp1, stvar->argc, &stvar->min, &stvar->max);
 	stvar->median = find_median_array(temp1, stvar->index);
-	ft_memdel(&temp1);
+	if (temp1 != NULL)
+		ft_memdel(&temp1);
 	divide_and_presort(stvar, part_var);
 }

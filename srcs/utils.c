@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/06 16:30:15 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/07 16:52:43 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,12 @@ int		check_sorted(t_stack *stack_a, t_stack *stack_b)
 	return (1);
 }
 
-void	fill_stack_begin(t_stack **stack, int num)
+void	fill_stack_begin(t_stack **head, t_stack *new)
 {
-	t_stack *tmp;
-
-	tmp = create_stack(num);
-	printf("num is: %d\n", num);
-	if (*stack == NULL)
+	if (head)
 	{
-		printf("stack_b is NULL\n");
-		*stack = tmp;
-		printf("stack-b num: %d\n", tmp->num);
-		return ;
+		new->next = *head;
+		(*head)->prev = new;
+		*head = new;
 	}
-	tmp->next = *stack;
-	(*stack)->prev = tmp;
-	*stack = tmp;
 }

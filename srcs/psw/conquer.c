@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:35:59 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/06 15:29:46 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/07 15:36:39 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	push_back(t_format *stvar, t_part *part_var, int argc, int sum)
 {
 	t_stack *temp;
+	char low;
 	int num;
 	int	max;
 	int min;
@@ -30,7 +31,7 @@ void	push_back(t_format *stvar, t_part *part_var, int argc, int sum)
 	{
 		j++;
 		num = temp->num;
-		if (num > stvar->median && num)
+		if (num > stvar->median)
 		{
 			ft_putstr("pa\n");
 			push_a(&stvar->stack_a, &temp);
@@ -42,8 +43,11 @@ void	push_back(t_format *stvar, t_part *part_var, int argc, int sum)
 		}
 		else
 		{
+			if (num == part_var->min)
+				low = 1;
 			part_var->parts[i] = temp->num;
 			i++;
+			part_var->len = i;
 			// if (temp->next->num < temp->num)
 			// 	swap_a(&temp);
 			// else
@@ -52,10 +56,11 @@ void	push_back(t_format *stvar, t_part *part_var, int argc, int sum)
 		}
 		if (sum == 0)
 			break ;
+		if (low && j == 3)
+			break ;
 		stvar->total_ins += 1;
 	}
 	stvar->stack_b = temp;
-	part_var->len = i + 1;
 }
 
 void	conquer_list(t_format *stvar, t_part *part_var)

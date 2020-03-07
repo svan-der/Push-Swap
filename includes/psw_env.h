@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/03 18:18:15 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/07 16:44:30 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ int					print_stack(t_stack *stack_a, int ret);
 int					print_stack_b(t_stack *stack_b, int ret);
 int					push_a(t_stack **stack_a, t_stack **stack_b);
 int					push_b(t_stack **stack_a, t_stack **stack_b);
-void				fill_stack(t_stack **stack_a, int num);
+int					stack_new(t_stack **stack_a, int num);
 t_stack				*create_stack(int num);
 int					rotate_a(t_stack **stack_a);
 int					rotate_b(t_stack **stack_b);
 int					rotate_rr(t_stack **stack_a, t_stack **stack_b);
 int					rotate_reva(t_stack **stack_a);
 int					rotate_revb(t_stack **stack_b);
-void				fill_stack_begin(t_stack **stack_a, int num);
+void				fill_stack_begin(t_stack **stack_a, t_stack *new);
 void				print_backwards(t_stack *stack);
 void				ft_stackaddend(t_stack **stack_lst, t_stack *new);
 void				stack_push(t_stack **stack, t_stack *new);

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/05 17:14:51 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/07 15:04:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ void	part_sort(t_format *stvar, t_part *part_var, int argc)
 	{
 		j++;
 		num = temp->num;
-		if (num == stvar->min)
-			low = 1;
-		if (num < stvar->median && num)
+		if (num < stvar->median)
 		{
 			part_var->parts[i] = temp->num;
 			ft_putstr("pb\n");
@@ -74,6 +72,8 @@ void	part_sort(t_format *stvar, t_part *part_var, int argc)
 		}
 		else
 		{
+			if (num == stvar->min)
+				low = 1;
 			rotate_a(&temp);
 			// if (temp->next->num < temp->num)
 			// 	swap_a(&temp);
