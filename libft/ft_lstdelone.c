@@ -6,7 +6,7 @@
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/22 15:05:54 by svan-der       #+#    #+#                */
-/*   Updated: 2019/12/21 17:14:38 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/07 23:24:47 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	ft_lstpop(t_list **aparent, t_list *elem)
 
 void	content_del(void *content, size_t size)
 {
-	free(content);
+	if (content)
+		free(content);
 	(void)size;
 }
 
