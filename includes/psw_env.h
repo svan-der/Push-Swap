@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 23:32:49 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 17:40:21 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int					swap_ss(t_stack **stack_a, t_stack **stack_b);
 int					print_stack(t_stack *stack_a, int ret);
 int					print_stack_b(t_stack *stack_b, int ret);
 int					push_a(t_stack **stack_a, t_stack **stack_b);
-int					push_b(t_stack **stack_a, t_stack **stack_b);
+int					push_b(t_stack *stack_a, t_stack **stack_b);
 int					stack_new(t_stack **stack_a, int num);
 t_stack				*create_stack(int num);
 int					rotate_a(t_stack **stack_a);

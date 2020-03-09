@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 16:48:14 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 17:25:02 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,15 @@ int		set_parts(t_part **part_var, int i, int argc)
 void	divide_and_presort(t_format *stvar, t_part *part_var)
 {
 	int i;
+	int ret;
 	int *temp1;
 
 	i = 0;
 	while (stvar->index > 3)
 	{
-		set_parts(&part_var, i, stvar->argc);
+		ret = set_parts(&part_var, i, stvar->argc);
+		if (ret == 0)
+			return ;
 		part_sort(stvar, part_var, ft_min_size(stvar->index, stvar->argc));
 		set_min_max(part_var);
 		if (stvar->index <= 3)

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 22:23:28 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 17:43:35 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,20 @@ int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 	the next of my "element" will be the entierty of list b
 **/
 
-int		push_b(t_stack **stack_a, t_stack **stack_b)
+int		push_b(t_stack *stack_a, t_stack **stack_b)
 {
-	stack_addnew(stack_b, (*(*stack_a)->num));
-	ft_stackpop(stack_a, *stack_a);
-	print_stack_b(*stack_b, 1);
-	print_stack(*stack_a, 1);
+	stack_addnew(stack_b, (*stack_a->num));
+	if (stack_a->num != NULL)
+		free(stack_a->num);
+	if (stack_a != NULL)
+		free(stack_a);
+	// if ((*stack_a) != NULL)
+	// 	free(*stack_a);
+	// *stack_a = (*stack_a)->next;
+	// if (*stack_a && (*stack_a)->next != NULL)
+	// 	(*stack_a)->prev = NULL;
+	// print_stack_b(*stack_b, 1);
+	// print_stack(*stack_a, 1);
 	return (1);
 }
 

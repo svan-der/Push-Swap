@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 23:28:49 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 17:40:04 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	part_sort(t_format *stvar, t_part *part_var, int argc)
 		{
 			part_var->parts[i] = (*stvar->stack_a->num);
 			ft_putstr("pb\n");
-			push_b(&stvar->stack_a, &stvar->stack_b);
+			push_b(stvar->stack_a, &stvar->stack_b);
 			stvar->index -= 1;
 			i++;
 			part_var->len = i;
@@ -224,5 +224,6 @@ void sort_three(t_stack **temp, t_format *stvar, int min, int max)
 		stvar->total_ins += 1;
 	}
 	*temp = stack;
+	printf("three are now sorted!!!\n\n");
 }
 

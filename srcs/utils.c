@@ -6,13 +6,19 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 16:52:43 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 17:57:43 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "checker.h"
 #include "psw_env.h"
+
+void	error_handler(int ret)
+{
+	if (ret == 0)
+		ft_putstr_fd("Invalid argument\n", 2);
+}
 
 int		check_sorted(t_stack *stack_a, t_stack *stack_b)
 {
