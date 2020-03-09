@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:10:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 23:31:14 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 17:11:33 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,40 +22,21 @@ void	debug(t_format *stvar)
 	stvar->stack_a->num = numb;
 	ft_stackpop(&stvar->stack_a, stvar->stack_a);
 }
-// 	// rotate_rr(stack_a, stack_b);
-// 	// push_b(stack_a, stack_b);
-// 	// rotate_rr(stack_a, stack_b);
-// 	// push_b(stack_a, stack_b);
-// 	// rotate_rr(stack_a, stack_b);
-// 	// push_a(stack_a, stack_b);
-// 	print_stack(*stack_a, 1);
-// 	rotate_reva(stack_a);
-// 	push_b(stack_a, stack_b);
-// 	rotate_revb(stack_b);
-// 	push_b(stack_a, stack_b);
-// 	rotate_reva(stack_a);
 
-int		pw_check(t_format *stvar)
+int		pw_check(t_format *stvar, t_stack *stack_a)
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
 	int		check;
 
-	stack_a = stvar->stack_a;
-	stack_b = stvar->stack_b;
-	print_stack(stack_a, 1);
-	print_stack_b(stack_b, 1);
 	check = 1;
-	stvar->min = stack_a->num;
+	stvar->min = *stack_a->num;
+	stvar->max = *stack_a->num;
 	while (stack_a != NULL && stack_a->next != NULL)
 	{
-		printf("this is num: %i\n", stack_a->num);
-		printf("this is num next: %i\n", stack_a->next->num);
-		if (stvar->min > stack_a->num)
-			stvar->min = stack_a->num;
-		if (stvar->max < stack_a->num)
-			stvar->max = stack_a->num;
-		if (stack_a->num > stack_a->next->num)
+		if (stvar->min > *stack_a->num)
+			stvar->min = *stack_a->num;
+		if (stvar->max < *stack_a->num)
+			stvar->max = *stack_a->num;
+		if (stack_a->num > *stack_a->next->num)
 			check = -1;
 		stack_a = stack_a->next;
 	}
@@ -66,7 +47,7 @@ int		push_swap(t_format *stvar)
 {
 	int ret;
 
-	ret = pw_check(stvar);
+	ret = pw_check(stvar, stvar->stack_a);
 	if (ret == 1)
 		return (print_stack(stvar->stack_a, ret));
 	ret = run_pw(stvar);

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 23:43:40 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 17:14:45 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	set_min_max(t_part *part_var)
 // 	return (median);
 // }
 
-int find_median_array(int *list, int index)
+const int find_median_array(int *list, int index)
 {
 	int i;
 	double j;
@@ -135,7 +135,7 @@ int find_median_array(int *list, int index)
 // 	return (median);
 // }
 
-int *lst_cpy(t_stack *stack, int argc)
+const int *lst_cpy(t_stack *stack, int argc)
 {
 	t_stack *current;
 	int *new_list;
@@ -166,7 +166,7 @@ void *ft_calloc(size_t count, size_t size)
 	return (res);
 }
 
-int run_pw(t_format *stvar)
+int run_pw(const t_format *stvar)
 {
 	t_part part_var;
 

@@ -6,35 +6,34 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 23:23:16 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 16:48:14 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		*set_parts(t_part **part_var, int i, int argc)
+void	ft_addpart(t_part **part_var, t_part *new, int i)
 {
-	t_part *new;
-
-	new = (t_part *)ft_memalloc(sizeof(t_part));
-	if (new == NULL)
-		return (NULL);
-	if (i == 0)
-	{
-		*part_var = new;
-		(*part_var)->prev = NULL;
-	}
 	if (i != 0)
 	{
 		(new)->next = *part_var;
 		(*part_var)->prev = new;
 		*part_var = new;
 	}
-	((*part_var)->parts) = (int *)ft_memalloc(sizeof(int));
-	if (!(*part_var)->parts)
-		return (NULL);
-	// (*part_var)->parts = ft_calloc(argc / (i + 1 * 2), sizeof(int));
-	return ((*part_var)->parts);
+	else
+		*part_var = new;
+}
+
+int		set_parts(t_part **part_var, int i, int argc)
+{
+	t_part *new;
+
+	new = ft_memalloc(sizeof(t_part));
+	if (!new)
+		return (0);
+	new->parts = (int *)malloc(sizeof(int));
+	ft_addpart(part_var, new, i);
+	return (1);
 }
 
 void	divide_and_presort(t_format *stvar, t_part *part_var)
@@ -45,7 +44,7 @@ void	divide_and_presort(t_format *stvar, t_part *part_var)
 	i = 0;
 	while (stvar->index > 3)
 	{
-		part_var->parts = set_parts(&part_var, i, stvar->argc);
+		set_parts(&part_var, i, stvar->argc);
 		part_sort(stvar, part_var, ft_min_size(stvar->index, stvar->argc));
 		set_min_max(part_var);
 		if (stvar->index <= 3)
@@ -57,7 +56,7 @@ void	divide_and_presort(t_format *stvar, t_part *part_var)
 		insertion_sort(temp1, stvar->index, &stvar->min, &stvar->max);
 		stvar->median = find_median_array(temp1, stvar->index);
 		if (temp1 != NULL)
-			ft_memdel(&temp1);
+			free(temp1);
 		i++;
 	}
 	conquer_list(stvar, part_var);
@@ -82,6 +81,6 @@ void	divide_list(t_format *stvar, t_part *part_var)
 	insertion_sort(temp1, stvar->argc, &stvar->min, &stvar->max);
 	stvar->median = find_median_array(temp1, stvar->index);
 	if (temp1 != NULL)
-		ft_memdel(&temp1);
+		free(temp1);
 	divide_and_presort(stvar, part_var);
 }

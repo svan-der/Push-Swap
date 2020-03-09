@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 23:56:08 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 17:16:31 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_stackpop(t_stack **aparent, t_stack *elem);
 void	push_back(t_format *stvar, t_part *part_var, int argc, int sum);
 void	conquer_list(t_format *stvar, t_part *part_var);
 void    insertion_sort(int *list, int argc, int *min, int *max);
+int		set_parts(t_part **part_var, int i, int argc);
+void	ft_addpart(t_part **part_var, t_part *new, int i);
 void	part_sort(t_format *stvar, t_part *part_var, int argc);
 void    sort_threeb(t_stack **temp, t_format *stvar, int min, int max, int len);
 void	sort_short(t_format *stvar, t_part **part_var);
@@ -40,10 +42,10 @@ void    sort_three(t_stack **temp, t_format *stvar, int min, int max);
 void    divide_list(t_format *stvar, t_part *part_var);
 void    print_array(int *list, int argc);
 void	set_min_max(t_part *part_var);
-int     find_median_array(int *list, int index);
-int     *lst_cpy(t_stack *stack, int argc);
+const int     find_median_array(int *list, int index);
+const int  *lst_cpy(t_stack *stack, int argc);
 void    *ft_calloc(size_t count, size_t size);
-int     run_pw(t_format *stvar);
+int     run_pw(const t_format *stvar);
 int     main(int argc, char **argv);
 
 #endif
