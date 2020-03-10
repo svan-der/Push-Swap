@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 18:33:27 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/10 12:13:35 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,14 +136,12 @@ int find_median_array(int *list, int index)
 // 	return (median);
 // }
 
-int *lst_cpy(t_stack *stack)
+int *lst_cpy(t_stack *stack, int *new_list)
 {
 	t_stack *current;
-	int *new_list;
 	int i;
 	int j;
 
-	new_list = (int *)malloc(sizeof(int));
 	current = stack;
 	i = 0;
 	j = 0;

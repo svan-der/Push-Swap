@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:35:59 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 19:06:26 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/10 12:59:10 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,14 +106,18 @@ void	push_short(t_format *stvar, t_part *part_var)
 
 void	push_half(t_format *stvar, t_part *part_var)
 {
-	insertion_sort(part_var->parts, part_var->len, &part_var->min, &part_var->max);
+	int **temp;
+
+	temp = NULL;
+	*temp = part_var->parts;
+	ft_bzero(*temp, part_var->len);
+	insertion_sort(*temp, part_var->len, &part_var->min, &part_var->max);
 	stvar->median = find_median_array(part_var->parts, part_var->len);
-	part_sort(stvar, part_var, ft_min_size(part_var->len, 6));
-	// push_back(stvar, part_var, ft_min_size(part_var->len, 6), (part_var->len / 2));
+	push_back(stvar, part_var, ft_min_size(part_var->len, 6), (part_var->len / 2));
 	set_min_max(part_var);
 }
 
-void	conquer_list(t_format *stvar, t_part *part_var)
+int		conquer_list(t_format *stvar, t_part *part_var)
 {
 	while (stvar->index != stvar->argc)
 	{
@@ -128,4 +132,5 @@ void	conquer_list(t_format *stvar, t_part *part_var)
 		else
 			push_short(stvar, part_var);
 	}
+	return (1);
 }

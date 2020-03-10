@@ -6,63 +6,88 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 19:02:36 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/10 14:33:48 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_addpart(t_part **part_var, t_part *new, int i)
+void	ft_addpart(t_part **part_var, t_part *new)
 {
-	if (i != 0)
+	if (*part_var != NULL)
 	{
 		(new)->next = *part_var;
 		(*part_var)->prev = new;
 		*part_var = new;
 	}
 	else
+	{
 		*part_var = new;
+		(*part_var)->prev = NULL;
+	}
 }
 
-int		set_parts(t_part **part_var, int i)
+t_part	*create_part(int argc)
+{
+	t_part *part;
+
+	part = (t_part *)malloc(sizeof(t_part));
+	if (part == NULL)
+		return (NULL);
+	part->len = 0;
+	part->max = 0;
+	part->min = 0;
+	part->next = NULL;
+	part->prev = NULL;
+	part->parts = malloc(sizeof(int) * argc);
+	if (part->parts == NULL)
+		return (NULL);
+	return (part);
+}
+
+int		part_addnew(t_part **part_var, int argc)
 {
 	t_part *new;
 
-	new = ft_memalloc(sizeof(t_part));
+	new = create_part(argc);
 	if (!new)
-		return (0);
-	new->parts = (int *)malloc(sizeof(int));
-	ft_addpart(part_var, new, i);
+		return (error_handler(1));
+	if (*part_var == NULL)
+	{
+		*part_var = new;
+		(*part_var)->prev = NULL;
+	}
+	if (*part_var != NULL)
+		ft_addpart(part_var, new);
 	return (1);
 }
 
-void	divide_and_presort(t_format *stvar, t_part *part_var)
+int		divide_and_presort(t_format *stvar, t_part *part_var, int *sorted_list)
 {
 	int i;
 	int ret;
-	int *temp1;
 
 	i = 0;
+	if (part_var == NULL)
+		part_var = (t_part *)malloc(sizeof(t_part));
 	while (stvar->index > 3)
 	{
-		ret = set_parts(&part_var, i);
+		ret = part_addnew(&part_var, stvar->argc);
 		if (ret == 0)
-			return ;
+			return (error_handler(2));
 		part_sort(stvar, part_var, ft_min_size(stvar->index, stvar->argc));
+		set_min_max(part_var);
 		if (stvar->index <= 3)
 		{
 			sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
 			break ;
 		}
-		set_min_max(part_var);
-		temp1 = lst_cpy(stvar->stack_a);
-		insertion_sort(temp1, stvar->index, &stvar->min, &stvar->max);
-		stvar->median = find_median_array(temp1, stvar->index);
-		if (temp1 != NULL)
-			free(temp1);
+		sorted_list = lst_cpy(stvar->stack_a, sorted_list);
+		insertion_sort(sorted_list, stvar->index, &stvar->min, &stvar->max);
+		stvar->median = find_median_array(sorted_list, stvar->index);
 		i++;
 	}
-	conquer_list(stvar, part_var);
+	return (conquer_list(stvar, part_var));
 }
 
 void		ft_memdel(void **ap)
@@ -77,13 +102,12 @@ void		ft_memdel(void **ap)
 void	divide_list(t_format *stvar, t_part *part_var)
 {
 	int i;
-	int *temp1;
+	int *sorted_list;
 
 	i = 0;
-	temp1 = lst_cpy(stvar->stack_a);
-	insertion_sort(temp1, stvar->argc, &stvar->min, &stvar->max);
-	stvar->median = find_median_array(temp1, stvar->index);
-	if (temp1 != NULL)
-		free(temp1);
-	divide_and_presort(stvar, part_var);
+	sorted_list = (int *)malloc(sizeof(int));
+	sorted_list = lst_cpy(stvar->stack_a, sorted_list);
+	insertion_sort(sorted_list, stvar->argc, &stvar->min, &stvar->max);
+	stvar->median = find_median_array(sorted_list, stvar->index);
+	divide_and_presort(stvar, part_var, sorted_list);
 }
