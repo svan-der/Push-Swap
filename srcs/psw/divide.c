@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/10 14:52:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/10 15:16:50 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ void	ft_addpart(t_part **part_var, t_part *new)
 	}
 }
 
-t_part	*create_part(int argc)
+t_part	*create_part(int argc, int *list)
 {
 	t_part *part;
 
+	(void)argc;
 	part = (t_part *)malloc(sizeof(t_part));
 	if (part == NULL)
 		return (NULL);
@@ -39,18 +40,17 @@ t_part	*create_part(int argc)
 	part->min = 0;
 	part->next = NULL;
 	part->prev = NULL;
-	part->parts = NULL;
-	part->parts = malloc(sizeof(int) * argc);
+	part->parts = (int *)ft_memdup(list, argc);
 	if (part->parts == NULL)
 		return (NULL);
 	return (part);
 }
 
-int		part_addnew(t_part **part_var, int argc)
+int		part_addnew(t_part **part_var, int *list, int argc)
 {
 	t_part *new;
 
-	new = create_part(argc);
+	new = create_part(argc, list);
 	if (!new)
 		return (error_handler(1));
 	if (*part_var == NULL)
@@ -72,10 +72,10 @@ int		divide_and_presort(t_format *stvar, t_part *part_var, int *sorted_list)
 	i = 0;
 	while (stvar->index > 3)
 	{
-		ret = part_addnew(&part_var, stvar->argc);
+		part_sort(stvar, sorted_list, ft_min_size(stvar->index, stvar->argc));
+		ret = part_addnew(&part_var, sorted_list, stvar->argc);
 		if (ret == 0)
 			return (error_handler(2));
-		part_sort(stvar, part_var, ft_min_size(stvar->index, stvar->argc));
 		set_min_max(part_var);
 		if (stvar->index <= 3)
 		{

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 19:01:54 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/10 15:11:20 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void insertion_sort(int *list, int argc, int *min, int *max)
 	print_array(list, argc);
 }
 
-void	part_sort(t_format *stvar, t_part *part_var, int argc)
+int *part_sort(t_format *stvar, int *list, int argc)
 {
 	char low;
 	int j;
@@ -52,18 +52,17 @@ void	part_sort(t_format *stvar, t_part *part_var, int argc)
 	i = 0;
 	j = 0;
 	if (stvar->stack_a == NULL)
-		return ;
+		return (NULL);
 	while (j < argc)
 	{
 		j++;
 		if ((*stvar->stack_a->num) < stvar->median)
 		{
-			part_var->parts[i] = (*stvar->stack_a->num);
+			list[i] = (*stvar->stack_a->num);
 			ft_putstr("pb\n");
 			push_b(&stvar->stack_a, &stvar->stack_b);
 			stvar->index -= 1;
 			i++;
-			part_var->len = i;
 		}
 		else
 		{
@@ -75,6 +74,7 @@ void	part_sort(t_format *stvar, t_part *part_var, int argc)
 			break ;
 		stvar->total_ins += 1;
 	}
+	return (list);
 }
 
 void sort_threeb(t_stack **temp, t_format *stvar, int min, int max, int len)
