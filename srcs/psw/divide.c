@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/10 14:33:48 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/10 14:52:53 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_part	*create_part(int argc)
 	part->min = 0;
 	part->next = NULL;
 	part->prev = NULL;
+	part->parts = NULL;
 	part->parts = malloc(sizeof(int) * argc);
 	if (part->parts == NULL)
 		return (NULL);
@@ -56,6 +57,7 @@ int		part_addnew(t_part **part_var, int argc)
 	{
 		*part_var = new;
 		(*part_var)->prev = NULL;
+		return (1);
 	}
 	if (*part_var != NULL)
 		ft_addpart(part_var, new);
@@ -68,8 +70,6 @@ int		divide_and_presort(t_format *stvar, t_part *part_var, int *sorted_list)
 	int ret;
 
 	i = 0;
-	if (part_var == NULL)
-		part_var = (t_part *)malloc(sizeof(t_part));
 	while (stvar->index > 3)
 	{
 		ret = part_addnew(&part_var, stvar->argc);

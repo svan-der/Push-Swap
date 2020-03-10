@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:35:59 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/10 12:59:10 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/10 14:56:33 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,7 @@ void	push_short(t_format *stvar, t_part *part_var)
 
 void	push_half(t_format *stvar, t_part *part_var)
 {
-	int **temp;
-
-	temp = NULL;
-	*temp = part_var->parts;
-	ft_bzero(*temp, part_var->len);
-	insertion_sort(*temp, part_var->len, &part_var->min, &part_var->max);
+	insertion_sort(part_var->parts, part_var->len, &part_var->min, &part_var->max);
 	stvar->median = find_median_array(part_var->parts, part_var->len);
 	push_back(stvar, part_var, ft_min_size(part_var->len, 6), (part_var->len / 2));
 	set_min_max(part_var);
