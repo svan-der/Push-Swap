@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:10:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 18:23:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/10 12:06:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 
 void	debug(t_format *stvar)
 {
-	int *numb;
-
-	numb = (int *)malloc(sizeof(int));
-	*numb = 20;
-	stvar->stack_a->num = numb;
-	ft_stackpop(&stvar->stack_a, stvar->stack_a);
+	push_b(&stvar->stack_a, &stvar->stack_b);
+	push_b(&stvar->stack_a, &stvar->stack_b);
+	push_b(&stvar->stack_a, &stvar->stack_b);
+	push_b(&stvar->stack_a, &stvar->stack_b);
+	push_b(&stvar->stack_a, &stvar->stack_b);
+	push_b(&stvar->stack_a, &stvar->stack_b);
+	push_b(&stvar->stack_a, &stvar->stack_b);
+	push_b(&stvar->stack_a, &stvar->stack_b);
+	push_b(&stvar->stack_a, &stvar->stack_b);
+	push_a(&stvar->stack_a, &stvar->stack_b);
+	push_a(&stvar->stack_a, &stvar->stack_b);
 }
 
 int		pw_check(t_format *stvar, t_stack *stack_a)
@@ -75,11 +80,11 @@ int		main(int argc, char **argv)
 			return (error_handler(0));
 		i++;
 	}
-	// debug(&stvar);
-	print_stack(stvar.stack_a, 1);
-	print_stack_b(stvar.stack_b, 1);
-	stvar.argc -= 1;
-	stvar.index = stvar.argc;
-	push_swap(&stvar);
+	debug(&stvar);
+	// print_stack(stvar.stack_a, 1);
+	// print_stack_b(stvar.stack_b, 1);
+	// stvar.argc -= 1;
+	// stvar.index = stvar.argc;
+	// push_swap(&stvar);
 	return (1);
 }

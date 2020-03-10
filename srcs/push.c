@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/10 11:50:31 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/10 12:01:02 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,51 +90,61 @@ int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 	the next of my "element" will be the entierty of list b
 **/
 
+// int		push_b(t_stack **stack_a, t_stack **stack_b)
+// {
+// 	t_stack *tmp;
+// 	t_stack *new_a;
+// 	t_stack *new_b;
+
+// 	new_a = *stack_a;
+// 	new_b = *stack_b;
+// 	if (new_a == NULL)
+// 		return (0);
+// 	tmp = new_a->next;
+// 	new_a->next = NULL;
+// 	printf("in stack_a:|%d|\n", new_a->num);
+// 	fill_stack_begin(&new_b, new_a->num);
+// 	new_a = tmp;
+// 	if (new_a && new_a->next != NULL)
+// 		new_a->prev = NULL;
+// 	*stack_a = new_a;
+// 	*stack_b = new_b;
+// 	print_stack_b(*stack_b, 1);
+// 	print_stack(*stack_a, 1);
+// 	return (1);
+// }
+
 int		push_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *tmp;
-	t_stack *new_a;
-	t_stack *new_b;
 
-	new_a = *stack_a;
-	new_b = *stack_b;
-	if (new_a == NULL)
+	if (*stack_a == NULL)
 		return (0);
-	printf("here push b\n\n");
-	tmp = new_a->next;
-	new_a->next = NULL;
-	printf("in stack_a:|%d|\n", new_a->num);
-	fill_stack_begin(&new_b, new_a->num);
-	new_a = tmp;
-	if (new_a && new_a->next != NULL)
-		new_a->prev = NULL;
-	*stack_a = new_a;
-	*stack_b = new_b;
-	print_stack_b(*stack_b, 1);
+	tmp = (*stack_a)->next;
+	(*stack_a)->next = NULL;
+	printf("in stack_b:|%d|\n", (*(*stack_a)->num));
+	fill_stack_begin(stack_b, (*stack_a));
+	*stack_a = tmp;
+	if (*stack_a && (*stack_a)->next != NULL)
+		(*stack_a)->prev = NULL;
 	print_stack(*stack_a, 1);
+	print_stack_b(*stack_b, 1);
 	return (1);
 }
 
 int		push_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *tmp;
-	t_stack *new_a;
-	t_stack *new_b;
 
-	new_b = *stack_b;
-	new_a = *stack_a;
-	if (new_b == NULL)
+	if (*stack_b == NULL)
 		return (0);
-	printf("here push b\n\n");
-	tmp = new_b->next;
-	new_b->next = NULL;
-	printf("in stack_b:|%d|\n", new_b->num);
-	fill_stack_begin(&new_a, new_b->num);
-	new_b = tmp;
-	if (new_b && new_b->next != NULL)
-		new_b->prev = NULL;
-	*stack_b = new_b;
-	*stack_a = new_a;
+	tmp = (*stack_b)->next;
+	(*stack_b)->next = NULL;
+	printf("in stack_b:|%d|\n", (*(*stack_b)->num));
+	fill_stack_begin(stack_a, (*stack_b));
+	*stack_b = tmp;
+	if (*stack_b && (*stack_b)->next != NULL)
+		(*stack_b)->prev = NULL;
 	print_stack(*stack_a, 1);
 	print_stack_b(*stack_b, 1);
 	return (1);
