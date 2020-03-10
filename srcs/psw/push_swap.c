@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 17:50:14 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 18:33:27 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void print_array(int *list, int argc)
 	while (i < argc)
 	{
 		printf("this is number:%i\n", list[i]);
-		list[i];
 		i++;
 	}
 }
@@ -29,11 +28,13 @@ void print_array(int *list, int argc)
 void	set_min_max(t_part *part_var)
 {
 	int i;
+	int	len;
 
 	i = 0;
+	len = (int)part_var->len;
 	part_var->min = 0;
 	part_var->max = 0;
-	while (i < part_var->len)
+	while (i < len)
 	{
 		if (part_var->min > part_var->parts[i] || !part_var->min)
 			part_var->min = part_var->parts[i];
@@ -74,7 +75,7 @@ void	set_min_max(t_part *part_var)
 // 	return (median);
 // }
 
-const int find_median_array(int *list, int index)
+int find_median_array(int *list, int index)
 {
 	int i;
 	double j;
@@ -135,7 +136,7 @@ const int find_median_array(int *list, int index)
 // 	return (median);
 // }
 
-const int *lst_cpy(t_stack *stack, int argc)
+int *lst_cpy(t_stack *stack)
 {
 	t_stack *current;
 	int *new_list;
@@ -166,7 +167,7 @@ void *ft_calloc(size_t count, size_t size)
 	return (res);
 }
 
-int run_pw(const t_format *stvar)
+int run_pw(t_format *stvar)
 {
 	t_part part_var;
 

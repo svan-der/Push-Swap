@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 17:40:21 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 18:39:49 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int					swap_ss(t_stack **stack_a, t_stack **stack_b);
 int					print_stack(t_stack *stack_a, int ret);
 int					print_stack_b(t_stack *stack_b, int ret);
 int					push_a(t_stack **stack_a, t_stack **stack_b);
-int					push_b(t_stack *stack_a, t_stack **stack_b);
+int					push_b(t_stack **stack_a, t_stack **stack_b);
 int					stack_new(t_stack **stack_a, int num);
 t_stack				*create_stack(int num);
 int					rotate_a(t_stack **stack_a);
@@ -72,11 +72,15 @@ void				fill_stack_begin(t_stack **stack_a, t_stack *new);
 void				print_backwards(t_stack *stack);
 void				ft_stackaddend(t_stack **stack_lst, t_stack *new);
 void				stack_push(t_stack **stack, t_stack *new);
+int					stack_addnew(t_stack **stack, int num);
+void				ft_stackpop(t_stack **aparent, t_stack *elem);
+void				content_delete(int *content, size_t size);
 // t_stack				*ft_stackpop(t_stack **stack_lst);
 t_stack				*reverse_list(t_stack **new);
 int					check_sorted(t_stack *stack_a, t_stack *stack_b);
 int					check_argv(char *str, t_format *stvar);
 // void				debug(t_stack **stack_a, t_stack **stack_b);
+int					error_handler(int ret);
 void				debug(t_format *stvar);
 int					run_checker(t_format *stvar);
 int					check_instruction(t_stack **stack_a, t_stack **stack_b, char *line);

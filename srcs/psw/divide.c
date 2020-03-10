@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 17:25:02 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 19:02:36 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_addpart(t_part **part_var, t_part *new, int i)
 		*part_var = new;
 }
 
-int		set_parts(t_part **part_var, int i, int argc)
+int		set_parts(t_part **part_var, int i)
 {
 	t_part *new;
 
@@ -45,17 +45,17 @@ void	divide_and_presort(t_format *stvar, t_part *part_var)
 	i = 0;
 	while (stvar->index > 3)
 	{
-		ret = set_parts(&part_var, i, stvar->argc);
+		ret = set_parts(&part_var, i);
 		if (ret == 0)
 			return ;
 		part_sort(stvar, part_var, ft_min_size(stvar->index, stvar->argc));
-		set_min_max(part_var);
 		if (stvar->index <= 3)
 		{
 			sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
 			break ;
 		}
-		temp1 = lst_cpy(stvar->stack_a, stvar->index);
+		set_min_max(part_var);
+		temp1 = lst_cpy(stvar->stack_a);
 		insertion_sort(temp1, stvar->index, &stvar->min, &stvar->max);
 		stvar->median = find_median_array(temp1, stvar->index);
 		if (temp1 != NULL)
@@ -80,7 +80,7 @@ void	divide_list(t_format *stvar, t_part *part_var)
 	int *temp1;
 
 	i = 0;
-	temp1 = lst_cpy(stvar->stack_a, stvar->argc);
+	temp1 = lst_cpy(stvar->stack_a);
 	insertion_sort(temp1, stvar->argc, &stvar->min, &stvar->max);
 	stvar->median = find_median_array(temp1, stvar->index);
 	if (temp1 != NULL)

@@ -6,11 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 17:40:04 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 19:01:54 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 void insertion_sort(int *list, int argc, int *min, int *max)
 {
@@ -59,7 +60,7 @@ void	part_sort(t_format *stvar, t_part *part_var, int argc)
 		{
 			part_var->parts[i] = (*stvar->stack_a->num);
 			ft_putstr("pb\n");
-			push_b(stvar->stack_a, &stvar->stack_b);
+			push_b(&stvar->stack_a, &stvar->stack_b);
 			stvar->index -= 1;
 			i++;
 			part_var->len = i;
@@ -81,9 +82,9 @@ void sort_threeb(t_stack **temp, t_format *stvar, int min, int max, int len)
 	t_stack *stack;
 
 	stack = *temp;
-	if (stack->num == min)
+	if ((*stack->num) == min)
 	{
-		if (stack->next->num == max)
+		if ((*stack->next->num) == max)
 		{
 			rotate_b(&stack);
 			push_b(&stack, &stvar->stack_a);
@@ -104,9 +105,9 @@ void sort_threeb(t_stack **temp, t_format *stvar, int min, int max, int len)
 			stvar->total_ins += 7;
 		}
 	}
-	else if (stack->num == max)
+	else if ((*stack->num) == max)
 	{
-		if (stack->next->num != min)
+		if ((*stack->next->num) != min)
 		{
 			push_b(&stack, &stvar->stack_a);
 			push_b(&stack, &stvar->stack_a);
@@ -125,7 +126,7 @@ void sort_threeb(t_stack **temp, t_format *stvar, int min, int max, int len)
 	}
 	else
 	{
-		if (stack->next->num == min)
+		if ((*stack->next->num) == min)
 		{
 			swap_b(&stack);
 			rotate_b(&stack);
@@ -213,7 +214,7 @@ void sort_three(t_stack **temp, t_format *stvar, int min, int max)
 			rotate_reva(&stack);
 		}
 	}
-	else if ((*stack->num) != max && (*stack->num) != min)
+	else
 	{
 		if ((*stack->next->num) == max)
 		{

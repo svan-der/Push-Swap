@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:35:59 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 16:49:38 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 19:06:26 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_stackpop(t_stack **aparent, t_stack *elem)
 		next = (*aparent)->next;
 		if (*aparent == elem)
 		{
-			ft_stackdelone(aparent, content_del);
+			ft_stackdelone(aparent, content_delete);
 			*aparent = next;
 			if (*aparent && (*aparent)->next != NULL)
 				(*aparent)->prev = NULL;
@@ -108,7 +108,8 @@ void	push_half(t_format *stvar, t_part *part_var)
 {
 	insertion_sort(part_var->parts, part_var->len, &part_var->min, &part_var->max);
 	stvar->median = find_median_array(part_var->parts, part_var->len);
-	push_back(stvar, part_var, ft_min_size(part_var->len, 6), (part_var->len / 2));
+	part_sort(stvar, part_var, ft_min_size(part_var->len, 6));
+	// push_back(stvar, part_var, ft_min_size(part_var->len, 6), (part_var->len / 2));
 	set_min_max(part_var);
 }
 

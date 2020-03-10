@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:10:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 17:59:23 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 18:23:53 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	debug(t_format *stvar)
 {
-	int ret;
 	int *numb;
 
 	numb = (int *)malloc(sizeof(int));
@@ -36,7 +35,7 @@ int		pw_check(t_format *stvar, t_stack *stack_a)
 			stvar->min = *stack_a->num;
 		if (stvar->max < *stack_a->num)
 			stvar->max = *stack_a->num;
-		if (stack_a->num > *stack_a->next->num)
+		if (*stack_a->num > *stack_a->next->num)
 			check = -1;
 		stack_a = stack_a->next;
 	}
@@ -45,7 +44,7 @@ int		pw_check(t_format *stvar, t_stack *stack_a)
 
 int		push_swap(t_format *stvar)
 {
-	int ret;
+	int	ret;
 
 	ret = pw_check(stvar, stvar->stack_a);
 	if (ret == 1)

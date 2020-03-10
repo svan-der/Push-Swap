@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:44:57 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/10 16:06:18 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/09 18:05:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		main(int argc, char **argv)
 		str = argv[i];
 		ret = check_argv(str, &stvar);
 		if (ret == -1)
-			return (print_stack(stvar.stack_a, ret));
+			return (error_handler(0));
 		i++;
 	}
 	debug(&stvar.stack_a, &stvar.stack_b);
