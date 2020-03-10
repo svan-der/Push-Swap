@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/10 14:50:56 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/10 17:21:41 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,25 @@ void print_array(int *list, int argc)
 	while (i < argc)
 	{
 		printf("this is number:%i\n", list[i]);
+		i++;
+	}
+}
+
+void	set_min_maxarray(t_format *stvar, int *list, int len)
+{
+	int i;
+	int num;
+
+	i = 0;
+	num = list[i];
+	stvar->min = list[i];
+	stvar->max = list[i];
+	while (i < len)
+	{
+		if (stvar->min > list[i])
+			stvar->min = list[i];
+		if (stvar->max < list[i])
+			stvar->max = list[i];
 		i++;
 	}
 }
@@ -44,37 +63,6 @@ void	set_min_max(t_part *part_var)
 	}
 }
 
-// int find_median(t_stack *stack, int argc, int index)
-// {
-// 	int i;
-// 	int num;
-// 	double j;
-// 	double median;
-// 	t_stack *temp;
-
-// 	if (index == argc)
-// 	{
-// 		j = (double)argc / 2;
-// 		if (argc % 2 == 0)
-// 			j -= 1;
-// 	}
-// 	else
-// 	{
-// 		j = (double)index / 2;
-// 		if (index % 2 == 0)
-// 			j -= 1;
-// 	}
-// 	i = j;
-// 	temp = stack;
-// 	while (i)
-// 	{
-// 		temp = temp->next;
-// 		i--;
-// 	}
-// 	median = temp->num;
-// 	return (median);
-// }
-
 int find_median_array(int *list, int index)
 {
 	int i;
@@ -87,54 +75,6 @@ int find_median_array(int *list, int index)
 	print_array(list, index);
 	return (median);
 }
-
-// int	find_median_b(int *list, int index, int sort, int b_len)
-// {
-// 	int i;
-// 	int len;
-// 	double j;
-// 	double median;
-
-// 	if (b_len > 3)
-// 	{
-// 		len = ((index - 1) / 2) + 1;
-// 		median = list[len - 1];
-// 	}
-// 	else
-// 	{
-// 		median = list[]
-// 	}
-	
-
-// }
-
-// int find_median_a(int *list, int index, int sort, int b_len)
-// {
-// 	int i;
-// 	int len;
-// 	double j;
-// 	double median;
-
-// 	j = (double)index / 2;
-// 	if (index < 6)
-// 	{
-// 		j -= 1;
-// 		i = j;
-// 		median = list[i];
-// 	}
-// 	else if (sort == 0)
-// 	{
-// 		len = ((index - 1) / 2) + 1;
-// 		median = list[len - 1];
-// 	}
-// 	else
-// 	{
-// 		len = (((index - sort) - 1) / 2) + 1;
-// 		median = list[((b_len + len) - 1)];
-// 	}
-// 	print_array(list, index);
-// 	return (median);
-// }
 
 int *lst_cpy(t_stack *stack, int *new_list)
 {
@@ -174,7 +114,6 @@ int run_pw(t_format *stvar)
 	if (stvar->argc > 3)
 	{
 		divide_list(stvar, part_var);
-		conquer_list(stvar, part_var);
 	}
 	else
 		sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);

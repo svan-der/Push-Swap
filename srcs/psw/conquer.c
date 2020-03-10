@@ -6,47 +6,29 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:35:59 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/10 14:56:33 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/10 17:46:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_back(t_format *stvar, t_part *part_var, int argc, int sum)
+void	push_back(t_format *stvar, t_part *part_var)
 {
-	char low;
-	int j;
-	int i;
-
-	i = 0;
-	j = 0;
+	(void)part_var;
 	if (stvar->stack_b == NULL)
 		return ;
-	while (j < argc)
+	while (stvar->argc - stvar->index > 3)
 	{
-		j++;
 		if ((*stvar->stack_b->num) > stvar->median)
 		{
-			part_var->parts[i] = (*stvar->stack_b->num);
 			ft_putstr("pa\n");
-			push_a(&stvar->stack_b, &stvar->stack_a);
-			part_var->len = i;
+			push_a(&stvar->stack_a, &stvar->stack_b);
 			stvar->index += 1;
-			sum -= 1;
 		}
 		else
 		{
-			if ((*stvar->stack_b->num) == part_var->min)
-				low = 1;
-			part_var->parts[i] = (*stvar->stack_b->num);
-			i++;
-			part_var->len = i;
 			rotate_b(&stvar->stack_b);
 		}
-		if (sum == 0)
-			break ;
-		if (low && i == 3)
-			break ;
 		stvar->total_ins += 1;
 	}
 }
@@ -100,29 +82,50 @@ void	push_short(t_format *stvar, t_part *part_var)
 	size = (t_ull)(part_var->len / 2);
 	insertion_sort(part_var->parts, part_var->len, &part_var->min, &part_var->max);
 	stvar->median = find_median_array(part_var->parts, part_var->len);
-	push_back(stvar, part_var, part_var->len, ft_min_size((part_var->len / 2), 3));
+	push_back(stvar, part_var);
 	set_min_max(part_var);
 }
 
-void	push_half(t_format *stvar, t_part *part_var)
+void	push_half(t_format *stvar, t_part *part_var, int *list, int b_len)
 {
-	insertion_sort(part_var->parts, part_var->len, &part_var->min, &part_var->max);
-	stvar->median = find_median_array(part_var->parts, part_var->len);
-	push_back(stvar, part_var, ft_min_size(part_var->len, 6), (part_var->len / 2));
-	set_min_max(part_var);
+	int part_len;
+	
+	lst_cpy(stvar->stack_b, list);
+	insertion_sort(list, stvar->argc - stvar->sort_index, &stvar->min, &stvar->max);
+	stvar->median = find_median_array(list, (stvar->argc - stvar->sort_index - 1));
+	push_back(stvar, part_var);
+	part_len = ((b_len) / 2);
+	set_min_maxarray(stvar, list + part_len, part_len);
+	if (part_len <= 3)
+		sort_short(stvar, &part_var);
 }
 
-int		conquer_list(t_format *stvar, t_part *part_var)
+// t_part *setup_part(t_format *stvar, t_part *part_var, int *list)
+// {
+// 	// ret = part_addnew(&part_var, list, part_len);
+// 	// part_var = (t_part *)malloc(sizeof(t_part));
+// 	part_var = (t_part *)malloc(sizeof(t_part));
+// 	part_var->parts = list;
+// 	part_var->len = ((stvar->argc - stvar->sort_index) / 2);
+// 	part_var->next = NULL;
+// 	part_var->prev = NULL;
+// 	part_var->min = 0;
+// 	part_var->max = 0;
+// 	return (part_var);
+// }
+
+int		conquer_list(t_format *stvar, t_part *part_var, int *list)
 {
+	int b_len;
+
 	while (stvar->index != stvar->argc)
 	{
-		if (part_var->next == NULL && part_var->len > 3)
-			push_half(stvar, part_var);
-		else if (stvar->index == stvar->sort_index && part_var->len <= 3)
+		b_len = stvar->argc - stvar->sort_index;
+		if (b_len > 3)
+			push_half(stvar, part_var, list, b_len);
+		else if (stvar->index == stvar->sort_index && b_len <= 3)
 		{
 			sort_short(stvar, &part_var);
-			// ft_stackpop(&part_var, part_var);
-			part_var = part_var->next;
 		}
 		else
 			push_short(stvar, part_var);

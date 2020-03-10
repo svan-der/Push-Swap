@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/10 15:11:20 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/10 17:54:08 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void insertion_sort(int *list, int argc, int *min, int *max)
 	print_array(list, argc);
 }
 
-int *part_sort(t_format *stvar, int *list, int argc)
+void	part_sort(t_format *stvar, int argc)
 {
 	char low;
 	int j;
@@ -52,13 +52,12 @@ int *part_sort(t_format *stvar, int *list, int argc)
 	i = 0;
 	j = 0;
 	if (stvar->stack_a == NULL)
-		return (NULL);
+		return ;
 	while (j < argc)
 	{
 		j++;
 		if ((*stvar->stack_a->num) < stvar->median)
 		{
-			list[i] = (*stvar->stack_a->num);
 			ft_putstr("pb\n");
 			push_b(&stvar->stack_a, &stvar->stack_b);
 			stvar->index -= 1;
@@ -74,7 +73,6 @@ int *part_sort(t_format *stvar, int *list, int argc)
 			break ;
 		stvar->total_ins += 1;
 	}
-	return (list);
 }
 
 void sort_threeb(t_stack **temp, t_format *stvar, int min, int max, int len)
@@ -147,7 +145,6 @@ void sort_threeb(t_stack **temp, t_format *stvar, int min, int max, int len)
 			stvar->total_ins += 4;
 		}
 	}
-	*temp = stack;
 	stvar->sort_index += len;
 	stvar->index += len;
 }
@@ -166,10 +163,10 @@ void	sort_two(t_stack **stack_a, t_stack **stack_b, t_format *stvar)
 	stvar->index += 2;
 }
 
-void	sort_short(t_format *stvar, t_part **part_var)
+void	sort_short(t_format *stvar, char c, t_part **part_var)
 {
-	if ((*part_var)->len == 3)
-		sort_threeb(&stvar->stack_b, stvar, (*part_var)->min, (*part_var)->max, (*part_var)->len);
+	if ((stvar->argc - stvar->index == 3))
+		sort_threeb(c, stvar, stvar->min, stvar->max, stvar->argc - stvar->index);
 	else if ((*part_var)->len == 2)
 		sort_two(&stvar->stack_a, &stvar->stack_b, stvar);
 	else
