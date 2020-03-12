@@ -6,26 +6,36 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:10:20 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/10 16:23:37 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/12 15:29:14 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "psw_env.h"
+#include "checker.h"
 
-// void	debug(t_format *stvar)
+// void	set_enum(char *str)
 // {
-// 	push_b(&stvar->stack_a, &stvar->stack_b);
-// 	push_b(&stvar->stack_a, &stvar->stack_b);
-// 	push_b(&stvar->stack_a, &stvar->stack_b);
-// 	push_b(&stvar->stack_a, &stvar->stack_b);
-// 	push_b(&stvar->stack_a, &stvar->stack_b);
-// 	push_b(&stvar->stack_a, &stvar->stack_b);
-// 	push_b(&stvar->stack_a, &stvar->stack_b);
-// 	push_b(&stvar->stack_a, &stvar->stack_b);
-// 	push_b(&stvar->stack_a, &stvar->stack_b);
-// 	push_a(&stvar->stack_a, &stvar->stack_b);
-// 	push_a(&stvar->stack_a, &stvar->stack_b);
+// 	t_sort 
+
+// 	if (str == "sa")
+
 // }
+
+void	debug(t_format *stvar)
+{
+	stvar->min = *stvar->stack_a->num;
+	stvar->max = *stvar->stack_a->next->num;
+	sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
+	// check_instruction(&stvar->stack_a, &stvar->stack_b, SA);
+	// int ret;
+	// static t_opt f_stacks = {push_a, push_b, swap_ss, rotate_rr};
+	// static t_opt f_stack = {swap_a, swap_b, rotate_a, rotate_b, rotate_revb, rotate_reva};
+
+	// ret = f_stacks.arr_ds[pb](&stvar->stack_a, &stvar->stack_b); 
+	// ret = ft_stack.arr_os[]()
+	// dispatch_sort(stvar, );
+}
 
 int		pw_check(t_format *stvar, t_stack *stack_a)
 {
@@ -47,18 +57,18 @@ int		pw_check(t_format *stvar, t_stack *stack_a)
 	return (check);
 }
 
-int		push_swap(t_format *stvar)
-{
-	int	ret;
+// int		push_swap(t_format *stvar)
+// {
+// 	int	ret;
 
-	ret = pw_check(stvar, stvar->stack_a);
-	if (ret == 1)
-		return (print_stack(stvar->stack_a, ret));
-	ret = run_pw(stvar);
-	if (ret == 0)
-		return (-1);
-	return (print_stack(stvar->stack_a, 1));
-}
+// 	ret = pw_check(stvar, stvar->stack_a);
+// 	if (ret == 1)
+// 		return (print_stack(stvar->stack_a, ret));
+// 	ret = run_pw(stvar);
+// 	if (ret == 0)
+// 		return (-1);
+// 	return (print_stack(stvar->stack_a, 1));
+// }
 
 int		main(int argc, char **argv)
 {
@@ -80,11 +90,11 @@ int		main(int argc, char **argv)
 			return (error_handler(0));
 		i++;
 	}
-	// debug(&stvar);
-	print_stack(stvar.stack_a, 1);
-	print_stack_b(stvar.stack_b, 1);
-	stvar.argc -= 1;
-	stvar.index = stvar.argc;
-	push_swap(&stvar);
+	debug(&stvar);
+	// print_stack(stvar.stack_a, 1);
+	// print_stack_b(stvar.stack_b, 1);
+	// stvar.argc -= 1;
+	// stvar.index = stvar.argc;
+	// push_swap(&stvar);
 	return (1);
 }

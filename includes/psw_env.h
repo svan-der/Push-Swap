@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/10 17:49:49 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/12 15:19:45 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,17 @@
 # include "../libft/includes/mathlib.h"
 # include "../libft/includes/get_next_line.h"
 # include "checker.h"
+# define SA "sa"
+# define SB "sb"
+# define SS "ss"
+# define PA "pa"
+# define PB "pb"
+# define RA "ra"
+# define RB "rb"
+# define RR "rr"
+# define RRA "rra"
+# define RRB "rrb"
+# define RRR "rrr"
 
 typedef struct		s_inst
 {
@@ -35,6 +46,20 @@ typedef struct		s_stack
 	struct s_stack	*next;
 }					t_stack;
 
+// typedef int	(*t_operates)(t_stack **, t_stack **);
+// typedef int (*t_operate)(t_stack **);
+
+// typedef enum 	e_sort
+// {
+// 	pa, pb, ss, rr, 
+// }				t_sort;
+
+// typedef struct 	s_opt
+// {
+// 	t_operates	arr_ds[4];
+// 	t_operate	arr_os[6];
+// }				t_opt;
+
 typedef struct		s_format
 {
 	int				argc;
@@ -50,6 +75,8 @@ typedef struct		s_format
 	t_stack			*stack_b;
 }					t_format;
 
+
+int 				dispatch_sort(t_format *stvar, char *str);
 int					print_instructions(t_inst *inst_lst, int ret);
 t_inst				*create_instruction(char *line);
 void				put_instruction(t_inst **inst_lst, char *line);
@@ -59,8 +86,8 @@ int					swap_b(t_stack **stack_b);
 int					swap_ss(t_stack **stack_a, t_stack **stack_b);
 int					print_stack(t_stack *stack_a, int ret);
 int					print_stack_b(t_stack *stack_b, int ret);
-int					push_a(t_stack **stack_a, t_stack **stack_b);
 int					push_b(t_stack **stack_a, t_stack **stack_b);
+int					push_a(t_stack **stack_a, t_stack **stack_b);
 int					stack_new(t_stack **stack_a, int num);
 t_stack				*create_stack(int num);
 int					rotate_a(t_stack **stack_a);
