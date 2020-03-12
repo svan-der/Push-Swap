@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/12 15:19:31 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/12 17:56:34 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct		s_part
 	struct s_part	*next;
 }					t_part;
 
+void 	update_size(t_format *stvar, char *str, int inst);
 void	push_half(t_format *stvar, t_part *part_var, int *list, int argc);
 void	push_short(t_format *stvar, t_part *part_var);
 void    ft_stackdelone(t_stack **alst, void (*del)(int *, size_t));
@@ -35,7 +36,7 @@ int		part_addnew(t_part **part_var, int *list, int argc);
 void	ft_addpart(t_part **part_var, t_part *new);
 t_part	*create_part(int argc, int *list);
 void	part_sort(t_format *stvar, int argc);
-void    sort_three_part(t_stack *stack, int min, int max, int len);
+void    sort_three_part(t_stack **stack, t_format *stvar, int min, int max);
 void	sort_short(t_format *stvar, char c, int len);
 void	sort_two(t_stack **stack_a, t_stack **stack_b, t_format *stvar);
 int    	sort_three(t_stack **temp, t_format *stvar, int min, int max);

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/12 15:19:45 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/12 17:37:56 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ typedef struct		s_format
 	t_stack			*stack_b;
 }					t_format;
 
-
-int 				dispatch_sort(t_format *stvar, char *str);
+int 				dispatch_sort(t_format *stvar, char *str, int ins);
 int					print_instructions(t_inst *inst_lst, int ret);
 t_inst				*create_instruction(char *line);
 void				put_instruction(t_inst **inst_lst, char *line);
