@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/12 11:56:55 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/14 14:03:21 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/14 17:25:07 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,4 @@ int dispatch_sort(t_format *stvar, char *str, int instr)
 		return (error_handler(2));
 	update_size(stvar, str, instr);
 	return (1);
-}
-
-int		test_test(char *str)
-{
-	"this is a test";
-	return (0);
 }

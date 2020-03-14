@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/12 18:02:41 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/14 17:52:00 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,8 @@ void *ft_calloc(size_t count, size_t size)
 
 int run_pw(t_format *stvar)
 {
-	t_part *part_var;
-
-	part_var = NULL;
-	// ft_bzero(&part_var, sizeof(t_part));
 	if (stvar->argc > 3)
-		divide_list(stvar, part_var);
+		divide_list(stvar);
 	else
 		sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
 	printf("total number of instructions:|%i|\n\n", stvar->total_ins);
