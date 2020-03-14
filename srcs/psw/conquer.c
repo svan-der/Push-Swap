@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:35:59 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/12 18:02:01 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/03/12 18:07:26 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,16 @@ void	push_back(t_format *stvar, t_part *part_var)
 // 	}
 // }
 
-void	push_short(t_format *stvar, t_part *part_var)
-{
-	t_ull size;
+// void	push_short(t_format *stvar, t_part *part_var)
+// {
+// 	t_ull size;
 
-	size = (t_ull)(part_var->len / 2);
-	insertion_sort(part_var->parts, part_var->len, &part_var->min, &part_var->max);
-	stvar->median = find_median_array(part_var->parts, part_var->len);
-	push_back(stvar, part_var);
-	set_min_max(part_var);
-}
+// 	size = (t_ull)(part_var->len / 2);
+// 	insertion_sort(part_var->parts, part_var->len, &part_var->min, &part_var->max);
+// 	stvar->median = find_median_array(part_var->parts, part_var->len);
+// 	push_back(stvar, part_var);
+// 	set_min_max(part_var);
+// }
 
 void	push_half(t_format *stvar, t_part *part_var, int *list, int b_len)
 {
@@ -118,8 +118,8 @@ int		conquer_list(t_format *stvar, t_part *part_var, int *list)
 			push_half(stvar, part_var, list, b_len);
 		else if (stvar->index == stvar->sort_index && b_len <= 3)
 			sort_short(stvar, 'b', b_len);
-		else
-			push_short(stvar, part_var);
+		// else
+		// 	push_short(stvar, part_var);
 	}
 	return (1);
 }
