@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/10 17:10:10 by svan-der       #+#    #+#                */
-/*   Updated: 2019/12/10 17:14:29 by svan-der      ########   odam.nl         */
+/*   Created: 2019/12/10 17:10:10 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/24 20:00:33 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mathlib.h"
+#include "includes/mathlib.h"
 
 t_u128	ft_pow(t_u128 n, t_u128 pow)
 {

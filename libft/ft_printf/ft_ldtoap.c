@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/10 14:54:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 17:51:59 by svan-der      ########   odam.nl         */
+/*   Created: 2019/12/10 14:54:16 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/25 19:25:30 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf/ftoa.h"
+#include "../includes/ftoa.h"
 
 static char		*make_flstr(char *str, t_dtoa *dtoa, t_ntoa *pref, size_t len)
 {

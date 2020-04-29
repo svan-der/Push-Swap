@@ -5,13 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/10 14:19:09 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 17:51:19 by svan-der      ########   odam.nl         */
+/*   Created: 2019/12/10 14:19:09 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/25 19:25:25 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf/ftoa.h"
-#include "../includes/ft_printf/ntoa.h"
+#include "../includes/ft_printf.h"
 
 size_t		handle_invalid(char **astr, t_opt *inval, t_ntoa *pref, int ret)
 {

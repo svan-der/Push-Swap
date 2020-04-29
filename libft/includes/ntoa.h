@@ -5,15 +5,15 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/14 17:54:21 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 17:21:00 by svan-der      ########   odam.nl         */
+/*   Created: 2019/11/14 17:54:21 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/24 20:54:43 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef NTOA_H
 # define NTOA_H
-# include "../libft.h"
-# include "../mathlib.h"
+# include "libft.h"
+# include "mathlib.h"
 
 typedef struct	s_ntoa
 {

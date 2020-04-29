@@ -5,13 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/11 17:56:39 by svan-der       #+#    #+#                */
-/*   Updated: 2019/11/14 18:12:07 by svan-der      ########   odam.nl         */
+/*   Created: 2019/02/11 17:56:39 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/24 20:42:41 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "libdefs.h"
+#include "includes/libft.h"
 
 int		ft_atoip_base(const char *str, unsigned int base, int *dest)
 {

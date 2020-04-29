@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/04 11:43:40 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/07 13:25:24 by svan-der      ########   odam.nl         */
+/*   Created: 2019/02/04 11:43:40 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/24 20:01:20 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "includes/libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {

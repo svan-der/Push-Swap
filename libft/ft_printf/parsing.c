@@ -5,13 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/15 11:23:28 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 17:50:47 by svan-der      ########   odam.nl         */
+/*   Created: 2019/10/15 11:23:28 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/25 19:26:04 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf/ft_printf.h"
-#include "../includes/ft_printf/fndm.h"
+#include "../includes/ft_printf.h"
 
 /*
 ** checks how the integer or float must be represented

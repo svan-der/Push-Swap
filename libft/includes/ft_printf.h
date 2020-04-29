@@ -5,16 +5,16 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/12 15:09:50 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 17:20:37 by svan-der      ########   odam.nl         */
+/*   Created: 2019/10/12 15:09:50 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/24 20:53:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "../libft.h"
-# include "../list.h"
-# include "../mathlib.h"
+# include "libft.h"
+# include "list.h"
+# include "mathlib.h"
 # include "ntoa.h"
 # include "ftoa.h"
 # include <stdarg.h>

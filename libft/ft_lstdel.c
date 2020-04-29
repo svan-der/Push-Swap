@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/22 16:08:41 by svan-der       #+#    #+#                */
-/*   Updated: 2019/12/07 17:16:13 by svan-der      ########   odam.nl         */
+/*   Created: 2019/02/22 16:08:41 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/24 19:58:58 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "includes/list.h"
 
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {

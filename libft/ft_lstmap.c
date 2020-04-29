@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/24 18:46:22 by svan-der       #+#    #+#                */
-/*   Updated: 2019/11/11 16:39:57 by svan-der      ########   odam.nl         */
+/*   Created: 2019/02/24 18:46:22 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/24 19:59:18 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "includes/list.h"
 
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {

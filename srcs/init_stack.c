@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/06 14:12:42 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 18:12:59 by svan-der      ########   odam.nl         */
+/*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/29 16:33:07 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_stack		*create_stack(int num)
 	return (stack);
 }
 
-int	stack_addnew(t_stack **stack, int num)
+int			stack_addnew(t_stack **stack, int num)
 {
 	t_stack *new;
 
@@ -45,7 +45,7 @@ int	stack_addnew(t_stack **stack, int num)
 	return (1);
 }
 
-int		add_num(char *str, int i, int neg, t_format *stvar)
+int			add_num(char *str, int i, int neg, t_format *stvar)
 {
 	int num;
 
@@ -64,7 +64,7 @@ int		add_num(char *str, int i, int neg, t_format *stvar)
 	return (1);
 }
 
-int		check_argv(char *str, t_format *stvar)
+int			check_argv(char *str, t_format *stvar)
 {
 	int i;
 	int neg;

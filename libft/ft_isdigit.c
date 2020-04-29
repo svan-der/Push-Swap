@@ -5,13 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/28 10:53:12 by svan-der       #+#    #+#                */
-/*   Updated: 2019/11/11 16:39:25 by svan-der      ########   odam.nl         */
+/*   Created: 2019/01/28 10:53:12 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/24 20:42:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "libdefs.h"
+#include "includes/libft.h"
 
 int		ft_isdigit_base(char c, unsigned int base)
 {

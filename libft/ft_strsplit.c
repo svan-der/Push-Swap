@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/14 19:03:45 by svan-der       #+#    #+#                */
-/*   Updated: 2019/11/11 16:45:59 by svan-der      ########   odam.nl         */
+/*   Created: 2019/02/14 19:03:45 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/24 20:06:53 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 char		**ft_strsplit(char const *s, char c)
 {

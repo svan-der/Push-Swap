@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/20 14:54:16 by svan-der       #+#    #+#                */
-/*   Updated: 2019/11/11 16:45:08 by svan-der      ########   odam.nl         */
+/*   Created: 2019/01/20 14:54:16 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/24 20:01:26 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 int		ft_strequ(char const *s1, char const *s2)
 {
