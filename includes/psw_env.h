@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/29 17:39:29 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 12:38:32 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../libft/includes/libdefs.h"
 # include "../libft/includes/mathlib.h"
 # include "../libft/includes/get_next_line.h"
-# include "checker.h"
+// # include "checker.h"
 # define SA "sa"
 # define SB "sb"
 # define SS "ss"
@@ -109,11 +109,11 @@ void				fill_stack_begin(t_stack **stack_a, t_stack *new);
 ** instruction handling functions
 */
 
-int					get_instruction(t_pw_var *stvar);
-void				put_instruction(t_inst **inst_lst, char *line);
+// int					get_instruction(t_pw_var *stvar);
+// void				put_instruction(t_inst **inst_lst, char *line);
 int					print_instructions(t_inst *inst_lst, int ret);
-int					check_instruction(t_stack **stack_a, t_stack **stack_b,\
-					char *line);
+// int					check_instruction(t_stack **stack_a, t_stack **stack_b,\
+// 					char *line);
 t_inst				*create_instruction(char *line);
 
 
