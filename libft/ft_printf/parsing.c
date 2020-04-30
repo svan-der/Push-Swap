@@ -6,11 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/15 11:23:28 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/25 19:26:04 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 11:57:09 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../includes/printf/ft_printf.h"
+#include "../includes/list.h"
 
 /*
 ** checks how the integer or float must be represented

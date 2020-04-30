@@ -6,16 +6,18 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 14:11:54 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/24 20:53:01 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 11:50:18 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FTOA_H
 # define FTOA_H
-# include "libft.h"
-# include "mathlib.h"
+# include "ft_printf.h"
+# include "../libft.h"
+# include "../mathlib.h"
 # include "fndm.h"
 # include "ntoa.h"
+// # include "list.h"
 
 typedef struct	s_opt
 {

@@ -6,11 +6,11 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 14:19:09 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/25 19:25:25 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 11:53:19 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../includes/printf/ft_printf.h"
 
 size_t		handle_invalid(char **astr, t_opt *inval, t_ntoa *pref, int ret)
 {

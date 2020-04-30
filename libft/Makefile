@@ -6,14 +6,15 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/11 15:22:00 by svan-der      #+#    #+#                  #
-#    Updated: 2020/04/25 19:24:16 by svan-der      ########   odam.nl          #
+#    Updated: 2020/04/30 11:43:28 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -g
-INCL = ./includes/
+# INCL = ./includes
+HEADER = -I./includes
 PRINTF_DIR = ft_printf
 LIB_OBJDIR = objects
 PRINTF_OBJDIR = ft_printf/objects
@@ -45,10 +46,16 @@ all: $(NAME)
 $(NAME): $(LIB_OBJ) $(PRINTF_OBJ)
 	ar rcs $(NAME) $(LIB_OBJ) $(PRINTF_OBJ)
 
-$(LIB_OBJDIR)/%.o: %.c $(INCL)
+# $(NAME): $(LIB_OBJ)
+# 	ar rcs $(NAME) $(LIB_OBJ)
+
+# $(LIB_OBJDIR):
+# 	mkdir $@
+
+$(LIB_OBJDIR)/%.o: %.c
 	mkdir -p $(LIB_OBJDIR)
 	$(CC) -c -o $@ $<
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(HEADER) -c -o $@ $<
 
 $(PRINTF_OBJDIR)/%.o: $(PRINTF_DIR)/%.c $(INCL)
 	mkdir -p $(PRINTF_OBJDIR)

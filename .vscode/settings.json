@@ -12,6 +12,7 @@
 		"fndm.h": "c",
 		"ntoa.h": "c",
 		"libdefs.h": "c",
-		"mathlib.h": "c"
+		"mathlib.h": "c",
+		"stdarg.h": "c"
 	}
 }

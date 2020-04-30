@@ -6,14 +6,14 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/12 15:08:04 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/25 19:25:43 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 11:56:27 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../includes/printf/ft_printf.h"
 
 /*
-** dynamically allocate a new stringn with malloc
+** dynamically allocate a new string with malloc
 */
 
 int		ft_vasprintf(char **str, const char *format, va_list ap)

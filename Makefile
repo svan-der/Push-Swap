@@ -6,7 +6,7 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/02/04 16:50:47 by svan-der      #+#    #+#                  #
-#    Updated: 2020/04/29 15:32:47 by svan-der      ########   odam.nl          #
+#    Updated: 2020/04/29 16:59:52 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ CHK_OBJ =$(CHK_SRC:%.c=$(SRCDIR)%.o)
 # PSW_OBJ = $(PSW_SRC:%.c=$(SRCDIR)%.o)
 
 # all: $(LIB) $(NAME_CHK) $(NAME_PSW)
+
 all: $(LIB) $(NAME_CHK)
 
 $(LIB):

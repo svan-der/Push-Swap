@@ -6,11 +6,11 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 14:54:16 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/25 19:25:30 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 11:53:59 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ftoa.h"
+#include "../includes/printf/ftoa.h"
 
 static char		*make_flstr(char *str, t_dtoa *dtoa, t_ntoa *pref, size_t len)
 {

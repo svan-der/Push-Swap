@@ -6,7 +6,7 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/includes",
                 "${workspaceFolder}/libft/includes",
-                "${workspaceFolder}/libft/includes/ft_printf"
+                "${workspaceFolder}/libft/includes/printf/"
             ],
             "defines": [],
             "macFrameworkPath": [

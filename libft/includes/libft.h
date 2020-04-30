@@ -6,7 +6,7 @@
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/21 16:38:44 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/24 20:53:38 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 11:04:43 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+// # include "list.h"
 # include "mathlib.h"
 # include "libdefs.h"
+// # include "ft_printf.h"
+# include "get_next_line.h"
 
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
