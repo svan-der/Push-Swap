@@ -5,8 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
 /*   Updated: 2020/04/30 17:44:28 by svan-der      ########   odam.nl         */
+=======
+/*   Created: 2020/02/06 14:12:42 by svan-der       #+#    #+#                */
+/*   Updated: 2020/03/09 18:12:59 by svan-der      ########   odam.nl         */
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +32,7 @@ t_stack		*create_stack(int num)
 	return (stack);
 }
 
-int			stack_addnew(t_stack **stack, int num)
+int	stack_addnew(t_stack **stack, int num)
 {
 	t_stack *new;
 
@@ -45,7 +50,11 @@ int			stack_addnew(t_stack **stack, int num)
 	return (1);
 }
 
+<<<<<<< HEAD
 int			add_num(char *str, int i, int neg, t_pw_var *stvar)
+=======
+int		add_num(char *str, int i, int neg, t_format *stvar)
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 {
 	int num;
 
@@ -64,7 +73,11 @@ int			add_num(char *str, int i, int neg, t_pw_var *stvar)
 	return (1);
 }
 
+<<<<<<< HEAD
 int			check_argv(char *str, t_pw_var *stvar)
+=======
+int		check_argv(char *str, t_format *stvar)
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 {
 	int i;
 	int neg;

@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/22 11:32:22 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/24 19:59:24 by svan-der      ########   odam.nl         */
+/*   Created: 2019/02/22 11:32:22 by svan-der       #+#    #+#                */
+/*   Updated: 2019/12/21 17:09:34 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/list.h"
+#include "list.h"
 
 t_list	*ft_lstnew(const void *content, size_t content_size)
 {

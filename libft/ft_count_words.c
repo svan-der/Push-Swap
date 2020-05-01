@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/21 16:03:05 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/24 20:42:25 by svan-der      ########   odam.nl         */
+/*   Created: 2019/02/21 16:03:05 by svan-der       #+#    #+#                */
+/*   Updated: 2019/11/11 16:39:02 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 size_t		ft_count_words(char const *s, char c)
 {

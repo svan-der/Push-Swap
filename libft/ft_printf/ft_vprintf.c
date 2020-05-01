@@ -5,12 +5,22 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2019/10/12 15:08:04 by svan-der      #+#    #+#                 */
 /*   Updated: 2020/04/30 11:56:27 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf/ft_printf.h"
+=======
+/*   Created: 2019/10/12 15:08:04 by svan-der       #+#    #+#                */
+/*   Updated: 2020/02/08 17:48:28 by svan-der      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_printf/ft_printf.h"
+#include "../includes/ft_printf/fndm.h"
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 
 /*
 ** dynamically allocate a new string with malloc

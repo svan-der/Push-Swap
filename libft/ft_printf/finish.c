@@ -5,12 +5,21 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2019/11/04 15:53:26 by svan-der      #+#    #+#                 */
 /*   Updated: 2020/04/30 12:19:41 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf/ft_printf.h"
+=======
+/*   Created: 2019/11/04 15:53:26 by svan-der       #+#    #+#                */
+/*   Updated: 2020/02/08 17:49:42 by svan-der      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_printf/ft_printf.h"
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 
 /*
 ** writes output from the buffer

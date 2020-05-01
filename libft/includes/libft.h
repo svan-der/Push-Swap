@@ -5,8 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2019/02/21 16:38:44 by svan-der      #+#    #+#                 */
 /*   Updated: 2020/04/30 22:24:31 by svan-der      ########   odam.nl         */
+=======
+/*   Created: 2019/02/21 16:38:44 by svan-der       #+#    #+#                */
+/*   Updated: 2019/12/21 17:18:59 by svan-der      ########   odam.nl         */
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 /*                                                                            */
 /* ************************************************************************** */
 

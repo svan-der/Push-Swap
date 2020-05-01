@@ -5,8 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
 /*   Updated: 2020/04/30 23:11:33 by svan-der      ########   odam.nl         */
+=======
+/*   Created: 2020/02/10 15:52:42 by svan-der       #+#    #+#                */
+/*   Updated: 2020/03/14 17:52:00 by svan-der      ########   odam.nl         */
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +112,7 @@ void *ft_calloc(size_t count, size_t size)
 
 int run_pw(t_pw_var *stvar)
 {
+<<<<<<< HEAD
 	// if (stvar->argc > 3)
 	// 	divide_list(stvar);
 	// else
@@ -145,3 +151,12 @@ int		main(int argc, char **argv)
 	// push_swap(&stvar);
 	return (1);
 }
+=======
+	if (stvar->argc > 3)
+		divide_list(stvar);
+	else
+		sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
+	printf("total number of instructions:|%i|\n\n", stvar->total_ins);
+	return (1);
+}
+>>>>>>> parent of eb144b2... Modified Makefile and add README file

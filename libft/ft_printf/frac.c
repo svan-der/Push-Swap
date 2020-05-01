@@ -5,12 +5,21 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2019/12/22 01:29:46 by svan-der      #+#    #+#                 */
 /*   Updated: 2020/04/30 12:07:59 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf/ftoa.h"
+=======
+/*   Created: 2019/12/22 01:29:46 by svan-der       #+#    #+#                */
+/*   Updated: 2020/02/08 17:51:45 by svan-der      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_printf/ftoa.h"
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 
 static int	check_five(t_ldbl val, t_ull i, int x, int round)
 {

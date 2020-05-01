@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/24 18:09:28 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/24 20:00:02 by svan-der      ########   odam.nl         */
+/*   Created: 2019/02/24 18:09:28 by svan-der       #+#    #+#                */
+/*   Updated: 2019/11/11 16:52:03 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 char		*ft_memdup(void const *content, size_t content_size)
 {

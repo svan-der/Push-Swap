@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/21 16:08:21 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/24 20:42:20 by svan-der      ########   odam.nl         */
+/*   Created: 2019/02/21 16:08:21 by svan-der       #+#    #+#                */
+/*   Updated: 2019/11/11 16:39:07 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 char	*ft_find_word(char const *s, char c)
 {

@@ -5,12 +5,18 @@
 #                                                      +:+                     #
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
+<<<<<<< HEAD
 #    Created: 2019/02/11 15:22:00 by svan-der      #+#    #+#                  #
 #    Updated: 2020/04/30 23:33:41 by svan-der      ########   odam.nl          #
+=======
+#    Created: 2019/02/11 15:22:00 by svan-der       #+#    #+#                 #
+#    Updated: 2020/02/13 16:52:35 by svan-der      ########   odam.nl          #
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+<<<<<<< HEAD
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -g
 # INCL = ./includes
@@ -19,6 +25,12 @@ PRINTF_HEADER = -I./includes/printf
 PRINTF_DIR = ft_printf
 LIB_OBJDIR = objects
 PRINTF_OBJDIR = ft_printf/objects
+=======
+CC = gcc
+FLAGS = -g -Wall -Wextra -Werror
+LIB_HEADER = -Iincludes/
+PRINT_HEADER = -I./includes/ft_printf
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 
 LIB_SRC = ft_memchr.c ft_putnbr_fd.c ft_striter.c\
 	ft_strnew.c ft_atoi.c ft_abs.c ft_pow.c\
@@ -30,23 +42,27 @@ LIB_SRC = ft_memchr.c ft_putnbr_fd.c ft_striter.c\
 	ft_isdigit.c ft_strcmp.c ft_min_max.c ft_numlen.c\
 	ft_strcpy.c ft_strncat.c ft_strsplit.c\
 	ft_strdel.c ft_memalloc.c get_next_line.c\
-	ft_memccpy.c ft_putnbr.c ft_intround.c ft_memdup.c\
+	ft_memccpy.c ft_putnbr.c \
 	ft_strtrim.c ft_strarrdel.c ft_find_word.c ft_lstmap.c\
 	ft_count_words.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c\
-	ft_lstadd.c ft_lstiter.c\
+	ft_lstadd.c ft_lstiter.c ft_memdup.c ft_intround.c\
 
-PRINTF_SRC = dispatch.c finish.c frac.c ft_ftoap.c ft_ldtoap.c\
-			ft_printf.c ft_vprintf.c ftoa.c getarg.c ntoap.c\
-			padding.c parsing.c utils.c\
+PRINT_SRC = dispatch.c finish.c frac.c ft_ftoap.c ft_ldtoap.c\
+			ft_ftoap.c ft_ldtoap.c ft_printf.c ft_vprintf.c\
+			ftoa.c getarg.c ntoap.c padding.c parsing.c utils.c\
 
-LIB_OBJ = $(LIB_SRC:%.c=$(LIB_OBJDIR)/%.o)
-PRINTF_OBJ = $(PRINTF_SRC:%.c=$(PRINTF_OBJDIR)/%.o)
+OBJ = $(LIB_SRC:%.c=%.o)		
+PRINT_DIR = ft_printf/
+PRINT_OBJ = $(PRINT_SRC:%.c=$(PRINT_DIR)%.o)
 
 all: $(NAME)
 
-$(NAME): $(LIB_OBJ) $(PRINTF_OBJ)
-	ar rcs $(NAME) $(LIB_OBJ) $(PRINTF_OBJ)
+$(NAME): $(OBJ) $(PRINT_OBJ)
+	@echo "$(PURPLE)Compiling libft$(RESET)"
+	ar rcs $(NAME) $(OBJ) $(PRINT_OBJ)
+	@echo "$(GREEN)Libft ready!$(RESET)"
 
+<<<<<<< HEAD
 # $(NAME): $(LIB_OBJ)
 # 	ar rcs $(NAME) $(LIB_OBJ)
 
@@ -62,12 +78,32 @@ $(PRINTF_OBJDIR):
 $(PRINTF_OBJDIR)/%.o: $(PRINTF_DIR)/%.c | $(PRINTF_OBJDIR)
 	$(CC) $(CFLAGS) $(HEADER) $(PRINTF_HEADER) -c $< -o $@
 	# $(CC) -c -o $@ $<
+=======
+$(PRINT_DIR)%.o: %.c
+	$(CC) $(FLAGS) $(PRINT_HEADER) $(LIB_HEADER) -c -o $@ $<
+
+%.o: %.c
+	$(CC) $(FLAGS) $(LIB_HEADER) -c -o $@ $<	
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 
 clean:
-	rm -rf $(LIB_OBJDIR)
-	rm -rf $(PRINTF_OBJDIR)
+	@echo "$(RED)Deleting object files...$(RESET)"
+	rm -f $(OBJ)
+	rm -f $(PRINT_OBJ)
+	@echo "$(GREEN)Libft clean!$(RESET)"
 
 fclean: clean
+	@echo "$(RED)Deleting executables...$(RESET)"
 	rm -f $(NAME)
+	@echo "$(GREEN)Libft fclean!$(RESET)"
 
 re: fclean all
+
+rebug: fclean debug
+
+.PHONY: all so clean fclean re debug rebug libft
+
+RED	= \033[0;31m
+PURPLE = \033[0;35m
+GREEN =	\033[0;32m
+RESET = \033[0m

@@ -5,8 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2019/11/04 16:42:11 by svan-der      #+#    #+#                 */
 /*   Updated: 2020/04/30 16:49:14 by svan-der      ########   odam.nl         */
+=======
+/*   Created: 2019/11/04 16:42:11 by svan-der       #+#    #+#                */
+/*   Updated: 2020/02/13 16:55:16 by svan-der      ########   odam.nl         */
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +31,5 @@ double		ft_dabs(double n);
 t_ldbl		ft_ldabs(t_ldbl n);
 t_ull		ft_abs(t_llong n);
 t_u128		ft_pow(t_u128 n, t_u128 pow);
+int			ft_intround(double n);
 #endif

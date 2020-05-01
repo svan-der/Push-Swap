@@ -5,12 +5,17 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2019/12/10 17:10:10 by svan-der      #+#    #+#                 */
 /*   Updated: 2020/04/30 16:56:53 by svan-der      ########   odam.nl         */
+=======
+/*   Created: 2019/12/10 17:10:10 by svan-der       #+#    #+#                */
+/*   Updated: 2019/12/10 17:14:29 by svan-der      ########   odam.nl         */
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/mathlib.h"
+#include "mathlib.h"
 
 t_u128	ft_pow(t_u128 n, t_u128 pow)
 {

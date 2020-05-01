@@ -5,8 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2020/03/12 11:56:55 by svan-der      #+#    #+#                 */
 /*   Updated: 2020/04/30 23:08:40 by svan-der      ########   odam.nl         */
+=======
+/*   Created: 2020/03/12 11:56:55 by svan-der       #+#    #+#                */
+/*   Updated: 2020/03/14 17:25:07 by svan-der      ########   odam.nl         */
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +19,11 @@
 #include "../includes/checker.h"
 #include "../includes/push_swap.h"
 
+<<<<<<< HEAD
 void 	update_size(t_pw_var *stvar, char *str, int instr)
+=======
+void update_size(t_format *stvar, char *str, int instr)
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 {
 	int mod;
 
@@ -28,7 +37,11 @@ void 	update_size(t_pw_var *stvar, char *str, int instr)
 	stvar->total_ins += instr;
 }
 
+<<<<<<< HEAD
 int 	dispatch_sort(t_pw_var *stvar, char *str, int instr)
+=======
+int dispatch_sort(t_format *stvar, char *str, int instr)
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 {
 	int ret;
 

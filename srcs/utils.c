@@ -5,8 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
 /*   Updated: 2020/04/30 17:43:44 by svan-der      ########   odam.nl         */
+=======
+/*   Created: 2020/01/14 11:32:31 by svan-der       #+#    #+#                */
+/*   Updated: 2020/03/10 14:31:56 by svan-der      ########   odam.nl         */
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +25,7 @@ void	content_delete(int *content, size_t size)
 	(void)size;
 }
 
-int		error_handler(int ret)
+int	error_handler(int ret)
 {
 	if (ret == 0)
 		ft_putstr_fd("Invalid argument\n", 2);

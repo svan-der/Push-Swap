@@ -5,12 +5,17 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2019/02/24 18:46:22 by svan-der      #+#    #+#                 */
 /*   Updated: 2020/04/30 10:44:24 by svan-der      ########   odam.nl         */
+=======
+/*   Created: 2019/02/24 18:46:22 by svan-der       #+#    #+#                */
+/*   Updated: 2019/11/11 16:39:57 by svan-der      ########   odam.nl         */
+>>>>>>> parent of eb144b2... Modified Makefile and add README file
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/list.h"
+#include "list.h"
 
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {

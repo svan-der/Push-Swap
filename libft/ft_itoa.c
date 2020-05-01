@@ -5,12 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/05 15:48:35 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/24 20:43:21 by svan-der      ########   odam.nl         */
+/*   Created: 2019/02/05 15:48:35 by svan-der       #+#    #+#                */
+/*   Updated: 2019/12/21 17:14:24 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
+#include "mathlib.h"
 
 size_t	ft_count_num(t_llong num)
 {

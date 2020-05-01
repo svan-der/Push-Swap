@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/24 09:51:25 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/24 20:02:47 by svan-der      ########   odam.nl         */
+/*   Created: 2019/01/24 09:51:25 by svan-der       #+#    #+#                */
+/*   Updated: 2019/11/15 19:11:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 int		ft_strcpnew(char **str, size_t size, char c)
 {
