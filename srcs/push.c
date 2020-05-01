@@ -5,14 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/10 12:08:03 by svan-der      ########   odam.nl         */
+/*   Created: 2020/01/15 15:51:18 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/30 17:41:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-#include "psw_env.h"
-#include <stdio.h>
+#include "../includes/checker.h"
+#include "../includes/psw_env.h"
 
 int		swap_a(t_stack **stack_a)
 {
@@ -65,12 +64,12 @@ int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 
 	temp = *stack_a;
 	temp1 = *stack_b;
-	printf("inside swap ss\n");
+	ft_printf("inside swap ss\n");
 	if (temp != NULL && temp->next != NULL)
 		swap_a(stack_a);
 	if ((temp1 != NULL && temp1->next != NULL))
 	{
-		printf("in swap_b\n");
+		ft_printf("in swap_b\n");
 		swap_b(stack_b);
 	}
 	print_stack(*stack_a, 1);
@@ -98,7 +97,7 @@ int		push_b(t_stack **stack_a, t_stack **stack_b)
 		return (0);
 	tmp = (*stack_a)->next;
 	(*stack_a)->next = NULL;
-	printf("in stack_b:|%d|\n", (*(*stack_a)->num));
+	ft_printf("in stack_b:|%d|\n", (*(*stack_a)->num));
 	fill_stack_begin(stack_b, (*stack_a));
 	*stack_a = tmp;
 	if (*stack_a && (*stack_a)->next != NULL)
@@ -116,7 +115,7 @@ int		push_a(t_stack **stack_a, t_stack **stack_b)
 		return (0);
 	tmp = (*stack_b)->next;
 	(*stack_b)->next = NULL;
-	printf("in stack_b:|%d|\n", (*(*stack_b)->num));
+	ft_printf("in stack_b:|%d|\n", (*(*stack_b)->num));
 	fill_stack_begin(stack_a, (*stack_b));
 	*stack_b = tmp;
 	if (*stack_b && (*stack_b)->next != NULL)

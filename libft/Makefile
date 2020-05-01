@@ -6,7 +6,7 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/11 15:22:00 by svan-der      #+#    #+#                  #
-#    Updated: 2020/04/30 11:43:28 by svan-der      ########   odam.nl          #
+#    Updated: 2020/04/30 23:33:41 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CC = clang
 CFLAGS = -Wall -Wextra -Werror -g
 # INCL = ./includes
 HEADER = -I./includes
+PRINTF_HEADER = -I./includes/printf
 PRINTF_DIR = ft_printf
 LIB_OBJDIR = objects
 PRINTF_OBJDIR = ft_printf/objects
@@ -49,18 +50,18 @@ $(NAME): $(LIB_OBJ) $(PRINTF_OBJ)
 # $(NAME): $(LIB_OBJ)
 # 	ar rcs $(NAME) $(LIB_OBJ)
 
-# $(LIB_OBJDIR):
-# 	mkdir $@
 
 $(LIB_OBJDIR)/%.o: %.c
 	mkdir -p $(LIB_OBJDIR)
 	$(CC) -c -o $@ $<
 	$(CC) $(CFLAGS) $(HEADER) -c -o $@ $<
 
-$(PRINTF_OBJDIR)/%.o: $(PRINTF_DIR)/%.c $(INCL)
-	mkdir -p $(PRINTF_OBJDIR)
-	$(CC) -c -o $@ $<
-	$(CC) $(CFLAGS) -c -o $@ $<
+$(PRINTF_OBJDIR):
+	mkdir $@
+
+$(PRINTF_OBJDIR)/%.o: $(PRINTF_DIR)/%.c | $(PRINTF_OBJDIR)
+	$(CC) $(CFLAGS) $(HEADER) $(PRINTF_HEADER) -c $< -o $@
+	# $(CC) -c -o $@ $<
 
 clean:
 	rm -rf $(LIB_OBJDIR)

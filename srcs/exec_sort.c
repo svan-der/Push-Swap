@@ -6,14 +6,15 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/12 11:56:55 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/29 16:33:23 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 23:08:40 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "psw_env.h"
-#include "push_swap.h"
+#include "../includes/psw_env.h"
+#include "../includes/checker.h"
+#include "../includes/push_swap.h"
 
-void 	update_size(t_format *stvar, char *str, int instr)
+void 	update_size(t_pw_var *stvar, char *str, int instr)
 {
 	int mod;
 
@@ -27,7 +28,7 @@ void 	update_size(t_format *stvar, char *str, int instr)
 	stvar->total_ins += instr;
 }
 
-int 	dispatch_sort(t_format *stvar, char *str, int instr)
+int 	dispatch_sort(t_pw_var *stvar, char *str, int instr)
 {
 	int ret;
 

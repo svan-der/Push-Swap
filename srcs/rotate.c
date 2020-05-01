@@ -5,14 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/23 16:15:26 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/06 16:25:34 by svan-der      ########   odam.nl         */
+/*   Created: 2020/01/23 16:15:26 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/30 17:41:53 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "psw_env.h"
-#include "checker.h"
-#include <stdio.h>
+#include "../includes/psw_env.h"
+#include "../includes/checker.h"
 
 int		rotate_rr(t_stack **stack_a, t_stack **stack_b)
 {
@@ -23,12 +22,12 @@ int		rotate_rr(t_stack **stack_a, t_stack **stack_b)
 	temp1 = *stack_b;
 	if (temp != NULL && temp->next != NULL)
 	{
-		printf("rotate_a on\n\n");
+		ft_printf("rotate_a on\n\n");
 		rotate_a(stack_a);
 	}
 	if (temp1 != NULL && temp1->next != NULL)
 	{
-		printf("rotate_b on\n\n");
+		ft_printf("rotate_b on\n\n");
 		rotate_b(stack_b);
 	}
 	print_stack(*stack_a, 1);
@@ -54,7 +53,7 @@ int		rotate_b(t_stack **stack_b)
 		(*stack_b)->next = NULL;
 		*stack_b = new;
 		print_stack_b(*stack_b, 1);
-		printf("\n");
+		ft_printf("\n");
 	}
 	return (1);
 }
@@ -78,7 +77,7 @@ int		rotate_revb(t_stack **stack_b)
 		temp->prev = NULL;
 		*stack_b = temp;
 		print_stack_b(*stack_b, 1);
-		printf("\n");
+		ft_printf("\n");
 	}
 	return (1);
 }
@@ -102,7 +101,7 @@ int		rotate_reva(t_stack **stack_a)
 		temp->prev = NULL;
 		*stack_a = temp;
 		print_stack(*stack_a, 1);
-		printf("\n");
+		ft_printf("\n");
 	}
 	return (1);
 }
@@ -124,7 +123,7 @@ int		rotate_a(t_stack **stack_a)
 		(*stack_a)->next = NULL;
 		*stack_a = new;
 		print_stack(*stack_a, 1);
-		printf("\n");
+		ft_printf("\n");
 	}
 	return (1);
 }

@@ -6,12 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/30 12:37:31 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 19:23:47 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-// #include "psw_env.h"
+#include "../../includes/checker.h"
+// #include "../../includes/psw_env.h"
 #include <stdio.h>
 
 int		check_instruction(t_stack **stack_a, t_stack **stack_b, char *line)
@@ -55,21 +55,21 @@ int		get_instruction(t_pw_var *stvar)
 	ft_bzero(&inst, sizeof(t_inst));
 	while (ret)
 	{
-		printf("begin\n");
+		ft_printf("begin\n");
 		ret = check_instruction(&stvar->stack_a, &stvar->stack_b, line);
-		printf("This is ret:%d\n", ret);
+		ft_printf("This is ret:%d\n", ret);
 		if (ret == -1)
 			return (print_instructions(stvar->inst_lst, ret));
 		if (ret == 0)
 			break ;
 		put_instruction(&stvar->inst_lst, line);
 		ret = get_next_line(0, &line);
-		printf("This is ret after gnl:%d\n\n", ret);
+		ft_printf("This is ret after gnl:%d\n\n", ret);
 	}
 	print_instructions(stvar->inst_lst, ret);
 	print_stack(stvar->stack_a, 1);
 	print_stack_b(stvar->stack_b, 1);
 	ret = check_sorted(stvar->stack_a, stvar->stack_b);
-	printf("This is ret after check_sorted:%d\n", ret);
+	ft_printf("This is ret after check_sorted:%d\n", ret);
 	return (1);
 }

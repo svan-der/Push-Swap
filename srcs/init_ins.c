@@ -5,13 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/06 14:50:30 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/06 18:40:36 by svan-der      ########   odam.nl         */
+/*   Created: 2020/02/06 14:50:30 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/30 17:44:12 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "psw_env.h"
-#include <stdio.h>
+#include "../includes/psw_env.h"
 
 int		print_instructions(t_inst *inst_lst, int ret)
 {
@@ -21,16 +20,16 @@ int		print_instructions(t_inst *inst_lst, int ret)
 	{
 		tail = inst_lst;
 		if (ret != -1)
-			printf("operation: |%s|\n", inst_lst->operation);
+			ft_printf("operation: |%s|\n", inst_lst->operation);
 		if (inst_lst->next != NULL)
 			free(inst_lst->operation);
 		inst_lst = inst_lst->next;
 	}
 	if (ret != -1)
-		printf("OK\n");
+		ft_printf("OK\n");
 	else
-		printf("Error\n");
-	printf("ret is: %d\n", ret);
+		ft_printf("Error\n");
+	ft_printf("ret is: %d\n", ret);
 	return (1);
 }
 

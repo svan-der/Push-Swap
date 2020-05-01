@@ -6,13 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:44:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/30 12:36:02 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 23:37:36 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "psw_env.h"
-#include "checker.h"
-#include <stdio.h>
+#include "../../includes/checker.h"
 
 // void	debug(t_stack **stack_a, t_stack **stack_b)
 // {
@@ -45,7 +44,7 @@
 // 	// print_stack(*stack_a, 1);
 // 	// print_stack_b(*stack_b, 1);
 // 	ret = check_sorted(*stack_a, *stack_b);
-// 	printf("This is ret after check_sorted:|%d|\n", ret);
+// 	ft_printf("This is ret after check_sorted:|%d|\n", ret);
 // }
 // // 	// rotate_rr(stack_a, stack_b);
 // // 	// push_b(stack_a, stack_b);
@@ -66,8 +65,12 @@ int		main(int argc, char **argv)
 	char		*str;
 	int			ret;
 	int			i;
+	int			number;
 
 	i = 1;
+	number = 450;
+	ft_printf("here\n");
+	ft_printf("now it is a num: %d\n\n", number);
 	ft_bzero(&stvar, sizeof(t_pw_var));
 	stvar.argc = argc;
 	if (argc < 2)

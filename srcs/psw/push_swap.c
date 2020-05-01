@@ -6,12 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/25 19:02:32 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 23:11:33 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "../../includes/push_swap.h"
+#include "../../includes/psw_env.h"
 
 void print_array(int *list, int argc)
 {
@@ -20,12 +20,12 @@ void print_array(int *list, int argc)
 	i = 0;
 	while (i < argc)
 	{
-		printf("this is number:%i\n", list[i]);
+		ft_printf("this is number:%i\n", list[i]);
 		i++;
 	}
 }
 
-void	set_min_maxarray(t_format *stvar, int *list, int len)
+void	set_min_maxarray(t_pw_var *stvar, int *list, int len)
 {
 	int i;
 	int num;
@@ -105,26 +105,26 @@ void *ft_calloc(size_t count, size_t size)
 	return (res);
 }
 
-int run_pw(t_format *stvar)
+int run_pw(t_pw_var *stvar)
 {
 	// if (stvar->argc > 3)
 	// 	divide_list(stvar);
 	// else
 	// 	sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
 	// sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
-	printf("total number of instructions:|%i|\n\n", stvar->total_ins);
+	ft_printf("total number of instructions:|%i|\n\n", stvar->total_ins);
 	return (1);
 }
 
 int		main(int argc, char **argv)
 {
-	t_format	stvar;
+	t_pw_var	stvar;
 	char		*str;
 	int			ret;
 	int			i;
 
 	i = 1;
-	ft_bzero(&stvar, sizeof(t_format));
+	ft_bzero(&stvar, sizeof(t_pw_var));
 	stvar.argc = argc;
 	if (argc < 2)
 		return (0);

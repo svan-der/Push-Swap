@@ -6,17 +6,17 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/30 12:38:32 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 17:42:26 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PSW_ENV_H
 # define PSW_ENV_H
-# include "../libft/includes/list.h"
 # include "../libft/includes/libft.h"
-# include "../libft/includes/libdefs.h"
-# include "../libft/includes/mathlib.h"
-# include "../libft/includes/get_next_line.h"
+# include "../libft/includes/printf/ft_printf.h"
+// # include "checker.h"
+# include "psw_env.h"
+
 // # include "checker.h"
 # define SA "sa"
 # define SB "sb"

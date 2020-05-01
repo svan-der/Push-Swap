@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/12 11:22:12 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/12 13:14:28 by svan-der      ########   odam.nl         */
+/*   Created: 2020/03/12 11:22:12 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/30 23:09:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 // void sort_three_opt1(t_format *stvar, t_stack *stack, int min, int max)
 // {

@@ -6,15 +6,15 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:10:20 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/29 17:37:45 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/04/30 23:10:33 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "psw_env.h"
-#include "checker.h"
+#include "../../includes/push_swap.h"
+#include "../../includes/psw_env.h"
+#include "../../includes/checker.h"
 
-// void	debug(t_format *stvar)
+// void	debug(t_pw_var *stvar)
 // {
 // 	int *list;
 	
@@ -59,7 +59,7 @@ int		pw_check(t_pw_var *stvar, t_stack *stack_a)
 	return (check);
 }
 
-int		push_swap(t_format *stvar)
+int		push_swap(t_pw_var *stvar)
 {
 	int	ret;
 
@@ -75,13 +75,13 @@ int		push_swap(t_format *stvar)
 
 int		main(int argc, char **argv)
 {
-	t_format	stvar;
+	t_pw_var	stvar;
 	char		*str;
 	int			ret;
 	int			i;
 
 	i = 1;
-	ft_bzero(&stvar, sizeof(t_format));
+	ft_bzero(&stvar, sizeof(t_pw_var));
 	stvar.argc = argc;
 	if (argc < 2)
 		return (0);

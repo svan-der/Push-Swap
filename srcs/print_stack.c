@@ -5,14 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/04 16:33:59 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 22:03:08 by svan-der      ########   odam.nl         */
+/*   Created: 2020/02/04 16:33:59 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/04/30 17:40:10 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-#include "psw_env.h"
-#include <stdio.h>
+#include "../includes/checker.h"
+#include "../includes/psw_env.h"
 
 int		print_stack(t_stack *stack_a, int ret)
 {
@@ -22,16 +21,16 @@ int		print_stack(t_stack *stack_a, int ret)
 	{
 		tail = stack_a;
 		if (ret != -1)
-			printf("|%d|\n", (*stack_a->num));
+			ft_printf("|%d|\n", (*stack_a->num));
 		stack_a = stack_a->next;
 	}
 	if (ret != -1)
 	{
-		printf(" --\n");
-		printf(" A\n\n");
+		ft_printf(" --\n");
+		ft_printf(" A\n\n");
 	}
 	else
-		printf("Error\n");
+		ft_printf("Error\n");
 	return (1);
 }
 
@@ -43,15 +42,15 @@ int		print_stack_b(t_stack *stack_b, int ret)
 	{
 		tail = stack_b;
 		if (ret != -1)
-			printf("|%d|\n", (*stack_b->num));
+			ft_printf("|%d|\n", (*stack_b->num));
 		stack_b = stack_b->next;
 	}
 	if (ret != -1)
 	{
-		printf(" --\n");
-		printf(" B\n");
+		ft_printf(" --\n");
+		ft_printf(" B\n");
 	}
 	else
-		printf("Error\n");
+		ft_printf("Error\n");
 	return (1);
 }
