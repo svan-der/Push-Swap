@@ -5,10 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/28 17:02:11 by svan-der       #+#    #+#                */
-/*   Updated: 2019/10/15 13:38:30 by svan-der      ########   odam.nl         */
+/*   Created: 2019/01/28 17:02:11 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/05/01 12:33:48 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/libft.h"
 
 int		ft_whitespace(char c)
 {

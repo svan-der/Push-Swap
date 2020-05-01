@@ -5,21 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-<<<<<<< HEAD
 /*   Created: 2019/12/21 18:06:51 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/30 12:19:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/01 12:40:07 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf/ft_printf.h"
-=======
-/*   Created: 2019/12/21 18:06:51 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 17:50:26 by svan-der      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../includes/ft_printf/ft_printf.h"
->>>>>>> parent of eb144b2... Modified Makefile and add README file
+#include "../../includes/ft_printf.h"
 
 static t_list	ft_cspad(int i, t_spec *spec, size_t total, t_ntoa *pref)
 {

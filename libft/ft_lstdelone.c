@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/22 15:05:54 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/09 18:41:27 by svan-der      ########   odam.nl         */
+/*   Created: 2019/02/22 15:05:54 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/05/01 12:34:11 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "../includes/list.h"
 
 void	ft_lstpop(t_list **aparent, t_list *elem)
 {
@@ -31,12 +31,11 @@ void	ft_lstpop(t_list **aparent, t_list *elem)
 
 void	content_del(void *content, size_t size)
 {
-	if (content)
-		free(content);
+	free(content);
 	(void)size;
 }
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, int))
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
 	if (alst)
 	{

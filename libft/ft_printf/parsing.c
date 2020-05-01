@@ -5,22 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-<<<<<<< HEAD
 /*   Created: 2019/10/15 11:23:28 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/30 12:07:03 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/01 12:40:12 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf/ft_printf.h"
-=======
-/*   Created: 2019/10/15 11:23:28 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 17:50:47 by svan-der      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../includes/ft_printf/ft_printf.h"
-#include "../includes/ft_printf/fndm.h"
->>>>>>> parent of eb144b2... Modified Makefile and add README file
+#include "../../includes/ft_printf.h"
 
 /*
 ** checks how the integer or float must be represented

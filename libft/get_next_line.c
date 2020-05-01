@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/27 12:20:11 by svan-der       #+#    #+#                */
-/*   Updated: 2020/01/10 16:57:53 by svan-der      ########   odam.nl         */
+/*   Created: 2019/03/27 12:20:11 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/05/01 12:37:39 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 static int		last_line(char **line, char **buff, int ret)
 {
@@ -51,7 +51,7 @@ static char		*read_buff(const int fd, char *str, char *buff, int *ret)
 {
 	char *tmp;
 
-	*ret = (int)read(fd, str, BUFFER_SIZE);
+	*ret = (int)read(fd, str, BUFF_SIZE);
 	if (*ret < 0)
 		return (NULL);
 	str[*ret] = '\0';
@@ -66,7 +66,7 @@ static char		*read_buff(const int fd, char *str, char *buff, int *ret)
 static int		check_buff(char **buff, const int fd, char **line)
 {
 	if (!(*buff))
-		*buff = ft_strnew(BUFFER_SIZE);
+		*buff = ft_strnew(BUFF_SIZE);
 	if (fd < 0 || !buff || !line)
 	{
 		if (buff)
@@ -79,7 +79,7 @@ static int		check_buff(char **buff, const int fd, char **line)
 int				get_next_line(const int fd, char **line)
 {
 	static char *buff;
-	char		str[BUFFER_SIZE + 1];
+	char		str[BUFF_SIZE + 1];
 	char		*fndnwl;
 	int			ret;
 

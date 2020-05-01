@@ -5,21 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-<<<<<<< HEAD
 /*   Created: 2019/12/23 00:32:50 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/30 11:54:11 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/01 12:39:38 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf/ft_printf.h"
-=======
-/*   Created: 2019/12/23 00:32:50 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 17:53:13 by svan-der      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../includes/ft_printf/ft_printf.h"
->>>>>>> parent of eb144b2... Modified Makefile and add README file
+#include "../../includes/ft_printf.h"
 
 int		ft_asprintf(char **str, const char *format, ...)
 {

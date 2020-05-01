@@ -5,21 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-<<<<<<< HEAD
 /*   Created: 2019/12/10 14:03:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/30 12:02:17 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/01 12:39:48 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf/ftoa.h"
-=======
-/*   Created: 2019/12/10 14:03:57 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 17:50:16 by svan-der      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../includes/ft_printf/ft_printf.h"
->>>>>>> parent of eb144b2... Modified Makefile and add README file
+#include "../../includes/ft_printf.h"
 
 static int	check_sign(t_ldbl value)
 {

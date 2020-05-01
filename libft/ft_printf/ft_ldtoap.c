@@ -5,21 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-<<<<<<< HEAD
 /*   Created: 2019/12/10 14:54:16 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/30 11:53:59 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/01 12:39:34 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf/ftoa.h"
-=======
-/*   Created: 2019/12/10 14:54:16 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/08 17:51:59 by svan-der      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../includes/ft_printf/ftoa.h"
->>>>>>> parent of eb144b2... Modified Makefile and add README file
+#include "../../includes/ftoa.h"
 
 static char		*make_flstr(char *str, t_dtoa *dtoa, t_ntoa *pref, size_t len)
 {
