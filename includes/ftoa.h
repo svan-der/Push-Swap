@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 14:11:54 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 16:00:09 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/02 18:29:49 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "mathlib.h"
 # include "fndm.h"
 # include "ntoa.h"
+# include "list.h"
 
 typedef struct	s_opt
 {
