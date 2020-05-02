@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/12 15:09:50 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 15:59:11 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/02 18:36:07 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 # include "libft.h"
 # include "list.h"
-# include "mathlib.h"
 # include "fndm.h"
 # include "ntoa.h"
 # include "ftoa.h"

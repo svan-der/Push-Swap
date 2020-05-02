@@ -6,13 +6,14 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/12 15:35:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/24 20:54:19 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/02 18:34:14 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBDEFS_H
 # define LIBDEFS_H
 # include <string.h>
+# include "libft.h"
 # define HEX "0123456789abcdef"
 # define HEX_UP "0123456789ABCDEF"
 # define TRUE 1
