@@ -6,13 +6,13 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/29 16:32:40 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/01 15:47:12 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "checker.h"
-#include "psw_env.h"
+#include "../includes/checker.h"
+#include "../includes/psw_env.h"
 
 void	content_delete(int *content, size_t size)
 {

@@ -6,18 +6,21 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 12:42:13 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/02 18:19:47 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PSW_ENV_H
 # define PSW_ENV_H
-# include "list.h"
+
 # include "libft.h"
-# include "libdefs.h"
-# include "mathlib.h"
-# include "get_next_line.h"
 # include "checker.h"
+# include "push_swap.h"
+// # include "list.h"
+// # include "libdefs.h"
+// # include "mathlib.h"
+// # include "get_next_line.h"
+// # include "ft_printf.h"
 # define SA "sa"
 # define SB "sb"
 # define SS "ss"
@@ -60,7 +63,7 @@ typedef struct		s_stack
 // 	t_operate	arr_os[6];
 // }				t_opt;
 
-typedef struct		s_format
+typedef struct		s_pw_var
 {
 	int				argc;
 	int				index;
@@ -73,9 +76,9 @@ typedef struct		s_format
 	t_inst			*inst_lst;
 	t_stack			*stack_a;
 	t_stack			*stack_b;
-}					t_format;
+}					t_pw_var;
 
-int 				dispatch_sort(t_format *stvar, char *str, int ins);
+int 				dispatch_sort(t_pw_var *stvar, char *str, int ins);
 int					print_instructions(t_inst *inst_lst, int ret);
 t_inst				*create_instruction(char *line);
 void				put_instruction(t_inst **inst_lst, char *line);
@@ -104,10 +107,10 @@ void				content_delete(int *content, size_t size);
 // t_stack				*ft_stackpop(t_stack **stack_lst);
 t_stack				*reverse_list(t_stack **new);
 int					check_sorted(t_stack *stack_a, t_stack *stack_b);
-int					check_argv(char *str, t_format *stvar);
+int					check_argv(char *str, t_pw_var *stvar);
 // void				debug(t_stack **stack_a, t_stack **stack_b);
 int					error_handler(int ret);
-void				debug(t_format *stvar);
-int					run_checker(t_format *stvar);
+void				debug(t_pw_var *stvar);
+int					run_checker(t_pw_var *stvar);
 int					check_instruction(t_stack **stack_a, t_stack **stack_b, char *line);
 #endif

@@ -5,13 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/04 16:33:59 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/07 22:03:08 by svan-der      ########   odam.nl         */
+/*   Created: 2020/02/04 16:33:59 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/05/01 15:45:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-#include "psw_env.h"
+#include "../includes/checker.h"
+#include "../includes/psw_env.h"
 #include <stdio.h>
 
 int		print_stack(t_stack *stack_a, int ret)

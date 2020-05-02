@@ -5,13 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/15 15:51:18 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/10 12:08:03 by svan-der      ########   odam.nl         */
+/*   Created: 2020/01/15 15:51:18 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/05/01 15:46:21 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-#include "psw_env.h"
+#include "../includes/checker.h"
+#include "../includes/psw_env.h"
 #include <stdio.h>
 
 int		swap_a(t_stack **stack_a)

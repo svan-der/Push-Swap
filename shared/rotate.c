@@ -5,13 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/23 16:15:26 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/06 16:25:34 by svan-der      ########   odam.nl         */
+/*   Created: 2020/01/23 16:15:26 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/05/01 15:46:37 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "psw_env.h"
-#include "checker.h"
+#include "../includes/psw_env.h"
+#include "../includes/checker.h"
 #include <stdio.h>
 
 int		rotate_rr(t_stack **stack_a, t_stack **stack_b)

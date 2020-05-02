@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/12 15:09:50 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/24 20:53:13 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/01 15:59:11 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "libft.h"
 # include "list.h"
 # include "mathlib.h"
+# include "fndm.h"
 # include "ntoa.h"
 # include "ftoa.h"
 # include <stdarg.h>

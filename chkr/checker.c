@@ -6,11 +6,11 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:44:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/29 16:35:16 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/02 18:20:20 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "psw_env.h"
+#include "../includes/checker.h"
 #include <stdio.h>
 
 // void	debug(t_stack **stack_a, t_stack **stack_b)
@@ -61,13 +61,17 @@
 
 int		main(int argc, char **argv)
 {
-	t_format	stvar;
+	t_pw_var	stvar;
 	char		*str;
 	int			ret;
 	int			i;
+	int 		number;
 
 	i = 1;
-	ft_bzero(&stvar, sizeof(t_format));
+	number = 2343;
+	// printf("this is the start\n\n");
+	printf("you write the number:%d\n\n", number);
+	ft_bzero(&stvar, sizeof(t_pw_var));
 	stvar.argc = argc;
 	if (argc < 2)
 		return (0);
@@ -83,6 +87,6 @@ int		main(int argc, char **argv)
 	print_stack(stvar.stack_a, 1);
 	print_stack_b(stvar.stack_b, 1);
 	// print(&stvar.stack_a, &stvar.stack_b);
-	// get_instruction(&stvar);
+	get_instruction(&stvar);
 	return (1);
 }

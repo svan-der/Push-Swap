@@ -1,10 +1,9 @@
 {
     "configurations": [
         {
-            "name": "Mac",
+            "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/includes/**",
-                "${workspaceFolder}/libft/includes/"
+                "${workspaceFolder}/includes/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",

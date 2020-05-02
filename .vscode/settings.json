@@ -1,7 +1,6 @@
 {
 	"files.associations": {
 		"checker.h": "c",
-		"stdio.h": "c",
 		"get_next_line.h": "c",
 		"libft.h": "c",
 		"psw_env.h": "c",

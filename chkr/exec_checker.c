@@ -5,13 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/10 14:34:26 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/10 15:03:33 by svan-der      ########   odam.nl         */
+/*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/05/02 18:13:08 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-#include "psw_env.h"
+#include "../includes/checker.h"
+#include "../includes/psw_env.h"
 #include <stdio.h>
 
 int		check_instruction(t_stack **stack_a, t_stack **stack_b, char *line)
@@ -43,7 +43,7 @@ int		check_instruction(t_stack **stack_a, t_stack **stack_b, char *line)
 	return (-1);
 }
 
-int		get_instruction(t_format *stvar)
+int		get_instruction(t_pw_var *stvar)
 {
 	char	*line;
 	int		ret;

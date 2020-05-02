@@ -6,12 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/29 16:33:07 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/01 15:48:16 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-#include "psw_env.h"
+#include "../includes/checker.h"
+#include "../includes/psw_env.h"
 
 t_stack		*create_stack(int num)
 {
@@ -45,7 +45,7 @@ int			stack_addnew(t_stack **stack, int num)
 	return (1);
 }
 
-int			add_num(char *str, int i, int neg, t_format *stvar)
+int			add_num(char *str, int i, int neg, t_pw_var *stvar)
 {
 	int num;
 
@@ -64,7 +64,7 @@ int			add_num(char *str, int i, int neg, t_format *stvar)
 	return (1);
 }
 
-int			check_argv(char *str, t_format *stvar)
+int			check_argv(char *str, t_pw_var *stvar)
 {
 	int i;
 	int neg;

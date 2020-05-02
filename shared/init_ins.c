@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/06 14:50:30 by svan-der       #+#    #+#                */
-/*   Updated: 2020/02/06 18:40:36 by svan-der      ########   odam.nl         */
+/*   Created: 2020/02/06 14:50:30 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/05/02 18:21:34 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "psw_env.h"
+#include "../includes/psw_env.h"
 #include <stdio.h>
 
 int		print_instructions(t_inst *inst_lst, int ret)
