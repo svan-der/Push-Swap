@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 15:47:12 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/05 23:10:21 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,23 @@ int		error_handler(int ret)
 
 int		check_sorted(t_stack *stack_a, t_stack *stack_b)
 {
+	t_stack *temp;
+
+	temp = stack_a;
 	printf("inside check sorted\n\n");
 	if (stack_b != NULL)
 	{
 		printf("KO\n");
 		return (-1);
 	}
-	while (stack_a != NULL && stack_a->next != NULL)
+	while (temp != NULL && temp->next != NULL)
 	{
-		if ((*stack_a->num) > (*stack_a->next->num))
+		if ((temp->num) > (temp->next->num))
 		{
 			printf("KO\n");
 			return (-1);
 		}
-		stack_a = stack_a->next;
+		temp = temp->next;
 	}
 	printf("OK\n");
 	return (1);

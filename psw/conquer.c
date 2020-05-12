@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/03 17:35:59 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/14 17:55:11 by svan-der      ########   odam.nl         */
+/*   Created: 2020/03/03 17:35:59 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/05/05 17:38:23 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 // 	}
 // }
 
-// void 	sort_unsorted(t_format *stvar, char c, int argc)
+// void 	sort_unsorted(t_pw_var *stvar, char c, int argc)
 // {
 // 	t_stack *stack;
 // 	int min;
@@ -74,7 +74,7 @@
 
 // }
 
-void	sort_and_pushback(t_format *stvar)
+void	sort_and_pushback(t_pw_var *stvar)
 {
 	if (stvar->stack_b == NULL)
 		return ;
@@ -87,7 +87,7 @@ void	sort_and_pushback(t_format *stvar)
 	}
 }
 
-void	push_short(t_format *stvar, int *list, int b_len)
+void	push_short(t_pw_var *stvar, int *list, int b_len)
 {
 	int part_len;
 	int argc;
@@ -106,7 +106,7 @@ void	push_short(t_format *stvar, int *list, int b_len)
 	// 	sort_short(stvar, 'b', part_len);
 }
 
-void	push_half(t_format *stvar, int *list, int b_len)
+void	push_half(t_pw_var *stvar, int *list, int b_len)
 {
 	int part_len;
 	int argc;
@@ -122,7 +122,7 @@ void	push_half(t_format *stvar, int *list, int b_len)
 	set_min_maxarray(stvar, list + part_len, part_len);
 }
 
-int		conquer_list(t_format *stvar, int *list)
+int		conquer_list(t_pw_var *stvar, int *list)
 {
 	int b_len;
 

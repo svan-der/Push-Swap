@@ -6,7 +6,7 @@
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/23 11:29:15 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 12:35:56 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 14:01:26 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n < -2147483648 || n > 2147483647)
-		return ;
 	if (n == 0)
 	{
 		ft_putchar_fd('0', fd);

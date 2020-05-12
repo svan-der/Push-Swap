@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/04 16:33:59 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 15:45:57 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/06 10:39:31 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@
 
 int		print_stack(t_stack *stack_a, int ret)
 {
-	t_stack *tail;
+	// t_stack *tail;
 
 	while (stack_a != NULL)
 	{
-		tail = stack_a;
+		// tail = stack_a;
 		if (ret != -1)
+		{
+			// printf("|this is tail : %d|\n", (*tail->num));
 			printf("|%d|\n", (*stack_a->num));
+		}
 		stack_a = stack_a->next;
 	}
 	if (ret != -1)

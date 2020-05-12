@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/15 11:23:28 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 12:40:12 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 17:12:41 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ static int		print_arg(t_format *fmt, const char *str, va_list ap)
 	alst = &fmt->buffer;
 	while (*alst != tail)
 		alst = &(*alst)->next;
-	ret = dispatch(alst, &spec, ap);
+	ret = dispatch(alst, &spec, ap, &fmt->argv);
 	if (ret == -1)
 		ft_lstpop(&fmt->buffer, fmt->buffer);
 	return (ret);
@@ -139,6 +139,7 @@ int				process(t_format *fmt, const char *str, va_list ap)
 	int			ret;
 
 	i = 0;
+	ret = 0;
 	fmt->argc = ft_strlen(str);
 	while (str[i])
 	{

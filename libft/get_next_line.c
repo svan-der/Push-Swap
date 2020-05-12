@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:20:11 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 12:37:39 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/11 16:08:47 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ int				get_next_line(const int fd, char **line)
 			return (-1);
 	}
 	ret = last_line(line, &buff, ret);
+	// ft_strdel(line);
 	return (ret);
 }

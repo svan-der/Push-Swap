@@ -6,12 +6,11 @@
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/22 15:05:54 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 15:43:33 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 13:57:36 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
-// #include "../includes/list.h"
+#include "../includes/list.h"
 
 void	ft_lstpop(t_list **aparent, t_list *elem)
 {

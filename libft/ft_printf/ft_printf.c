@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/23 00:32:50 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 12:39:38 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 17:17:06 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		ft_printf(const char *format, ...)
 	va_list ap;
 	int		ret;
 
+	ret = 0;
 	va_start(ap, format);
 	ret = ft_vprintf(format, ap);
 	va_end(ap);

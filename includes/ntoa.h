@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 17:54:21 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/02 18:37:06 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 17:11:22 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "ft_printf.h"
 // # include "libft.h"
 // # include "mathlib.h"
+
 
 typedef struct	s_ntoa
 {

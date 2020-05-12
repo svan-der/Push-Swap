@@ -6,12 +6,13 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/12 11:56:55 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 15:47:46 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/02 18:59:06 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/checker.h"
 #include "../includes/psw_env.h"
-#include "../includes/push_swap.h"
+// #include "../includes/push_swap.h"
 
 void 	update_size(t_pw_var *stvar, char *str, int instr)
 {

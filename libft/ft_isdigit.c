@@ -6,11 +6,12 @@
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/28 10:53:12 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 12:33:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 13:56:45 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+#include "../includes/libdefs.h"
 
 int		ft_isdigit_base(char c, unsigned int base)
 {

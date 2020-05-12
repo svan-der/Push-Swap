@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/02 18:27:48 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/05 22:22:39 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "libdefs.h"
 # include "mathlib.h"
 # include "get_next_line.h"
-// # include "checker.h"
 # define SA "sa"
 # define SB "sb"
 # define SS "ss"
@@ -36,6 +35,7 @@ typedef struct		s_inst
 	size_t			content_size;
 	struct s_inst	*prev;
 	struct s_inst	*next;
+	struct s_inst	*tail;
 }					t_inst;
 
 typedef struct		s_stack
@@ -116,7 +116,16 @@ int					print_instructions(t_inst *inst_lst, int ret);
 // 					char *line);
 t_inst				*create_instruction(char *line);
 
+/*
+** print functions
+*/
 
+void				print_input_list(t_list *argv);
+void				print_inst_list(t_inst *instr);
+void				print_stack_list(t_stack *stack);
+void				print_pw_var(t_pw_var *stvar);
+
+void				free_inst_list(t_inst *inst_lst);
 int 				dispatch_sort(t_pw_var *stvar, char *str, int ins);
 void				sort_and_check(t_inst *inst_lst, int ret);
 void				print_backwards(t_stack *stack);

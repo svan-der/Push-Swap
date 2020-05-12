@@ -6,12 +6,11 @@
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/22 11:32:22 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 15:42:54 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 13:58:02 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../includes//list.h"
-#include "../includes/libft.h"
+#include "../includes/list.h"
 
 t_list	*ft_lstnew(const void *content, size_t content_size)
 {
@@ -27,7 +26,7 @@ t_list	*ft_lstnew(const void *content, size_t content_size)
 	}
 	else
 	{
-		newlist->content = (void *)ft_memdup(content, content_size);
+		newlist->content = (void *)ft_memdup(content, content_size + 1);
 		newlist->content_size = content_size;
 	}
 	newlist->next = NULL;

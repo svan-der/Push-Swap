@@ -6,11 +6,12 @@
 /*   By: svan-der <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/05 15:48:35 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 12:33:57 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 13:57:01 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+#include "../includes/mathlib.h"
 
 size_t	ft_count_num(t_llong num)
 {

@@ -5,13 +5,13 @@
 /*                                                     +:+                    */
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/03 17:49:34 by svan-der       #+#    #+#                */
-/*   Updated: 2020/03/14 17:55:19 by svan-der      ########   odam.nl         */
+/*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/05/06 10:58:03 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "psw_env.h"
+#include "../includes/push_swap.h"
+#include "../includes/psw_env.h"
 #include <stdio.h>
 
 void insertion_sort(int *list, int argc, int *min, int *max)
@@ -41,7 +41,7 @@ void insertion_sort(int *list, int argc, int *min, int *max)
 	print_array(list, argc);
 }
 
-void	part_sort(t_format *stvar, int argc)
+void	part_sort(t_pw_var *stvar, int argc)
 {
 	char low;
 	int j;
@@ -62,10 +62,9 @@ void	part_sort(t_format *stvar, int argc)
 				dispatch_sort(stvar, SA, 1);
 			else
 			{
-				if (stvar->tail < stvar->median)
-					dispatch_sort(stvar, RRA, 1);
-				else
-					dispatch_sort(stvar, RA, 1);
+				// if (stvar->tail < stvar->median)
+				// 	dispatch_sort(stvar, RRA, 1);
+				dispatch_sort(stvar, RA, 1);
 			}
 		}
 		if (low && stvar->index == 3)
@@ -73,7 +72,7 @@ void	part_sort(t_format *stvar, int argc)
 	}
 }
 
-void	do_op(t_format *stvar, char *str, int num)
+void	do_op(t_pw_var *stvar, char *str, int num)
 {
 	int i;
 
@@ -85,7 +84,7 @@ void	do_op(t_format *stvar, char *str, int num)
 	}
 }
 
-// void sort_three_part(t_stack **temp, t_format *stvar, int min, int max)
+// void sort_three_part(t_stack **temp, t_pw_var *stvar, int min, int max)
 // {
 // 	t_stack *stack;
 
@@ -125,7 +124,7 @@ void	do_op(t_format *stvar, char *str, int num)
 // 	}
 // }
 
-int		sort_three_revpart(t_stack **temp, t_format *stvar, int min, int max)
+int		sort_three_revpart(t_stack **temp, t_pw_var *stvar, int min, int max)
 {
 	t_stack *stack;
 
@@ -146,14 +145,14 @@ int		sort_three_revpart(t_stack **temp, t_format *stvar, int min, int max)
 	return (0);
 }
 
-void	sort_two(t_stack **stack_a, t_stack **stack_b, t_format *stvar)
+void	sort_two(t_stack **stack_a, t_stack **stack_b, t_pw_var *stvar)
 {
 	(void)stack_a;
 	if ((*(*stack_b)->num) < (*(*stack_b)->next->num))
 		dispatch_sort(stvar, SB, 1);
 }
 
-void	sort_short(t_format *stvar, char c, int stack_len)
+void	sort_short(t_pw_var *stvar, char c, int stack_len)
 {
 	t_stack *stack;
 
@@ -175,7 +174,7 @@ void	sort_short(t_format *stvar, char c, int stack_len)
 		dispatch_sort(stvar, PA, 1);
 }
 
-int		sort_three(t_stack **temp, t_format *stvar, int min, int max)
+int		sort_three(t_stack **temp, t_pw_var *stvar, int min, int max)
 {
 	t_stack *stack;
 

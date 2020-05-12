@@ -6,11 +6,11 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/22 01:29:46 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 12:39:24 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 14:17:06 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "../../includes/ftoa.h"
 
 static int	check_five(t_ldbl val, t_ull i, int x, int round)
 {
@@ -133,7 +133,7 @@ void		ft_round(t_ldbl frac, t_ntoa *pref, t_dtoa *dtoa)
 	dtoa->int_val = (pref->prec == 0 && round) ? int_val + 1 : int_val;
 	x = i;
 	i = (t_ull)dtoa->frac;
-	dtoa->len = (x > 0 && x != 9) ? x : i;
+	dtoa->len = (x > 0 && x != 9) ? (t_ull)x : i;
 	frac_sum(pref->prec, dtoa, nine, round);
 	dtoa->frac = (t_u128)dtoa->frac;
 }

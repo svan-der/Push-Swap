@@ -6,11 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 14:19:09 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 12:39:29 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 15:14:51 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "../../includes/ftoa.h"
+#include "../../includes/ntoa.h"
 
 size_t		handle_invalid(char **astr, t_opt *inval, t_ntoa *pref, int ret)
 {
@@ -33,16 +34,11 @@ size_t		handle_invalid(char **astr, t_opt *inval, t_ntoa *pref, int ret)
 	}
 	if (pref->sign && pref->pref)
 		astr[len] = pref->sign;
-	if (*astr != NULL)
-		free(*astr);
 	return (size);
 }
 
 static int	check_ldbval(t_ldbl val, t_opt *inval)
 {
-	t_ldbl tmp;
-
-	tmp = val;
 	if (val != val)
 		inval->nan = 1;
 	if (val >= __LDBL_MAX__)

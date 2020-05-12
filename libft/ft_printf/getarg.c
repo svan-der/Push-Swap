@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/21 18:34:50 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 12:39:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 17:07:24 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,13 @@ static int	get_flarg(t_spec *spec, char c, va_list ap)
 
 static int	get_strarg(t_spec *spec, char c, va_list ap)
 {
-	if (c == 'c')
-		spec->val.c = va_arg(ap, int);
+	if (c == 'c' || (c == '%' && spec->index == 3))
+	{
+		if (spec->index == 0)
+			spec->val.c = va_arg(ap, int);
+		if (spec->index == 3)
+			spec->val.c = '%';
+	}
 	if (c == 's')
 		spec->val.s = va_arg(ap, char *);
 	if (c == 'p')
@@ -87,9 +92,6 @@ static int	get_int_arg(t_spec *spec, va_list ap)
 
 int			get_arg(int i, t_spec *spec, t_flags *flag, va_list ap)
 {
-	int prec_set;
-
-	prec_set = spec->prec_set;
 	if (i < 4)
 		return (get_strarg(spec, spec->c, ap));
 	if (i == 4 || i == 5)

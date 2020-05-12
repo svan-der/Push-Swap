@@ -6,7 +6,7 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/11 15:22:00 by svan-der      #+#    #+#                  #
-#    Updated: 2020/05/01 12:27:00 by svan-der      ########   odam.nl          #
+#    Updated: 2020/05/12 13:49:38 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ LIB_SRC = ft_memchr.c ft_putnbr_fd.c ft_striter.c\
 
 PRINTF_SRC = dispatch.c finish.c frac.c ft_ftoap.c ft_ldtoap.c\
 			ft_printf.c ft_vprintf.c ftoa.c getarg.c ntoap.c\
-			padding.c parsing.c utils.c\
+			padding.c parsing.c utils.c error.c\
 
 LIB_OBJ = $(LIB_SRC:%.c=$(LIB_OBJDIR)/%.o)
 PRINTF_OBJ = $(PRINTF_SRC:%.c=$(PRINTF_OBJDIR)/%.o)

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/21 13:42:55 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 12:40:17 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 17:17:36 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,6 @@ void			parse_flags(t_ntoa *pref, int sign, t_spec *spec, t_flags *flag)
 {
 	if (spec->min_fw)
 		pref->padding = spec->min_fw;
-	if (spec->min_fw < 0)
-	{
-		pref->padding = spec->min_fw * -1;
-		pref->min = 1;
-	}
 	if (!flag->min && !pref->min && flag->zero)
 		pref->zero = 1;
 	if (flag->min)

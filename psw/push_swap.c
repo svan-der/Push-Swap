@@ -6,11 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/04/25 19:02:32 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/06 10:57:50 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
+#include "../includes/psw_env.h"
 #include <stdio.h>
 
 void print_array(int *list, int argc)
@@ -25,7 +26,7 @@ void print_array(int *list, int argc)
 	}
 }
 
-void	set_min_maxarray(t_format *stvar, int *list, int len)
+void	set_min_maxarray(t_pw_var *stvar, int *list, int len)
 {
 	int i;
 	int num;
@@ -105,10 +106,10 @@ void *ft_calloc(size_t count, size_t size)
 	return (res);
 }
 
-int run_pw(t_format *stvar)
+int run_pw(t_pw_var *stvar)
 {
-	// if (stvar->argc > 3)
-	// 	divide_list(stvar);
+	if (stvar->argc > 3)
+		divide_list(stvar);
 	// else
 	// 	sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
 	// sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
@@ -118,13 +119,13 @@ int run_pw(t_format *stvar)
 
 int		main(int argc, char **argv)
 {
-	t_format	stvar;
+	t_pw_var	stvar;
 	char		*str;
 	int			ret;
 	int			i;
 
 	i = 1;
-	ft_bzero(&stvar, sizeof(t_format));
+	ft_bzero(&stvar, sizeof(t_pw_var));
 	stvar.argc = argc;
 	if (argc < 2)
 		return (0);

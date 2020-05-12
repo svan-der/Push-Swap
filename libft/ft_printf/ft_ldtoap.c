@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 14:54:16 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 12:39:34 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/12 15:14:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,5 @@ size_t			ft_ftoap(char **astr, t_dtoa *dtoa, t_ntoa *pref)
 	dtoa->int_len = len[1];
 	dtoa->total = total;
 	*astr = ft_ldtoa_base(*astr, dtoa, pref, len[0]);
-	if (*astr != NULL)
-		free(*astr);
 	return (total);
 }

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/02 18:13:08 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/05 23:29:11 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,12 @@ int		get_instruction(t_pw_var *stvar)
 		printf("This is ret after gnl:%d\n\n", ret);
 	}
 	print_instructions(stvar->inst_lst, ret);
-	print_stack(stvar->stack_a, 1);
-	print_stack_b(stvar->stack_b, 1);
 	ret = check_sorted(stvar->stack_a, stvar->stack_b);
-	printf("This is ret after check_sorted:%d\n", ret);
+	printf("This is ret after check_sorted:%d\n\n", ret);
+	// print_stack(stvar->stack_a, 1);
+	// print_stack_b(stvar->stack_b, 1);
+	// print_input_list(stvar->argv);
+	// print_inst_list(stvar->inst_lst);
+	// print_stack_list(stvar->stack_a);
 	return (1);
 }
