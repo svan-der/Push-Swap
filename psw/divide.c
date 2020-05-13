@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/06 10:57:35 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/13 10:37:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,16 @@
 
 void	divide_list(t_pw_var *stvar)
 {
-	int i;
-	int *sorted_list;
+	// int i;
+	// int *sorted_list;
 
-	i = 0;
-	sorted_list = (int *)malloc(sizeof(int));
-	sorted_list = lst_cpy(stvar->stack_a, sorted_list);
+	// i = 0;
+	// sorted_list = (int *)malloc(sizeof(int));
+	// sorted_list = lst_cpy(stvar->stack_a, sorted_list);
 	// stvar->tail = sorted_list[stvar->argc - 1];
-	insertion_sort(sorted_list, stvar->argc, &stvar->min, &stvar->max);
-    print_array(sorted_list, stvar->argc);
+	// insertion_sort(sorted_list, stvar->argc, &stvar->min, &stvar->max);
+	// ft_printf("the printed array\n\n");
+    // print_array(sorted_list, stvar->argc);
 	// stvar->median = find_median_array(sorted_list, stvar->index);
 	// divide_and_presort(stvar, sorted_list);
 }

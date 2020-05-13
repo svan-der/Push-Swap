@@ -12,9 +12,10 @@ Checker returns OK when integers are sorted. Otherwise it will display, KO.
 
 Usage:
 1) run checker with a (random) list of integers
-2)then checker waits for instructions to sort the list 1 command per line: sa, sb, ss, pb, pa, rb, ra, rrr
+2) then checker waits for instructions to sort the list 1 command per line: sa, sb, ss, pb, pa, rb, ra, rrr
 $./checker 1 2 3 4 5
-[enter] $(pb)
+$pb
+$[ctrl + d]
 
 2. Push_swap
 This program takes integers as arguments and calculates and displays the smallest list of instructions to sort this list.

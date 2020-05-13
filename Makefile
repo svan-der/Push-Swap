@@ -6,14 +6,14 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/05/01 13:41:54 by svan-der      #+#    #+#                  #
-#    Updated: 2020/05/05 18:17:26 by svan-der      ########   odam.nl          #
+#    Updated: 2020/05/13 10:23:16 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_CHECKER = checker
 NAME_PUSHSWAP = push_swap
 LIBFT = libft/libft.a
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 CHECKER_SRCDIR = chkr
 CHECKER_OBJDIR = objects
@@ -31,7 +31,7 @@ OBJ = $(SRC:%.c=$(SHARED_OBJDIR)/%.o)
 CHK_OBJ =$(CHK_SRC:%.c=$(CHECKER_OBJDIR)/%.o)
 PSW_OBJ = $(PSW_SRC:%.c=$(PUSHSWAP_OBJDIR)%.o)
 
-all: $(EXEDIR)$(NAME_CHECKER) $(NAME_PUSHSWAP)
+all: $(EXEDIR)$(NAME_CHECKER) $(EXEDIR)$(NAME_PUSHSWAP)
 
 $(LIBFT):
 	make -C libft
@@ -51,8 +51,8 @@ $(CHECKER_OBJDIR)/%.o: $(CHECKER_SRCDIR)/%.c $(LIBFT)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(PUSHSWAP_OBJDIR)/%.o: $(PUSHSWAP_SRCDIR)/%.c %(LIBFT)
-	@mkdir -p $(PUSHSWAP_OBJDIR)
-	@(CC) $(CFLAGS) -c -o $@ $<
+	mkdir -p $(PUSHSWAP_OBJDIR)
+	(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 		@echo "$(RED)Deleting object files...$(RESET)"

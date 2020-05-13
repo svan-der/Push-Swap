@@ -6,12 +6,12 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/11 15:22:00 by svan-der      #+#    #+#                  #
-#    Updated: 2020/05/12 13:49:38 by svan-der      ########   odam.nl          #
+#    Updated: 2020/05/12 17:31:10 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 INCL = ../includes/
 PRINTF_DIR = ft_printf
@@ -43,23 +43,23 @@ PRINTF_OBJ = $(PRINTF_SRC:%.c=$(PRINTF_OBJDIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(LIB_OBJ) $(PRINTF_OBJ)
-	ar rcs $(NAME) $(LIB_OBJ) $(PRINTF_OBJ)
+	@ar rcs $(NAME) $(LIB_OBJ) $(PRINTF_OBJ)
 
 $(LIB_OBJDIR)/%.o: %.c $(INCL)
-	mkdir -p $(LIB_OBJDIR)
-	$(CC) -c -o $@ $<
-	$(CC) $(CFLAGS) -c -o $@ $<
+	@mkdir -p $(LIB_OBJDIR)
+	@$(CC) -c -o $@ $<
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
 $(PRINTF_OBJDIR)/%.o: $(PRINTF_DIR)/%.c $(INCL)
-	mkdir -p $(PRINTF_OBJDIR)
-	$(CC) -c -o $@ $<
-	$(CC) $(CFLAGS) -c -o $@ $<
+	@mkdir -p $(PRINTF_OBJDIR)
+	@$(CC) -c -o $@ $<
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -rf $(LIB_OBJDIR)
-	rm -rf $(PRINTF_OBJDIR)
+	@rm -rf $(LIB_OBJDIR)
+	@rm -rf $(PRINTF_OBJDIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all

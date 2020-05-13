@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/01 15:48:16 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/13 18:06:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@ t_stack		*create_stack(int num)
 {
 	t_stack *stack;
 
-	stack = (t_stack *)malloc(sizeof(t_stack));
+	// stack = (t_stack *)malloc(sizeof(t_stack));
+	stack = ft_memalloc(sizeof(t_stack));
 	if (stack == NULL)
 		return (NULL);
 	stack->len = ft_numlen(num);
-	stack->num = (int *)ft_memdup(&num, stack->len);
+	stack->num = num;
+	// stack->num = (int *)ft_memdup(&num, stack->len);
+	if (!stack->num)
+		return (NULL);
 	stack->next = NULL;
 	stack->prev = NULL;
 	return (stack);
@@ -48,6 +52,7 @@ int			stack_addnew(t_stack **stack, int num)
 int			add_num(char *str, int i, int neg, t_pw_var *stvar)
 {
 	int num;
+	int ret;
 
 	num = 0;
 	i = (neg == -1) ? i - 1 : i;
@@ -60,8 +65,8 @@ int			add_num(char *str, int i, int neg, t_pw_var *stvar)
 	if (str[i] != '\0')
 		return (-1);
 	num *= neg;
-	stack_addnew(&stvar->stack_a, num);
-	return (1);
+	ret = stack_addnew(&stvar->stack_a, num);
+	return (ret);
 }
 
 int			check_argv(char *str, t_pw_var *stvar)

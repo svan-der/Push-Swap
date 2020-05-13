@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/06 10:58:03 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/13 10:54:44 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ int		sort_three(t_stack **temp, t_pw_var *stvar, int min, int max)
 	t_stack *stack;
 
 	stack = *temp;
+	printf("stack->num is:%d\n\n", (*stack->num));
 	if ((*stack->num) == min && (*stack->next->num) != max)
 		return (dispatch_sort(stvar, NULL, 0));
 	if ((*stack->num) == min && (*stack->next->num) == max)

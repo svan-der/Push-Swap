@@ -6,34 +6,46 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:08:43 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/05 22:19:55 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/13 18:16:25 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/psw_env.h"
+#include <stdio.h>
 
 void	free_inst_list(t_inst *inst_lst)
 {
-	t_inst	*tail;
+	t_inst *next;
 
+	printf("inside free inst list\n\n");
+	if (inst_lst != NULL)
+		printf("instr is:%s\n\n", inst_lst->operation);
 	while (inst_lst != NULL)
 	{
-		tail = inst_lst;
-		if (inst_lst->next != NULL)
+		ft_printf("free at last\n");
+		next = inst_lst->next;
+		if (next != NULL)
+		{
 			free(inst_lst->operation);
-		inst_lst = inst_lst->next;
+			free(inst_lst);
+		}
+		inst_lst = next;
 	}
 }
 
-// void	free_stack_list(t_stack *stack)
-// {
-// 	t_inst	*tail;
+void	free_stack_list(t_stack *stack)
+{
+	t_stack *next;
 
-// 	while (tail != NULL)
-// 	{
-// 		tail = stack;
-// 		if (stack->next != NULL)
-// 			free(stack->num);
-// 		inst_lst = inst_lst->next;
-// 	}
-// }
+	while (stack != NULL)
+	{
+		next = stack->next;
+		if (next != NULL)
+		{
+			// free(stack->num);
+			free(stack);
+		}
+		stack = next;
+	}
+	stack = NULL;
+}

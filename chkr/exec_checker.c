@@ -6,13 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/05 23:29:11 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/13 17:43:11 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 #include "../includes/psw_env.h"
-#include <stdio.h>
 
 int		check_instruction(t_stack **stack_a, t_stack **stack_b, char *line)
 {
@@ -47,32 +46,28 @@ int		get_instruction(t_pw_var *stvar)
 {
 	char	*line;
 	int		ret;
-	t_inst	inst;
-	int		i;
+	int		valid;
+	// t_inst	inst;
 
-	i = 0;
-	ret = get_next_line(0, &line);
-	ft_bzero(&inst, sizeof(t_inst));
-	while (ret)
+	ret = 1;
+	// ft_bzero((*stvar).inst_lst, sizeof(t_inst));
+	while (ret > 0)
 	{
-		printf("begin\n");
-		ret = check_instruction(&stvar->stack_a, &stvar->stack_b, line);
-		printf("This is ret:%d\n", ret);
-		if (ret == -1)
-			return (print_instructions(stvar->inst_lst, ret));
-		if (ret == 0)
-			break ;
-		put_instruction(&stvar->inst_lst, line);
 		ret = get_next_line(0, &line);
-		printf("This is ret after gnl:%d\n\n", ret);
+		valid = check_instruction(&stvar->stack_a, &stvar->stack_b, line);
+		ft_printf("\n\n");
+		ft_printf("This is ret:%d\n", ret);
+		ft_printf("this is valid:%d\n", valid);
+		put_instruction(&(*stvar).inst_lst, line);
+		// put_instruction(&(*stvar).inst_lst, line);
+		// ft_printf("instruction is:%s\n\n", (*stvar).inst_lst->operation);
+		free(line);
+		if (ret == -1 || valid == -1)
+			return (print_instructions(stvar->inst_lst, -1));
+		if (ret == 0 || valid == 0)
+			break ;
 	}
 	print_instructions(stvar->inst_lst, ret);
 	ret = check_sorted(stvar->stack_a, stvar->stack_b);
-	printf("This is ret after check_sorted:%d\n\n", ret);
-	// print_stack(stvar->stack_a, 1);
-	// print_stack_b(stvar->stack_b, 1);
-	// print_input_list(stvar->argv);
-	// print_inst_list(stvar->inst_lst);
-	// print_stack_list(stvar->stack_a);
 	return (1);
 }

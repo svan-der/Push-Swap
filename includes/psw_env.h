@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/05 22:22:39 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/13 18:06:26 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libdefs.h"
 # include "mathlib.h"
 # include "get_next_line.h"
+# include "ft_printf.h"
 # define SA "sa"
 # define SB "sb"
 # define SS "ss"
@@ -29,18 +30,25 @@
 # define RRB "rrb"
 # define RRR "rrr"
 
+typedef enum		e_error
+{
+	INVALID = 0,
+	MEM_ERROR = 1,
+	ERROR = 2,
+}					t_error;
+
 typedef struct		s_inst
 {
 	char			*operation;
 	size_t			content_size;
 	struct s_inst	*prev;
 	struct s_inst	*next;
-	struct s_inst	*tail;
+	// struct s_inst	*tail;
 }					t_inst;
 
 typedef struct		s_stack
 {
-	int				*num;
+	int				num;
 	size_t			len;
 	struct s_stack	*prev;
 	struct s_stack	*next;
@@ -112,7 +120,7 @@ void				fill_stack_begin(t_stack **stack_a, t_stack *new);
 // int					get_instruction(t_pw_var *stvar);
 // void				put_instruction(t_inst **inst_lst, char *line);
 int					print_instructions(t_inst *inst_lst, int ret);
-// int					check_instruction(t_stack **stack_a, t_stack **stack_b,\
+// int					check_instruction(t_stack **stack_a, t_stack **stack_b,
 // 					char *line);
 t_inst				*create_instruction(char *line);
 
@@ -126,6 +134,7 @@ void				print_stack_list(t_stack *stack);
 void				print_pw_var(t_pw_var *stvar);
 
 void				free_inst_list(t_inst *inst_lst);
+void				free_stack_list(t_stack *stack);
 int 				dispatch_sort(t_pw_var *stvar, char *str, int ins);
 void				sort_and_check(t_inst *inst_lst, int ret);
 void				print_backwards(t_stack *stack);
