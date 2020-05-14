@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/14 17:30:34 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 17:52:33 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,12 @@ int		push_b(t_stack **stack_a, t_stack **stack_b)
 	t_stack *tmp;
 	t_stack	*new;
 
-	new = *stack_b;
 	ft_printf("stack_a ptr before:%p\n\n", *stack_a);
 	ft_printf("stack_b prev ptr before:%p\n\n", *stack_b);
 	ft_printf("stack_b ptr before:%p\n\n", *stack_b);
 	if (*stack_a == NULL)
 		return (0);
+	new = *stack_b;
 	tmp = (*stack_a)->next;
 	(*stack_a)->next = NULL;
 	// ft_printf("in stack_b:|%d|\n", (*(*stack_b)->num));
@@ -108,64 +108,30 @@ int		push_b(t_stack **stack_a, t_stack **stack_b)
 	if (*stack_a && (*stack_a)->next != NULL)
 		(*stack_a)->prev = NULL;
 	*stack_b = new;
-	print_stack(*stack_a, 1);
 	ft_printf("stack_a ptr after:%p\n\n", *stack_a);
 	ft_printf("stack_b prev ptr after:%p\n\n", *stack_b);
 	ft_printf("stack_b ptr after:%p\n\n", *stack_b);
-	// print_stack_b(*stack_b, 1);
+	print_stack(*stack_a, 1);
+	print_stack_b(*stack_b, 1);
 	return (1);
 }
-
-
-
-// int		push_b(t_stack **stack_a, t_stack **stack_b)
-// {
-// 	t_stack *tmp;
-
-// 	ft_printf("stack_a ptr before:%p\n\n", *stack_a);
-// 	ft_printf("stack_b prev ptr before:%p\n\n", *stack_b);
-// 	ft_printf("stack_b ptr before:%p\n\n", *stack_b);
-// 	if (*stack_a == NULL)
-// 		return (0);
-// 	tmp = (*stack_a)->next;
-// 	(*stack_a)->next = NULL;
-// 	// ft_printf("in stack_b:|%d|\n", (*(*stack_a)->num));
-// 	if (*stack_b == NULL)
-// 	{
-// 		ft_printf("stack_b is null\n");
-// 		(*stack_b) = (*stack_a);
-// 		(*stack_b)->prev = NULL;
-// 	}
-// 	if (*stack_b != NULL)
-// 	{
-// 		if ((*stack_b)->next != NULL)
-// 			(*stack_a)->next->prev = (*stack_a);
-// 	}
-// 	*stack_a = tmp;
-// 	if (*stack_a && (*stack_a)->next != NULL)
-// 		(*stack_a)->prev = NULL;
-// 	ft_printf("stack_a ptr after:%p\n\n", *stack_a);
-// 	ft_printf("stack_b prev ptr after:%p\n\n", *stack_b);
-// 	ft_printf("stack_b ptr after:%p\n\n", *stack_b);
-// 	print_stack(*stack_a, 1);
-// 	// print_stack_b(*stack_b, 1);
-// 	return (1);
-// }
-
 
 int		push_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *tmp;
+	t_stack *new;
 
 	if (*stack_b == NULL)
 		return (0);
+	new = *stack_a;
 	tmp = (*stack_b)->next;
 	(*stack_b)->next = NULL;
 	// ft_printf("in stack_b:|%d|\n", (*(*stack_b)->num));
-	fill_stack_begin(stack_a, (*stack_b));
+	new = fill_stack_begin(&new, (*stack_b));
 	*stack_b = tmp;
 	if (*stack_b && (*stack_b)->next != NULL)
 		(*stack_b)->prev = NULL;
+	*stack_a = new;
 	print_stack(*stack_a, 1);
 	print_stack_b(*stack_b, 1);
 	return (1);
