@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:08:43 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/14 14:46:37 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 17:14:44 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	free_inst_list(t_inst **inst_lst)
 	inst_lst = NULL;
 }
 
-void	free_stack_list(t_stack **stack)
+static void	free_stack(t_stack **stack)
 {
 	t_stack *next;
 	t_stack *temp;
@@ -47,11 +47,27 @@ void	free_stack_list(t_stack **stack)
 	while (temp != NULL)
 	{
 		next = temp->next;
+		ft_printf("prev adress: %p\n", temp->prev);
 		ft_printf("addres:%p\n", temp);
+		ft_printf("adress after:%p\n", temp->next);
 		free(temp);
 		ft_printf("addres free'd:%p\n", temp);
 		temp = next;
 	}
 	*stack = NULL;
 	stack = NULL;
+}
+
+void	free_stack_list(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack *temp;
+
+	temp = *stack_b;
+	ft_printf("prev adress: %p\n", temp->prev);
+	ft_printf("addres:%p\n", temp);
+	ft_printf("adress after:%p\n", temp->next);
+	if (*stack_a != NULL)
+		free_stack(stack_a);
+	if (*stack_b != NULL)
+		free_stack(stack_b);
 }

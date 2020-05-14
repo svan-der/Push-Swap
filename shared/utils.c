@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/14 15:34:13 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 15:59:00 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_stack	*fill_stack_begin(t_stack **head, t_stack *new)
 
 	temp = *head;
 	new_node = new;
-	if (temp != NULL)
+	if (*head != NULL)
 	{
 		ft_printf("head is NOT null\n\n");
 		new_node->next = temp;

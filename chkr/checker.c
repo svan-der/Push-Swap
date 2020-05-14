@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:44:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/14 15:09:36 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 17:16:00 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,13 @@ int		main(int argc, char **argv)
 	get_instruction(&stvar);
 	// print_stack(stvar.stack_a, 1);
 	// print_stack_b(stvar.stack_b, 1);
+	t_stack *temp;
+
+	temp = stvar.stack_b;
+	ft_printf("prev adress: %p\n", temp->prev);
+	ft_printf("addres:%p\n", temp);
+	ft_printf("adress after:%p\n", temp->next);
 	free_inst_list(&(stvar).inst_lst);
-	free_stack_list(&(stvar).stack_a);
+	free_stack_list(&(stvar).stack_a, &(stvar).stack_b);
 	return (1);
 }

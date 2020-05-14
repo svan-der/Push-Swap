@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:50:30 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/14 15:32:33 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 16:49:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_inst	*create_instruction(char *line)
 	t_inst *inst;
 
 	inst = (t_inst *)ft_memalloc(sizeof(t_inst));
-	printf("size of inst node in bytes : %ld\n", sizeof(inst));
+	// printf("size of inst node in bytes : %ld\n", sizeof(inst));
 	if (!inst)
 		return (NULL);
 	inst->operation = ft_strnew(sizeof(line));
@@ -77,7 +77,7 @@ t_inst	*create_instruction(char *line)
 	ft_memcpy(inst->operation, line, inst->content_size);
 	inst->next = NULL;
 	// inst->tail = NULL;
-	printf("this is instr:%s\n", inst->operation);
+	// printf("this is instr:%s\n", inst->operation);
 	return (inst);
 }
 
@@ -113,8 +113,8 @@ int		put_instruction(t_inst **inst_lst, char *line)
 	t_inst *temp;
 
 	new_node = create_instruction(line);
-	ft_printf("new_node addr:%p\n", new_node);
-	ft_printf("head inst-lst is:%p\n", *inst_lst);
+	// ft_printf("new_node addr:%p\n", new_node);
+	// ft_printf("head inst-lst is:%p\n", *inst_lst);
 	if (new_node == NULL)
 		return (-1);
 	if (*inst_lst == NULL)
@@ -130,7 +130,7 @@ int		put_instruction(t_inst **inst_lst, char *line)
 		temp = temp->next;
 	temp->next = new_node;
 	new_node->prev = temp;
-	ft_printf("temp is:%p\n", temp);
-	ft_printf("head inst-lst is:%p\n", *inst_lst);
+	// ft_printf("temp is:%p\n", temp);
+	// ft_printf("head inst-lst is:%p\n", *inst_lst);
 	return (1);
 }

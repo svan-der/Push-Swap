@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/14 15:46:37 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 16:48:44 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_stack		*create_stack(int num)
 int			stack_addnew(t_stack **stack, int num)
 {
 	t_stack *new;
-	t_stack *temp;
+	// t_stack *temp;
 
 	new = create_stack(num);
 	ft_printf("size of new_node:%ld\n\n", sizeof(new));
@@ -41,19 +41,21 @@ int			stack_addnew(t_stack **stack, int num)
 	if (*stack == NULL)
 	{
 		*stack = new;
+		ft_printf("addres new:%p\n", new);
 		(new)->prev = NULL;
 		ft_printf("addres *stack:%p\n\n", *stack);
 		return (1);
 	}
 	// temp = *stack;
 	ft_printf("going in fill_stack\n\n");
-	temp = fill_stack_begin(stack, new);
-	(void)temp;
+	*stack = fill_stack_begin(stack, new);
+	ft_printf("addres *stack:%p\n\n", *stack);
+	// (void)temp;
 	// *stack = temp;
 	return (1);
 }
 
-int			add_num(char *str, int i, int neg, t_stack *stack_a)
+int			add_num(char *str, int i, int neg, t_pw_var *stvar)
 {
 	int num;
 	int ret;
@@ -69,8 +71,9 @@ int			add_num(char *str, int i, int neg, t_stack *stack_a)
 	if (str[i] != '\0')
 		return (-1);
 	num *= neg;
-	ret = stack_addnew(&stack_a, num);
-	ft_printf("stack_a address:%p\n\n", stack_a);
+	ft_printf("stack_a address before:%p\n\n", stvar->stack_a);
+	ret = stack_addnew(&(stvar)->stack_a, num);
+	ft_printf("stack_a address:%p\n\n", stvar->stack_a);
 	return (ret);
 }
 
@@ -97,5 +100,5 @@ int			check_argv(char *str, t_pw_var *stvar)
 	if (ft_strnequ(&str[i], "214748364", 9))
 		if ((str[i + 9] > '6' && neg != -1) || (str[i + 9] > '8' && neg == -1))
 			return (-1);
-	return (add_num(&str[i], i, neg, stvar->stack_a));
+	return (add_num(&str[i], i, neg, stvar));
 }
