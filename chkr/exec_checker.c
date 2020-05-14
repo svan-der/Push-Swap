@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/13 17:43:11 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 14:30:39 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,22 @@ int		get_instruction(t_pw_var *stvar)
 	char	*line;
 	int		ret;
 	int		valid;
-	// t_inst	inst;
 
 	ret = 1;
-	// ft_bzero((*stvar).inst_lst, sizeof(t_inst));
+	line = NULL;
+	stvar->inst_lst = NULL;
 	while (ret > 0)
 	{
 		ret = get_next_line(0, &line);
 		valid = check_instruction(&stvar->stack_a, &stvar->stack_b, line);
-		ft_printf("\n\n");
-		ft_printf("This is ret:%d\n", ret);
-		ft_printf("this is valid:%d\n", valid);
+		// ft_printf("\n\n");
+		// ft_printf("This is ret:%d\n", ret);
+		// ft_printf("this is valid:%d\n", valid);
 		put_instruction(&(*stvar).inst_lst, line);
 		// put_instruction(&(*stvar).inst_lst, line);
 		// ft_printf("instruction is:%s\n\n", (*stvar).inst_lst->operation);
 		free(line);
+		line = NULL;
 		if (ret == -1 || valid == -1)
 			return (print_instructions(stvar->inst_lst, -1));
 		if (ret == 0 || valid == 0)

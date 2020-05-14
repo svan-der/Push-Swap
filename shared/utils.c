@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/14 12:28:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 15:34:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,29 @@ int		check_sorted(t_stack *stack_a, t_stack *stack_b)
 	return (1);
 }
 
-void	fill_stack_begin(t_stack **head, t_stack *new)
+t_stack	*fill_stack_begin(t_stack **head, t_stack *new)
 {
-	if (*head != NULL)
+	t_stack *temp;
+	t_stack *new_node;
+
+	temp = *head;
+	new_node = new;
+	if (temp != NULL)
 	{
 		ft_printf("head is NOT null\n\n");
-		new->next = *head;
-		(*head)->prev = new;
-		*head = new;
+		new_node->next = temp;
+		temp->prev = new_node;
+		temp = new_node;
+		return (temp);
 		ft_printf("new address:%p\n", new);
 		ft_printf("head address:%p\n", *head);
 	}
 	else
 	{
 		ft_printf("head is NULL\n\n");
-		*head = new;
-		(*head)->prev = NULL;
+		temp = new_node;
+		temp->prev = NULL;
+		return (temp);
 		ft_printf("new address:%p\n", new);
 		ft_printf("head address:%p\n", *head);
 	}

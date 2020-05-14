@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/14 12:40:24 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 15:27:34 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 	the next of my "element" will be the entierty of list b
 **/
 
+
 int		push_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *tmp;
@@ -98,8 +99,16 @@ int		push_b(t_stack **stack_a, t_stack **stack_b)
 	tmp = (*stack_a)->next;
 	(*stack_a)->next = NULL;
 	// ft_printf("in stack_b:|%d|\n", (*(*stack_a)->num));
-	
-	fill_stack_begin(stack_b, (*stack_a));
+	if (*stack_b == NULL)
+	{
+		(*stack_b) = (*stack_a);
+		(*stack_b)->prev = NULL;
+	}
+	if (*stack_b != NULL)
+	{
+		if ((*stack_b)->next != NULL)
+			(*stack_a)->next->prev = (*stack_a);
+	}
 	*stack_a = tmp;
 	if (*stack_a && (*stack_a)->next != NULL)
 		(*stack_a)->prev = NULL;
@@ -108,6 +117,7 @@ int		push_b(t_stack **stack_a, t_stack **stack_b)
 	// print_stack_b(*stack_b, 1);
 	return (1);
 }
+
 
 int		push_a(t_stack **stack_a, t_stack **stack_b)
 {

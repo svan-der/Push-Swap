@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:50:30 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/14 11:59:19 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 15:32:33 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,19 @@
 
 int		print_instructions(t_inst *inst_lst, int ret)
 {
+	t_inst *temp;
+	t_inst *next;
+
 	ft_printf("inside print instructions\n\n");
-	while (inst_lst != NULL)
+	temp = inst_lst;
+	while (temp != NULL)
 	{
+		next = temp->next;
 		if (ret != -1)
-			printf("operation: |%s|\n\n", inst_lst->operation);
-		// if (inst_lst->next != NULL)
-		// 	free(inst_lst->operation);
-		inst_lst = inst_lst->next;
+			printf("operation: |%s|\n\n", temp->operation);
+		// free(temp->operation);
+		// free(temp);
+		temp = next;
 	}
 	if (ret == -1)
 		printf("Error\n");
@@ -60,9 +65,11 @@ t_inst	*create_instruction(char *line)
 	t_inst *inst;
 
 	inst = (t_inst *)ft_memalloc(sizeof(t_inst));
+	printf("size of inst node in bytes : %ld\n", sizeof(inst));
 	if (!inst)
 		return (NULL);
 	inst->operation = ft_strnew(sizeof(line));
+	// inst->operation = ft_strnew(sizeof(line));
 	// inst->operation = line;
 	// inst->operation = ft
 	// inst->operation = ft_memdup(line, sizeof(line) + 1);
@@ -106,13 +113,16 @@ int		put_instruction(t_inst **inst_lst, char *line)
 	t_inst *temp;
 
 	new_node = create_instruction(line);
+	ft_printf("new_node addr:%p\n", new_node);
+	ft_printf("head inst-lst is:%p\n", *inst_lst);
 	if (new_node == NULL)
 		return (-1);
 	if (*inst_lst == NULL)
 	{
-		new_node->prev = NULL;
 		*inst_lst = new_node;
-		printf("this is inst_lst oper:%s\n", (*inst_lst)->operation);
+		new_node->prev = NULL;
+		// ft_printf("*inst_lst addr:%p\n", (*inst_lst));
+		// printf("this is inst_lst oper:%s\n", (*inst_lst)->operation);
 		return (1);
 	}
 	temp = *inst_lst;
@@ -120,5 +130,7 @@ int		put_instruction(t_inst **inst_lst, char *line)
 		temp = temp->next;
 	temp->next = new_node;
 	new_node->prev = temp;
+	ft_printf("temp is:%p\n", temp);
+	ft_printf("head inst-lst is:%p\n", *inst_lst);
 	return (1);
 }
