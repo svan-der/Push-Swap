@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/13 10:53:41 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 12:34:39 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		*lst_cpy(t_stack *stack, int *new_list)
 	j = 0;
 	while (current != NULL)
 	{
-		new_list[i] = (*current->num);
+		new_list[i] = (current->num);
 		current = current->next;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/13 18:06:13 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 12:30:30 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,21 @@ int			stack_addnew(t_stack **stack, int num)
 	t_stack *new;
 
 	new = create_stack(num);
+	ft_printf("addres new:%p\n\n", new);
 	if (!new)
 		return (0);
 	if (*stack == NULL)
 	{
-		*stack = new;
+		(*stack) = new;
+		ft_printf("addres *stack:%p\n\n", *stack);
 		(*stack)->prev = NULL;
 		return (1);
 	}
 	if (*stack != NULL)
+	{
+		ft_printf("going in fill_stack\n\n");
 		fill_stack_begin(stack, new);
+	}
 	return (1);
 }
 
@@ -66,6 +71,7 @@ int			add_num(char *str, int i, int neg, t_pw_var *stvar)
 		return (-1);
 	num *= neg;
 	ret = stack_addnew(&stvar->stack_a, num);
+	ft_printf("stack_a address:%p\n\n", stvar->stack_a);
 	return (ret);
 }
 

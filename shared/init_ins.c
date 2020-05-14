@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:50:30 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/13 18:15:52 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 11:59:19 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ t_inst	*create_instruction(char *line)
 {
 	t_inst *inst;
 
-	// inst = (t_inst *)malloc(sizeof(t_inst));
 	inst = (t_inst *)ft_memalloc(sizeof(t_inst));
 	if (!inst)
 		return (NULL);

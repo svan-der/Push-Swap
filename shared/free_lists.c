@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:08:43 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/13 18:16:25 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/14 12:12:31 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,32 @@ void	free_inst_list(t_inst *inst_lst)
 	}
 }
 
+// void	free_stack_list(t_stack *stack)
+// {
+// 	t_stack *next;
+
+// 	while (stack != NULL)
+// 	{
+// 		next = stack->next;
+// 		if (next != NULL)
+// 		{
+// 			// free(stack->num);
+// 			free(stack);
+// 		}
+// 		stack = next;
+// 	}
+// 	stack = NULL;
+// }
+
+
 void	free_stack_list(t_stack *stack)
 {
 	t_stack *next;
 
 	while (stack != NULL)
 	{
+		free(stack);
 		next = stack->next;
-		if (next != NULL)
-		{
-			// free(stack->num);
-			free(stack);
-		}
 		stack = next;
 	}
 	stack = NULL;
