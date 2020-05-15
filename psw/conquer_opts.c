@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 09:34:41 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 10:32:58 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	part_sort(t_pw_var *stvar, int argc)
 		if (low && stvar->index == 3)
 			break ;
 	}
+	// print_partition_list(part)
 }
 
 void	do_op(t_pw_var *stvar, char *str, int num)

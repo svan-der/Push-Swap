@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 10:03:27 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 12:18:28 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		find_median_array(int *list, int index)
 	j = (double)index / 2;
 	i = j;
 	median = list[i];
-	print_array(list, index);
+	// print_array(list, index);
 	return (median);
 }
 
@@ -104,8 +104,7 @@ static int		presort_list(t_pw_var *stvar)
 		return (0);
 	stvar->sorted = lst_cpy(stvar->stack_a, stvar->sorted);
 	insertion_sort(stvar->sorted, stvar->argc, &stvar->min, &stvar->max);
-	ft_printf("the printed array\n\n");
-	print_array(stvar->sorted, stvar->argc);
+	// print_array(stvar->sorted, stvar->argc);
 	return (1);
 }
 
@@ -143,7 +142,7 @@ int		main(int argc, char **argv)
 	{
 		str = argv[i];
 		ret = check_argv(str, &stvar);
-		ft_printf("ret is:%d\n\n", ret);
+		// ft_printf("ret is:%d\n\n", ret);
 		if (ret == -1)
 			return (error_handler(0));
 		i++;
@@ -151,8 +150,8 @@ int		main(int argc, char **argv)
 	stvar.argc -= 1;
 	stvar.index = stvar.argc;
 	ret = run_pw(&stvar);
-	if (ret == -1)
-		error_handler(0);
+	// if (ret == -1)
+	// 	error_handler(0);
 	print_stack_list(stvar.stack_a, 'a');
 	print_stack_list(stvar.stack_b, 'b');
 	free_inst_list(&(stvar).inst_lst);

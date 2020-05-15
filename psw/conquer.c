@@ -6,11 +6,11 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:35:59 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/05 17:38:23 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 10:53:48 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 // void    ft_stackdelone(t_stack **alst, void (*del)(int *, size_t))
 // {
@@ -80,7 +80,7 @@ void	sort_and_pushback(t_pw_var *stvar)
 		return ;
 	while (stvar->argc - stvar->index > 3)
 	{
-		if ((*stvar->stack_b->num) > stvar->median)
+		if ((stvar->stack_b->num) > stvar->median)
 			dispatch_sort(stvar, PA, 1);
 		else
 			dispatch_sort(stvar, RB, 1);

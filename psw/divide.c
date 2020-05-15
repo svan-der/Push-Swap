@@ -6,34 +6,40 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/13 10:37:15 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 10:53:22 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
 #include "../includes/psw_env.h"
+#include "../includes/push_swap.h"
 
-// int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
-// {
-// 	int i;
+/*
+** functions divides the list in partitions
+*/
 
-// 	i = 0;
-// 	while (stvar->index > 3)
-// 	{
-// 		part_sort(stvar, ft_min_size(stvar->index, stvar->argc));
-// 		if (stvar->index <= 3)
-// 		{
-// 			sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
-// 			break ;
-// 		}
-// 		sorted_list = lst_cpy(stvar->stack_a, *(&sorted_list));
-// 		// stvar->tail = sorted_list[stvar->index - 1];
-// 		insertion_sort(sorted_list, stvar->index, &stvar->min, &stvar->max);
-// 		stvar->median = find_median_array(sorted_list, stvar->index);
-// 		i++;
-// 	}
-// 	return (conquer_list(stvar, sorted_list,));
-// }
+int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
+{
+	int i;
+
+	i = 0;
+	while (stvar->index > 3)
+	{
+		part_sort(stvar, ft_min_size(stvar->index, stvar->argc));
+		ft_printf("stvar->index:%d\n", stvar->index);
+		if (stvar->index <= 3)
+		{
+			sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
+			break ;
+		}
+		sorted_list = lst_cpy(stvar->stack_a, *(&sorted_list));
+		// stvar->tail = sorted_list[stvar->index - 1];
+		insertion_sort(sorted_list, stvar->index, &stvar->min, &stvar->max);
+		stvar->median = find_median_array(sorted_list, stvar->index);
+		i++;
+	}
+	// return (1);
+	return (conquer_list(stvar, sorted_list));
+}
 
 // void		ft_memdel(void **ap)
 // {
@@ -46,16 +52,8 @@
 
 void	divide_list(t_pw_var *stvar)
 {
-	// int i;
-	// int *sorted_list;
-
-	// i = 0;
-	// sorted_list = (int *)malloc(sizeof(int));
-	// sorted_list = lst_cpy(stvar->stack_a, sorted_list);
 	// stvar->tail = sorted_list[stvar->argc - 1];
-	// insertion_sort(sorted_list, stvar->argc, &stvar->min, &stvar->max);
-	// ft_printf("the printed array\n\n");
-    // print_array(sorted_list, stvar->argc);
-	// stvar->median = find_median_array(sorted_list, stvar->index);
-	// divide_and_presort(stvar, sorted_list);
+	stvar->median = find_median_array(stvar->sorted, stvar->index);
+	ft_printf("median is:%d\n\n", stvar->median);
+	divide_and_presort(stvar, stvar->sorted);
 }

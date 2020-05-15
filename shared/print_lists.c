@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 10:14:42 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 10:31:42 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	print_input_list(t_stack *stack_a, int *list)
 	ft_printf("\nInput list and array\n");
 	ft_printf("----------------------\n");
 	ft_printf("|input\t\tsorted|\n");
-	// ft_printf(" ");
 	while (temp != NULL)
 	{
 		ft_printf("|%d\t-->\t%d|", temp->num, list[i]);

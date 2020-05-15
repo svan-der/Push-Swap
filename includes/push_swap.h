@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/13 10:40:40 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 10:52:28 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ typedef struct		s_part
 
 void	print_partition_list(t_part *partition);
 void 	update_size(t_pw_var *stvar, char *str, int inst);
-void	push_half(t_pw_var *stvar, t_part *part_var, int *list, int argc);
-void	push_short(t_pw_var *stvar, t_part *part_var);
+void	push_half(t_pw_var *stvar, int *list, int argc);
+void	push_short(t_pw_var *stvar, int *list, int argc);
 void    ft_stackdelone(t_stack **alst, void (*del)(int *, size_t));
 void	ft_stackdel(t_stack **stack_lst, void (*del)(int *, size_t));
 void	push_back(t_pw_var *stvar, t_part *part_var);
-int		conquer_list(t_pw_var *stvar, t_part *part_var, int *list);
+int		conquer_list(t_pw_var *stvar, int *list);
 void    insertion_sort(int *list, int argc, int *min, int *max);
 int		part_addnew(t_part **part_var, int *list, int argc);
 void	ft_addpart(t_part **part_var, t_part *new);
@@ -42,7 +42,8 @@ void	sort_short(t_pw_var *stvar, char c, int len);
 void	sort_two(t_stack **stack_a, t_stack **stack_b, t_pw_var *stvar);
 int    	sort_three(t_stack **temp, t_pw_var *stvar, int min, int max);
 void    divide_list(t_pw_var *stvar);
-int		divide_and_presort(t_pw_var *stvar, t_part *part_var, int *sorted_list);
+int		divide_and_presort(t_pw_var *stvar, int *sorted_list);
+// int		divide_and_presort(t_pw_var *stvar, t_part *part_var, int *sorted_list);
 void    print_array(int *list, int argc);
 void	set_min_max(t_part *part_var);
 void	set_min_maxarray(t_pw_var *stvar, int *list, int len);

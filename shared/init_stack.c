@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 09:23:36 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 14:34:44 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,30 @@ int			stack_addnew(t_stack **stack, int num)
 	}
 	// ft_printf("going in fill_stack\n\n");
 	*stack = fill_stack_begin(stack, new);
+	return (1);
+}
+
+int			check_dup(t_stack *stack_a)
+{
+	t_stack		*fast;
+	t_stack		*slow;
+
+	fast = stack_a;
+	slow = stack_a;
+	if (stack_a == NULL)
+		return (-1);
+	while (slow && slow->next)
+	{
+		while (fast->next != NULL)
+		{
+			if (slow->num == fast->num)
+				return (-1);
+			else
+				fast = fast->next;
+		}
+		slow = slow->next;
+		fast = slow->next;
+	}
 	return (1);
 }
 
@@ -88,7 +112,7 @@ int			check_argv(char *str, t_pw_var *stvar)
 			return (-1);
 	}
 	if (ft_strnequ(&str[i], "214748364", 9))
-		if ((str[i + 9] > '6' && neg != -1) || (str[i + 9] > '8' && neg == -1))
+		if ((str[i + 9] > '7' && neg != -1) || (str[i + 9] > '8' && neg == -1))
 			return (-1);
 	return (add_num(&str[i], i, neg, stvar));
 }

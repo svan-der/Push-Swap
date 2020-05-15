@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/14 15:59:00 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 12:24:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,38 @@ void	content_delete(int *content, size_t size)
 
 int		error_handler(int ret)
 {
-	if (ret == 0)
-	{
-		ft_putstr_fd("Invalid argument\n", 2);
-		return (0);
-	}
-	if (ret == 1)
-	{
-		ft_putstr_fd("Failed to allocate memory\n", 2);
-		return (1);
-	}
-	if (ret == 2)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (2);
-	}
+	(void)ret;
+	ft_putstr_fd("Invalid argument\n", 2);
+	// if (ret == -1)
 	return (1);
 }
+
+// int		error_handler(int ret)
+// {
+// 	if (ret == 0)
+// 	{
+// 		ft_putstr_fd("Invalid argument\n", 2);
+// 		return (0);
+// 	}
+// 	if (ret == 1)
+// 	{
+// 		ft_putstr_fd("Failed to allocate memory\n", 2);
+// 		return (1);
+// 	}
+// 	if (ret == 2)
+// 	{
+// 		ft_putstr_fd("Error\n", 2);
+// 		return (2);
+// 	}
+// 	return (1);
+// }
 
 int		check_sorted(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack *temp;
 
 	temp = stack_a;
-	ft_printf("inside check sorted\n\n");
+	// ft_printf("inside check sorted\n\n");
 	if (stack_b != NULL)
 	{
 		ft_printf("KO\n");
@@ -73,21 +81,15 @@ t_stack	*fill_stack_begin(t_stack **head, t_stack *new)
 	new_node = new;
 	if (*head != NULL)
 	{
-		ft_printf("head is NOT null\n\n");
 		new_node->next = temp;
 		temp->prev = new_node;
 		temp = new_node;
 		return (temp);
-		ft_printf("new address:%p\n", new);
-		ft_printf("head address:%p\n", *head);
 	}
 	else
 	{
-		ft_printf("head is NULL\n\n");
 		temp = new_node;
 		temp->prev = NULL;
 		return (temp);
-		ft_printf("new address:%p\n", new);
-		ft_printf("head address:%p\n", *head);
 	}
 }

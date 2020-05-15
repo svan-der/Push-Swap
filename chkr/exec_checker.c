@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 09:23:03 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 11:15:19 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		get_instruction(t_pw_var *stvar)
 	ret = 1;
 	line = NULL;
 	stvar->inst_lst = NULL;
-	ft_printf("stack_a->num:%p\n\n", stvar->stack_a);
+	// ft_printf("stack_a->num:%p\n\n", stvar->stack_a);
 	while (ret > 0)
 	{
 		ret = get_next_line(0, &line);

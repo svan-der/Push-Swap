@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/14 17:52:33 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 12:19:02 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 
 	temp = *stack_a;
 	temp1 = *stack_b;
-	ft_printf("inside swap ss\n");
+	// ft_printf("inside swap ss\n");
 	if (temp != NULL && temp->next != NULL)
 		swap_a(stack_a);
 	if ((temp1 != NULL && temp1->next != NULL))
 	{
-		ft_printf("in swap_b\n");
+		// ft_printf("in swap_b\n");
 		swap_b(stack_b);
 	}
 	print_stack(*stack_a, 1);
@@ -94,9 +94,9 @@ int		push_b(t_stack **stack_a, t_stack **stack_b)
 	t_stack *tmp;
 	t_stack	*new;
 
-	ft_printf("stack_a ptr before:%p\n\n", *stack_a);
-	ft_printf("stack_b prev ptr before:%p\n\n", *stack_b);
-	ft_printf("stack_b ptr before:%p\n\n", *stack_b);
+	// ft_printf("stack_a ptr before:%p\n\n", *stack_a);
+	// ft_printf("stack_b prev ptr before:%p\n\n", *stack_b);
+	// ft_printf("stack_b ptr before:%p\n\n", *stack_b);
 	if (*stack_a == NULL)
 		return (0);
 	new = *stack_b;
@@ -108,9 +108,9 @@ int		push_b(t_stack **stack_a, t_stack **stack_b)
 	if (*stack_a && (*stack_a)->next != NULL)
 		(*stack_a)->prev = NULL;
 	*stack_b = new;
-	ft_printf("stack_a ptr after:%p\n\n", *stack_a);
-	ft_printf("stack_b prev ptr after:%p\n\n", *stack_b);
-	ft_printf("stack_b ptr after:%p\n\n", *stack_b);
+	// ft_printf("stack_a ptr after:%p\n\n", *stack_a);
+	// ft_printf("stack_b prev ptr after:%p\n\n", *stack_b);
+	// ft_printf("stack_b ptr after:%p\n\n", *stack_b);
 	print_stack(*stack_a, 1);
 	print_stack_b(*stack_b, 1);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 10:03:31 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 13:50:16 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ void				content_delete(int *content, size_t size);
 t_stack				*reverse_list(t_stack **new);
 int					check_sorted(t_stack *stack_a, t_stack *stack_b);
 int					check_argv(char *str, t_pw_var *stvar);
+int					check_dup(t_stack *stack_a);
 // void				debug(t_stack **stack_a, t_stack **stack_b);
 int					error_handler(int ret);
 void				debug(t_pw_var *stvar);
