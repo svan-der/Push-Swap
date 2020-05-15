@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 14:34:44 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 14:41:58 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int			check_dup(t_stack *stack_a)
 	{
 		while (fast->next != NULL)
 		{
-			if (slow->num == fast->num)
+			if (slow->num == fast->next->num)
 				return (-1);
 			else
 				fast = fast->next;
