@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/13 18:06:42 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 09:17:06 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,52 +53,26 @@ void				print_inst_list(t_inst *instr)
 	ft_printf("----------------------------------------\n");
 }
 
-void				print_stack_list(t_stack *stack)
+void				print_stack_list(t_stack *stack, char c)
 {
-	t_stack			*temp;
+	t_stack	*temp;
 
 	temp = stack;
-	ft_printf("\n      Linked List with stack numbers       \n");
-	ft_printf("-----------------------------------------\n");
-	ft_printf("|stack_num\t\t\ttail_num|\n");
-	ft_printf("|-------------------------------");
-	ft_printf("-----|\n");
+	ft_printf("\n         Linked List with stack_%c numbers       \n", c);
+	ft_printf("-----------------------------------------------------");
+	ft_printf("--------------------\n");
+	ft_printf("|num\tlen\t\tcurr\t\tprev\t\tnext|");
+	ft_printf("\n");
 	while (temp != NULL)
 	{
-		ft_printf("|%i\t\t", temp->num);
-		// ft_printf("|%i\t\t", *temp->tail);
-		// if (temp->next != NULL)
-		// 	ft_printf("\t-> %i\t|\n", *temp->next->num);
-		// else
-		// 	ft_printf("\t-> NULL\t|\n");
+		ft_printf("|%d\t%d\t\t%p\t%p\t%p|", temp->num, temp->len, temp, temp->prev, temp->next);
+		ft_printf("\n");
 		temp = temp->next;
 	}
-	ft_printf("----------------------------------------\n");
+	ft_printf("------------------------------------");
+	ft_printf("------------------------------------\n");
+	ft_printf("									   \n");
 }
-
-// void				print_stack_list(t_stack *stack)
-// {
-// 	t_stack 		*temp;
-
-// 	temp = stack;
-// 	ft_printf("\n           Linked List with stack numbers        \n");
-// 	ft_printf("-----------------------------------------------------");
-// 	ft_printf("--------------------\n");
-// 	ft_printf("|room_name\troom_x_coord\troom_y_coord\troom_position\t");
-// 	ft_printf("next_room|\n");
-// 	while (temp != NULL)
-// 	{
-// 		ft_printf("|%s\t\t%d\t\t%d", temp->name, temp->x_coord, temp->y_coord);
-// 		ft_printf("\t\t%d\t\t", temp->position);
-// 		if (temp->next != NULL)
-// 			ft_printf("%s\t|\n", temp->next->name);
-// 		else
-// 			ft_printf("NULL\t|\n");
-// 		temp = temp->next;
-// 	}
-// 	ft_printf("------------------------------------");
-// 	ft_printf("------------------------------------\n");
-// }
 
 void				print_pw_var(t_pw_var *stvar)
 {
