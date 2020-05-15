@@ -6,34 +6,74 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 09:17:06 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 10:14:42 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/psw_env.h"
 #include "../includes/push_swap.h"
 
-void				print_input_list(t_list *argv)
+void	print_array(int *list, int argc)
 {
-	t_list *temp;
+	int i;
 
-	temp = argv;
-	ft_printf("\n      Linked List with input numbers      \n");
-	ft_printf("-----------------------------------------\n");
-	ft_printf("|input_num\t\t\tnext_input_num|\n");
-	ft_printf("|-------------------------------");
-	ft_printf("-----|\n");
+	i = 0;
+	ft_printf("\nArray sorted\n");
+	ft_printf("--------------\n");
+	ft_printf("|sorted|\n");
+	while (i < argc)
+	{
+		ft_printf("|%i|\n", list[i]);
+		i++;
+	}
+	ft_printf("--------------\n");
+	ft_printf("				 \n");
+}
+
+void	print_input_list(t_stack *stack_a, int *list)
+{
+	int i;
+	t_stack *temp;
+
+	i = 0;
+	temp = stack_a;
+	ft_printf("\nInput list and array\n");
+	ft_printf("----------------------\n");
+	ft_printf("|input\t\tsorted|\n");
+	// ft_printf(" ");
 	while (temp != NULL)
 	{
-		ft_printf("|%p\t\t", temp->content);
-		if (temp->next != NULL)
-			ft_printf("\t-> %p\t|\n", temp->next->content);
-		else
-			ft_printf("\t-> NULL\t|\n");
+		ft_printf("|%d\t-->\t%d|", temp->num, list[i]);
+		ft_printf("\n");
 		temp = temp->next;
+		i++;
 	}
-	ft_printf("----------------------------------------\n");
+	ft_printf("----------------------\n");
+	ft_printf("				 		\n");
 }
+
+
+// void				print_input_list(t_list *argv)
+// {
+// 	t_list *temp;
+
+// 	temp = argv;
+// 	ft_printf("\n      Linked List with input numbers      \n");
+// 	ft_printf("-----------------------------------------\n");
+// 	ft_printf("|input_num\t\t\tnext_input_num|\n");
+// 	ft_printf("|-------------------------------");
+// 	ft_printf("-----|\n");
+// 	while (temp != NULL)
+// 	{
+// 		ft_printf("|%p\t\t", temp->content);
+// 		if (temp->next != NULL)
+// 			ft_printf("\t-> %p\t|\n", temp->next->content);
+// 		else
+// 			ft_printf("\t-> NULL\t|\n");
+// 		temp = temp->next;
+// 	}
+// 	ft_printf("----------------------------------------\n");
+// }
 
 void				print_inst_list(t_inst *instr)
 {

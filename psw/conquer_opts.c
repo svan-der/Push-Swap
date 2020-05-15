@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/13 10:54:44 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 09:34:41 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ void	part_sort(t_pw_var *stvar, int argc)
 	while (j < argc)
 	{
 		j++;
-		if ((*stvar->stack_a->num) < stvar->median)
+		if ((stvar->stack_a->num) < stvar->median)
 			dispatch_sort(stvar, PB, 1);
 		else
 		{
-			if ((*stvar->stack_a->num) == stvar->min)
+			if ((stvar->stack_a->num) == stvar->min)
 				low = 1;
-			if ((*stvar->stack_a->next->num) < stvar->median)
+			if ((stvar->stack_a->next->num) < stvar->median)
 				dispatch_sort(stvar, SA, 1);
 			else
 			{
@@ -129,17 +129,17 @@ int		sort_three_revpart(t_stack **temp, t_pw_var *stvar, int min, int max)
 	t_stack *stack;
 
 	stack = *temp;
-	if ((*stack->num) == min && (*stack->next->num) != max)
+	if ((stack->num) == min && (stack->next->num) != max)
 		return (dispatch_sort(stvar, RRB, 1) && dispatch_sort(stvar, SB, 1));
-	if ((*stack->num) == min && (*stack->next->num) == max)
+	if ((stack->num) == min && (stack->next->num) == max)
 		return (dispatch_sort(stvar, RB, 1));
-	if ((*stack->num) == max && (*stack->next->num) == min)
+	if ((stack->num) == max && (stack->next->num) == min)
 		return (dispatch_sort(stvar, RRB, 1) && dispatch_sort(stvar, SB, 1));
-	if ((*stack->num) == max && (*stack->next->num) != min)
+	if ((stack->num) == max && (stack->next->num) != min)
 		return (dispatch_sort(stvar, NULL, 0));
-	if ((*stack->next->num) == max)
+	if ((stack->next->num) == max)
 		return (dispatch_sort(stvar, SB, 1));
-	if ((*stack->next->num) == min)
+	if ((stack->next->num) == min)
 		return (dispatch_sort(stvar, RRB, 1));
 	printf("three are now sorted!!!\n\n");
 	return (0);
@@ -148,7 +148,7 @@ int		sort_three_revpart(t_stack **temp, t_pw_var *stvar, int min, int max)
 void	sort_two(t_stack **stack_a, t_stack **stack_b, t_pw_var *stvar)
 {
 	(void)stack_a;
-	if ((*(*stack_b)->num) < (*(*stack_b)->next->num))
+	if (((*stack_b)->num) < ((*stack_b)->next->num))
 		dispatch_sort(stvar, SB, 1);
 }
 
@@ -179,18 +179,18 @@ int		sort_three(t_stack **temp, t_pw_var *stvar, int min, int max)
 	t_stack *stack;
 
 	stack = *temp;
-	printf("stack->num is:%d\n\n", (*stack->num));
-	if ((*stack->num) == min && (*stack->next->num) != max)
+	printf("stack->num is:%d\n\n", (stack->num));
+	if ((stack->num) == min && (stack->next->num) != max)
 		return (dispatch_sort(stvar, NULL, 0));
-	if ((*stack->num) == min && (*stack->next->num) == max)
+	if ((stack->num) == min && (stack->next->num) == max)
 		return (dispatch_sort(stvar, RRA, 1) && dispatch_sort(stvar, SA, 1));
-	if ((*stack->num) == max && (*stack->next->num) == min)
+	if ((stack->num) == max && (stack->next->num) == min)
 		return (dispatch_sort(stvar, RA, 1));
-	if ((*stack->num) == max && (*stack->next->num) != min)
+	if ((stack->num) == max && (stack->next->num) != min)
 		return (dispatch_sort(stvar, SA, 1) && dispatch_sort(stvar, RRA, 1));
-	if ((*stack->next->num) == max)
+	if ((stack->next->num) == max)
 		return (dispatch_sort(stvar, RRA, 1));
-	if ((*stack->next->num) == min)
+	if ((stack->next->num) == min)
 		return (dispatch_sort(stvar, SA, 1));
 	printf("three are now sorted!!!\n\n");
 	return (0);

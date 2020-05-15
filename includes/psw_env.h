@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 09:17:40 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 10:03:31 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct		s_pw_var
 	int				max;
 	int				min;
 	int				total_ins;
+	int				*sorted;
 	t_list			*argv;
 	t_inst			*inst_lst;
 	t_stack			*stack_a;
@@ -129,7 +130,7 @@ t_inst				*create_instruction(char *line);
 ** print functions
 */
 
-void				print_input_list(t_list *argv);
+void				print_input_list(t_stack *stack, int *list);
 void				print_inst_list(t_inst *instr);
 void				print_stack_list(t_stack *stack, char c);
 void				print_pw_var(t_pw_var *stvar);

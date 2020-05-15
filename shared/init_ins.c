@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:50:30 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 09:22:32 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 09:31:12 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int		print_instructions(t_inst *inst_lst, int ret)
 	{
 		next = temp->next;
 		if (ret != -1)
-			printf("operation: |%s|\n\n", temp->operation);
+			ft_printf("operation: |%s|\n\n", temp->operation);
 		temp = next;
 	}
 	if (ret == -1)
-		printf("Error\n");
-	printf("ret is: %d\n", ret);
+		ft_printf("Error\n");
+	ft_printf("ret is: %d\n", ret);
 	return (1);
 }
 
