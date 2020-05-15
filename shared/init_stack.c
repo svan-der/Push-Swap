@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 14:41:58 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 15:12:54 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int			stack_addnew(t_stack **stack, int num)
 	return (1);
 }
 
-int			check_dup(t_stack *stack_a)
+int			check_dup(t_stack **stack_a)
 {
 	t_stack		*fast;
 	t_stack		*slow;
 
-	fast = stack_a;
-	slow = stack_a;
+	fast = *stack_a;
+	slow = *stack_a;
 	if (stack_a == NULL)
 		return (-1);
 	while (slow && slow->next)
@@ -85,7 +85,10 @@ int			add_num(char *str, int i, int neg, t_pw_var *stvar)
 		i++;
 	}
 	if (str[i] != '\0')
+	{
+		ft_printf("error\n");
 		return (-1);
+	}
 	num *= neg;
 	ret = stack_addnew(&(stvar)->stack_a, num);
 	return (ret);

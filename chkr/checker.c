@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:44:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 13:53:04 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 15:12:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ int		main(int argc, char **argv)
 	{
 		str = argv[i];
 		ret = check_argv(str, &stvar);
+		// ft_printf("ret after argv check is:%d\n", ret);
 		if (ret == -1)
 			return (error_handler(ret));
 		i++;
 	}
-	ret = check_dup(stvar.stack_a);
-	ft_printf("ret is:%d\n", ret);
+	ret = check_dup(&(stvar.stack_a));
+	// ft_printf("ret after check dup is:%d\n", ret);
 	// ret = get_instruction(&stvar);
 	// // if (ret == -1)
 	// // 	error_handler(0);
