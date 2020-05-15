@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 12:19:02 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 17:06:41 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		swap_a(t_stack **stack_a)
 		new->prev = NULL;
 		*stack_a = new;
 	}
-	print_stack(*stack_a, 1);
+	print_stack(stack_a, 1);
 	return (1);
 }
 
@@ -53,7 +53,7 @@ int		swap_b(t_stack **stack_b)
 		new->prev = NULL;
 		*stack_b = new;
 	}
-	print_stack_b(*stack_b, 1);
+	print_stack_b(stack_b, 1);
 	return (1);
 }
 
@@ -72,8 +72,8 @@ int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 		// ft_printf("in swap_b\n");
 		swap_b(stack_b);
 	}
-	print_stack(*stack_a, 1);
-	print_stack_b(*stack_b, 1);
+	print_stack(stack_a, 1);
+	print_stack_b(stack_b, 1);
 	return (1);
 }
 
@@ -111,8 +111,8 @@ int		push_b(t_stack **stack_a, t_stack **stack_b)
 	// ft_printf("stack_a ptr after:%p\n\n", *stack_a);
 	// ft_printf("stack_b prev ptr after:%p\n\n", *stack_b);
 	// ft_printf("stack_b ptr after:%p\n\n", *stack_b);
-	print_stack(*stack_a, 1);
-	print_stack_b(*stack_b, 1);
+	print_stack(stack_a, 1);
+	print_stack_b(stack_b, 1);
 	return (1);
 }
 
@@ -132,7 +132,7 @@ int		push_a(t_stack **stack_a, t_stack **stack_b)
 	if (*stack_b && (*stack_b)->next != NULL)
 		(*stack_b)->prev = NULL;
 	*stack_a = new;
-	print_stack(*stack_a, 1);
-	print_stack_b(*stack_b, 1);
+	print_stack(stack_a, 1);
+	print_stack_b(stack_b, 1);
 	return (1);
 }

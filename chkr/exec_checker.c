@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 11:15:19 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 17:10:38 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ int		get_instruction(t_pw_var *stvar)
 		free(line);
 		line = NULL;
 		if (ret == -1 || valid == -1)
-			return (print_instructions(stvar->inst_lst, -1));
+			return (-1);
 		if (ret == 0 || valid == 0)
 			break ;
 	}
 	print_instructions(stvar->inst_lst, ret);
-	ret = check_sorted(stvar->stack_a, stvar->stack_b);
+	check_sorted(&stvar->stack_a, &stvar->stack_b);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:44:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 15:12:13 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 17:12:05 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int		main(int argc, char **argv)
 {
 	t_pw_var	stvar;
+	int			valid;
 	char		*str;
 	int			ret;
 	int			i;
@@ -28,19 +29,25 @@ int		main(int argc, char **argv)
 	while (i < argc)
 	{
 		str = argv[i];
-		ret = check_argv(str, &stvar);
+		valid = check_argv(str, &stvar);
+		// ft_printf("num is:%d\n", stvar.stack_a->num);
 		// ft_printf("ret after argv check is:%d\n", ret);
-		if (ret == -1)
-			return (error_handler(ret));
+		if (valid == -1)
+		{
+			error_handler(valid);
+			return (ft_exit(&stvar));
+		}
 		i++;
 	}
-	ret = check_dup(&(stvar.stack_a));
-	// ft_printf("ret after check dup is:%d\n", ret);
-	// ret = get_instruction(&stvar);
-	// // if (ret == -1)
-	// // 	error_handler(0);
-	// // print_stack_list(stvar.stack_a, 'a');
-	// free_inst_list(&(stvar).inst_lst);
-	// free_stack_list(&(stvar).stack_a, &(stvar).stack_b);
+	valid = check_dup(&(stvar.stack_a));
+	if (valid == -1)
+	{
+		error_handler(valid);
+		return (ft_exit(&stvar));
+	}
+	ret = get_instruction(&stvar);
+	if (ret == -1)
+		error_handler(ret);
+	ft_exit(&stvar);
 	return (1);
 }

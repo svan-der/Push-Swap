@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:15:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/14 17:58:45 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 17:07:26 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int		rotate_rr(t_stack **stack_a, t_stack **stack_b)
 		ft_printf("rotate_b on\n\n");
 		rotate_b(stack_b);
 	}
-	print_stack(*stack_a, 1);
-	print_stack_b(*stack_b, 1);
+	print_stack(stack_a, 1);
+	print_stack_b(stack_b, 1);
 	return (1);
 }
 
@@ -52,8 +52,7 @@ int		rotate_b(t_stack **stack_b)
 		temp->next->prev = temp;
 		(*stack_b)->next = NULL;
 		*stack_b = new;
-		print_stack_b(*stack_b, 1);
-		ft_printf("\n");
+		print_stack_b(stack_b, 1);
 	}
 	return (1);
 }
@@ -76,8 +75,7 @@ int		rotate_revb(t_stack **stack_b)
 		temp->next = new;
 		temp->prev = NULL;
 		*stack_b = temp;
-		print_stack_b(*stack_b, 1);
-		ft_printf("\n");
+		print_stack_b(stack_b, 1);
 	}
 	return (1);
 }
@@ -100,8 +98,7 @@ int		rotate_reva(t_stack **stack_a)
 		temp->next = new;
 		temp->prev = NULL;
 		*stack_a = temp;
-		print_stack(*stack_a, 1);
-		ft_printf("\n");
+		print_stack(stack_a, 1);
 	}
 	return (1);
 }
@@ -122,8 +119,7 @@ int		rotate_a(t_stack **stack_a)
 		temp->next->prev = temp;
 		(*stack_a)->next = NULL;
 		*stack_a = new;
-		print_stack(*stack_a, 1);
-		ft_printf("\n");
+		print_stack(stack_a, 1);
 	}
 	return (1);
 }
