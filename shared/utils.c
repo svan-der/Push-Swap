@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 17:36:16 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 17:43:10 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,8 @@ int		check_sorted(t_stack **stack_a, t_stack **stack_b)
 	valid = 1;
 	print_stack(stack_a, 1);
 	// ft_printf("inside check sorted\n\n");
-	if (stack_b != NULL)
-	{
+	if (*stack_b != NULL)
 		valid = 0;
-		ft_printf("not valid\n");
-	}
 	while (temp != NULL && temp->next != NULL)
 	{
 		if ((temp->num) > (temp->next->num))
