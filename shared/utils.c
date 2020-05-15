@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 17:08:28 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/15 17:31:07 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,13 @@ int		check_sorted(t_stack **stack_a, t_stack **stack_b)
 		ft_printf("OK\n");
 	return (1);
 }
+
+
+t_stack	*ft_stackaddend()
+{
+	
+}
+
 
 t_stack	*fill_stack_begin(t_stack **head, t_stack *new)
 {
