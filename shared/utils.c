@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 09:36:33 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 09:50:10 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_exit(t_pw_var *stvar)
 int		error_handler(int ret)
 {
 	(void)ret;
-	ft_putstr_fd("error\n", 2);
+	ft_putstr_fd("Error\n", 2);
 	// if (ret == 1)
 	// 	return (exit())
 	return (1);
@@ -44,17 +44,16 @@ int		check_sorted(t_stack **stack_a, t_stack **stack_b)
 
 	temp = *stack_a;
 	valid = 1;
-	print_stack(stack_a, 1);
-	// ft_printf("inside check sorted\n\n");
+	// print_stack(stack_a, 1);
 	if (*stack_b != NULL)
 		valid = 0;
 	while (temp != NULL && temp->next != NULL)
 	{
 		if (temp->num > temp->next->num)
 		{
-			ft_printf("num is:%d\n", temp->num);
+			// ft_printf("num is:%d\n", temp->num);
 			valid = 0;
-			ft_printf("not valid\n");
+			// ft_printf("not valid\n");
 		}
 		temp = temp->next;
 	}

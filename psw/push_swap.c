@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 12:18:28 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 09:55:16 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int		run_pw(t_pw_var *stvar)
 	ft_printf("max:%d\n", stvar->max);
 	if (stvar->argc > 3)
 		divide_list(stvar);
-	else
+	else if (stvar->argc == 2)
 	{
 		ft_printf("goes in sort three\n");
 		sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);

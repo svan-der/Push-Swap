@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 17:39:05 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 09:43:52 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,8 @@ int			add_num(char *str, int i, int neg, t_pw_var *stvar)
 		i++;
 	}
 	if (str[i] != '\0')
-	{
-		ft_printf("error\n");
 		return (-1);
-	}
 	num *= neg;
-	ft_printf("num is:%d\n", num);
 	ret = stack_addnew(&(stvar)->stack_a, num);
 	return (ret);
 }
