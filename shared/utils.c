@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 09:50:10 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 10:10:05 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int		ft_exit(t_pw_var *stvar)
 
 int		error_handler(int ret)
 {
-	(void)ret;
-	ft_putstr_fd("Error\n", 2);
-	// if (ret == 1)
-	// 	return (exit())
+	if (ret == -1)
+		ft_putstr_fd("Error\n", 2);
+	if (ret == 0)
+		ft_putstr_fd("KO\n", 2);
 	return (1);
 }
 
@@ -58,10 +58,15 @@ int		check_sorted(t_stack **stack_a, t_stack **stack_b)
 		temp = temp->next;
 	}
 	if (valid == 0)
-		ft_printf("KO\n");
+	{
+		// ft_printf("KO\n");
+		return (0);
+	}
 	else
-		ft_printf("OK\n");
-	return (1);
+	{
+		// ft_printf("OK\n");
+		return (1);
+	}
 }
 
 void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
