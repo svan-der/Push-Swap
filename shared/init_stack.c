@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 10:15:57 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 10:16:53 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int			check_dup(t_stack **stack_a)
 	{
 		while (fast->next != NULL)
 		{
-			ft_printf("slow->num:%d fast->next->num:%d\n", slow->num, fast->next->num);
+			// ft_printf("slow->num:%d fast->next->num:%d\n", slow->num, fast->next->num);
 			if (slow->num == fast->next->num)
 				return (-1);
 			else
