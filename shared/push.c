@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 09:47:37 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 15:22:06 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		swap_a(t_stack **stack_a)
 		new->prev = NULL;
 		*stack_a = new;
 	}
-	// print_stack(stack_a, 1);
+	print_stack(stack_a, 1);
 	return (1);
 }
 
@@ -53,7 +53,7 @@ int		swap_b(t_stack **stack_b)
 		new->prev = NULL;
 		*stack_b = new;
 	}
-	// print_stack_b(stack_b, 1);
+	print_stack_b(stack_b, 1);
 	return (1);
 }
 
@@ -69,8 +69,8 @@ int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 		swap_a(stack_a);
 	if ((temp1 != NULL && temp1->next != NULL))
 		swap_b(stack_b);
-	// print_stack(stack_a, 1);
-	// print_stack_b(stack_b, 1);
+	print_stack(stack_a, 1);
+	print_stack_b(stack_b, 1);
 	return (1);
 }
 
@@ -101,8 +101,8 @@ int		push_b(t_stack **stack_a, t_stack **stack_b)
 	if (*stack_a && (*stack_a)->next != NULL)
 		(*stack_a)->prev = NULL;
 	*stack_b = new;
-	// print_stack(stack_a, 1);
-	// print_stack_b(stack_b, 1);
+	print_stack(stack_a, 1);
+	print_stack_b(stack_b, 1);
 	return (1);
 }
 
@@ -121,7 +121,7 @@ int		push_a(t_stack **stack_a, t_stack **stack_b)
 	if (*stack_b && (*stack_b)->next != NULL)
 		(*stack_b)->prev = NULL;
 	*stack_a = new;
-	// print_stack(stack_a, 1);
-	// print_stack_b(stack_b, 1);
+	print_stack(stack_a, 1);
+	print_stack_b(stack_b, 1);
 	return (1);
 }

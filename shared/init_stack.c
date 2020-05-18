@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 10:16:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 14:14:17 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ t_stack		*create_stack(int num)
 	stack = (t_stack *)ft_memalloc(sizeof(t_stack));
 	if (stack == NULL)
 		return (NULL);
-	stack->len = ft_numlen(num);
+	stack->len = 0;
+	// stack->len = ft_numlen(num);
 	stack->num = num;
 	stack->next = NULL;
 	stack->prev = NULL;
@@ -76,14 +77,13 @@ int			add_num(char *str, int i, int neg, t_pw_var *stvar)
 
 	num = 0;
 	i = (neg == -1) ? i - 1 : i;
+	// ft_printf("num is:%d\n", str[i]);
 	while (str[i] != '\0' && ft_isdigit(str[i]))
 	{
 		num *= 10;
 		num += str[i] - '0';
 		i++;
 	}
-	if (str[i] != '\0')
-		return (-1);
 	num *= neg;
 	ret = stack_addnew(&(stvar)->stack_a, num);
 	return (ret);

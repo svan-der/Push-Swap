@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 17:08:59 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 15:45:07 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct		s_stack
 	size_t			len;
 	struct s_stack	*prev;
 	struct s_stack	*next;
+	struct s_stack	*tail;
 }					t_stack;
 
 // typedef int	(*t_operates)(t_stack **, t_stack **);
@@ -78,6 +79,7 @@ typedef struct		s_pw_var
 	int				min;
 	int				total_ins;
 	int				*sorted;
+	int				*list;
 	t_list			*argv;
 	t_inst			*inst_lst;
 	t_stack			*stack_a;
