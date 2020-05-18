@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 18:02:23 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 09:36:33 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int		error_handler(int ret)
 int		check_sorted(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *temp;
-	// int		current_num;
-	// int		next_num;
+	int		sign;
 	int		valid;
 
 	temp = *stack_a;
@@ -51,7 +50,7 @@ int		check_sorted(t_stack **stack_a, t_stack **stack_b)
 		valid = 0;
 	while (temp != NULL && temp->next != NULL)
 	{
-		if ((ft_abs(temp->num)) > (ft_abs(temp->next->num)))
+		if (temp->num > temp->next->num)
 		{
 			ft_printf("num is:%d\n", temp->num);
 			valid = 0;

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 10:32:58 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 09:38:52 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,12 @@ void insertion_sort(int *list, int argc, int *min, int *max)
 		*min = list[argc - 3];
 		*max = list[argc - 1];
 	}
-	print_array(list, argc);
+	if (argc == 2)
+	{
+		*min = list[argc - 2];
+		*max = list[argc - 1];
+	}
+	// print_array(list, argc);
 }
 
 void	part_sort(t_pw_var *stvar, int argc)
