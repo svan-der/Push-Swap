@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 10:06:08 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 10:22:41 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,14 @@ int		run_pw(t_pw_var *stvar)
 {
 	int ret;
 
+	ret = check_sorted(&(stvar->stack_a), &(stvar->stack_b));
+	if (ret == 1)
+		return (0);
 	presort_list(stvar);
 	print_input_list(stvar->stack_a, stvar->sorted);
 	ft_printf("stvar->argc:%d\n\n", stvar->argc);
 	ft_printf("min:%d\n", stvar->min);
 	ft_printf("max:%d\n", stvar->max);
-	ret = check_sorted(&(stvar->stack_a), &(stvar->stack_b));
-	if (ret == 1)
-		return (0);
 	if (stvar->argc > 3)
 		divide_list(stvar);
 	else if (stvar->argc == 2)
