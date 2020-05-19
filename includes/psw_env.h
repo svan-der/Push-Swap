@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 15:45:07 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/19 12:47:00 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct		s_inst
 typedef struct		s_stack
 {
 	int				num;
-	size_t			len;
+	int				dist;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 	struct s_stack	*tail;

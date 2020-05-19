@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 15:43:58 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/19 12:24:58 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,24 +184,60 @@ void	do_op(t_pw_var *stvar, char *str, int num)
 // 	}
 // }
 
+// int		sort_three_revpart(t_stack **temp, t_pw_var *stvar, int min, int max)
+// {
+// 	t_stack *stack;
+
+// 	stack = *temp;
+// 	if ((stack->num) == min && (stack->next->num) != max)
+// 		return (dispatch_sort(stvar, RRB, 1) && dispatch_sort(stvar, SB, 1));
+// 	if ((stack->num) == min && (stack->next->num) == max)
+// 		return (dispatch_sort(stvar, RB, 1));
+// 	if ((stack->num) == max && (stack->next->num) == min)
+// 		return (dispatch_sort(stvar, RRB, 1) && dispatch_sort(stvar, SB, 1));
+// 	if ((stack->num) == max && (stack->next->num) != min)
+// 		return (dispatch_sort(stvar, NULL, 0));
+// 	if ((stack->next->num) == max)
+// 		return (dispatch_sort(stvar, SB, 1));
+// 	if ((stack->next->num) == min)
+// 		return (dispatch_sort(stvar, RRB, 1));
+// 	printf("three are now sorted!!!\n\n");
+// 	return (0);
+// }
+
 int		sort_three_revpart(t_stack **temp, t_pw_var *stvar, int min, int max)
 {
 	t_stack *stack;
+	t_stack	*a;
+	t_stack	*b;
+	t_stack	*c;
 
 	stack = *temp;
-	if ((stack->num) == min && (stack->next->num) != max)
-		return (dispatch_sort(stvar, RRB, 1) && dispatch_sort(stvar, SB, 1));
-	if ((stack->num) == min && (stack->next->num) == max)
-		return (dispatch_sort(stvar, RB, 1));
-	if ((stack->num) == max && (stack->next->num) == min)
-		return (dispatch_sort(stvar, RRB, 1) && dispatch_sort(stvar, SB, 1));
-	if ((stack->num) == max && (stack->next->num) != min)
-		return (dispatch_sort(stvar, NULL, 0));
-	if ((stack->next->num) == max)
-		return (dispatch_sort(stvar, SB, 1));
-	if ((stack->next->num) == min)
-		return (dispatch_sort(stvar, RRB, 1));
-	printf("three are now sorted!!!\n\n");
+	a = stack;
+	b = stack->next;
+	c = stack->next->next;
+	ft_printf("a->num is:%d\n", a->num);
+	ft_printf("b->num is:%d\n", b->num);
+	ft_printf("c->num is:%d\n", c->num);
+	if ((a->num > b->num) && (b->num > c->num))
+	{
+		dispatch_sort(stvar, RA, 1);
+		dispatch_sort(stvar, SA, 1);
+	}
+	else if ((a->num < b->num) && (b->num > c->num) && (c->num < a->num))
+		dispatch_sort(stvar, RRA, 1);
+	else if ((a->num < b->num) && (b->num > c->num) && (c->num > a->num))
+	{
+		dispatch_sort(stvar, SA, 1);
+		dispatch_sort(stvar, RA, 1);
+	}
+	else if ((a->num > b->num) && (b->num < c->num) && (c->num > a->num))
+	{
+		ft_printf("goes in SA\n");
+		dispatch_sort(stvar, SA, 1);
+	}
+	else if ((a->num > b->num) && (b->num < c->num) && (c->num < a->num))
+		dispatch_sort(stvar, RA, 1);
 	return (0);
 }
 
@@ -234,55 +270,74 @@ void	sort_short(t_pw_var *stvar, char c, int stack_len)
 		dispatch_sort(stvar, PA, 1);
 }
 
-/*
-** function checks for numbers lower than median until number of arguments has been reached?
-*/
+
+int		find_distance(t_stack *stack_a, int	*sorted)
+{
+	
+}
 
 int		sort_five_stack(t_pw_var *stvar, int argc)
 {
 	int *sorted;
 	int i;
 	int j;
-	int k;
 
 	i = 0;
-	k = 0;
 	j = 0;
 	sorted = stvar->sorted;
-	ft_printf("argc is:%d\n", argc);
+	ft_printf("argc is:%d\n", (argc / 2));
 	ft_printf("num is:%d\n", stvar->stack_a->num);
-	while (j < argc)
-	{
-		if (stvar->stack_a->num < stvar->median)
-		{
-			if (stvar->stack_a->num == sorted[k])
-			{
-				dispatch_sort(stvar, PB, 1);
-				k++;
-			}
-		}
-		if (stvar->stack_a->next->num < stvar->median)
-		{
-			ft_printf("less than median\n");
-			if (stvar->stack_a->next->num == sorted[k])
-				dispatch_sort(stvar, SA, 1);
-		}
-		if (stvar->stack_a->tail->num == sorted[k])
-		{
-			ft_printf("tail is:%d, sorted is:%d\n", stvar->stack_a->tail->num, sorted[k]);
-			dispatch_sort(stvar, RRA, 1);
-			k++;
-			ft_printf("num is sorted: %d\n", sorted[k]);
-			// ft_printf("tail is:%d\n", stvar->stack_a->tail->num);
-			// stvar->stack_a->tail = stvar->stack_a->tail->next;
-		}
-		else
-		{
-			ft_printf("else option\n");
-			dispatch_sort(stvar, RRA, 1);
-		}
-	}
+	ft_printf("stvar->median:%d\n", stvar->median);
+
+	ft_printf("PB\n");
+	do_op(stvar, PB, 2);
+	sort_three_revpart(&(stvar)->stack_a, stvar, stvar->min, stvar->max);
+	dispatch_sort(stvar, PA, 1);
+	// if (stvar->stack)
+	// dispatch_sort(stvar, PA, 1);
 }
+
+
+/*
+** function checks for numbers lower than median until number of arguments has been reached?
+*/
+
+// int		sort_five_stack(t_pw_var *stvar, int argc)
+// {
+// 	int *sorted;
+// 	int i;
+// 	int j;
+
+// 	i = 0;
+// 	j = 0;
+// 	sorted = stvar->sorted;
+// 	ft_printf("argc is:%d\n", (argc / 2));
+// 	ft_printf("num is:%d\n", stvar->stack_a->num);
+// 	ft_printf("stvar->median:%d\n", stvar->median);
+// 	while (i < (argc / 2))
+// 	{
+// 		if (stvar->stack_a->num < stvar->median)
+// 		{
+// 			ft_printf("PB\n");
+// 			dispatch_sort(stvar, PB, 1);
+// 			i++;
+// 		}
+// 		else if (stvar->stack_a->next->num < stvar->median)
+// 		{
+// 			ft_printf("SA\n");
+// 			dispatch_sort(stvar, SA, 1);
+// 		}
+// 		else
+// 		{
+// 			ft_printf("RRA\n\n\n");
+// 			dispatch_sort(stvar, RRA, 1);
+// 			ft_printf("stvar num:%d\n", stvar->stack_a->num);
+// 		}
+// 	}
+// 	sort_three(&(stvar)->stack_a, stvar, stvar->min, stvar->max);
+// 	dispatch_sort(stvar, PA, 1);
+// 	dispatch_sort(stvar, PA, 1);
+// }
 
 int		sort_five(t_stack **stack, t_pw_var *stvar, int min, int max)
 {

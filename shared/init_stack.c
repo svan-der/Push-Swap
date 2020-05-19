@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 14:14:17 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/19 12:46:38 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,32 @@ t_stack		*create_stack(int num)
 	stack = (t_stack *)ft_memalloc(sizeof(t_stack));
 	if (stack == NULL)
 		return (NULL);
-	stack->len = 0;
-	// stack->len = ft_numlen(num);
+	stack->dist = 0;
 	stack->num = num;
 	stack->next = NULL;
 	stack->prev = NULL;
+	stack->tail = NULL;
 	return (stack);
+}
+
+t_stack		*ft_addtail(t_stack **tail, t_stack *new)
+{
+	t_stack *temp;
+
+	temp = *tail;
+	while (temp->next != NULL)
+        temp = temp->next;
+	ft_printf("temp->num:%d\n", temp->num);
+    temp = new;
+	*tail = temp;
+	return (*tail);
+    // temp->prev = temp->tail;
 }
 
 int			stack_addnew(t_stack **stack, int num)
 {
 	t_stack *new;
+	t_stack *tail;
 
 	new = create_stack(num);
 	if (new == NULL)
@@ -39,9 +54,12 @@ int			stack_addnew(t_stack **stack, int num)
 	{
 		*stack = new;
 		(new)->prev = NULL;
+		// (*stack)->tail = new;
+		// ft_printf("stack->tail:%d\n", (*stack)->tail->num);
 		return (1);
 	}
 	ft_stackaddend(stack, new);
+	// (*stack)->tail = ft_addtail(&(*stack)->tail, new);
 	return (1);
 }
 

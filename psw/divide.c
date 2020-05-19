@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 10:53:22 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 17:41:48 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ void	divide_list(t_pw_var *stvar)
 	// stvar->tail = sorted_list[stvar->argc - 1];
 	stvar->median = find_median_array(stvar->sorted, stvar->index);
 	ft_printf("median is:%d\n\n", stvar->median);
-	divide_and_presort(stvar, stvar->sorted);
+	if (stvar->argc == 5)
+		sort_five(&(stvar)->stack_a, stvar, stvar->min, stvar->max);
+	// divide_and_presort(stvar, stvar->sorted);
 }

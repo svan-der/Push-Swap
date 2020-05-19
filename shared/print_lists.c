@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/15 10:31:42 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/19 13:32:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,11 @@ void				print_stack_list(t_stack *stack, char c)
 	ft_printf("\n         Linked List with stack_%c numbers       \n", c);
 	ft_printf("-----------------------------------------------------");
 	ft_printf("--------------------\n");
-	ft_printf("|num\tlen\t\tcurr\t\tprev\t\tnext|");
+	ft_printf("|num\tdist\t\tcurr\t\tprev\t\tnext|");
 	ft_printf("\n");
 	while (temp != NULL)
 	{
-		ft_printf("|%d\t%d\t\t%p\t%p\t%p|", temp->num, temp->len, temp, temp->prev, temp->next);
+		ft_printf("|%d\t%d\t\t%p\t%p\t%p|", temp->num, temp->dist, temp, temp->prev, temp->next);
 		ft_printf("\n");
 		temp = temp->next;
 	}

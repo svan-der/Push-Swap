@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 10:10:05 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/18 17:32:48 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,34 +58,27 @@ int		check_sorted(t_stack **stack_a, t_stack **stack_b)
 		temp = temp->next;
 	}
 	if (valid == 0)
-	{
-		// ft_printf("KO\n");
 		return (0);
-	}
 	else
-	{
-		// ft_printf("OK\n");
 		return (1);
-	}
 }
 
 void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
 {
 	t_stack	*temp;
+	t_stack *tail;
 
-	if (*stack_lst == NULL)
-	{
-		(*stack_lst)->prev = NULL;
-		*stack_lst = new;
-		return ;
-	}
 	temp = *stack_lst;
+	// tail = *stack_lst;
 	while (temp->next != NULL)
-	{
 		temp = temp->next;
-	}
 	temp->next = new;
+	// tail->prev = new;
+	// tail = new;
+	// temp->next->tail = tail;
+	// temp->prev->tail = new;
 	temp->next->prev = temp;
+	// ft_printf("temp->tail:%d\n", temp->tail->num);
 }
 
 t_stack	*fill_stack_begin(t_stack **head, t_stack *new)
