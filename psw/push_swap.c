@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/20 14:42:58 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/20 17:44:48 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ int		*lst_cpy(t_stack **stack, int *new_list)
 	add_tail(stack);
 	// (*stack)->tail = current;
 	// (*stack)->tail->prev = current->prev;
-	ft_printf("tail->prev is:%p\n", (*stack)->tail->prev);
-	ft_printf("tail is:%p\n", (*stack)->tail);
+	// ft_printf("tail->prev is:%p\n", (*stack)->tail->prev);
+	// ft_printf("tail is:%p\n", (*stack)->tail);
 	return (new_list);
 }
 
@@ -173,11 +173,11 @@ static int		presort_list(t_pw_var *stvar)
 	if (stvar->sorted == NULL)
 		return (0);
 	stvar->sorted = lst_cpy(&(stvar)->stack_a, stvar->sorted);
-	print_array(stvar->sorted, stvar->argc);
+	// print_array(stvar->sorted, stvar->argc);
 	insertion_sort(stvar->sorted, stvar->argc, &stvar->min, &stvar->max);
 	set_index(&(stvar)->stack_a, stvar->sorted, stvar->argc);
 	// ft_printf("printing tail\n");
-	print_tail(stvar->stack_a->tail);
+	// print_tail(stvar->stack_a->tail);
 	return (1);
 }
 
@@ -190,13 +190,13 @@ int		run_pw(t_pw_var *stvar)
 	if (ret == 1)
 		return (0);
 	presort_list(stvar);
-	print_input_list(stvar->stack_a, stvar->sorted);
-	print_stack_list(stvar->stack_a, 'a');
+	// print_input_list(stvar->stack_a, stvar->sorted);
+	// print_stack_list(stvar->stack_a, 'a');
 	// // ft_printf("stvar->argc:%d\n\n", stvar->argc);
 	// // ft_printf("min:%d\n", stvar->min);
 	// // ft_printf("max:%d\n", stvar->max);
 	if (stvar->argc > 3)
-		divide_list(stvar);
+		ret = divide_list(stvar);
 	// else if (stvar->argc != 1)
 	// {
 	// 	ft_printf("goes in sort three\n");
@@ -204,7 +204,7 @@ int		run_pw(t_pw_var *stvar)
 	// }
 	// ft_printf("total number of instructions:|%i|\n\n", stvar->total_ins);
 	// print_stack_list(stvar->stack_a, 'a');
-	return (1);
+	return (ret);
 }
 
 // void	add_tail(t_stack **stack)
@@ -222,6 +222,7 @@ int		run_pw(t_pw_var *stvar)
 int		main(int argc, char **argv)
 {
 	t_pw_var	stvar;
+	int			valid;
 	char		*str;
 	int			ret;
 	int			i;
@@ -234,23 +235,32 @@ int		main(int argc, char **argv)
 	while (i < argc)
 	{
 		str = argv[i];
-		ret = check_argv(str, &stvar);
-		if (ret == -1)
-			return (error_handler(0));
+		valid = check_argv(str, &stvar);
+		if (valid == -1)
+		{
+			error_handler(valid);
+			return (ft_exit(&stvar));
+		}
 		i++;
+	}
+	valid = check_dup(&(stvar.stack_a));
+	if (valid == -1)
+	{
+		error_handler(valid);
+		return (ft_exit(&stvar));
 	}
 	stvar.argc -= 1;
 	stvar.index = stvar.argc;
-	print_stack(&stvar.stack_a->tail, 1);
-	print_stack_list(stvar.stack_a, 'a');
-	ret = run_pw(&stvar);
-	if (ret == -1)
-		error_handler(0);
+	// print_stack(&stvar.stack_a->tail, 1);
 	// print_stack_list(stvar.stack_a, 'a');
+	ret = run_pw(&stvar);
+	if (ret != 1)
+		error_handler(ret);
+	print_inst(stvar.inst_lst);
+	// print_stack(&stvar.stack_a, 1);
+	// print_stack_list(stvar.stack_a, 'a');
+	ft_exit(&stvar);
+	// print_instructions(stvar.inst_lst, ret);
 	// print_stack_list(stvar.stack_b, 'b');
-	free_inst_list(&(stvar).inst_lst);
-	free_stack_list(&(stvar).stack_a, &(stvar).stack_b);
-	free(stvar.sorted);
-	// push_swap(&stvar);
 	return (1);
 }

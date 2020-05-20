@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/20 14:09:18 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/20 17:33:36 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int		part_addnew(t_part **part_var, int *list, int argc);
 void	ft_addpart(t_part **part_var, t_part *new);
 t_part	*create_part(int argc, int *list);
 void	part_sort(t_pw_var *stvar, int argc);
-int		sort_five(t_stack **stack, t_pw_var *stvar, int min, int max);
+int		sort_five_stack(t_pw_var *stvar, int argc);
 void    sort_three_part(t_stack **stack, t_pw_var *stvar, int min, int max);
 void	sort_short(t_pw_var *stvar, char c, int len);
 void	sort_two(t_stack **stack_a, t_stack **stack_b, t_pw_var *stvar);
 int    	sort_three(t_stack **temp, t_pw_var *stvar, int min, int max);
-void    divide_list(t_pw_var *stvar);
+int    	divide_list(t_pw_var *stvar);
 int		divide_and_presort(t_pw_var *stvar, int *sorted_list);
 // int		divide_and_presort(t_pw_var *stvar, t_part *part_var, int *sorted_list);
 void    print_array(int *list, int argc);

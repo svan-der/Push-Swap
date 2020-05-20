@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/20 14:32:54 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/20 17:22:54 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,22 +74,34 @@ void	print_input_list(t_stack *stack_a, int *list)
 // 	ft_printf("----------------------------------------\n");
 // }
 
+void				print_inst(t_inst *instr)
+{
+	t_inst	*temp;
+
+	temp = instr;
+	while (temp != NULL)
+	{
+		ft_printf("%s\n", temp->operation);
+		temp = temp->next;
+	}
+}
+
 void				print_inst_list(t_inst *instr)
 {
 	t_inst			*temp;
 
 	temp = instr;
-	ft_printf("\n      Linked List with instructions       \n");
-	ft_printf("-----------------------------------------\n");
-	ft_printf("|operation\t\tail\n");
-	ft_printf("|-------------------------------");
+	ft_printf("\nLinked List with instructions\n");
+	ft_printf("------------\n");
+	ft_printf("|operation\n");
+	ft_printf("|----------");
 	ft_printf("-----|\n");
 	while (temp != NULL)
 	{
-		ft_printf("|%s\t\t", temp->operation);
+		ft_printf("|%s|", temp->operation);
 		temp = temp->next;
 	}
-	ft_printf("----------------------------------------\n");
+	ft_printf("-----------\n");
 }
 
 void				print_tail(t_stack *tail)

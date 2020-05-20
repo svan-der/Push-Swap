@@ -6,13 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/20 14:59:56 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/20 17:44:35 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../includes/psw_env.h"
-#include <stdio.h>
 
 void insertion_sort(int *list, int argc, int *min, int *max)
 {
@@ -201,7 +200,7 @@ void	do_op(t_pw_var *stvar, char *str, int num)
 // 		return (dispatch_sort(stvar, SB, 1));
 // 	if ((stack->next->num) == min)
 // 		return (dispatch_sort(stvar, RRB, 1));
-// 	printf("three are now sorted!!!\n\n");
+// 	// ft_printf("three are now sorted!!!\n\n");
 // 	return (0);
 // }
 
@@ -216,9 +215,9 @@ int		sort_three_revpart(t_stack **temp, t_pw_var *stvar, int min, int max)
 	a = stack;
 	b = stack->next;
 	c = stack->next->next;
-	ft_printf("a->num is:%d\n", a->num);
-	ft_printf("b->num is:%d\n", b->num);
-	ft_printf("c->num is:%d\n", c->num);
+	// ft_printf("a->num is:%d\n", a->num);
+	// ft_printf("b->num is:%d\n", b->num);
+	// ft_printf("c->num is:%d\n", c->num);
 	if ((a->num > b->num) && (b->num > c->num))
 	{
 		dispatch_sort(stvar, RA, 1);
@@ -289,10 +288,10 @@ void	update_stack(t_pw_var *stvar, t_stack **stack_a)
 		find_distance(&temp, temp->num, stvar->sorted);
 		temp = temp->next;
 	}
-	ft_printf("adding tail\n");
+	// ft_printf("adding tail\n");
 	add_tail(stack_a);
-	print_tail(stvar->stack_a->tail);
-	print_stack_list(stvar->stack_a, 'a');
+	// print_tail(stvar->stack_a->tail);
+	// print_stack_list(stvar->stack_a, 'a');
 }
 
 void	find_distance(t_stack **stack_a, int num, int *sorted)
@@ -314,7 +313,7 @@ void	find_distance(t_stack **stack_a, int num, int *sorted)
 		i++;
 	dist = j - i;
 	(*stack_a)->dist = dist;
-	ft_printf("dist is:%d\n", (*stack_a)->dist);
+	// ft_printf("dist is:%d\n", (*stack_a)->dist);
 }
 
 char	*find_low(t_stack *stack, int *op)
@@ -335,7 +334,7 @@ char	*find_low(t_stack *stack, int *op)
 		num = bottom->prev->num;
 	if (num > bottom->num)
 		num = bottom->num;
-	ft_printf("num is:%d\n", num);
+	// ft_printf("num is:%d\n", num);
 	if (num == top_next->num)
 		return (SA);
 	if (num == bottom_prev->num)
@@ -358,119 +357,24 @@ int		sort_five_stack(t_pw_var *stvar, int argc)
 
 	i = 0;
 	j = 0;
-	ft_printf("argc is:%d\n", (argc / 2));
-	ft_printf("num is:%d\n", stvar->stack_a->num);
-	ft_printf("stvar->median:%d\n", stvar->median);
-	// instr = find_low(stvar->stack_a, &opts);
-	// ft_printf("instr is:%s\t total:%d\n", instr, opts);
-	// do_op(stvar, instr, opts);
-	// update_stack(stvar, &(stvar)->stack_a);
-	// instr = find_low(stvar->stack_a, &opts);
-	// ft_printf("instr is:%s\t total:%d\n", instr, opts);
-	// do_op(stvar, instr, opts);
-	// j += 1;
-	// ft_printf("j is:%d\n", j);
-	// update_stack(stvar, &(stvar)->stack_a);
-	// instr = find_low(stvar->stack_a, &opts);
-	// ft_printf("instr is:%s\t total:%d\n", instr, opts);
-	// do_op(stvar, instr, opts);
-	// ft_printf("j is:%d\n", j);
-	// update_stack(stvar, &(stvar)->stack_a);
-	// instr = find_low(stvar->stack_a, &opts);
-	// ft_printf("instr is:%s\t total:%d\n", instr, opts);
-	// do_op(stvar, instr, opts);
-	// update_stack(stvar, &(stvar)->stack_a);
 	while (j != 2)
 	{
+		// ft_printf("num is:%d\n", stvar->stack_a->num);
 		// print_stack(&stvar->stack_a, 1);
 		instr = find_low(stvar->stack_a, &opts);
-		ft_printf("instr is:%s\t total:%d\n", instr, opts);
+		// ft_printf("instr is:%s\t total:%d\n", instr, opts);
 		do_op(stvar, instr, opts);
 		if (instr == PB)
 		{
 			j++;
-			ft_printf("j is:%d\n", j);
+			// ft_printf("j is:%d\n", j);
 		}
 		update_stack(stvar, &(stvar)->stack_a);
 	}
-	sort_three_revpart(&(stvar)->stack_a, stvar, stvar->min, stvar->max);
+	sort_three(&(stvar)->stack_a, stvar, stvar->min, stvar->max);
 	do_op(stvar, PA, 2);
-	ft_printf("stvar->list:%d\n", stvar->total_ins);
-}
-	
-// int		sort_five_stack(t_pw_var *stvar, int argc)
-// {
-// 	int *sorted;
-// 	int	top;
-// 	int bottom;
-// 	int i;
-// 	int j;
-
-// 	i = 0;
-// 	j = 0;
-// 	sorted = stvar->sorted;
-// 	ft_printf("argc is:%d\n", (argc / 2));
-// 	ft_printf("num is:%d\n", stvar->stack_a->num);
-// 	ft_printf("stvar->median:%d\n", stvar->median);
-
-// 	ft_printf("PB\n");
-// 	do_op(stvar, PB, 2);
-// 	sort_three_revpart(&(stvar)->stack_a, stvar, stvar->min, stvar->max);
-// 	dispatch_sort(stvar, PA, 1);
-// 	ft_printf("stvar->index is:%d\n", stvar->index);
-// 	ft_printf("stvar->sort_index is:%d\n", stvar->sort_index);
-// 	find_distance(&(stvar)->stack_a, stvar->stack_a->num, stvar->sorted);
-// 	// fastest_sort()
-// 	// if (stvar->stack)
-// 	// dispatch_sort(stvar, PA, 1);
-// }
-
-
-/*
-** function checks for numbers lower than median until number of arguments has been reached?
-*/
-
-// int		sort_five_stack(t_pw_var *stvar, int argc)
-// {
-// 	int *sorted;
-// 	int i;
-// 	int j;
-
-// 	i = 0;
-// 	j = 0;
-// 	sorted = stvar->sorted;
-// 	ft_printf("argc is:%d\n", (argc / 2));
-// 	ft_printf("num is:%d\n", stvar->stack_a->num);
-// 	ft_printf("stvar->median:%d\n", stvar->median);
-// 	while (i < (argc / 2))
-// 	{
-// 		if (stvar->stack_a->num < stvar->median)
-// 		{
-// 			ft_printf("PB\n");
-// 			dispatch_sort(stvar, PB, 1);
-// 			i++;
-// 		}
-// 		else if (stvar->stack_a->next->num < stvar->median)
-// 		{
-// 			ft_printf("SA\n");
-// 			dispatch_sort(stvar, SA, 1);
-// 		}
-// 		else
-// 		{
-// 			ft_printf("RRA\n\n\n");
-// 			dispatch_sort(stvar, RRA, 1);
-// 			ft_printf("stvar num:%d\n", stvar->stack_a->num);
-// 		}
-// 	}
-// 	sort_three(&(stvar)->stack_a, stvar, stvar->min, stvar->max);
-// 	dispatch_sort(stvar, PA, 1);
-// 	dispatch_sort(stvar, PA, 1);
-// }
-
-int		sort_five(t_stack **stack, t_pw_var *stvar, int min, int max)
-{
-	ft_printf("in sort five\n");
-	sort_five_stack(stvar, ft_min_size(stvar->index, stvar->argc));
+	// ft_printf("stvar->list:%d\n", stvar->total_ins);
+	return (1);
 }
 
 int		sort_three(t_stack **temp, t_pw_var *stvar, int min, int max)
@@ -478,7 +382,7 @@ int		sort_three(t_stack **temp, t_pw_var *stvar, int min, int max)
 	t_stack *stack;
 
 	stack = *temp;
-	printf("stack->num is:%d\n\n", (stack->num));
+	// ft_printf("stack->num is:%d\n\n", (stack->num));
 	if ((stack->num) == min && (stack->next->num) != max)
 		return (dispatch_sort(stvar, NULL, 0));
 	if ((stack->num) == min && (stack->next->num) == max)
@@ -491,6 +395,6 @@ int		sort_three(t_stack **temp, t_pw_var *stvar, int min, int max)
 		return (dispatch_sort(stvar, RRA, 1));
 	if ((stack->next->num) == min)
 		return (dispatch_sort(stvar, SA, 1));
-	printf("three are now sorted!!!\n\n");
+	// ft_printf("three are now sorted!!!\n\n");
 	return (0);
 }
