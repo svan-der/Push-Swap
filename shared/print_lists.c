@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/19 13:32:57 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/20 14:32:54 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,29 @@ void				print_inst_list(t_inst *instr)
 	ft_printf("----------------------------------------\n");
 }
 
+void				print_tail(t_stack *tail)
+{
+	t_stack *temp;
+
+	temp = tail;
+	// ft_printf("going to print tail\n");
+	// ft_printf("temp->num:%d\n", temp->num);
+	ft_printf("\n     Bottom and bottom prev       \n");
+	ft_printf("-------------------------------------");
+	ft_printf("--------------------\n");
+	ft_printf("|tail->prev\t\tnum\ttail\t\tnum|");
+	ft_printf("\n");
+	while (temp != NULL)
+	{
+		ft_printf("|%p\t\t%d\t%p\t%d|", temp->prev, temp->prev->num, temp, temp->num);
+		ft_printf("\n");
+		temp = temp->next;
+	}
+	ft_printf("------------------------------------");
+	ft_printf("------------------------------------\n");
+	ft_printf("									   \n");
+}
+
 void				print_stack_list(t_stack *stack, char c)
 {
 	t_stack	*temp;
@@ -100,11 +123,11 @@ void				print_stack_list(t_stack *stack, char c)
 	ft_printf("\n         Linked List with stack_%c numbers       \n", c);
 	ft_printf("-----------------------------------------------------");
 	ft_printf("--------------------\n");
-	ft_printf("|num\tdist\t\tcurr\t\tprev\t\tnext|");
+	ft_printf("|num\tdist\tindex\t\tcurr\t\tprev\t\tnext|");
 	ft_printf("\n");
 	while (temp != NULL)
 	{
-		ft_printf("|%d\t%d\t\t%p\t%p\t%p|", temp->num, temp->dist, temp, temp->prev, temp->next);
+		ft_printf("|%d\t%d\t%d\t\t%p\t%p\t%p|", temp->num, temp->dist, temp->index, temp, temp->prev, temp->next);
 		ft_printf("\n");
 		temp = temp->next;
 	}

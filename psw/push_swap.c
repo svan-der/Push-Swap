@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/19 13:32:45 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/20 14:42:58 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,21 +65,32 @@ int		find_median_array(int *list, int index)
 	return (median);
 }
 
-int		*lst_cpy(t_stack *stack, int *new_list)
+int		*lst_cpy(t_stack **stack, int *new_list)
 {
 	t_stack *current;
 	int		i;
 	int		j;
 
-	current = stack;
+	current = *stack;
 	i = 0;
 	j = 0;
-	while (current != NULL)
+	// ft_printf("current->num:%d\n", current->num);
+	while (current->next != NULL)
 	{
 		new_list[i] = (current->num);
 		current = current->next;
 		i++;
 	}
+	// ft_printf("current prev is:%p\n", current->prev);
+	// ft_printf("current is:%p\n", current);
+	new_list[i] = current->num;
+	// current->prev->prev = NULL;
+	// current->next = NULL;
+	add_tail(stack);
+	// (*stack)->tail = current;
+	// (*stack)->tail->prev = current->prev;
+	ft_printf("tail->prev is:%p\n", (*stack)->tail->prev);
+	ft_printf("tail is:%p\n", (*stack)->tail);
 	return (new_list);
 }
 
@@ -94,19 +105,36 @@ void	*ft_calloc(size_t count, size_t size)
 	return (res);
 }
 
-// static void		add_tail(t_stack *tail, int *list)
-// {
-// 	tail->
-// 	while (list != 0)
-// 	{
-// 		tail->num  = list[i]
-// 	}
-// }
+void		add_tail(t_stack **stack)
+{
+	t_stack *tail;
+	t_stack *prev_tail;
+
+	tail = *stack;
+	while (tail->next != NULL)
+		tail = tail->next;
+	tail->next = NULL;
+	tail->prev = tail->prev;
+	// tail->prev->prev = NULL;
+	(*stack)->tail = tail;
+	// ft_printf("tail is:%d\n", (*stack)->tail->num);
+	// ft_printf("tail is:%d\n", tail->num);
+	// ft_printf("tail->prev is:%d\n", tail->prev->num);
+	// ft_printf("tail->prev is:%d\n", (*stack)->tail->prev->num);
+	// ft_printf("tail->prev is:%p\n", (*stack)->tail->prev);
+	// ft_printf("tail->prev is:%p\n", (*stack)->tail->prev);
+	// ft_printf("tail next is:%p\n", tail->next);
+	// ft_printf("tail prev prev is:%p\n", tail->prev->prev);
+}
+
+/*
+** function sets for unsorted list the right index per number
+*/
 
 int				set_index(t_stack **stack_a, int *sorted, int argc)
 {
-	int	i;
-	int j;
+	int		i;
+	int 	j;
 	t_stack *temp;
 
 	i = 0;
@@ -114,11 +142,12 @@ int				set_index(t_stack **stack_a, int *sorted, int argc)
 	temp = *stack_a;
 	while (argc)
 	{
-		ft_printf("sorted num is:%d\n\n", sorted[i]);
+		// ft_printf("sorted num is:%d\n\n", sorted[i]);
 		if ((temp)->num == sorted[i])
 		{
 			(temp)->dist = j - i;
-			ft_printf("number distance is:%d\n\n", (temp)->dist);
+			temp->index = i;
+			// ft_printf("number distance is:%d\n\n", (temp)->dist);
 			if ((temp)->next != NULL)
 				(temp) = (temp)->next;
 			else
@@ -129,9 +158,9 @@ int				set_index(t_stack **stack_a, int *sorted, int argc)
 		}
 		else
 			i++;
-		ft_printf("stack num is:%d\n\n", (temp)->num);
-		ft_printf("i is::%d\t j is:%d\n", i, j);
-		ft_printf("stvar->argc is:%d\n", argc);
+		// ft_printf("stack num is:%d\n\n", (temp)->num);
+		// ft_printf("i is::%d\t j is:%d\n", i, j);
+		// ft_printf("stvar->argc is:%d\n", argc);
 	}
 }
 
@@ -143,12 +172,12 @@ static int		presort_list(t_pw_var *stvar)
 	stvar->sorted = (int *)malloc(sizeof(int));
 	if (stvar->sorted == NULL)
 		return (0);
-	stvar->sorted = lst_cpy(stvar->stack_a, stvar->sorted);
-	// add_tail(stvar.tail, stvar->sorted);
-	// stvar->tail = stvar->sorted[stvar->argc - 1];
+	stvar->sorted = lst_cpy(&(stvar)->stack_a, stvar->sorted);
+	print_array(stvar->sorted, stvar->argc);
 	insertion_sort(stvar->sorted, stvar->argc, &stvar->min, &stvar->max);
 	set_index(&(stvar)->stack_a, stvar->sorted, stvar->argc);
-	print_array(stvar->sorted, stvar->argc);
+	// ft_printf("printing tail\n");
+	print_tail(stvar->stack_a->tail);
 	return (1);
 }
 
@@ -163,11 +192,11 @@ int		run_pw(t_pw_var *stvar)
 	presort_list(stvar);
 	print_input_list(stvar->stack_a, stvar->sorted);
 	print_stack_list(stvar->stack_a, 'a');
-	// ft_printf("stvar->argc:%d\n\n", stvar->argc);
-	// ft_printf("min:%d\n", stvar->min);
-	// ft_printf("max:%d\n", stvar->max);
-	// if (stvar->argc > 3)
-	// 	divide_list(stvar);
+	// // ft_printf("stvar->argc:%d\n\n", stvar->argc);
+	// // ft_printf("min:%d\n", stvar->min);
+	// // ft_printf("max:%d\n", stvar->max);
+	if (stvar->argc > 3)
+		divide_list(stvar);
 	// else if (stvar->argc != 1)
 	// {
 	// 	ft_printf("goes in sort three\n");
@@ -178,17 +207,17 @@ int		run_pw(t_pw_var *stvar)
 	return (1);
 }
 
-void	add_tail(t_stack **stack)
-{
-	t_stack *temp;
+// void	add_tail(t_stack **stack)
+// {
+// 	t_stack *temp;
 
-	temp = *stack;
-	while (temp->next != NULL)
-	{
-		temp = temp->next;
-	}
-	(*stack)->prev = temp;
-}
+// 	temp = *stack;
+// 	while (temp->next != NULL)
+// 	{
+// 		temp = temp->next;
+// 	}
+// 	(*stack)->prev = temp;
+// }
 
 int		main(int argc, char **argv)
 {

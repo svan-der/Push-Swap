@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 15:19:43 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/20 14:09:18 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ typedef struct		s_part
 	struct s_part	*prev;
 	struct s_part	*next;
 }					t_part;
+
+
+void	find_distance(t_stack **stack_a, int num, int *sorted);
+char	*find_low(t_stack *stack, int *op);
+
 
 void	print_partition_list(t_part *partition);
 void 	update_size(t_pw_var *stvar, char *str, int inst);
@@ -50,7 +55,7 @@ void	set_min_max(t_part *part_var);
 void	set_min_maxarray(t_pw_var *stvar, int *list, int len);
 t_part	*setup_part(t_pw_var *stvar, t_part *part_var, int *list);
 int     find_median_array(int *list, int index);
-int 	*lst_cpy(t_stack *stack, int *new);
+int 	*lst_cpy(t_stack **stack, int *new);
 void    *ft_calloc(size_t count, size_t size);
 int     run_pw(t_pw_var *stvar);
 int     main(int argc, char **argv);
