@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/20 17:44:48 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/22 09:43:05 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,9 @@ int		run_pw(t_pw_var *stvar)
 	ret = check_sorted(&(stvar->stack_a), &(stvar->stack_b));
 	if (ret == 1)
 		return (0);
-	presort_list(stvar);
+	ret = presort_list(stvar);
+	if (ret == 0)
+		return (0);
 	// print_input_list(stvar->stack_a, stvar->sorted);
 	// print_stack_list(stvar->stack_a, 'a');
 	// // ft_printf("stvar->argc:%d\n\n", stvar->argc);
@@ -197,13 +199,14 @@ int		run_pw(t_pw_var *stvar)
 	// // ft_printf("max:%d\n", stvar->max);
 	if (stvar->argc > 3)
 		ret = divide_list(stvar);
-	// else if (stvar->argc != 1)
-	// {
-	// 	ft_printf("goes in sort three\n");
-		// sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
-	// }
+	else if (stvar->argc != 1)
+	{
+		// ft_printf("goes in sort three\n");
+		ret = sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
+	}
 	// ft_printf("total number of instructions:|%i|\n\n", stvar->total_ins);
 	// print_stack_list(stvar->stack_a, 'a');
+	// ft_printf("ret is:%d\n", ret);
 	return (ret);
 }
 
@@ -252,12 +255,13 @@ int		main(int argc, char **argv)
 	stvar.argc -= 1;
 	stvar.index = stvar.argc;
 	// print_stack(&stvar.stack_a->tail, 1);
-	// print_stack_list(stvar.stack_a, 'a');
 	ret = run_pw(&stvar);
+	// print_stack_list(stvar.stack_a, 'a');
 	if (ret != 1)
 		error_handler(ret);
 	print_inst(stvar.inst_lst);
 	// print_stack(&stvar.stack_a, 1);
+	// ft_printf("total inst:%d\n", stvar.total_ins);
 	// print_stack_list(stvar.stack_a, 'a');
 	ft_exit(&stvar);
 	// print_instructions(stvar.inst_lst, ret);

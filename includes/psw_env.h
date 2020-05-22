@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/20 17:23:08 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/22 18:00:35 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,27 @@ typedef enum		e_error
 	ERROR = 2,
 }					t_error;
 
+typedef enum		e_sort
+{
+	nul = 0,
+	sa = 1,
+	ra = 2,
+	rra = 3,
+	sb = 4,
+	rb = 5,
+	rrb = 6,
+	ss = 7,
+	rr = 8,
+	rrr = 9,
+	pa = 10,
+	pb = 11
+}					t_sort;
+
 typedef struct		s_inst
 {
 	char			*operation;
 	size_t			content_size;
+	t_sort			option;
 	struct s_inst	*prev;
 	struct s_inst	*next;
 	// struct s_inst	*tail;
@@ -58,11 +75,6 @@ typedef struct		s_stack
 
 // typedef int	(*t_operates)(t_stack **, t_stack **);
 // typedef int (*t_operate)(t_stack **);
-
-// typedef enum 	e_sort
-// {
-// 	pa, pb, ss, rr, 
-// }				t_sort;
 
 // typedef struct 	s_opt
 // {
@@ -101,6 +113,7 @@ int					rotate_b(t_stack **stack_b);
 int					rotate_rr(t_stack **stack_a, t_stack **stack_b);
 int					rotate_reva(t_stack **stack_a);
 int					rotate_revb(t_stack **stack_b);
+int					rotate_rrr(t_stack **stack_a, t_stack **stack_b);
 
 /*
 ** Stack handling functions
@@ -127,7 +140,7 @@ t_stack				*fill_stack_begin(t_stack **stack, t_stack *new);
 int					print_instructions(t_inst *inst_lst, int ret);
 // int					check_instruction(t_stack **stack_a, t_stack **stack_b,
 // 					char *line);
-t_inst				*create_instruction(char *line);
+t_inst				*create_instruction(int i, char *line);
 
 /*
 ** print functions

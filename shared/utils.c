@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 17:32:48 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/22 10:56:12 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,29 @@ int		error_handler(int ret)
 	if (ret == -1)
 		ft_putstr_fd("Error\n", 2);
 	if (ret == 0)
-		ft_putstr_fd("KO\n", 2);
+		ft_putstr_fd("KO\n", 1);
 	return (1);
 }
 
 int		check_sorted(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *temp;
-	int		sign;
 	int		valid;
 
 	temp = *stack_a;
 	valid = 1;
 	// print_stack(stack_a, 1);
 	if (*stack_b != NULL)
+	{
 		valid = 0;
+	}
 	while (temp != NULL && temp->next != NULL)
 	{
+			// ft_printf("num is:%d\n", temp->num);
+			// ft_printf("next num is:%d\n", temp->next->num);
 		if (temp->num > temp->next->num)
 		{
+			// ft_putstr_fd("KO\n", 1);
 			// ft_printf("num is:%d\n", temp->num);
 			valid = 0;
 			// ft_printf("not valid\n");
@@ -66,17 +70,11 @@ int		check_sorted(t_stack **stack_a, t_stack **stack_b)
 void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
 {
 	t_stack	*temp;
-	t_stack *tail;
 
 	temp = *stack_lst;
-	// tail = *stack_lst;
 	while (temp->next != NULL)
 		temp = temp->next;
 	temp->next = new;
-	// tail->prev = new;
-	// tail = new;
-	// temp->next->tail = tail;
-	// temp->prev->tail = new;
 	temp->next->prev = temp;
 	// ft_printf("temp->tail:%d\n", temp->tail->num);
 }

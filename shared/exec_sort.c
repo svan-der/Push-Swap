@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/12 11:56:55 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/20 17:27:51 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/22 15:56:04 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int 	dispatch_sort(t_pw_var *stvar, char *str, int instr)
 	if (str != NULL)
 	{
 		// ft_printf("put instr\n");
-		res = put_instruction(&(stvar)->inst_lst, str);
+		// res = put_instruction(&(stvar)->inst_lst, str);
 		// ft_printf("ret is:%d\n", ret);
 		// ft_printf("str is:%s\n", str);
-		ret = check_instruction(&stvar->stack_a, &stvar->stack_b, str);
+		// ret = check_instruction(&stvar->stack_a, &stvar->stack_b, str);
 		// ft_printf("ret is:%d\n", ret);
 	}
 	// ft_printf("return is:%d\n\n", ret);

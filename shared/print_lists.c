@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/20 17:22:54 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/22 15:53:16 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void				print_inst(t_inst *instr)
 	temp = instr;
 	while (temp != NULL)
 	{
-		ft_printf("%s\n", temp->operation);
+		ft_putstr_fd(temp->operation, 1);
+		ft_putstr_fd("\n", 1);
 		temp = temp->next;
 	}
 }
@@ -91,14 +92,14 @@ void				print_inst_list(t_inst *instr)
 	t_inst			*temp;
 
 	temp = instr;
+	ft_printf("opts finally:%d\n", instr->next->option);
 	ft_printf("\nLinked List with instructions\n");
-	ft_printf("------------\n");
-	ft_printf("|operation\n");
-	ft_printf("|----------");
-	ft_printf("-----|\n");
+	ft_printf("-------------------------------\n");
+	ft_printf("|operation\toption\n");
+	ft_printf("---------------------|\n");
 	while (temp != NULL)
 	{
-		ft_printf("|%s|", temp->operation);
+		ft_printf("|%s\t\t%d|\n", temp->operation, temp->option);
 		temp = temp->next;
 	}
 	ft_printf("-----------\n");

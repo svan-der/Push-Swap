@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:50:30 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/18 09:44:27 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/22 16:09:32 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		print_instructions(t_inst *inst_lst, int ret)
 	return (1);
 }
 
-t_inst	*create_instruction(char *line)
+t_inst	*create_instruction(int index, char *line)
 {
 	t_inst *inst;
 
@@ -38,16 +38,18 @@ t_inst	*create_instruction(char *line)
 	inst->operation = ft_strnew(sizeof(line));
 	inst->content_size = ft_strlen(line);
 	ft_memcpy(inst->operation, line, inst->content_size);
+	inst->option = index;
 	inst->next = NULL;
 	return (inst);
 }
 
-int		put_instruction(t_inst **inst_lst, char *line)
+int		put_instruction(t_inst **inst_lst, int index, char *line)
 {
 	t_inst *new_node;
 	t_inst *temp;
 
-	new_node = create_instruction(line);
+	ft_printf("line is:%s\n", line);
+	new_node = create_instruction(index, line);
 	if (new_node == NULL)
 		return (-1);
 	if (*inst_lst == NULL)

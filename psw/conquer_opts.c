@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/20 17:44:35 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/22 09:39:55 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -396,5 +396,5 @@ int		sort_three(t_stack **temp, t_pw_var *stvar, int min, int max)
 	if ((stack->next->num) == min)
 		return (dispatch_sort(stvar, SA, 1));
 	// ft_printf("three are now sorted!!!\n\n");
-	return (0);
+	return (1);
 }
