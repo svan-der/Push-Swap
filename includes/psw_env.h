@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/22 18:00:35 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/25 10:20:01 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,15 @@ typedef struct		s_stack
 	struct s_stack	*tail;
 }					t_stack;
 
-// typedef int	(*t_operates)(t_stack **, t_stack **);
-// typedef int (*t_operate)(t_stack **);
+typedef int	(*t_operates)(t_stack **, t_stack **);
 
-// typedef struct 	s_opt
-// {
-// 	t_operates	arr_ds[4];
-// 	t_operate	arr_os[6];
-// }				t_opt;
+typedef int (*t_operate)(t_stack **);
+
+typedef struct 	s_operates
+{
+	t_operates	arr_ds[4];
+	t_operate	arr_os[6];
+}				t_operates;
 
 typedef struct		s_pw_var
 {
