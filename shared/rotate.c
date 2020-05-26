@@ -6,85 +6,85 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:15:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/22 17:49:39 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/26 16:37:50 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/psw_env.h"
 #include "../includes/checker.h"
 
-int		rotate_rrr(t_stack **stack_a, t_stack **stack_b)
+int		rotate_rrr(t_pw_var *stvar)
 {
 	t_stack *temp;
 	t_stack *temp1;
 
-	temp = *stack_a;
-	temp1 = *stack_b;
+	temp = stvar->stack_a;
+	temp1 = stvar->stack_b;
 	if (temp != NULL && temp->next != NULL)
 	{
 		// ft_printf("rotate_a on\n\n");
-		rotate_reva(stack_a);
+		rotate_reva(stvar);
 	}
 	if (temp1 != NULL && temp1->next != NULL)
 	{
 		// ft_printf("rotate_b on\n\n");
-		rotate_revb(stack_b);
+		rotate_revb(stvar);
 	}
 	// print_stack(stack_a, 1);
 	// print_stack_b(stack_b, 1);
 	return (1);
 }
 
-int		rotate_rr(t_stack **stack_a, t_stack **stack_b)
+int		rotate_rr(t_pw_var *stvar)
 {
 	t_stack *temp;
 	t_stack *temp1;
 
-	temp = *stack_a;
-	temp1 = *stack_b;
+	temp = stvar->stack_a;
+	temp1 = stvar->stack_b;
 	if (temp != NULL && temp->next != NULL)
 	{
 		// ft_printf("rotate_a on\n\n");
-		rotate_a(stack_a);
+		rotate_a(stvar);
 	}
 	if (temp1 != NULL && temp1->next != NULL)
 	{
 		// ft_printf("rotate_b on\n\n");
-		rotate_b(stack_b);
+		rotate_b(stvar);
 	}
 	// print_stack(stack_a, 1);
 	// print_stack_b(stack_b, 1);
 	return (1);
 }
 
-int		rotate_b(t_stack **stack_b)
+int		rotate_b(t_pw_var *stvar)
 {
 	t_stack *new;
 	t_stack *temp;
 
-	temp = *stack_b;
+	temp = stvar->stack_b;
 	if (temp != NULL && temp->next != NULL)
 	{
-		new = (*stack_b)->next;
+		new = stvar->stack_b->next;
 		new->prev = NULL;
-		temp = (*stack_b);
+		temp = stvar->stack_b;
 		while (temp->next)
 			temp = temp->next;
-		temp->next = (*stack_b);
+		temp->next = stvar->stack_b;
 		temp->next->prev = temp;
-		(*stack_b)->next = NULL;
-		*stack_b = new;
+		stvar->stack_b->next = NULL;
+		stvar->stack_b = new;
 		// print_stack_b(stack_b, 1);
 	}
 	return (1);
 }
 
-int		rotate_revb(t_stack **stack_b)
+int		rotate_revb(t_pw_var *stvar)
 {
 	t_stack *temp;
 	t_stack *new;
 
-	new = *stack_b;
+	new = stvar->stack_b;
 	if (new != NULL && new->next != NULL)
 	{
 		while (new->next->next != NULL)
@@ -96,19 +96,19 @@ int		rotate_revb(t_stack **stack_b)
 		new->prev = temp;
 		temp->next = new;
 		temp->prev = NULL;
-		*stack_b = temp;
+		stvar->stack_b = temp;
 		// print_stack_b(stack_b, 1);
 	}
 	return (1);
 }
 
-int		rotate_reva(t_stack **stack_a)
+int		rotate_reva(t_pw_var *stvar)
 {
 	t_stack *temp;
 	t_stack *new;
 
 	// ft_printf("inside function reva\n");
-	new = *stack_a;
+	new = stvar->stack_a;
 	// ft_printf("pointer is:")
 	if (new != NULL && new->next != NULL)
 	{
@@ -121,28 +121,28 @@ int		rotate_reva(t_stack **stack_a)
 		new->prev = temp;
 		temp->next = new;
 		temp->prev = NULL;
-		*stack_a = temp;
+		stvar->stack_a = temp;
 		// print_stack(stack_a, 1);
 	}
 	return (1);
 }
 
-int		rotate_a(t_stack **stack_a)
+int		rotate_a(t_pw_var *stvar)
 {
 	t_stack *new;
 	t_stack *temp;
 
-	temp = (*stack_a);
+	temp = stvar->stack_a;
 	if (temp != NULL && temp->next != NULL)
 	{
-		new = (*stack_a)->next;
+		new = stvar->stack_a->next;
 		new->prev = NULL;
 		while (temp->next)
 			temp = temp->next;
-		temp->next = (*stack_a);
+		temp->next = stvar->stack_a;
 		temp->next->prev = temp;
-		(*stack_a)->next = NULL;
-		*stack_a = new;
+		stvar->stack_a->next = NULL;
+		stvar->stack_a = new;
 		// print_stack(stack_a, 1);
 	}
 	return (1);

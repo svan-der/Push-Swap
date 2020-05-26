@@ -6,109 +6,54 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/25 10:22:57 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/26 17:35:44 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 #include "../includes/psw_env.h"
 
+int		initialize_operations(t_operates function_array[10])
+{
+	function_array[0] = swap_a;
+	function_array[1] = rotate_a;
+	function_array[2] = rotate_reva;
+	function_array[3] = swap_b;
+	function_array[4] = rotate_b;
+	function_array[5] = rotate_revb;
+	function_array[6] = swap_ss;
+	function_array[7] = rotate_rr;
+	function_array[8] = rotate_rrr;
+	function_array[9] = push_a;
+	function_array[10] = push_b;
+}
+
 int		execute_instruction(t_stack **stack_a, t_stack **stack_b, t_pw_var *stvar)
 {
-	// static t_operate sort_os[] = \
-	// {swap_a, rotate_a, rotate_reva, swap_b, swap_b, rotate_revb};
-	// static t_operates sort_ds[] = \
-	// {swap_ss, rotate_rr, rotate_rrr, push_a, push_b};
-	int				 ret;
+	int				ret;
 	t_inst			*temp;
-	t_operates		options;
+	t_operates		func_arr[10];
 
-	(void)stack_b;
 	temp = stvar->inst_lst;
-	ft_printf("temp->option is:%d\n", temp->option);
-	while (temp != NULL && *stack_a != NULL)
+	ret = 1;
+	// ft_printf("temp->option is:%d\n", temp->option);
+	initialize_operations(func_arr);
+	while (temp != NULL)
 	{
-		if (temp->option < 7)
-			ret = options.arr_os[temp->option];
-		if (temp->option > 6 && temp->option < 12)
-			ret = options.arr_ds[temp->option];
+		func_arr[temp->option](stvar);
 		temp = temp->next;
-		ft_printf("ret is:%d\n", ret);
-		print_stack(stack_a, 1);
-		ft_printf("option is:%d\n", temp->option);
+		// ft_printf("ret is:%d\n", ret);
+		// print_stack(&stvar->stack_a, 1);
+		// print_stack_list(stvar->stack_a, 'a');
+		// if (temp != NULL)
+		// 	ft_printf("option is:%d\n", temp->option);
+		// ft_printf("ptr temp is:%p\n", temp);
 	}
 	return (ret);
 }
 
-
-// int		execute_instruction(t_stack **stack_a, t_stack **stack_b, t_pw_var *stvar)
-// {
-	// static int(*const f_stack_a[])(t_stack **) =
-	// {nul, swap_a, rotate_a, rotate_reva};
-	// static int(*const f_stack_b[])(t_stack **) =
-	// {swap_b, rotate_b, rotate_revb};
-	// static int(*const f_stacks[])(t_stack **, t_stack **) =
-	// {swap_ss, rotate_rr, rotate_rrr, push_a, push_b};
-
-	// static t_operate sort_os[] = {swap_a, rotate_a, rotate_reva,\
-	// 							swap_b, swap_b, rotate_revb};
-	// static t_operate sort_ds[] = {swap_ss, rotate_rr, rotate_rrr,\
-	// 							push_a, push_b};
-	// t_operate sort_ds[4];
-
-	// int 	ret;
-	// t_inst	*temp;
-
-	// (void)stack_b;
-	// temp = stvar->inst_lst;
-	// // print_inst_list(stvar->inst_lst);
-	// ft_printf("temp->option is:%d\n", temp->option);
-	// while (temp != NULL && *stack_a != NULL)
-	// {
-	// 	// ft_printf("pointer is:%p\n", temp);
-	// 	// ft_printf("option is:%d\n", temp->option);
-	// 	// ft_printf("stack is:%p\n", stack_a);
-	// 	// ft_printf("stack is:%p\n", *stack_a);
-	// 	// // ft_printf("stack_a num is:%d\n", (*stack_a)->num);
-	// 	if (temp->option < 3)
-	// 		ret = f_stack_a[temp->option](stack_a);
-	// 	if (temp->option > 2 && temp->option < 6)
-	// 		ret = f_stack_b[temp->option](stack_b);
-	// 	else
-	// 		ret = f_stacks[temp->option](stack_a, stack_b);
-	// 	ft_printf("ret is:%d\n", ret);
-	// 	print_stack(stack_a, 1);
-	// 	ft_printf("option is:%d\n", temp->option);
-	// 	temp = temp->next;
-	// }
-	// return (ret);
-	// if (ft_strequ(line, "sa"))
-	// 	return (swap_a(stack_a));
-	// if (ft_strequ(line, "sb"))
-	// 	return (swap_b(stack_b));
-	// if (ft_strequ(line, "ss"))
-	// 	return (swap_ss(stack_a, stack_b));
-	// if (ft_strequ(line, "pa"))
-	// 	return (push_a(stack_a, stack_b));
-	// if (ft_strequ(line, "pb"))
-	// 	return (push_b(stack_a, stack_b));
-	// if (ft_strequ(line, "ra"))
-	// 	return (rotate_a(stack_a));
-	// if (ft_strequ(line, "rb"))
-	// 	return (rotate_b(stack_b));
-	// if (ft_strequ(line, "rr"))
-	// 	return (rotate_rr(stack_a, stack_b));
-	// if (ft_strequ(line, "rra"))
-	// 	return (rotate_reva(stack_a));
-	// if (ft_strequ(line, "rrb"))
-	// 	return (rotate_revb(stack_b));
-	// if (ft_strequ(line, "rrr"))
-	// 	return (rotate_rr(stack_a, stack_b));
-// }
-
-int		check_instruction(t_sort *option, char *line)
+int		check_instruction(t_sort *option, char *line, int *valid)
 {
-	// ft_printf("option is:%p\n", *option);
 	if (ft_strequ(line, SA))
 		return (*option = sa);
 	if (ft_strequ(line, RA))
@@ -132,7 +77,7 @@ int		check_instruction(t_sort *option, char *line)
 	if (ft_strequ(line, RRR))
 		return ((*option = rrr));
 	else if (ft_strequ(line, ""))
-		return (0);
+		return (*valid = 0);
 	return (-1);
 }
 
@@ -141,7 +86,6 @@ int		get_instruction(t_pw_var *stvar)
 	char	*line;
 	int		ret;
 	int		valid;
-	t_inst	**inst;
 	t_sort	index;
 
 	ret = 1;
@@ -149,28 +93,21 @@ int		get_instruction(t_pw_var *stvar)
 	stvar->inst_lst = NULL;
 	// inst = stvar->inst_lst;
 	// stvar->inst_lst = (t_inst *)ft_memalloc(sizeof(t_inst));
-	// inst = NULL;
 	// index = NULL;
-	inst = &stvar->inst_lst;
-	ft_printf("ptr is: %p\n", inst);
-	// ft_printf("ptr is: %p\n", *inst);
-	// stvar->option = ft_memalloc(sizeof(t_sort));
+	valid = 1;
 	while (ret > 0)
 	{
 		ret = get_next_line(0, &line);
-		ft_printf("ret is:%d\n", ret);
+		// ft_printf("ret is:%d\n", ret);
 		// ft_printf("instr is:%s\n\n", stvar->inst_lst->option);
-		valid = check_instruction(&index, line);
-		ft_printf("valid is:%d\n", valid);
+		check_instruction(&index, line, &valid);
+		// ft_printf("valid is:%d\n", valid);
 		if (ret == 0 || valid < 1)
 			break ;
-		ft_printf("option is:%d\n", index);
-		ret = put_instruction(inst, index, line);
-		// put_instruction(&(*stvar).inst_lst, line);
+		// ft_printf("option is:%d\n", index);
+		ret = put_instruction(&stvar->inst_lst, index, line);
 		// ft_printf("option is:%d\n", (*inst)->option);
 		// ft_printf("instr is:%s\n", inst->operation);
-		// valid = check_instruction(line, &(*stvar).inst_lst->option);
-		// ft_putstr_fd("OK coming\n", 1);
 		free(line);
 		index = 0;
 		line = NULL;
@@ -179,8 +116,13 @@ int		get_instruction(t_pw_var *stvar)
 	}
 	if (ret >= 0)
 		ret = execute_instruction(&stvar->stack_a, &stvar->stack_b, stvar);
-	print_inst_list(stvar->inst_lst);
-	// ft_printf("ret is:%d\n", ret);
+	// ft_printf("return is:%d\n", ret);
+	// ft_printf("ptr inst is:%p\n", inst);
+	// ft_printf("ptr inst is:%p\n", *inst);
+	// ft_printf("ptr inst is:%p\n", stvar->inst_lst);
+	// ft_printf("ptr inst is:%p\n", &stvar->inst_lst);
+	// // print_inst_list(stvar->inst_lst);
+	// print_inst_list(*inst);
 	// print_stack_list(stvar->stack_a, 'a');
 	// print_instructions(stvar->inst_lst, ret);
 	// ret = check_sorted(&stvar->stack_a, &stvar->stack_b);

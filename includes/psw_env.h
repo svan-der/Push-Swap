@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/25 10:20:01 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/26 16:51:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,28 @@ typedef enum		e_error
 	ERROR = 2,
 }					t_error;
 
+// typedef enum		e_sort
+// {
+// 	nul = 0,
+// 	sa = 1,
+// 	ra = 2,
+// 	rra = 3,
+// 	sb = 4,
+// 	rb = 5,
+// 	rrb = 6,
+// 	ss = 7,
+// 	rr = 8,
+// 	rrr = 9,
+// 	pa = 10,
+// 	pb = 11
+// 	sa, ra, rra, sb, rb, \
+// 	rrb, ss, rr, rrr, pa, pb
+// }					t_sort;
+
 typedef enum		e_sort
 {
-	nul = 0,
-	sa = 1,
-	ra = 2,
-	rra = 3,
-	sb = 4,
-	rb = 5,
-	rrb = 6,
-	ss = 7,
-	rr = 8,
-	rrr = 9,
-	pa = 10,
-	pb = 11
+	sa, ra, rra, sb, rb, \
+	rrb, ss, rr, rrr, pa, pb
 }					t_sort;
 
 typedef struct		s_inst
@@ -73,15 +81,6 @@ typedef struct		s_stack
 	struct s_stack	*tail;
 }					t_stack;
 
-typedef int	(*t_operates)(t_stack **, t_stack **);
-
-typedef int (*t_operate)(t_stack **);
-
-typedef struct 	s_operates
-{
-	t_operates	arr_ds[4];
-	t_operate	arr_os[6];
-}				t_operates;
 
 typedef struct		s_pw_var
 {
@@ -100,21 +99,23 @@ typedef struct		s_pw_var
 	t_stack			*stack_b;
 }					t_pw_var;
 
+typedef int	(*t_operates)(t_pw_var *stvar);
+
 /*
 ** Sorting operations
 */
 
-int					swap_a(t_stack **stack_a);
-int					swap_b(t_stack **stack_b);
-int					swap_ss(t_stack **stack_a, t_stack **stack_b);
-int					push_b(t_stack **stack_a, t_stack **stack_b);
-int					push_a(t_stack **stack_a, t_stack **stack_b);
-int					rotate_a(t_stack **stack_a);
-int					rotate_b(t_stack **stack_b);
-int					rotate_rr(t_stack **stack_a, t_stack **stack_b);
-int					rotate_reva(t_stack **stack_a);
-int					rotate_revb(t_stack **stack_b);
-int					rotate_rrr(t_stack **stack_a, t_stack **stack_b);
+int					swap_a(t_pw_var *stvar);
+int					swap_b(t_pw_var *stvar);
+int					swap_ss(t_pw_var *stvar);
+int					push_b(t_pw_var *stvar);
+int					push_a(t_pw_var *stvar);
+int					rotate_a(t_pw_var *stvar);
+int					rotate_b(t_pw_var *stvar);
+int					rotate_rr(t_pw_var *stvar);
+int					rotate_reva(t_pw_var *stvar);
+int					rotate_revb(t_pw_var *stvar);
+int					rotate_rrr(t_pw_var *stvar);
 
 /*
 ** Stack handling functions

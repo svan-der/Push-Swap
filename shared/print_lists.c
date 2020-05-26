@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/22 15:53:16 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/26 17:29:28 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,9 @@ void				print_inst_list(t_inst *instr)
 	t_inst			*temp;
 
 	temp = instr;
-	ft_printf("opts finally:%d\n", instr->next->option);
-	ft_printf("\nLinked List with instructions\n");
+	// ft_printf("ptr instructions is:%p\n", instr);
+	ft_printf("instruction is:%s\n", instr->operation);
+	ft_printf("Linked List with instructions\n");
 	ft_printf("-------------------------------\n");
 	ft_printf("|operation\toption\n");
 	ft_printf("---------------------|\n");

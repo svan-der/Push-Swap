@@ -6,19 +6,19 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/20 17:25:08 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/26 17:32:55 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 #include "../includes/psw_env.h"
 
-int		swap_a(t_stack **stack_a)
+int		swap_a(t_pw_var *stvar)
 {
 	t_stack *temp;
 	t_stack *new;
 
-	new = *stack_a;
+	new = stvar->stack_a;
 	if (new && new->next != NULL)
 	{
 		temp = new->next;
@@ -29,18 +29,18 @@ int		swap_a(t_stack **stack_a)
 		temp->next = new;
 		new = temp;
 		new->prev = NULL;
-		*stack_a = new;
+		stvar->stack_a = new;
 	}
-	// print_stack(stack_a, 1);
+	// print_stack(&stvar->stack_a, 1);
 	return (1);
 }
 
-int		swap_b(t_stack **stack_b)
+int		swap_b(t_pw_var *stvar)
 {
 	t_stack *temp;
 	t_stack *new;
 
-	new = *stack_b;
+	new = stvar->stack_b;
 	if (new && new->next != NULL)
 	{
 		temp = new->next;
@@ -51,26 +51,26 @@ int		swap_b(t_stack **stack_b)
 		temp->next = new;
 		new = temp;
 		new->prev = NULL;
-		*stack_b = new;
+		stvar->stack_b = new;
 	}
 	// print_stack_b(stack_b, 1);
 	return (1);
 }
 
-int		swap_ss(t_stack **stack_a, t_stack **stack_b)
+int		swap_ss(t_pw_var *stvar)
 {
 	t_stack *temp;
 	t_stack *temp1;
 
-	temp = *stack_a;
-	temp1 = *stack_b;
+	temp = stvar->stack_a;
+	temp1 = stvar->stack_b;
 	// ft_printf("inside swap ss\n");
 	if (temp != NULL && temp->next != NULL)
-		swap_a(stack_a);
+		swap_a(stvar);
 	if ((temp1 != NULL && temp1->next != NULL))
-		swap_b(stack_b);
-	// print_stack(stack_a, 1);
-	// print_stack_b(stack_b, 1);
+		swap_b(stvar);
+	// print_stack(&stvar->stack_a, 1);
+	// print_stack_b(&stvar->stack_b, 1);
 	return (1);
 }
 
@@ -86,41 +86,41 @@ int		swap_ss(t_stack **stack_a, t_stack **stack_b)
 	the next of my "element" will be the entierty of list b
 **/
 
-int		push_b(t_stack **stack_a, t_stack **stack_b)
+int		push_b(t_pw_var *stvar)
 {
 	t_stack *tmp;
 	t_stack	*new;
 
-	if (*stack_a == NULL)
+	if (stvar->stack_a == NULL)
 		return (0);
-	new = *stack_b;
-	tmp = (*stack_a)->next;
-	(*stack_a)->next = NULL;
-	new = fill_stack_begin(&new, (*stack_a));
-	*stack_a = tmp;
-	if (*stack_a && (*stack_a)->next != NULL)
-		(*stack_a)->prev = NULL;
-	*stack_b = new;
+	new = stvar->stack_b;
+	tmp = stvar->stack_a->next;
+	stvar->stack_a->next = NULL;
+	new = fill_stack_begin(&new, stvar->stack_a);
+	stvar->stack_a = tmp;
+	if (stvar->stack_a && stvar->stack_a->next != NULL)
+		stvar->stack_a->prev = NULL;
+	stvar->stack_b = new;
 	// print_stack(stack_a, 1);
-	// print_stack_b(stack_b, 1);
+	// print_stack_b(&stvar->stack_b, 1);
 	return (1);
 }
 
-int		push_a(t_stack **stack_a, t_stack **stack_b)
+int		push_a(t_pw_var *stvar)
 {
 	t_stack *tmp;
 	t_stack *new;
 
-	if (*stack_b == NULL)
+	if (stvar->stack_b == NULL)
 		return (0);
-	new = *stack_a;
-	tmp = (*stack_b)->next;
-	(*stack_b)->next = NULL;
-	new = fill_stack_begin(&new, (*stack_b));
-	*stack_b = tmp;
-	if (*stack_b && (*stack_b)->next != NULL)
-		(*stack_b)->prev = NULL;
-	*stack_a = new;
+	new = stvar->stack_a;
+	tmp = (stvar->stack_b)->next;
+	stvar->stack_b->next = NULL;
+	new = fill_stack_begin(&new, stvar->stack_b);
+	stvar->stack_b = tmp;
+	if (stvar->stack_b && stvar->stack_b->next != NULL)
+		stvar->stack_b->prev = NULL;
+	stvar->stack_a = new;
 	// print_stack(stack_a, 1);
 	// print_stack_b(stack_b, 1);
 	return (1);

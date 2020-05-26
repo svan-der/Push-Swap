@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:50:30 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/22 16:09:32 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/26 17:33:42 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		put_instruction(t_inst **inst_lst, int index, char *line)
 	t_inst *new_node;
 	t_inst *temp;
 
-	ft_printf("line is:%s\n", line);
+	// ft_printf("line is:%s\n", line);
 	new_node = create_instruction(index, line);
 	if (new_node == NULL)
 		return (-1);
