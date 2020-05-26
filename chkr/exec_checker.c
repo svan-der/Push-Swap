@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/26 17:35:44 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/26 17:41:40 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int		get_instruction(t_pw_var *stvar)
 		// ft_printf("ret is:%d\n", ret);
 		// ft_printf("instr is:%s\n\n", stvar->inst_lst->option);
 		check_instruction(&index, line, &valid);
-		// ft_printf("valid is:%d\n", valid);
+		ft_printf("valid is:%d\n", valid);
 		if (ret == 0 || valid < 1)
 			break ;
 		// ft_printf("option is:%d\n", index);
@@ -110,6 +110,7 @@ int		get_instruction(t_pw_var *stvar)
 		// ft_printf("instr is:%s\n", inst->operation);
 		free(line);
 		index = 0;
+		valid = 0;
 		line = NULL;
 		if (ret == -1)
 			return (-1);

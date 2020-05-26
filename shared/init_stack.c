@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/20 17:51:45 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/26 18:22:22 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,15 +116,17 @@ int			check_argv(char *str, t_pw_var *stvar)
 	while (ft_whitespace(str[i]))
 		i++;
 	if (!ft_isdigit(str[i]))
-	{
-		if (ft_isdigit(str[i + 1]) && (str[i] == '-' || str[i] == '+'))
+		if (str[i] == '-' || str[i] == '+')
 		{
 			if (str[i] == '-')
 				neg = -1;
 			i++;
 		}
-		else if (str[i] != '-' || str[i] != '+')
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
 			return (-1);
+		i++;
 	}
 	if (ft_strnequ(&str[i], "214748364", 9))
 		if ((str[i + 9] > '7' && neg != -1) || (str[i + 9] > '8' && neg == -1))
