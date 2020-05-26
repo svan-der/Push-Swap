@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/26 18:22:22 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/26 23:04:05 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,21 +87,23 @@ int			check_dup(t_stack **stack_a)
 	return (1);
 }
 
-int			add_num(char *str, int i, int neg, t_pw_var *stvar)
+int			add_num(char *str, int sign, t_pw_var *stvar)
 {
 	int num;
 	int ret;
+	int i;
 
 	num = 0;
-	i = (neg == -1) ? i - 1 : i;
-	// ft_printf("num is:%d\n", str[i]);
+	i = 0;
+	if (!ft_isdigit(str[i]))
+		i++;
 	while (str[i] != '\0' && ft_isdigit(str[i]))
 	{
 		num *= 10;
 		num += str[i] - '0';
 		i++;
 	}
-	num *= neg;
+	num *= sign;
 	ret = stack_addnew(&(stvar)->stack_a, num);
 	return (ret);
 }
@@ -109,9 +111,9 @@ int			add_num(char *str, int i, int neg, t_pw_var *stvar)
 int			check_argv(char *str, t_pw_var *stvar)
 {
 	int i;
-	int neg;
+	int sign;
 
-	neg = 1;
+	sign = 1;
 	i = 0;
 	while (ft_whitespace(str[i]))
 		i++;
@@ -119,7 +121,7 @@ int			check_argv(char *str, t_pw_var *stvar)
 		if (str[i] == '-' || str[i] == '+')
 		{
 			if (str[i] == '-')
-				neg = -1;
+				sign = -1;
 			i++;
 		}
 	while (str[i])
@@ -129,7 +131,7 @@ int			check_argv(char *str, t_pw_var *stvar)
 		i++;
 	}
 	if (ft_strnequ(&str[i], "214748364", 9))
-		if ((str[i + 9] > '7' && neg != -1) || (str[i + 9] > '8' && neg == -1))
+		if ((str[i + 9] > '7' && sign > 0) || (str[i + 9] > '8' && sign == -1))
 			return (-1);
-	return (add_num(&str[i], i, neg, stvar));
+	return (add_num(str, sign, stvar));
 }
