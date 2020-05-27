@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/27 16:48:29 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/27 16:50:33 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_stack		*ft_addtail(t_stack **tail, t_stack *new)
 
 	temp = *tail;
 	while (temp->next != NULL)
-        temp = temp->next;
+		temp = temp->next;
 	ft_printf("temp->num:%d\n", temp->num);
     temp = new;
 	*tail = temp;
