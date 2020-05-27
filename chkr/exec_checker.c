@@ -6,14 +6,14 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/27 10:12:19 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/27 10:16:54 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 #include "../includes/psw_env.h"
 
-int		initialize_operations(t_operates function_array[10])
+void	initialize_operations(t_operates function_array[10])
 {
 	function_array[0] = swap_a;
 	function_array[1] = rotate_a;
@@ -28,7 +28,7 @@ int		initialize_operations(t_operates function_array[10])
 	function_array[10] = push_b;
 }
 
-int		execute_instruction(t_stack **stack_a, t_stack **stack_b, t_pw_var *stvar)
+int		execute_instruction(t_pw_var *stvar)
 {
 	int				ret;
 	t_inst			*temp;
@@ -121,7 +121,7 @@ int		get_instruction(t_pw_var *stvar)
 			return (-1);
 	}
 	if (ret >= 0 && valid >= 0)
-		ret = execute_instruction(&stvar->stack_a, &stvar->stack_b, stvar);
+		ret = execute_instruction(stvar);
 	// ft_printf("return is:%d\n", ret);
 	// ft_printf("ptr inst is:%p\n", inst);
 	// ft_printf("ptr inst is:%p\n", *inst);

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/26 23:01:52 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/27 10:15:52 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,10 @@ typedef enum		e_error
 	ERROR = 2,
 }					t_error;
 
-// typedef enum		e_sort
-// {
-// 	nul = 0,
-// 	sa = 1,
-// 	ra = 2,
-// 	rra = 3,
-// 	sb = 4,
-// 	rb = 5,
-// 	rrb = 6,
-// 	ss = 7,
-// 	rr = 8,
-// 	rrr = 9,
-// 	pa = 10,
-// 	pb = 11
-// 	sa, ra, rra, sb, rb, \
-// 	rrb, ss, rr, rrr, pa, pb
-// }					t_sort;
-
 typedef enum		e_sort
 {
 	sa, ra, rra, sb, rb, \
-	rrb, ss, rr, rrr, pa, pb
+	rrb, ss, rr, rrr, pa, pb\
 }					t_sort;
 
 typedef struct		s_inst
