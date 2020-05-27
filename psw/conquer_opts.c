@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/27 10:43:28 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/27 17:42:41 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,16 +131,26 @@ void	part_sort(t_pw_var *stvar, int argc)
 // 	// print_partition_list(part)
 // }
 
-void	do_op(t_pw_var *stvar, char *str, int num)
+int		do_op(t_pw_var *stvar, char *str, int num)
 {
 	int i;
+	int ret;
 
 	i = 0;
+	ft_printf("num is:%i\n", num);
 	while (i < num)
 	{
-		dispatch_sort(stvar, str, 1);
+		ft_printf("i is:%d\n", i);
+		ret = dispatch_sort(stvar, str, 1);
+		print_stack(&stvar->stack_a, 1);
+		print_stack_b(&stvar->stack_b, 1);
+		ft_printf("return is:%i\n", ret);
+		if (ret == -1)
+			return (-1);
+		update_stack(stvar, &stvar->stack_a);
 		i++;
 	}
+	return (ret);
 }
 
 // void sort_three_part(t_stack **temp, t_pw_var *stvar, int min, int max)
@@ -349,32 +359,35 @@ char	*find_low(t_stack *stack, int *op)
 
 int		sort_five_stack(t_pw_var *stvar, int argc)
 {
-	int	top;
 	int	opts;
 	char *instr;
-	int i;
+	int ret;
 	int j;
 
-	i = 0;
+	ret = 1;
 	j = 0;
 	while (j != 2)
 	{
 		// ft_printf("num is:%d\n", stvar->stack_a->num);
 		// print_stack(&stvar->stack_a, 1);
 		instr = find_low(stvar->stack_a, &opts);
-		// ft_printf("instr is:%s\t total:%d\n", instr, opts);
-		do_op(stvar, instr, opts);
+		ft_printf("instr is:%s\t total:%d\n", instr, opts);
+		ret = do_op(stvar, instr, opts);
+		if (ret == -1)
+			return (-1);
 		if (instr == PB)
 		{
 			j++;
 			// ft_printf("j is:%d\n", j);
 		}
-		update_stack(stvar, &(stvar)->stack_a);
+		// update_stack(stvar, &(stvar)->stack_a);
+		ft_printf("updated\n");
 	}
+	ft_printf("go sort three\n");
 	sort_three(&(stvar)->stack_a, stvar, stvar->min, stvar->max);
-	do_op(stvar, PA, 2);
+	ret = do_op(stvar, PA, 2);
 	// ft_printf("stvar->list:%d\n", stvar->total_ins);
-	return (1);
+	return (ret);
 }
 
 int		sort_three(t_stack **temp, t_pw_var *stvar, int min, int max)
@@ -384,17 +397,17 @@ int		sort_three(t_stack **temp, t_pw_var *stvar, int min, int max)
 	stack = *temp;
 	// ft_printf("stack->num is:%d\n\n", (stack->num));
 	if ((stack->num) == min && (stack->next->num) != max)
-		return (dispatch_sort(stvar, NULL, 0));
+		return (do_op(stvar, NULL, 0));
 	if ((stack->num) == min && (stack->next->num) == max)
-		return (dispatch_sort(stvar, RRA, 1) && dispatch_sort(stvar, SA, 1));
+		return (do_op(stvar, RRA, 1) && do_op(stvar, SA, 1));
 	if ((stack->num) == max && (stack->next->num) == min)
-		return (dispatch_sort(stvar, RA, 1));
+		return (do_op(stvar, RA, 1));
 	if ((stack->num) == max && (stack->next->num) != min)
-		return (dispatch_sort(stvar, SA, 1) && dispatch_sort(stvar, RRA, 1));
+		return (do_op(stvar, SA, 1) && do_op(stvar, RRA, 1));
 	if ((stack->next->num) == max)
-		return (dispatch_sort(stvar, RRA, 1));
+		return (do_op(stvar, RRA, 1));
 	if ((stack->next->num) == min)
-		return (dispatch_sort(stvar, SA, 1));
+		return (do_op(stvar, SA, 1));
 	// ft_printf("three are now sorted!!!\n\n");
 	return (1);
 }
