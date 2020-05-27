@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/26 23:04:05 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/27 16:48:29 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ int			check_dup(t_stack **stack_a)
 
 int			add_num(char *str, int sign, t_pw_var *stvar)
 {
-	int num;
-	int ret;
-	int i;
+	long long int	num;
+	int				ret;
+	int				i;
 
 	num = 0;
 	i = 0;
@@ -104,6 +104,8 @@ int			add_num(char *str, int sign, t_pw_var *stvar)
 		i++;
 	}
 	num *= sign;
+	if (num > 2147483647 || num < -2147483648)
+		return (-1);
 	ret = stack_addnew(&(stvar)->stack_a, num);
 	return (ret);
 }
@@ -130,8 +132,5 @@ int			check_argv(char *str, t_pw_var *stvar)
 			return (-1);
 		i++;
 	}
-	if (ft_strnequ(&str[i], "214748364", 9))
-		if ((str[i + 9] > '7' && sign > 0) || (str[i + 9] > '8' && sign == -1))
-			return (-1);
 	return (add_num(str, sign, stvar));
 }
