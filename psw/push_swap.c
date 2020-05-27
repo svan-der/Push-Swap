@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/27 17:09:42 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/27 18:00:19 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,14 +204,9 @@ int		run_pw(t_pw_var *stvar)
 		// ft_printf("goes in sort three\n");
 		// ft_printf("min:%i\t max:%i\n", stvar->min, stvar->max);
 		ret = sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
-		ft_printf("ret is:%d\n", ret);
+		// ft_printf("ret is:%d\n", ret);
 	}
-	ft_printf("return is:%i\n", ret);
-	// if (ret >= 0)
-	// {
-	// 	ft_printf("go execute\n");
-	// 	ret = execute_instruction(stvar);
-	// }
+	// ft_printf("return is:%i\n", ret);
 	// ft_printf("total number of instructions:|%i|\n\n", stvar->total_ins);
 	// print_stack_list(stvar->stack_a, 'a');
 	// ft_printf("ret is:%d\n", ret);
@@ -264,14 +259,16 @@ int		main(int argc, char **argv)
 	stvar.index = stvar.argc;
 	// print_stack(&stvar.stack_a->tail, 1);
 	ret = run_pw(&stvar);
+	// ft_printf("ret is:%i\n", ret);
 	// print_stack_list(stvar.stack_a, 'a');
 	if (ret == -1)
 	{
 		error_handler(ret);
 		return (ft_exit(&stvar));
 	}
+	// print_inst_list(stvar.inst_lst);
 	print_inst(stvar.inst_lst);
-	print_stack(&stvar.stack_a, 1);
+	// print_stack(&stvar.stack_a, 1);
 	// ft_printf("total inst:%d\n", stvar.total_ins);
 	// print_stack_list(stvar.stack_a, 'a');
 	ft_exit(&stvar);

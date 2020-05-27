@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/27 17:42:41 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/27 17:51:56 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,14 +137,14 @@ int		do_op(t_pw_var *stvar, char *str, int num)
 	int ret;
 
 	i = 0;
-	ft_printf("num is:%i\n", num);
+	// ft_printf("num is:%i\n", num);
 	while (i < num)
 	{
-		ft_printf("i is:%d\n", i);
+		// ft_printf("i is:%d\n", i);
 		ret = dispatch_sort(stvar, str, 1);
-		print_stack(&stvar->stack_a, 1);
-		print_stack_b(&stvar->stack_b, 1);
-		ft_printf("return is:%i\n", ret);
+		// print_stack(&stvar->stack_a, 1);
+		// print_stack_b(&stvar->stack_b, 1);
+		// ft_printf("return is:%i\n", ret);
 		if (ret == -1)
 			return (-1);
 		update_stack(stvar, &stvar->stack_a);
@@ -371,7 +371,7 @@ int		sort_five_stack(t_pw_var *stvar, int argc)
 		// ft_printf("num is:%d\n", stvar->stack_a->num);
 		// print_stack(&stvar->stack_a, 1);
 		instr = find_low(stvar->stack_a, &opts);
-		ft_printf("instr is:%s\t total:%d\n", instr, opts);
+		// ft_printf("instr is:%s\t total:%d\n", instr, opts);
 		ret = do_op(stvar, instr, opts);
 		if (ret == -1)
 			return (-1);
@@ -381,9 +381,9 @@ int		sort_five_stack(t_pw_var *stvar, int argc)
 			// ft_printf("j is:%d\n", j);
 		}
 		// update_stack(stvar, &(stvar)->stack_a);
-		ft_printf("updated\n");
+		// ft_printf("updated\n");
 	}
-	ft_printf("go sort three\n");
+	// ft_printf("go sort three\n");
 	sort_three(&(stvar)->stack_a, stvar, stvar->min, stvar->max);
 	ret = do_op(stvar, PA, 2);
 	// ft_printf("stvar->list:%d\n", stvar->total_ins);
