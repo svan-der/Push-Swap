@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/26 17:41:40 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/27 10:12:19 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int		check_instruction(t_sort *option, char *line, int *valid)
 		return ((*option = rrr));
 	else if (ft_strequ(line, ""))
 		return (*valid = 0);
-	return (-1);
+	return (*valid = -1);
 }
 
 int		get_instruction(t_pw_var *stvar)
@@ -99,23 +99,28 @@ int		get_instruction(t_pw_var *stvar)
 	{
 		ret = get_next_line(0, &line);
 		// ft_printf("ret is:%d\n", ret);
-		// ft_printf("instr is:%s\n\n", stvar->inst_lst->option);
 		check_instruction(&index, line, &valid);
-		ft_printf("valid is:%d\n", valid);
-		if (ret == 0 || valid < 1)
+		// ft_printf("instr is:%s\n\n", stvar->inst_lst->option);
+		// ft_printf("valid is:%d\n", valid);
+		if (ret == 0 || valid == 0)
 			break ;
-		// ft_printf("option is:%d\n", index);
+		if (ret == -1 || valid == -1)
+			return (ft_min(valid, ret));
+		// if (index)
+		// 	ft_printf("option is:%d\n", index);
 		ret = put_instruction(&stvar->inst_lst, index, line);
 		// ft_printf("option is:%d\n", (*inst)->option);
 		// ft_printf("instr is:%s\n", inst->operation);
+		// if (stvar->inst_lst->option)
+		// 	ft_printf("instr is:%s\n", stvar->inst_lst->operation);
 		free(line);
 		index = 0;
-		valid = 0;
+		// valid = 0;
 		line = NULL;
 		if (ret == -1)
 			return (-1);
 	}
-	if (ret >= 0)
+	if (ret >= 0 && valid >= 0)
 		ret = execute_instruction(&stvar->stack_a, &stvar->stack_b, stvar);
 	// ft_printf("return is:%d\n", ret);
 	// ft_printf("ptr inst is:%p\n", inst);
