@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/27 10:16:54 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/27 10:18:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ int		get_instruction(t_pw_var *stvar)
 		// 	ft_printf("instr is:%s\n", stvar->inst_lst->operation);
 		free(line);
 		index = 0;
-		// valid = 0;
 		line = NULL;
 		if (ret == -1)
 			return (-1);

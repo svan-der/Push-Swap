@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/27 10:15:52 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/27 10:42:36 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void				print_inst_list(t_inst *instr);
 void				print_stack_list(t_stack *stack, char c);
 void				print_pw_var(t_pw_var *stvar);
 
-
+int					execute_instruction(t_pw_var *stvar);
 void				print_inst(t_inst *instr);
 void				free_inst_list(t_inst **inst_lst);
 void				free_stack_list(t_stack **stack_a, t_stack **stack_b);
