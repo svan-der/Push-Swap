@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/27 17:36:05 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/28 13:52:31 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct		s_part
 
 
 void	find_distance(t_stack **stack_a, int num, int *sorted);
-char	*find_low(t_stack *stack, int *op);
+char	*find_low(t_pw_var *stvar, char c, int *op, int *index);
 void	update_stack(t_pw_var *stvar, t_stack **stack_a);
 
 void	print_partition_list(t_part *partition);
