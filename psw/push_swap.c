@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/28 21:55:07 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/29 17:49:03 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,7 @@ int		run_pw(t_pw_var *stvar)
 	if (ret == 1)
 		return (0);
 	ret = presort_list(stvar);
+	// ft_printf("ret:%i\n", ret);
 	if (ret == 0)
 		return (0);
 	// print_input_list(stvar->stack_a, stvar->sorted);
@@ -228,13 +229,14 @@ int		run_pw(t_pw_var *stvar)
 	// // ft_printf("max:%d\n", stvar->max);
 	if (stvar->argc > 3)
 		ret = divide_list(stvar);
-	else if (stvar->argc != 1)
+	if (stvar->argc == 3)
 	{
-		// ft_printf("goes in sort three\n");
 		// ft_printf("min:%i\t max:%i\n", stvar->min, stvar->max);
-		ret = sort_three(&stvar->stack_a, stvar, stvar->min, stvar->max);
+		ret = sort_three(stvar, stvar->min, stvar->max);
 		// ft_printf("ret is:%d\n", ret);
 	}
+	if (stvar->argc == 2)
+		sort_two('a', stvar);
 	// ft_printf("return is:%i\n", ret);
 	// ft_printf("total number of instructions:|%i|\n\n", stvar->total_ins);
 	// print_stack_list(stvar->stack_a, 'a');
