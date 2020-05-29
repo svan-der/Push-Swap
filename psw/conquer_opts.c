@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/29 22:36:24 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/29 23:07:28 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ int		do_op(t_pw_var *stvar, char *str, int num)
 		// ft_printf("i is:%d\n", i);
 		ret = dispatch_sort(stvar, str, 1);
 		// print_stack(&stvar->stack_a, 1);
+		// print_stack_list(stvar->stack_a, 'a');
 		// print_stack_b(&stvar->stack_b, 1);
 		// ft_printf("return is:%i\n", ret);
 		if (ret == -1)
@@ -323,8 +324,9 @@ void	update_stack(t_pw_var *stvar, t_stack **stack_a)
 	t_stack *temp;
 
 	temp = *stack_a;
-	while (temp != NULL)
+	while (temp != NULL && temp->next != NULL)
 	{
+		// ft_printf("temp:%p\tnum:%i\n", temp, temp->num);
 		find_distance(&temp, temp->num, stvar->sorted);
 		temp = temp->next;
 	}
@@ -558,8 +560,9 @@ int		sort_short_stack(t_pw_var *stvar, int argc)
 		{
 			ret = do_op(stvar, RA, 1);
 		}
-		print_stack(&stvar->stack_a, 1);
-		print_stack_b(&stvar->stack_b, 1);
+		ft_printf("current:%p\tnum:%i\n", stvar->stack_a, stvar->stack_a->num);
+		// print_stack(&stvar->stack_a, 1);
+		// print_stack_b(&stvar->stack_b, 1);
 	}
 	// 	if (ret == -1)
 	// 		return (-1);
