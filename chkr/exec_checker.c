@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/28 11:54:07 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/29 11:42:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int		execute_instruction(t_pw_var *stvar)
 	initialize_operations(func_arr);
 	while (temp != NULL)
 	{
-		func_arr[temp->option](stvar);
+		ret = func_arr[temp->option](stvar);
 		temp = temp->next;
-		// ft_printf("ret is:%d\n", ret);
+		// ft_printf("return funct is:%d\n", ret);
 		// print_stack(&stvar->stack_a, 1);
 		// print_stack_list(stvar->stack_a, 'a');
 		// if (temp != NULL)

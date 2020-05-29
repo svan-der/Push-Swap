@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/12 11:56:55 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/27 17:58:40 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/29 11:49:52 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ void 	update_size(t_pw_var *stvar, char *str, int instr)
 	stvar->index += mod;
 	stvar->sort_index = stvar->index;
 	stvar->total_ins += instr;
+// 	ft_printf("stvar->index:%i\n", stvar->index);
+// 	ft_printf("stvar->sort_index:%i\n", stvar->index);
 }
 
 int 	dispatch_sort(t_pw_var *stvar, char *str, int instr)
 {
 	t_sort 			index;
+	t_operates		result;
 	t_operates		func_arr[10];
 	int ret;
 	int res;
@@ -47,7 +50,11 @@ int 	dispatch_sort(t_pw_var *stvar, char *str, int instr)
 		// ft_printf("res is:%d\n", res);
 		// print_inst_list(stvar->inst_lst);
 		initialize_operations(func_arr);
-		func_arr[index](stvar);
+		// ft_printf("do instruct\n");
+		// ft_printf("index:%i\n", index);
+		ret = func_arr[index](stvar);
+		// ft_printf("return funct is:%d\n", ret);
+		// ft_printf("ret is:%d\n", ret);
 		// ret = check_instruction(&stvar->stack_a, &stvar->stack_b, str);
 	}
 	// ft_printf("return is:%d\n\n", ret);

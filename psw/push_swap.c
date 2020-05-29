@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/28 16:24:12 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/28 21:55:07 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,35 @@ void	set_min_maxarray(t_pw_var *stvar, int *list, int len)
 			stvar->max = list[i];
 		i++;
 	}
+}
+
+void	set_min_max(t_pw_var *stvar, char c)
+{
+	int 	i;
+	int 	min;
+	int 	max;
+	t_stack *temp;
+
+	if (c == 'a')
+		temp = stvar->stack_a;
+	if (c == 'b')
+		temp = stvar->stack_b;
+	i = 0;
+	min = temp->num;
+	max = temp->num;
+	// ft_printf("min:%i\n", temp->num);
+	while (temp != NULL && temp->next != NULL)
+	{
+		if (min > temp->next->num)
+			min = temp->next->num;
+		if (max < temp->next->num)
+			max = temp->next->num;
+		temp = temp->next;
+	}
+	stvar->min = min;
+	stvar->max = max;
+	// ft_printf("min:%i\n", min);
+	// ft_printf("max:%i\n", max);
 }
 
 // void	set_min_max(t_part *part_var)
@@ -164,7 +193,7 @@ int				set_index(t_stack **stack_a, int *sorted, int argc)
 	}
 }
 
-static int		presort_list(t_pw_var *stvar)
+int		presort_list(t_pw_var *stvar)
 {
 	int i;
 

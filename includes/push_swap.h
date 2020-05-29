@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/28 13:52:31 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/28 21:54:55 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct		s_part
 	struct s_part	*next;
 }					t_part;
 
-
+int		presort_list(t_pw_var *stvar);
 void	find_distance(t_stack **stack_a, int num, int *sorted);
 char	*find_low(t_pw_var *stvar, char c, int *op, int *index);
 void	update_stack(t_pw_var *stvar, t_stack **stack_a);
@@ -45,13 +45,14 @@ void	part_sort(t_pw_var *stvar, int argc);
 int		sort_five_stack(t_pw_var *stvar, int argc);
 void    sort_three_part(t_stack **stack, t_pw_var *stvar, int min, int max);
 void	sort_short(t_pw_var *stvar, char c, int len);
-void	sort_two(t_stack **stack_a, t_stack **stack_b, t_pw_var *stvar);
+void	sort_two(char c, t_pw_var *stvar);
 int    	sort_three(t_stack **temp, t_pw_var *stvar, int min, int max);
 int    	divide_list(t_pw_var *stvar);
 int		divide_and_presort(t_pw_var *stvar, int *sorted_list);
 // int		divide_and_presort(t_pw_var *stvar, t_part *part_var, int *sorted_list);
 void    print_array(int *list, int argc);
-void	set_min_max(t_part *part_var);
+void	set_min_max(t_pw_var *stvar, char c);
+// void	set_min_max(t_part *part_var);
 void	set_min_maxarray(t_pw_var *stvar, int *list, int len);
 t_part	*setup_part(t_pw_var *stvar, t_part *part_var, int *list);
 int     find_median_array(int *list, int index);
