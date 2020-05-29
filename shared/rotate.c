@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:15:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/29 11:50:02 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/29 12:09:39 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int		rotate_reva(t_pw_var *stvar)
 		temp->next = new;
 		temp->prev = NULL;
 		stvar->stack_a = temp;
-		print_stack(&stvar->stack_a, 1);
+		// print_stack(&stvar->stack_a, 1);
 	}
 	return (1);
 }

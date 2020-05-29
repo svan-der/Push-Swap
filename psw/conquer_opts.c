@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/29 11:57:55 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/29 12:14:08 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -416,7 +416,7 @@ int		sort_five_stack(t_pw_var *stvar, int argc)
 	presort_list(stvar);
 	ret = check_sorted(&stvar->stack_a, &stvar->stack_b);
 	update_stack(stvar, &stvar->stack_a);
-	print_stack_list(stvar->stack_a, 'a');
+	// print_stack_list(stvar->stack_a, 'a');
 	if (ret == 1)
 		return (ret);
 	// print_array(stvar->sorted, stvar->argc);
@@ -456,7 +456,7 @@ int		sort_five_stack(t_pw_var *stvar, int argc)
 	current_index = stvar->argc - stvar->index;
 	// ft_printf("current index:%i\tdist:%i\n", current_index, stvar->stack_a->dist);
 	// ft_printf("stvar->sort_index:%i\n", stvar->index);
-	ft_printf("option is:%i\n", current_index - stvar->stack_a->index);
+	// ft_printf("option is:%i\n", current_index - stvar->stack_a->index);
 	if (current_index - stvar->stack_a->index == -1)
 		do_op(stvar, SA, 1);
 	if (current_index - stvar->stack_a->index == -2)
@@ -469,7 +469,7 @@ int		sort_five_stack(t_pw_var *stvar, int argc)
 	if (current_index - stvar->stack_a->index == -3)
 	{
 		do_op(stvar, RA, 1);
-		print_stack_list(stvar->stack_a, 'a');
+		// print_stack_list(stvar->stack_a, 'a');
 		// do_op(stvar, RRA, 1);
 		// do_op(stvar, SA, 1);
 		// do_op(stvar, RA, 1);
@@ -481,12 +481,12 @@ int		sort_five_stack(t_pw_var *stvar, int argc)
 		do_op(stvar, RA, 1);
 		do_op(stvar, RA, 1);
 	}
-	print_stack(&stvar->stack_a, 1);
+	// print_stack(&stvar->stack_a, 1);
 	do_op(stvar, PA, 1);
 	// print_stack_list(stvar->stack_a, 'a');
-	print_stack(&stvar->stack_a, 1);
+	// print_stack(&stvar->stack_a, 1);
 	current_index = stvar->argc - stvar->index;
-	ft_printf("option is:%i\n", current_index - stvar->stack_a->index);
+	// ft_printf("option is:%i\n", current_index - stvar->stack_a->index);
 	if (current_index - stvar->stack_a->index == -1)
 		do_op(stvar, SA, 1);
 	if (current_index - stvar->stack_a->index == -2)
@@ -498,17 +498,17 @@ int		sort_five_stack(t_pw_var *stvar, int argc)
 	}
 	if (current_index - stvar->stack_a->index == -3)
 	{
-		print_stack_list(stvar->stack_a, 'a');
+		// print_stack_list(stvar->stack_a, 'a');
 		do_op(stvar, RRA, 1);
-		// do_op(stvar, SA, 1);
-		// do_op(stvar, RA, 1);
-		// do_op(stvar, RA, 1);
+		do_op(stvar, SA, 1);
+		do_op(stvar, RA, 1);
+		do_op(stvar, RA, 1);
 	}
 	if (current_index - stvar->stack_a->index == -4)
 	{
 		do_op(stvar, RA, 1);
 	}
-	print_stack(&stvar->stack_a, 1);
+	// print_stack(&stvar->stack_a, 1);
 // 	else
 // 	{
 // 		do_op(stvar, RA, 1);
