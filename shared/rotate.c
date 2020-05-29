@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:15:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/29 12:09:39 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/29 22:53:59 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,21 @@ int		rotate_b(t_pw_var *stvar)
 	t_stack *new;
 	t_stack *temp;
 
-	temp = stvar->stack_b;
+	temp = (*stvar).stack_b;
 	if (temp != NULL && temp->next != NULL)
 	{
-		new = stvar->stack_b->next;
+		new = (*stvar).stack_b->next;
+		ft_printf("new:%i\n", new->num);
 		new->prev = NULL;
-		temp = stvar->stack_b;
 		while (temp->next)
 			temp = temp->next;
-		temp->next = stvar->stack_b;
+		temp->next = (*stvar).stack_b;
+		ft_printf("new:%i\n", temp->next->num);
 		temp->next->prev = temp;
-		stvar->stack_b->next = NULL;
-		stvar->stack_b = new;
-		// print_stack_b(stack_b, 1);
+		(*stvar).stack_b->next = NULL;
+		// ft_printf("new:%i\n", temp->next->num);
+		(*stvar).stack_b = new;
+		print_stack_b(&stvar->stack_b, 1);
 	}
 	return (1);
 }
@@ -134,18 +136,21 @@ int		rotate_a(t_pw_var *stvar)
 	t_stack *new;
 	t_stack *temp;
 
-	temp = stvar->stack_a;
+	temp = (*stvar).stack_a;
 	if (temp != NULL && temp->next != NULL)
 	{
-		new = stvar->stack_a->next;
+		new = (*stvar).stack_a->next;
+		ft_printf("new:%i\n", new->num);
 		new->prev = NULL;
 		while (temp->next)
 			temp = temp->next;
-		temp->next = stvar->stack_a;
+		temp->next = (*stvar).stack_a;
+		ft_printf("new:%i\n", temp->next->num);
 		temp->next->prev = temp;
-		stvar->stack_a->next = NULL;
-		stvar->stack_a = new;
-		// print_stack(stack_a, 1);
+		(*stvar).stack_a->next = NULL;
+		// ft_printf("new:%i\n", temp->next->num);
+		(*stvar).stack_a = new;
+		print_stack(&stvar->stack_a, 1);
 	}
 	return (1);
 }

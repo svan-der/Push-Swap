@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/29 18:45:10 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/05/29 22:36:24 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -558,11 +558,13 @@ int		sort_short_stack(t_pw_var *stvar, int argc)
 		{
 			ret = do_op(stvar, RA, 1);
 		}
-	// }
+		print_stack(&stvar->stack_a, 1);
+		print_stack_b(&stvar->stack_b, 1);
+	}
 	// 	if (ret == -1)
 	// 		return (-1);
 		// opts = 1;
-		// print_stack_list(stvar->stack_a, 'a');
+		print_stack_list(stvar->stack_a, 'a');
 		// instr = find_low(stvar, 'a', &opts, &i);
 		// ft_printf("instr is:%s\t total:%d\n", instr, opts);
 		// ret = do_op(stvar, instr, opts);
@@ -574,21 +576,21 @@ int		sort_short_stack(t_pw_var *stvar, int argc)
 		// 	j--;
 		// 	ft_printf("j is:%d\n", j);
 		// }
-	}
-	print_stack(&stvar->stack_a, 1);
-	print_stack_b(&stvar->stack_b, 1);
-	ret = sort_five_stack(stvar, 'a', stvar->index - stvar->sort_index);
-	if (ret != 1)
-		return (ret);
-	print_stack(&stvar->stack_a, 1);
-	ft_printf("argc is in short:%i\n", stvar->argc - stvar->index);
-	ret = sort_five_stack(stvar, 'b', stvar->argc - stvar->index);
-	if (ret != 1)
-		return (ret);
-	print_stack_b(&stvar->stack_b, 1);
-	while (stvar->index != stvar->argc)
-		do_op(stvar, PA, 1);
-	print_stack(&stvar->stack_a, 1);
+	// }
+	// print_stack(&stvar->stack_a, 1);
+	// print_stack_b(&stvar->stack_b, 1);
+	// ret = sort_five_stack(stvar, 'a', stvar->index - stvar->sort_index);
+	// if (ret != 1)
+	// 	return (ret);
+	// print_stack(&stvar->stack_a, 1);
+	// ft_printf("argc is in short:%i\n", stvar->argc - stvar->index);
+	// ret = sort_five_stack(stvar, 'b', stvar->argc - stvar->index);
+	// if (ret != 1)
+	// 	return (ret);
+	// print_stack_b(&stvar->stack_b, 1);
+	// while (stvar->index != stvar->argc)
+	// 	do_op(stvar, PA, 1);
+	// print_stack(&stvar->stack_a, 1);
 	// if (stvar->index != stvar->argc)
 	// 	ret = sort_five_stack(stvar, argc / 2);
 	return (ret);
