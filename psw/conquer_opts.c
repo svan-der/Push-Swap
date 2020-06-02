@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/01 17:19:09 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/02 10:16:31 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,50 +73,48 @@ void insertion_sort(int *list, int argc, int *min, int *max)
 // }
 
 // **last good one**
-// void	part_sort(t_pw_var *stvar, int argc)
-// {
-// 	char low;
-// 	int	*sorted;
-// 	int j;
-// 	int k;
-// 	int ret;
+void	part_sort(t_pw_var *stvar, int argc)
+{
+	char low;
+	int	*sorted;
+	int j;
+	int k;
+	int ret;
 
-// 	j = 0;
-// 	k = 0;
-// 	ret = 0;
-// 	sorted = stvar->sorted;
-// 	if (stvar->stack_a == NULL)
-// 		return ;
-// 	while (j < argc)
-// 	{
-// 		j++;
-// 		if ((stvar->stack_a->num) < stvar->median)
-// 		{
-// 			if (stvar->stack_a->num == sorted[k])
-// 				dispatch_sort(stvar, PB, 1);
-// 			if (stvar->stack_a->next->num == sorted[k])
-// 				dispatch_sort(stvar, SA, 1);
-// 		}
-// 		else
-// 		{
-// 			if ((stvar->stack_a->num) == stvar->min)
-// 				low = 1;
-// 			if ((stvar->stack_a->next->num) < stvar->median)
-// 				dispatch_sort(stvar, SA, 1);
-// 			else
-// 			{
-// 				// if (stvar->tail < stvar->median)
-// 				// 	dispatch_sort(stvar, RRA, 1);
-// 				dispatch_sort(stvar, RA, 1);
-// 			}
-// 		}
-// 		if (low && stvar->index == 3)
-// 			break ;
-// 	}
-// 	// print_partition_list(part)
-// }
-
-
+	j = 0;
+	k = 0;
+	ret = 0;
+	sorted = stvar->sorted;
+	if (stvar->stack_a == NULL)
+		return ;
+	while (j < argc)
+	{
+		j++;
+		if ((stvar->stack_a->num) < stvar->median)
+		{
+			if (stvar->stack_a->num == sorted[k])
+				dispatch_sort(stvar, PB, 1);
+			if (stvar->stack_a->next->num == sorted[k])
+				dispatch_sort(stvar, SA, 1);
+		}
+		else
+		{
+			if ((stvar->stack_a->num) == stvar->min)
+				low = 1;
+			if ((stvar->stack_a->next->num) < stvar->median)
+				dispatch_sort(stvar, SA, 1);
+			else
+			{
+				// if (stvar->tail < stvar->median)
+				// 	dispatch_sort(stvar, RRA, 1);
+				dispatch_sort(stvar, RA, 1);
+			}
+		}
+		if (low && stvar->index == 3)
+			break ;
+	}
+	// print_partition_list(part)
+}
 
 // void	part_sort(t_pw_var *stvar, int argc)
 // {
@@ -313,14 +311,14 @@ void	sort_short(t_pw_var *stvar, char c, int stack_len)
 		dispatch_sort(stvar, PA, 1);
 }
 
-void	fastest_sort(t_pw_var *stvar, t_stack **stack_a)
-{
-	int revrot_opt;
-	int rot_opt;
-	int argc;
+// void	fastest_sort(t_pw_var *stvar, t_stack **stack_a)
+// {
+// 	int revrot_opt;
+// 	int rot_opt;
+// 	int argc;
 
-	argc = stvar->index;
-}
+// 	argc = stvar->index;
+// }
 
 void	update_stack(t_pw_var *stvar, char c)
 {
