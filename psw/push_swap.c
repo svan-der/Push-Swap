@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/02 10:51:27 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/02 13:36:31 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,34 +93,48 @@ int		find_median_array(int *list, int index)
 	return (median);
 }
 
-int		*lst_cpy(t_stack **stack, int *new_list)
+int		*lst_cpy(t_pw_var *stvar, t_stack *stack)
 {
 	t_stack *current;
+	// t_stack *temp;
 	int		i;
 	int		j;
 
-	current = *stack;
+	// current = (*stvar).stack_a;
+	// temp = stack;
+	(void)stack;
+	current = stvar->stack_a;
 	i = 0;
-	j = 0;
-	// ft_printf("current->num:%d\n", current->num);
-	while (current->next != NULL)
+	j = stvar->argc;
+	ft_printf("j is:%i\n", j);
+	print_stack_list(current, 'a');
+	while (current != NULL)
 	{
-		new_list[i] = (current->num);
+		stvar->sorted[i] = current->num;
+		// ft_printf("current->num:%d\t num:%d\tstack:%d\n", current->num, temp->num, stvar->sorted[i]);
+		ft_printf("current->num:%d\tstack:%d\n", current->num, stvar->sorted[i]);
+		ft_printf("i is:%d\n", i);
+		ft_printf("\n");
+		print_stack_list(current, 'a');
 		current = current->next;
+		// temp = temp->next;
 		i++;
+		j--;
 	}
 	// ft_printf("current prev is:%p\n", current->prev);
-	new_list[i] = current->num;
+	// stvar->sorted[i] = current->num;
+	// ft_printf("current->num:%d\t num:%d\n", current->num, temp->num);
+	print_array(stvar->sorted, stvar->argc);
 	// print_array(new_list, i);
 	// current->prev->prev = NULL;
 	// current->next = NULL;
 	// ft_printf("current is:%p\n", current);
-	add_tail(stack);
+	// add_tail(stack);
 	// (*stack)->tail = current;
 	// (*stack)->tail->prev = current->prev;
 	// ft_printf("tail->prev is:%p\n", (*stack)->tail->prev);
 	// ft_printf("tail is:%p\n", (*stack)->tail);
-	return (new_list);
+	return (stvar->sorted);
 }
 
 void	*ft_calloc(size_t count, size_t size)
@@ -139,21 +153,23 @@ void		add_tail(t_stack **stack)
 	t_stack *tail;
 
 	tail = *stack;
-	while (tail && tail->next != NULL)
+	print_stack_list(*stack, 'a');
+	// print_stack(stack, 1);
+	// ft_printf("tail->prev is:%p\n", (*stack)->tail->prev);
+	ft_printf("tail:%p\n", tail);
+	ft_printf("tail next is:%p\n", tail->next);
+	while (tail->next != NULL)
+	{
+		ft_printf("tail is:%d\n", (*stack)->tail->num);
+		ft_printf("tail is:%d\n", tail->num);
 		tail = tail->next;
+	}
 	tail->next = NULL;
 	tail->prev = tail->prev;
-	// if (tail->prev)
-	// 	tail->prev = tail->prev;
-	// tail->prev->prev = NULL;
 	(*stack)->tail = tail;
-	// ft_printf("tail is:%d\n", (*stack)->tail->num);
-	// ft_printf("tail is:%d\n", tail->num);
 	// ft_printf("tail->prev is:%d\n", tail->prev->num);
 	// ft_printf("tail->prev is:%d\n", (*stack)->tail->prev->num);
 	// ft_printf("tail->prev is:%p\n", (*stack)->tail->prev);
-	// ft_printf("tail->prev is:%p\n", (*stack)->tail->prev);
-	// ft_printf("tail next is:%p\n", tail->next);
 	// ft_printf("tail prev prev is:%p\n", tail->prev->prev);
 }
 
@@ -202,12 +218,12 @@ int		presort_list(t_pw_var *stvar)
 	stvar->sorted = (int *)malloc(sizeof(int));
 	if (stvar->sorted == NULL)
 		return (0);
-	// print_stack_list(stvar->stack_a, 'a');
-	stvar->sorted = lst_cpy(&(stvar)->stack_a, stvar->sorted);
-	// print_array(stvar->sorted, stvar->argc);
+	print_stack_list(stvar->stack_a, 'a');
+	stvar->sorted = lst_cpy(stvar, stvar->stack_a);
 	// ft_printf("stvar->index:%i\n", stvar->index);
-	insertion_sort(stvar->sorted, stvar->argc, &stvar->min, &stvar->max);
-	set_index(&(stvar)->stack_a, stvar->sorted, stvar->argc);
+	// insertion_sort(stvar->sorted, stvar->argc, &stvar->min, &stvar->max);
+	// print_array(stvar->sorted, stvar->argc);
+	// set_index(&(stvar)->stack_a, stvar->sorted, stvar->argc);
 	// print_tail(stvar->stack_a->tail);
 	return (1);
 }
@@ -231,15 +247,15 @@ int		run_pw(t_pw_var *stvar)
 	// // ft_printf("stvar->argc:%d\n\n", stvar->argc);
 	// // ft_printf("min:%d\n", stvar->min);
 	// // ft_printf("max:%d\n", stvar->max);
-	if (stvar->argc > 3)
-		ret = divide_list(stvar);
-	if (stvar->argc == 3)
-	{
-		// ft_printf("min:%i\t max:%i\n", stvar->min, stvar->max);
-		ret = sort_three(stvar, stvar->min, stvar->max);
-	}
-	if (stvar->argc == 2)
-		sort_two('a', stvar);
+	// if (stvar->argc > 3)
+	// 	ret = divide_list(stvar);
+	// if (stvar->argc == 3)
+	// {
+	// 	// ft_printf("min:%i\t max:%i\n", stvar->min, stvar->max);
+	// 	ret = sort_three(stvar, stvar->min, stvar->max);
+	// }
+	// if (stvar->argc == 2)
+	// 	sort_two('a', stvar);
 	// ft_printf("return is:%i\n", ret);
 	// ft_printf("total number of instructions:|%i|\n\n", stvar->total_ins);
 	// print_stack_list(stvar->stack_a, 'a');

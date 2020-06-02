@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:35:59 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/20 10:09:11 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/02 11:07:54 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	push_short(t_pw_var *stvar, int *list, int b_len)
 
 	argc = stvar->argc - stvar->sort_index;
 	index = stvar->argc - stvar->sort_index - 1;
-	lst_cpy(&(stvar)->stack_b, list);
+	// lst_cpy(&(stvar)->stack_b, list);
 	insertion_sort(list, argc, &stvar->min, &stvar->max);
 	stvar->median = find_median_array(list, index);
 	sort_and_pushback(stvar);
@@ -114,7 +114,7 @@ void	push_half(t_pw_var *stvar, int *list, int b_len)
 
 	argc = stvar->argc - stvar->sort_index;
 	index = stvar->argc - stvar->sort_index - 1;
-	lst_cpy(&(stvar)->stack_b, list);
+	// lst_cpy(&(stvar)->stack_b, list);
 	insertion_sort(list, argc, &stvar->min, &stvar->max);
 	stvar->median = find_median_array(list, index);
 	sort_and_pushback(stvar);

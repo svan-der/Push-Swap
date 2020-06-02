@@ -4,13 +4,12 @@
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
-		
 		{
 			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/srcs/a.out",
-			"args": ["1", "5", "2", "4", "3", "6", "9", "10", "23"],
+			"program": "${workspaceFolder}",
+			"args": ["40 20 10 60 100 90"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

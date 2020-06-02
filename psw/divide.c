@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/02 10:19:34 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/02 11:58:51 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,9 @@ void	assign_partitions(t_pw_var *stvar)
 {
 	int num;
 
-	num = (stvar->argc <= 100) ? stvar->argc / 5 : stvar->argc / 11; 
+	num = (stvar->argc <= 100) ? (stvar->argc / 5) : (stvar->argc / 11); 
 	ft_printf("amount of partitions:%i\n", num);
 }
-
 
 int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 {
