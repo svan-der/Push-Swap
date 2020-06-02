@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/29 17:49:03 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/01 16:33:58 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,10 +140,12 @@ void		add_tail(t_stack **stack)
 	t_stack *prev_tail;
 
 	tail = *stack;
-	while (tail->next != NULL)
+	while (tail && tail->next != NULL)
 		tail = tail->next;
 	tail->next = NULL;
 	tail->prev = tail->prev;
+	// if (tail->prev)
+	// 	tail->prev = tail->prev;
 	// tail->prev->prev = NULL;
 	(*stack)->tail = tail;
 	// ft_printf("tail is:%d\n", (*stack)->tail->num);
@@ -203,6 +205,7 @@ int		presort_list(t_pw_var *stvar)
 		return (0);
 	stvar->sorted = lst_cpy(&(stvar)->stack_a, stvar->sorted);
 	// print_array(stvar->sorted, stvar->argc);
+	// ft_printf("stvar->index:%i\n", stvar->index);
 	insertion_sort(stvar->sorted, stvar->argc, &stvar->min, &stvar->max);
 	set_index(&(stvar)->stack_a, stvar->sorted, stvar->argc);
 	// ft_printf("printing tail\n");
@@ -215,6 +218,7 @@ int		run_pw(t_pw_var *stvar)
 	int ret;
 
 	// print_stack_list(stvar->stack_a, 'a');
+	// ft_printf("stvar->index:%i\n", stvar->index);
 	ret = check_sorted(&(stvar->stack_a), &(stvar->stack_b));
 	if (ret == 1)
 		return (0);
@@ -288,6 +292,7 @@ int		main(int argc, char **argv)
 	}
 	stvar.argc -= 1;
 	stvar.index = stvar.argc;
+	// ft_printf("stvar->index:%i\n", stvar.index);
 	// print_stack(&stvar.stack_a->tail, 1);
 	ret = run_pw(&stvar);
 	// ft_printf("ret is:%i\n", ret);

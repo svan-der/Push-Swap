@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/29 12:07:10 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/01 17:17:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int		push_b(t_pw_var *stvar)
 	new = fill_stack_begin(&new, stvar->stack_a);
 	new->prev = NULL;
 	stvar->stack_a = tmp;
-	if (stvar->stack_a && stvar->stack_a->next != NULL)
+	if (stvar->stack_a)
 		stvar->stack_a->prev = NULL;
 	stvar->stack_b = new;
 	// print_stack(stack_a, 1);
@@ -113,17 +113,28 @@ int		push_a(t_pw_var *stvar)
 	t_stack *new;
 
 	// print_stack_list(stvar->stack_a, 'a');
+	// print_stack_list(stvar->stack_b, 'b');
+	// ft_printf("ptr is:%p\n", (*stvar).stack_b);
+	// ft_printf("ptr is:%p\n", stvar->stack_b);
 	if (stvar->stack_b == NULL)
 		return (0);
-	new = stvar->stack_a;
-	tmp = stvar->stack_b->next;
-	stvar->stack_b->next = NULL;
+	new = (*stvar).stack_a;
+	tmp = (*stvar).stack_b->next;
+	(*stvar).stack_b->next = NULL;
+	// ft_printf("ptr next is:%p\n", (*stvar).stack_b->next);
 	new = fill_stack_begin(&new, stvar->stack_b);
 	new->prev = NULL;
-	stvar->stack_b = tmp;
-	if (stvar->stack_b && stvar->stack_b->next != NULL)
-		stvar->stack_b->prev = NULL;
-	stvar->stack_a = new;
+	(*stvar).stack_b = tmp;
+	if ((*stvar).stack_b)
+	{
+		// ft_printf("ptr is:%p\n", (*stvar).stack_b);
+		(*stvar).stack_b->prev = NULL;
+	}
+	// ft_printf("ptr is:%p\n", (*stvar).stack_b->prev);
+	// if ((*stvar).stack_b && (*stvar).stack_b->next != NULL)
+	// 	(*stvar).stack_b->prev = NULL;
+	(*stvar).stack_a = new;
+	// print_stack_list(stvar->stack_b, 'b');
 	// print_stack_list(stvar->stack_a, 'a');
 	// print_stack(stack_a, 1);
 	// print_stack_b(stack_b, 1);

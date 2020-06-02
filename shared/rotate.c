@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:15:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/29 23:35:44 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/01 16:31:35 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ int		rotate_b(t_pw_var *stvar)
 	if (temp != NULL && temp->next != NULL)
 	{
 		new = (*stvar).stack_b->next;
-		ft_printf("new:%i\n", new->num);
+		// ft_printf("new:%i\n", new->num);
 		new->prev = NULL;
 		while (temp->next)
 			temp = temp->next;
 		temp->next = (*stvar).stack_b;
-		ft_printf("new:%i\n", temp->next->num);
+		// ft_printf("new:%i\n", temp->next->num);
 		temp->next->prev = temp;
 		(*stvar).stack_b->next = NULL;
 		// ft_printf("new:%i\n", temp->next->num);
@@ -147,18 +147,18 @@ int		rotate_a(t_pw_var *stvar)
 	if (temp != NULL && temp->next != NULL)
 	{
 		new = (*stvar).stack_a->next;
-		ft_printf("new:%i\n", new->num);
+		// ft_printf("new:%i\n", new->num);
 		new->prev = NULL;
 		while (temp->next)
 			temp = temp->next;
 		temp->next = (*stvar).stack_a;
-		ft_printf("new:%i\n", temp->next->num);
+		// ft_printf("new:%i\n", temp->next->num);
 		temp->next->prev = temp;
 		(*stvar).stack_a->next = NULL;
 		// ft_printf("new:%i\n", temp->next->num);
 		(*stvar).stack_a = new;
-		print_stack_list(stvar->stack_a, 'a');
-		print_stack(&stvar->stack_a, 1);
+		// print_stack_list(stvar->stack_a, 'a');
+		// print_stack(&stvar->stack_a, 1);
 	}
 	return (1);
 }
