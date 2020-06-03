@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/03 14:50:24 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/03 15:11:22 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int		*lst_cpy(t_pw_var *stvar)
 	}
 	print_array(stvar->sorted, stvar->argc);
 	add_tail(&stvar->stack_a);
+	print_stack_list(stvar->stack_a, 'a');
 	return (stvar->sorted);
 }
 
@@ -128,24 +129,13 @@ void		add_tail(t_stack **stack)
 	t_stack *tail;
 
 	tail = *stack;
-	print_stack_list(*stack, 'a');
-	// print_stack(stack, 1);
-	// ft_printf("tail->prev is:%p\n", (*stack)->tail->prev);
-	ft_printf("tail:%p\n", tail);
-	ft_printf("tail next is:%p\n", tail->next);
 	while (tail->next != NULL)
-	{
-		ft_printf("tail is:%d\n", (*stack)->tail->num);
-		ft_printf("tail is:%d\n", tail->num);
 		tail = tail->next;
-	}
-	tail->next = NULL;
 	tail->prev = tail->prev;
+	tail->next = NULL;
 	(*stack)->tail = tail;
-	// ft_printf("tail->prev is:%d\n", tail->prev->num);
-	// ft_printf("tail->prev is:%d\n", (*stack)->tail->prev->num);
-	// ft_printf("tail->prev is:%p\n", (*stack)->tail->prev);
-	// ft_printf("tail prev prev is:%p\n", tail->prev->prev);
+	// ft_printf("tail:%d\t%p\n", tail->num, tail);
+	// print_tail((*stack)->tail);
 }
 
 /*
