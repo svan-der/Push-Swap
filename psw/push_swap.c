@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/03 15:11:22 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/03 15:13:52 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ int		*lst_cpy(t_pw_var *stvar)
 		current = current->next;
 		i++;
 	}
-	print_array(stvar->sorted, stvar->argc);
+	// print_array(stvar->sorted, stvar->argc);
 	add_tail(&stvar->stack_a);
-	print_stack_list(stvar->stack_a, 'a');
+	// print_stack_list(stvar->stack_a, 'a');
 	return (stvar->sorted);
 }
 
@@ -185,12 +185,12 @@ int		presort_list(t_pw_var *stvar)
 	stvar->sorted = (int *)malloc(stvar->argc * sizeof(int));
 	if (stvar->sorted == NULL)
 		return (0);
-	print_stack_list(stvar->stack_a, 'a');
 	stvar->sorted = lst_cpy(stvar);
 	// ft_printf("stvar->index:%i\n", stvar->index);
-	// insertion_sort(stvar->sorted, stvar->argc, &stvar->min, &stvar->max);
-	// print_array(stvar->sorted, stvar->argc);
-	// set_index(&(stvar)->stack_a, stvar->sorted, stvar->argc);
+	insertion_sort(stvar->sorted, stvar->argc, &stvar->min, &stvar->max);
+	print_array(stvar->sorted, stvar->argc);
+	set_index(&(stvar)->stack_a, stvar->sorted, stvar->argc);
+	print_stack_list(stvar->stack_a, 'a');
 	// print_tail(stvar->stack_a->tail);
 	return (1);
 }
@@ -214,8 +214,8 @@ int		run_pw(t_pw_var *stvar)
 	// // ft_printf("stvar->argc:%d\n\n", stvar->argc);
 	// // ft_printf("min:%d\n", stvar->min);
 	// // ft_printf("max:%d\n", stvar->max);
-	// if (stvar->argc > 3)
-	// 	ret = divide_list(stvar);
+	if (stvar->argc > 3)
+		ret = divide_list(stvar);
 	// if (stvar->argc == 3)
 	// {
 	// 	// ft_printf("min:%i\t max:%i\n", stvar->min, stvar->max);
@@ -225,7 +225,7 @@ int		run_pw(t_pw_var *stvar)
 	// 	sort_two('a', stvar);
 	// ft_printf("return is:%i\n", ret);
 	// ft_printf("total number of instructions:|%i|\n\n", stvar->total_ins);
-	// print_stack_list(stvar->stack_a, 'a');
+	print_stack_list(stvar->stack_a, 'a');
 	// ft_printf("ret is:%d\n", ret);
 	return (ret);
 }
