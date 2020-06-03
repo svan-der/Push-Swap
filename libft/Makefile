@@ -6,17 +6,19 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/11 15:22:00 by svan-der      #+#    #+#                  #
-#    Updated: 2020/05/12 17:31:10 by svan-der      ########   odam.nl          #
+#    Updated: 2020/06/02 17:35:28 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CC = gcc
+CC = clang
 CFLAGS = -Wall -Wextra -Werror -g
 INCL = ../includes/
 PRINTF_DIR = ft_printf
 LIB_OBJDIR = objects
 PRINTF_OBJDIR = ft_printf/objects
+# AR = $(Push_swap)/bin/libft.a-ar
+# RANLIB = $(Push_swap)/bin/libft.a-ranlib
 
 LIB_SRC = ft_memchr.c ft_putnbr_fd.c ft_striter.c\
 	ft_strnew.c ft_atoi.c ft_abs.c ft_pow.c\
@@ -35,7 +37,7 @@ LIB_SRC = ft_memchr.c ft_putnbr_fd.c ft_striter.c\
 
 PRINTF_SRC = dispatch.c finish.c frac.c ft_ftoap.c ft_ldtoap.c\
 			ft_printf.c ft_vprintf.c ftoa.c getarg.c ntoap.c\
-			padding.c parsing.c utils.c error.c\
+			padding.c parsing.c utils.c\
 
 LIB_OBJ = $(LIB_SRC:%.c=$(LIB_OBJDIR)/%.o)
 PRINTF_OBJ = $(PRINTF_SRC:%.c=$(PRINTF_OBJDIR)/%.o)
@@ -43,7 +45,7 @@ PRINTF_OBJ = $(PRINTF_SRC:%.c=$(PRINTF_OBJDIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(LIB_OBJ) $(PRINTF_OBJ)
-	@ar rcs $(NAME) $(LIB_OBJ) $(PRINTF_OBJ)
+	ar -rcs $(NAME) $(LIB_OBJ) $(PRINTF_OBJ)
 
 $(LIB_OBJDIR)/%.o: %.c $(INCL)
 	@mkdir -p $(LIB_OBJDIR)

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/02 13:36:31 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/03 14:50:24 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,47 +93,22 @@ int		find_median_array(int *list, int index)
 	return (median);
 }
 
-int		*lst_cpy(t_pw_var *stvar, t_stack *stack)
+int		*lst_cpy(t_pw_var *stvar)
 {
 	t_stack *current;
-	// t_stack *temp;
 	int		i;
-	int		j;
 
-	// current = (*stvar).stack_a;
-	// temp = stack;
-	(void)stack;
 	current = stvar->stack_a;
 	i = 0;
-	j = stvar->argc;
-	ft_printf("j is:%i\n", j);
-	print_stack_list(current, 'a');
 	while (current != NULL)
 	{
 		stvar->sorted[i] = current->num;
-		// ft_printf("current->num:%d\t num:%d\tstack:%d\n", current->num, temp->num, stvar->sorted[i]);
-		ft_printf("current->num:%d\tstack:%d\n", current->num, stvar->sorted[i]);
-		ft_printf("i is:%d\n", i);
-		ft_printf("\n");
-		print_stack_list(current, 'a');
+		// ft_printf("%d %d\n", current->num, stvar->sorted[i]);
 		current = current->next;
-		// temp = temp->next;
 		i++;
-		j--;
 	}
-	// ft_printf("current prev is:%p\n", current->prev);
-	// stvar->sorted[i] = current->num;
-	// ft_printf("current->num:%d\t num:%d\n", current->num, temp->num);
 	print_array(stvar->sorted, stvar->argc);
-	// print_array(new_list, i);
-	// current->prev->prev = NULL;
-	// current->next = NULL;
-	// ft_printf("current is:%p\n", current);
-	// add_tail(stack);
-	// (*stack)->tail = current;
-	// (*stack)->tail->prev = current->prev;
-	// ft_printf("tail->prev is:%p\n", (*stack)->tail->prev);
-	// ft_printf("tail is:%p\n", (*stack)->tail);
+	add_tail(&stvar->stack_a);
 	return (stvar->sorted);
 }
 
@@ -213,13 +188,15 @@ void			set_index(t_stack **stack_a, int *sorted, int argc)
 int		presort_list(t_pw_var *stvar)
 {
 	int i;
+	int num;
 
+	num = stvar->argc;
 	i = 0;
-	stvar->sorted = (int *)malloc(sizeof(int));
+	stvar->sorted = (int *)malloc(stvar->argc * sizeof(int));
 	if (stvar->sorted == NULL)
 		return (0);
 	print_stack_list(stvar->stack_a, 'a');
-	stvar->sorted = lst_cpy(stvar, stvar->stack_a);
+	stvar->sorted = lst_cpy(stvar);
 	// ft_printf("stvar->index:%i\n", stvar->index);
 	// insertion_sort(stvar->sorted, stvar->argc, &stvar->min, &stvar->max);
 	// print_array(stvar->sorted, stvar->argc);

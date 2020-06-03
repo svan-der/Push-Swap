@@ -6,14 +6,14 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/05/01 13:41:54 by svan-der      #+#    #+#                  #
-#    Updated: 2020/06/02 12:55:55 by svan-der      ########   odam.nl          #
+#    Updated: 2020/06/02 13:56:41 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_CHECKER = checker
 NAME_PUSHSWAP = push_swap
 LIBFT = libft/libft.a
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 CHECKER_SRCDIR = chkr
 CHECKER_OBJDIR = objects

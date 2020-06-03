@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/02 13:21:35 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/03 13:55:36 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	set_min_max(t_pw_var *stvar, char c);
 void	set_min_maxarray(t_pw_var *stvar, int *list, int len);
 t_part	*setup_part(t_pw_var *stvar, t_part *part_var, int *list);
 int     find_median_array(int *list, int index);
-int 	*lst_cpy(t_pw_var *stvar, t_stack *stack);
+int 	*lst_cpy(t_pw_var *stvar);
 void    *ft_calloc(size_t count, size_t size);
 int     run_pw(t_pw_var *stvar);
 int     main(int argc, char **argv);
