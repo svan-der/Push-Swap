@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/03 15:13:52 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/04 11:50:36 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int		find_median_array(int *list, int index)
 	j = (double)index / 2;
 	i = j;
 	median = list[i];
-	// print_array(list, index);
 	return (median);
 }
 
@@ -188,9 +187,9 @@ int		presort_list(t_pw_var *stvar)
 	stvar->sorted = lst_cpy(stvar);
 	// ft_printf("stvar->index:%i\n", stvar->index);
 	insertion_sort(stvar->sorted, stvar->argc, &stvar->min, &stvar->max);
-	print_array(stvar->sorted, stvar->argc);
+	// print_array(stvar->sorted, stvar->argc);
 	set_index(&(stvar)->stack_a, stvar->sorted, stvar->argc);
-	print_stack_list(stvar->stack_a, 'a');
+	// print_stack_list(stvar->stack_a, 'a');
 	// print_tail(stvar->stack_a->tail);
 	return (1);
 }
@@ -225,7 +224,7 @@ int		run_pw(t_pw_var *stvar)
 	// 	sort_two('a', stvar);
 	// ft_printf("return is:%i\n", ret);
 	// ft_printf("total number of instructions:|%i|\n\n", stvar->total_ins);
-	print_stack_list(stvar->stack_a, 'a');
+	// print_stack_list(stvar->stack_a, 'a');
 	// ft_printf("ret is:%d\n", ret);
 	return (ret);
 }

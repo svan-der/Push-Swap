@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:15:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/01 16:31:35 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/04 11:30:53 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ int		rotate_reva(t_pw_var *stvar)
 
 	// ft_printf("inside function reva\n");
 	new = (*stvar).stack_a;
-	print_stack_list(stvar->stack_a, 'a');
-	ft_printf("num next is:%i\n", new->next->num);
+	// print_stack_list(stvar->stack_a, 'a');
+	// ft_printf("num next is:%i\n", new->next->num);
 	if (new != NULL && new->next != NULL)
 	{
 		// print_stack_list(stvar->stack_a, 'a');

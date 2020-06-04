@@ -30,7 +30,7 @@ while group <= max_num:
 		# print(str_nums)
 		f.write(str_nums)
 		f.write("\n")
-		lines += 1
+		#lines += 1
 	if group < 150:
 		group += 1
 	else:
