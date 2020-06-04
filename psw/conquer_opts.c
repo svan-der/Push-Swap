@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/04 18:03:33 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/04 18:07:34 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -528,10 +528,11 @@ int		sort_five_stack(t_pw_var *stvar, char c, int argc)
 	}
 	if (c == 'b')
 		print_stack_list(stvar->stack_b, 'b');
-	if (c == 'b' && argc == 3)
+	if (c == 'b' && stvar->argc - stvar->index == 3)
 	{
+		set_min_max(stvar, 'b');
 		// print_stack_list(stvar->stack_b, 'b');
-		// ft_printf("min:%i\tmax:%i\n", stvar->min, stvar->max);
+		ft_printf("min:%i\tmax:%i\n", stvar->min, stvar->max);
 		sort_three_revpart(&stvar->stack_b, stvar, stvar->min, stvar->max);
 		// print_stack_list(stvar->stack_b, 'b');
 		// sort_threeb(stvar, stvar->min, stvar->max);
