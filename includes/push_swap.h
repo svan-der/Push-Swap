@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/03 13:55:36 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/04 10:41:50 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		sort_short_stack(t_pw_var *stvar, int argc);
 int		do_op(t_pw_var *stvar, char *str, char c, int i);
 int		presort_list(t_pw_var *stvar);
 void	find_distance(t_stack *stack_a, int num, int *sorted);
-char	*find_low(t_pw_var *stvar, char c, int *op, int *index);
+char	*find_low(t_pw_var *stvar, char c, int *index);
 void	update_stack(t_pw_var *stvar, char c);
 
 void	print_partition_list(t_part *partition);
