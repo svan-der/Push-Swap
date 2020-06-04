@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/04 13:15:12 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/04 13:26:19 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -485,11 +485,13 @@ int		sort_five_stack(t_pw_var *stvar, char c, int argc)
 	int i;
 
 	ret = 1;
-	i = 0;
+	i = stvar->argc - argc;
+	ft_printf("i is:%i\n", i);
 	// ft_printf("stvar sort index:%i\n", stvar->sort_index);
 	// ft_printf("stvar->index:%i\n", stvar->index);
 	j = argc;
-	// ft_printf("j is:%d\n", j);
+	ft_printf("j is:%d\n", j);
+	// print_stack_list(stvar->stack_a, c);
 	// print_stack(&stvar->stack_a, 1);
 	while (j > 3)
 	{
@@ -508,10 +510,10 @@ int		sort_five_stack(t_pw_var *stvar, char c, int argc)
 	}
 	if (c == 'b' && argc == 3)
 	{
-		print_stack_list(stvar->stack_b, 'b');
-		ft_printf("min:%i\tmax:%i\n", stvar->min, stvar->max);
+		// print_stack_list(stvar->stack_b, 'b');
+		// ft_printf("min:%i\tmax:%i\n", stvar->min, stvar->max);
 		sort_three_revpart(&stvar->stack_b, stvar, stvar->min, stvar->max);
-		print_stack_list(stvar->stack_b, 'b');
+		// print_stack_list(stvar->stack_b, 'b');
 		// sort_threeb(stvar, stvar->min, stvar->max);
 	}
 	if (c == 'a' && stvar->index == 3)
@@ -528,7 +530,7 @@ int		sort_five_stack(t_pw_var *stvar, char c, int argc)
 		ret = do_op(stvar, instr, c, argc);
 		// print_stack_b(&stvar->stack_b, 1);
 	}
-	// print_stack_list(stvar->stack_a, 'a');
+	print_stack_list(stvar->stack_a, 'a');
 	return (ret);
 }
 
