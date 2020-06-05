@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/27 17:59:19 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/05 17:30:04 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ typedef struct		s_stack
 	struct s_stack	*next;
 	struct s_stack	*tail;
 }					t_stack;
-
 
 typedef struct		s_pw_var
 {

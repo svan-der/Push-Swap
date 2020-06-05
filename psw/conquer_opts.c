@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/05 16:40:31 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/05 18:01:41 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,76 +45,103 @@ void insertion_sort(int *list, int argc, int *min, int *max)
 	// print_array(list, argc);
 }
 
-// void	part_sort(t_pw_var *stvar, int argc)
-// {
-// 	int i;
-// 	int j;
-// 	// t_stack *temp;
+int	calc_dist_top_b(t_pw_var *stvar, int top, int bottom)
+{
+	int num;
+	int dist_top;
+	int dist_bottom;
 
-// 	j = (argc == 0) ? 3 : argc;
-// 	while (stvar->index != j)
-// 	{
-// 		if (stvar->stack_a->num < stvar->median)
-// 			do_op(stvar, PB, 1);
-// 		else
-// 		{
-// 			do_op(stvar, RA, 1);
-// 		}
-// 	}
-// 	// print_stack(&stvar->stack_a, 1);
-// }
+	if (stvar->stack_b == NULL)
+		return (-1);
+	num = stvar->stack_b->num;
+	ft_printf("num;%i\n", num);
+	dist_top = ft_abs(num) - ft_abs(top);
+	dist_bottom = ft_abs(num) - ft_abs(bottom);
+	if (dist_top < dist_bottom)
+		return (0);
+	else
+	{
+		return (1);
+	}
+}
 
-// void	check_prio(int *sorted, t_stack **stack)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (stack_a->num)
-// }
-
-// **last good one**
 void	part_sort(t_pw_var *stvar, int argc)
 {
-	char low;
-	int	*sorted;
+	// int i;
 	int j;
-	int k;
-	int ret;
+	int top;
+	int bottom;
+	// int res;
 
-	j = 0;
-	k = 0;
-	ret = 0;
-	sorted = stvar->sorted;
-	if (stvar->stack_a == NULL)
-		return ;
-	while (j < argc)
-	{
-		j++;
-		if ((stvar->stack_a->num) < stvar->median)
-		{
-			if (stvar->stack_a->num == sorted[k])
-				dispatch_sort(stvar, PB, 1);
-			if (stvar->stack_a->next->num == sorted[k])
-				dispatch_sort(stvar, SA, 1);
-		}
-		else
-		{
-			if ((stvar->stack_a->num) == stvar->min)
-				low = 1;
-			if ((stvar->stack_a->next->num) < stvar->median)
-				dispatch_sort(stvar, SA, 1);
-			else
-			{
-				// if (stvar->tail < stvar->median)
-				// 	dispatch_sort(stvar, RRA, 1);
-				dispatch_sort(stvar, RA, 1);
-			}
-		}
-		if (low && stvar->index == 3)
-			break ;
-	}
-	// print_partition_list(part)
+	j = (argc == 0) ? 3 : argc;
+	ft_printf("here\n");
+	do_op(stvar, PB, 'b', 1);
+	print_stack_list(stvar->stack_a, 'a');
+	top = stvar->stack_a->num;
+	ft_printf("top:%i\n", top);
+	bottom = stvar->stack_a->tail->num;
+	ft_printf("%p\n", stvar->stack_a->tail);
+	print_tail(stvar->stack_a->tail);
+	ft_printf("bottom:%i\n", bottom);
+	// res = calc_dist_top_b(stvar, top, bottom);
+	// ft_printf("res is:%i\n", res);
+	// while (stvar->index != j)
+	// {
+	// 	top = stvar->stack_a->num;
+	// 	bottom = stvar->stack_a->tail->num;
+	// 	if (stvar->stack_a-> < stvar->median)
+	// 		do_op(stvar, PB, 'b', 1);
+	// 	else
+	// 	{
+	// 		do_op(stvar, RA, 'a', 1);
+	// 	}
+	// }
+	// print_stack(&stvar->stack_a, 1);
 }
+
+// **last good one**
+// void	part_sort(t_pw_var *stvar, int argc)
+// {
+// 	char low;
+// 	int	*sorted;
+// 	int j;
+// 	int k;
+// 	int ret;
+
+// 	j = 0;
+// 	k = 0;
+// 	ret = 0;
+// 	sorted = stvar->sorted;
+// 	if (stvar->stack_a == NULL)
+// 		return ;
+// 	while (j < argc)
+// 	{
+// 		j++;
+// 		if ((stvar->stack_a->num) < stvar->median)
+// 		{
+// 			if (stvar->stack_a->num == sorted[k])
+// 				dispatch_sort(stvar, PB, 1);
+// 			if (stvar->stack_a->next->num == sorted[k])
+// 				dispatch_sort(stvar, SA, 1);
+// 		}
+// 		else
+// 		{
+// 			if ((stvar->stack_a->num) == stvar->min)
+// 				low = 1;
+// 			if ((stvar->stack_a->next->num) < stvar->median)
+// 				dispatch_sort(stvar, SA, 1);
+// 			else
+// 			{
+// 				// if (stvar->tail < stvar->median)
+// 				// 	dispatch_sort(stvar, RRA, 1);
+// 				dispatch_sort(stvar, RA, 1);
+// 			}
+// 		}
+// 		if (low && stvar->index == 3)
+// 			break ;
+// 	}
+// 	// print_partition_list(part)
+// }
 
 // void	part_sort(t_pw_var *stvar, int argc)
 // {
@@ -493,33 +520,22 @@ int		sort_five_stack(t_pw_var *stvar, char c, int argc)
 
 	ret = 1;
 	instr = NULL;
-	ft_printf("stvar->argc:%i\targc:%i\n", stvar->argc, argc);
-	ft_printf("stvar->index:%i\n", stvar->index);
-	// i = stvar->argc - argc;
-	// i = (c == 'a') ? argc + 1 : argc - 1;
+	// ft_printf("stvar->argc:%i\targc:%i\n", stvar->argc, argc);
+	// ft_printf("stvar->index:%i\n", stvar->index);
 	i = (c == 'a' ) ? (stvar->argc - argc) : (argc - 1);
-	ft_printf("i is:%i\n", i);
+	// ft_printf("i is:%i\n", i);
 	// ft_printf("len:%i\n", (stvar->argc - stvar->index));
 	// ft_printf("stvar sort index:%i\n", stvar->sort_index);
 	// ft_printf("stvar->index:%i\n", stvar->index);
 	j = argc;
-	ft_printf("j is:%d\n", j);
-	print_stack_list(stvar->stack_b, 'b');
-	print_stack_list(stvar->stack_a, 'a');
-	// if (c == 'b')
-	// 	instr = find_low(stvar, c, &i);
-	// ft_printf("instr is:%s\n", instr);
-	// print_stack(&stvar->stack_a, 1);
+	// ft_printf("j is:%d\n", j);
+	// print_stack_list(stvar->stack_b, 'b');
+	// print_stack_list(stvar->stack_a, 'a');
 	while (j > 3)
 	{
 		// ft_printf("num is:%d\n", stvar->stack_a->num);
-		// if (c == 'b')
-		// 	print_stack_list(stvar->stack_b, 'b');
 		instr = find_low(stvar, c, &i);
-		// if (c == 'b')
 		// ft_printf("instr is:%s\n", instr);
-		// ft_printf("before\n");
-		// print_stack_list(stvar->stack_a, c);
 		ret = do_op(stvar, instr, c, 1);
 		// print_stack_list(stvar->stack_a, c);
 		if (ret == -1)
@@ -527,17 +543,11 @@ int		sort_five_stack(t_pw_var *stvar, char c, int argc)
 		if (instr == PB || instr == PA)
 			j--;
 	}
-	// print_stack_list(stvar->stack_a, c);
-	if (c == 'b')
-		print_stack_list(stvar->stack_b, 'b');
 	if (c == 'b' && stvar->argc - stvar->index == 3)
 	{
 		set_min_max(stvar, 'b');
-		// print_stack_list(stvar->stack_b, 'b');
-		ft_printf("min:%i\tmax:%i\n", stvar->min, stvar->max);
+		// ft_printf("min:%i\tmax:%i\n", stvar->min, stvar->max);
 		sort_three_revpart(&stvar->stack_b, stvar, stvar->min, stvar->max);
-		// print_stack_list(stvar->stack_b, 'b');
-		// sort_threeb(stvar, stvar->min, stvar->max);
 	}
 	if (c == 'a' && stvar->index == 3)
 		sort_three(stvar, stvar->min, stvar->max);
@@ -553,7 +563,7 @@ int		sort_five_stack(t_pw_var *stvar, char c, int argc)
 		ret = do_op(stvar, instr, c, argc);
 		// print_stack_b(&stvar->stack_b, 1);
 	}
-	print_stack_list(stvar->stack_a, 'a');
+	// print_stack_list(stvar->stack_a, 'a');
 	return (ret);
 }
 

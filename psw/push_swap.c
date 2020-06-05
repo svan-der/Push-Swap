@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/04 11:50:36 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/05 17:20:03 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,13 +215,10 @@ int		run_pw(t_pw_var *stvar)
 	// // ft_printf("max:%d\n", stvar->max);
 	if (stvar->argc > 3)
 		ret = divide_list(stvar);
-	// if (stvar->argc == 3)
-	// {
-	// 	// ft_printf("min:%i\t max:%i\n", stvar->min, stvar->max);
-	// 	ret = sort_three(stvar, stvar->min, stvar->max);
-	// }
-	// if (stvar->argc == 2)
-	// 	sort_two('a', stvar);
+	if (stvar->argc == 3)
+		ret = sort_three(stvar, stvar->min, stvar->max);
+	if (stvar->argc == 2)
+		sort_two('a', stvar);
 	// ft_printf("return is:%i\n", ret);
 	// ft_printf("total number of instructions:|%i|\n\n", stvar->total_ins);
 	// print_stack_list(stvar->stack_a, 'a');
