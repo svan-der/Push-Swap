@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/04 18:07:34 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/05 16:40:31 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -430,7 +430,7 @@ char	*find_low(t_pw_var *stvar, char c, int *index)
 	// 	ft_printf("dist_top is:%d\n", dist_top);
 	if (dist_top == 0)
 	{
-		*index += 1;
+		*index = ((c == 'a')) ? *index + 1 : *index - 1;
 		return ((c == 'a') ? PB : PA);
 	}
 	else
@@ -470,7 +470,7 @@ int			sort_short_stack(t_pw_var *stvar, int argc)
 	// ft_printf("stvar->index B:%i\tsort_index:%i\n", stvar->index, stvar->sort_index);
 	// print_stack_b(&stvar->stack_b, 1);
 	ret = sort_five_stack(stvar, 'b', stvar->argc - stvar->index);
-	print_stack_list(stvar->stack_a, 'a');
+	// print_stack_list(stvar->stack_a, 'a');
 	// print_stack_list(stvar->stack_b, 'b');
 	// if (stvar->index == 3)
 	// {
@@ -496,7 +496,8 @@ int		sort_five_stack(t_pw_var *stvar, char c, int argc)
 	ft_printf("stvar->argc:%i\targc:%i\n", stvar->argc, argc);
 	ft_printf("stvar->index:%i\n", stvar->index);
 	// i = stvar->argc - argc;
-	i = (c == 'a' ) ? stvar->argc - argc : stvar->argc - (argc + 1);
+	// i = (c == 'a') ? argc + 1 : argc - 1;
+	i = (c == 'a' ) ? (stvar->argc - argc) : (argc - 1);
 	ft_printf("i is:%i\n", i);
 	// ft_printf("len:%i\n", (stvar->argc - stvar->index));
 	// ft_printf("stvar sort index:%i\n", stvar->sort_index);
@@ -526,6 +527,7 @@ int		sort_five_stack(t_pw_var *stvar, char c, int argc)
 		if (instr == PB || instr == PA)
 			j--;
 	}
+	// print_stack_list(stvar->stack_a, c);
 	if (c == 'b')
 		print_stack_list(stvar->stack_b, 'b');
 	if (c == 'b' && stvar->argc - stvar->index == 3)
@@ -551,7 +553,7 @@ int		sort_five_stack(t_pw_var *stvar, char c, int argc)
 		ret = do_op(stvar, instr, c, argc);
 		// print_stack_b(&stvar->stack_b, 1);
 	}
-	// print_stack_list(stvar->stack_a, 'a');
+	print_stack_list(stvar->stack_a, 'a');
 	return (ret);
 }
 
