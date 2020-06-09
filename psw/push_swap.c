@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/09 13:17:57 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/09 15:08:43 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ void		add_tail(t_stack **stack)
 	// ft_printf("tail->next:%p\n", tail->next);
 	(*stack)->tail = tail;
 	// ft_printf("tail:%p\n", (*stack)->tail);
-	print_tail((*stack)->tail);
+	// print_tail((*stack)->tail);
 }
 
 /*

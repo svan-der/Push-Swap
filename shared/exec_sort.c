@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/12 11:56:55 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/02 10:22:55 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/09 18:03:19 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ int 	dispatch_sort(t_pw_var *stvar, char *str, int instr)
 
 	ret = 1;
 	index = 0;
-	if (str != NULL)
+	while (str != NULL && instr)
 	{
-		// ft_printf("str is:%s\n", str);
+		ft_printf("str is:%s\n", str);
+		ft_printf("instr is:%i\n", instr);
 		// ft_printf("put instr\n");
 		check_instruction(&index, str, &ret);
 		// ft_printf("ret is:%d\n", index);
@@ -50,10 +51,12 @@ int 	dispatch_sort(t_pw_var *stvar, char *str, int instr)
 		// print_inst_list(stvar->inst_lst);
 		initialize_operations(func_arr);
 		// ft_printf("do instruct\n");
-		// ft_printf("index:%i\n", index);
+		ft_printf("index:%i\n", index);
 		ret = func_arr[index](stvar);
-		// ft_printf("return funct is:%d\n", ret);
-		// print_stack_list(stvar->stack_a, 'a');
+		ft_printf("return funct is:%d\n", ret);
+		instr -= 1;
+		print_stack_list(stvar->stack_a, 'a');
+		print_stack_list(stvar->stack_b, 'b');
 	}
 	// ft_printf("return is:%d\n\n", ret);
 	if (ret == -1 || res == -1)

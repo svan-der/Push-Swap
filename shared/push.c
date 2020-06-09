@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/09 13:17:19 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/09 18:04:00 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int		push_b(t_pw_var *stvar)
 	if (stvar->stack_a)
 		stvar->stack_a->prev = NULL;
 	stvar->stack_b = new;
-	add_tail(&stvar->stack_a);
+	// add_tail(&stvar->stack_a);
 	// print_stack(stack_a, 1);
 	// print_stack_b(&stvar->stack_b, 1);
 	return (1);
@@ -135,7 +135,7 @@ int		push_a(t_pw_var *stvar)
 	// if ((*stvar).stack_b && (*stvar).stack_b->next != NULL)
 	// 	(*stvar).stack_b->prev = NULL;
 	(*stvar).stack_a = new;
-	add_tail(&stvar->stack_b);
+	// add_tail(&stvar->stack_b);
 	// print_stack_list(stvar->stack_b, 'b');
 	// print_stack_list(stvar->stack_a, 'a');
 	// print_stack(stack_a, 1);

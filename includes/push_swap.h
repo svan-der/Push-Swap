@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/04 10:41:50 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/09 15:34:56 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct		s_part
 	struct s_part	*next;
 }					t_part;
 
+void	set_index(t_stack **stack_a, int *sorted, int argc);
+char	*fastest_rotate(t_pw_var *stvar, char c, int index);
 int		sort_short_stack(t_pw_var *stvar, int argc);
 int		do_op(t_pw_var *stvar, char *str, char c, int i);
 int		presort_list(t_pw_var *stvar);
