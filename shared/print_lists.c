@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/27 17:59:48 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/09 13:12:44 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,12 @@ void				print_tail(t_stack *tail)
 	ft_printf("\n");
 	while (temp != NULL)
 	{
-		ft_printf("|%p\t\t%d\t%p\t%d|", temp->prev, temp->prev->num, temp, temp->num);
+		if (temp->prev)
+			ft_printf("|%p\t\t%d\t%p\t%d|", temp->prev, temp->prev->num, temp, temp->num);
+		else
+		{
+			ft_printf("|%p\t\t\t%d\t%p\t%d|", NULL, 0, temp, temp->num);
+		}
 		ft_printf("\n");
 		temp = temp->next;
 	}

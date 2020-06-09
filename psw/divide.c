@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/05 17:53:12 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/09 12:45:45 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		 divide_and_presort(t_pw_var *stvar, int *sorted_list)
 	
 	i = 0;
 	assign_partitions(stvar);
+	print_tail(stvar->stack_a->tail);
 	(void)sorted_list;
 	part_sort(stvar, ft_min_size(stvar->index, stvar->argc));
 	// while (stvar->index > 3)
@@ -97,6 +98,7 @@ int		 divide_and_presort(t_pw_var *stvar, int *sorted_list)
 int		divide_list(t_pw_var *stvar)
 {
 	stvar->median = find_median_array(stvar->sorted, stvar->index);
+	print_tail(stvar->stack_a->tail);
 	// ft_printf("median is:%d\n\n", stvar->median);
 	// ft_printf("stvar->sort_index:%i\n", stvar->sort_index);
 	// ft_printf("stvar->index:%i\tstvar->argc:%i\n", stvar->index, stvar->argc);

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/05 18:01:41 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/09 13:17:47 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,12 @@ void	part_sort(t_pw_var *stvar, int argc)
 
 	j = (argc == 0) ? 3 : argc;
 	ft_printf("here\n");
+	print_tail(stvar->stack_a->tail);
 	do_op(stvar, PB, 'b', 1);
-	print_stack_list(stvar->stack_a, 'a');
+	print_tail(stvar->stack_a->tail);
 	top = stvar->stack_a->num;
 	ft_printf("top:%i\n", top);
+	print_tail(stvar->stack_a->tail);
 	bottom = stvar->stack_a->tail->num;
 	ft_printf("%p\n", stvar->stack_a->tail);
 	print_tail(stvar->stack_a->tail);
@@ -371,12 +373,6 @@ void	update_stack(t_pw_var *stvar, char c)
 		find_distance(temp, temp->num, stvar->sorted);
 		temp = temp->next;
 	}
-	// ft_printf("adding tail\n");
-	// if (c == 'a' && temp)
-	// {
-	// 	// ft_printf("add tail in a\n");
-	// 	add_tail(&stvar->stack_a);
-	// }
 	if (c == 'a' && temp)
 	{
 		// ft_printf("add tail in a\n");
@@ -384,8 +380,6 @@ void	update_stack(t_pw_var *stvar, char c)
 	}
 	else if (c == 'b' && temp)
 		add_tail(&stvar->stack_b);
-	// else if (c == 'b' && temp)
-	// 	add_tail(&stvar->stack_b);
 	// print_tail(stvar->stack_a->tail);
 	// print_stack_list(stvar->stack_a, 'a');
 }

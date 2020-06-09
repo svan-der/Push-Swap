@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/05 17:20:03 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/09 13:17:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,13 +128,22 @@ void		add_tail(t_stack **stack)
 	t_stack *tail;
 
 	tail = *stack;
+	// ft_printf("tail:%p\tnum:%i\n", tail, tail->num);
 	while (tail->next != NULL)
+	{
+		// ft_printf("tail:%d\t%p\n", tail->num, tail);
 		tail = tail->next;
-	tail->prev = tail->prev;
+	}
+	if (tail->prev)
+		tail->prev = tail->prev;
+	else
+		tail->prev = NULL;
+	// ft_printf("tail->prev:%p\n", tail->prev);
 	tail->next = NULL;
+	// ft_printf("tail->next:%p\n", tail->next);
 	(*stack)->tail = tail;
-	// ft_printf("tail:%d\t%p\n", tail->num, tail);
-	// print_tail((*stack)->tail);
+	// ft_printf("tail:%p\n", (*stack)->tail);
+	print_tail((*stack)->tail);
 }
 
 /*
