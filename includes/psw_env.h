@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/05 17:30:04 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/10 17:57:49 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ t_inst				*create_instruction(int i, char *line);
 ** print functions
 */
 
+void				ft_addtail(t_stack **tail, t_stack *new);
 void				add_tail(t_stack **stack);
 void				print_tail(t_stack *tail);
 

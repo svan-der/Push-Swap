@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/29 16:24:15 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/10 17:58:48 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,19 @@ void	ft_stackaddend(t_stack **stack_lst, t_stack *new)
 	t_stack	*temp;
 
 	temp = *stack_lst;
+	ft_addtail(&temp->tail, new);
+	// ft_printf("temp->next:%p\n", temp->tail->next);
+	// ft_printf("temp->tail->next:%d\n", temp->tail->next->num);
+	// ft_printf("temp->next:%p\n", temp->tail);
+	// ft_printf("temp->tail:%d\n", temp->tail->num);
 	while (temp->next != NULL)
 		temp = temp->next;
 	temp->next = new;
+	// ft_printf("temp->next:%p\t%i\n", temp->next, temp->next->num);
+	// temp->tail->next = temp->tail;
+	// temp->tail = new;
+	// ft_printf("temp->next:%p\n", temp->next);
 	temp->next->prev = temp;
-	// ft_printf("temp->tail:%d\n", temp->tail->num);
 }
 
 t_stack	*fill_stack_begin(t_stack **head, t_stack *new)

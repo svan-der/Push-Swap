@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/09 15:08:43 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/10 17:48:07 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,24 +126,27 @@ void	*ft_calloc(size_t count, size_t size)
 void		add_tail(t_stack **stack)
 {
 	t_stack *tail;
+	t_stack *temp;
 
 	tail = *stack;
-	// ft_printf("tail:%p\tnum:%i\n", tail, tail->num);
+	temp = (*stack)->tail;
+	print_stack_list(*stack, 'a');
+	ft_printf("tail:%p\tnum:%i\n", tail, tail->num);
 	while (tail->next != NULL)
 	{
-		// ft_printf("tail:%d\t%p\n", tail->num, tail);
+		ft_printf("tail:%d\t%p\n", tail->num, tail);
 		tail = tail->next;
 	}
 	if (tail->prev)
 		tail->prev = tail->prev;
 	else
 		tail->prev = NULL;
-	// ft_printf("tail->prev:%p\n", tail->prev);
 	tail->next = NULL;
 	// ft_printf("tail->next:%p\n", tail->next);
 	(*stack)->tail = tail;
+	// ft_addtail(&temp, (*stack)->tail);
 	// ft_printf("tail:%p\n", (*stack)->tail);
-	// print_tail((*stack)->tail);
+	print_tail((*stack)->tail);
 }
 
 /*
@@ -264,6 +267,7 @@ int		main(int argc, char **argv)
 	{
 		str = argv[i];
 		valid = check_argv(str, &stvar);
+		ft_printf("valid:%i\n", valid);
 		if (valid == -1)
 		{
 			error_handler(valid);
@@ -271,6 +275,7 @@ int		main(int argc, char **argv)
 		}
 		i++;
 	}
+	print_stack(&stvar.stack_a, 1);
 	valid = check_dup(&(stvar.stack_a));
 	if (valid == -1)
 	{
