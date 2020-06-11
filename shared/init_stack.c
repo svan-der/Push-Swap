@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/10 17:58:41 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/11 12:33:58 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,6 @@ t_stack		*create_stack(int num)
 	return (stack);
 }
 
-void	ft_addtail(t_stack **tail, t_stack *new)
-{
-	t_stack *temp;
-
-	// ft_printf("new->next:%p\n", (*tail));
-	// ft_printf("new->next:%i\n", (*tail)->num);
-	// ft_printf("new->next:%p\n", (*tail)->next);
-	// ft_printf("new->next:%i\n", (*tail)->next->num);
-	temp = new;
-	// ft_printf("new:%d\n", temp->num);
-	temp->next = *tail;
-	// ft_printf("new->next:%i\n", (*tail)->num);
-	*tail = new;
-	// ft_printf("tail->num:%d\n", (*tail)->num);
-	// ft_printf("tail->next->num:%i\n", temp->next->num);
-	// ft_printf("temp->num:%p\n", temp->next);
-	// if (temp->next)
-	// 	temp->next->prev = new;
-	// ft_printf("tail->num:%d\n", temp->next->num);
-	// temp->prev = new;
-	// ft_printf("temp->num:%d\n", temp->num);
-	// *tail = temp;
-	// print_tail(temp);
-	// return (*tail);
-    // temp->prev = temp->tail;
-}
-
 int			stack_addnew(t_stack **stack, int num)
 {
 	t_stack *new;
@@ -68,21 +41,15 @@ int			stack_addnew(t_stack **stack, int num)
 		(new)->prev = NULL;
 		(new)->tail = new;
 		(new)->tail->next = NULL;
-		print_stack_list(*stack, 'a');
-		ft_printf("num is:%i\n", (*stack)->num);
+		// print_stack_list(*stack, 'a');
+		// ft_printf("num is:%i\n", (*stack)->num);
 		return (1);
 	}
-	ft_printf("new\n");
-	ft_printf("num is:%i\n", num);
+	// ft_printf("new\n");
+	// ft_printf("num is:%i\n", num);
 	ft_stackaddend(stack, new);
-	// ft_printf("num is:%i\n", (*stack)->num);
-	// print_stack_list(*stack, 'a');
-	// ft_addtail(&(*stack)->tail, new);
-	// print_stack_list(*stack, 'a');
-	// ft_printf("stack->tail:%d\n", (*stack)->tail->num);
-	// print_tail((*stack)->tail);
-	// print_stack_list()
-	// (*stack)->tail = ft_addtail(&(*stack)->tail, new);
+	add_tail(stack);
+	// print_tasil((*stack)->tail);
 	return (1);
 }
 
@@ -132,7 +99,7 @@ int			add_num(char *str, int sign, t_pw_var *stvar)
 	if (num > 2147483647 || num < -2147483648)
 		return (-1);
 	ret = stack_addnew(&(stvar)->stack_a, num);
-	ft_printf("ret is:%i\n", ret);
+	// ft_printf("ret is:%i\n", ret);
 	return (ret);
 }
 
