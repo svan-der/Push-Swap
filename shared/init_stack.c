@@ -6,12 +6,13 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/11 12:33:58 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/11 18:14:34 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 #include "../includes/psw_env.h"
+#include "../includes/push_swap.h"
 
 t_stack		*create_stack(int num)
 {
@@ -21,6 +22,7 @@ t_stack		*create_stack(int num)
 	if (stack == NULL)
 		return (NULL);
 	stack->dist = 0;
+	stack->dist_top = 0;
 	stack->num = num;
 	stack->next = NULL;
 	stack->prev = NULL;
@@ -41,15 +43,12 @@ int			stack_addnew(t_stack **stack, int num)
 		(new)->prev = NULL;
 		(new)->tail = new;
 		(new)->tail->next = NULL;
-		// print_stack_list(*stack, 'a');
-		// ft_printf("num is:%i\n", (*stack)->num);
 		return (1);
 	}
 	// ft_printf("new\n");
 	// ft_printf("num is:%i\n", num);
 	ft_stackaddend(stack, new);
 	add_tail(stack);
-	// print_tasil((*stack)->tail);
 	return (1);
 }
 

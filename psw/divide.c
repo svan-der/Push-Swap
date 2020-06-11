@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/10 15:48:43 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/11 17:26:19 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	sort_short_opts(t_pw_var *stvar)
 		sort_five_stack(stvar, 'a', stvar->index - stvar->sort_index);
 }
 
-int		 divide_and_presort(t_pw_var *stvar, int *sorted_list)
+int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 {
 	int i;
 	// int ret;
@@ -87,19 +87,20 @@ int		 divide_and_presort(t_pw_var *stvar, int *sorted_list)
 	// print_array(stvar->sorted, stvar->argc);
 	// print_tail(stvar->stack_a->tail);
 	(void)sorted_list;
-	while (i)
-	{
-		i--;
-		// ft_printf("going to part_sort\n");
-		// ft_printf("res is:%i\n", ft_min_size(stvar->index, stvar->argc));
-		part_sort(stvar, ft_min_size(stvar->index, stvar->argc));
-		stvar->sorted = lst_cpy(stvar);
-		// ft_printf("stvar->index:%i\n", stvar->index);
-		insertion_sort(stvar->sorted, stvar->index, &stvar->min, &stvar->max);
-		// print_array(stvar->sorted, stvar->argc);
-		set_index(&(stvar)->stack_a, stvar->sorted, stvar->index);
-		stvar->median = find_median_array(stvar->sorted, stvar->index);
-	}
+	part_sort(stvar, ft_min_size(stvar->index, stvar->argc));
+	// while (i)
+	// {
+	// 	i--;
+	// 	// ft_printf("going to part_sort\n");
+	// 	// ft_printf("res is:%i\n", ft_min_size(stvar->index, stvar->argc));
+	// 	part_sort(stvar, ft_min_size(stvar->index, stvar->argc));
+	// 	stvar->sorted = lst_cpy(stvar);
+	// 	// ft_printf("stvar->index:%i\n", stvar->index);
+	// 	insertion_sort(stvar->sorted, stvar->index, &stvar->min, &stvar->max);
+	// 	// print_array(stvar->sorted, stvar->argc);
+	// 	set_index(&(stvar)->stack_a, stvar->sorted, stvar->index);
+	// 	stvar->median = find_median_array(stvar->sorted, stvar->index);
+	// }
 	// i = stvar->argc - stvar->index;
 	// sort_short_opts(stvar);
 	// // print_stack_list(stvar->stack_a, 'a');
