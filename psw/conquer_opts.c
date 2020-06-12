@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/11 18:00:35 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/12 15:25:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void insertion_sort(int *list, int argc, int *min, int *max)
 	// print_array(list, argc);
 }
 
-int	calc_dist_top_b(t_pw_var *stvar, int top, int bottom)
+int	calc_dist_top_b(t_pw_var *stvar, t_stack *top, t_stack *bottom)
 {
-	int num;
+	t_stack *num;
 	int dist_top;
 	int dist_bottom;
 
@@ -58,11 +58,14 @@ int	calc_dist_top_b(t_pw_var *stvar, int top, int bottom)
 		else
 			return (1);
 	}
-	num = stvar->stack_b->num;
+	num = stvar->stack_b;
 	ft_printf("num in b;%i\n", num);
-	dist_top = ft_abs(num) - ft_abs(top);
+	// dist_top = ft_abs(num) - ft_abs(top);
+	// dist_top = num - top;
+	dist_top = ft_abs(num->index - top->index);
 	ft_printf("dist top:%i\n", dist_top);
-	dist_bottom = ft_abs(num) - ft_abs(bottom);
+	// dist_bottom = ft_abs(num) - ft_abs(bottom);
+	dist_bottom = ft_abs(num->index - bottom->index);
 	ft_printf("dist bottom:%i\n", dist_bottom);
 	if (dist_top < dist_bottom)
 		return (0);
@@ -107,28 +110,30 @@ int	calc_dist_top_b(t_pw_var *stvar, int top, int bottom)
 // 	}
 // }
 
-int	find_bottom_part(t_pw_var *stvar)
+t_stack	*find_bottom_part(t_pw_var *stvar)
 {
 	t_stack *temp;
 	int		i;
 
 	temp = stvar->stack_a->tail;
+	ft_printf("find bottom\n");
 	i = 1;
+	// print_tail(stvar->stack_a->tail);
 	while (temp)
 	{
 		if (temp->num < stvar->median)
 		{
 			temp->dist_top = stvar->index - i;
-			ft_printf("dist_bottom to top:%i\n", temp->dist_top);
-			return (temp->num);
+			// ft_printf("dist_bottom to top:%i\n", temp->dist_top);
+			return (temp);
 		}
 		temp = temp->prev;
 		i++;
 	}
-	return (temp->num);
+	return (temp);
 }
 
-int	find_top_part(t_pw_var *stvar)
+t_stack	*find_top_part(t_pw_var *stvar)
 {
 	t_stack *temp;
 	int		i;
@@ -140,46 +145,48 @@ int	find_top_part(t_pw_var *stvar)
 		if (temp->num < stvar->median)
 		{
 			temp->dist_top = i;
-			ft_printf("dist_top:%i\n", temp->dist_top);
-			return (temp->num);
+			// ft_printf("dist_top:%i\n", temp->dist_top);
+			return (temp);
 		}
 		temp = temp->next;
 		i++;
 	}
-	return (temp->num);
+	return (temp);
 }
 
 void	find_part(t_pw_var *stvar)
 {
-	int top;
-	int bottom;
+	t_stack *bottom;
+	t_stack *top;
 	int ret;
 	char *instr;
-	// int num;
 
+	ft_printf("in find part\n");
+	print_tail(stvar->stack_a->tail);
 	top = find_top_part(stvar);
-	ft_printf("top_part:%i\n", top);
+	ft_printf("top_part:%i\tdist_top:%i\n", top->num, top->dist_top);
 	bottom = find_bottom_part(stvar);
-	ft_printf("bottom-part:%i\n", bottom);
+	ft_printf("bottom-part:%i\tdist_top:%i\n", bottom->num, bottom->dist_top);
 	ret = calc_dist_top_b(stvar, top, bottom);
-	instr = fastest_rotate(stvar, 'a', 2);
-	ft_printf("instr is:%s\n", instr);
 	ft_printf("ret is:%i\n", ret);
-	ft_printf("stvar->stack_a->dist_top:%i\n",stvar->stack_a->dist_top);
+	// ft_printf("instr is:%s\n", instr);
+	// ft_printf("stvar->stack_a->dist_top:%i\n",stvar->stack_a->dist_top);
 	if (ret == 0)
 	{
-		instr = fastest_rotate(stvar, 'a', stvar->stack_a->dist_top);
+		instr = fastest_rotate(stvar, 'a', top->dist_top);
 		ft_printf("instr is:%s\n", instr);
-		do_op(stvar, instr, 'a', stvar->stack_a->dist_top);
+		do_op(stvar, instr, 'a', top->dist_top);
 		print_stack_list(stvar->stack_a, 'a');
 	}
 	else
 	{
-		instr = fastest_rotate(stvar, 'a', stvar->stack_a->tail->dist_top);
+		instr = fastest_rotate(stvar, 'a', bottom->dist_top);
 		ft_printf("instr is:%s\n", instr);
-		do_op(stvar, instr, 'a', stvar->stack_a->tail->dist_top);
+		do_op(stvar, instr, 'a', bottom->dist_top);
 	}
 	do_op(stvar, PB, 'b', 1);
+	print_stack_list(stvar->stack_a, 'a');
+	print_tail(stvar->stack_a->tail);
 }
 
 void	part_sort(t_pw_var *stvar, int argc)
@@ -187,7 +194,7 @@ void	part_sort(t_pw_var *stvar, int argc)
 	// char *instr;
 	int j;
 	int i;
-	int top;
+	// int top;
 	// int bottom;
 	// int res;
 
@@ -200,10 +207,9 @@ void	part_sort(t_pw_var *stvar, int argc)
 	ft_printf("here\n");
 	ft_printf("median:%i\n", stvar->median);
 	ft_printf("argc is:%i\n", j);
-	top = find_top_part(stvar);
-	ft_printf("top:%i\n", top);
 	print_array(stvar->sorted, stvar->argc);
 	ft_printf("stvar->index:%i\n", stvar->index);
+	find_part(stvar);
 	find_part(stvar);
 	// while (stvar->index != j)
 	// {
@@ -322,6 +328,7 @@ int		do_op(t_pw_var *stvar, char *str, char c, int num)
 
 	i = 0;
 	// ft_printf("num is:%i\n", num);
+	// ft_printf("instr is:%s\n", str);
 	while (i < num)
 	{
 		// ft_printf("i is:%i\n", i);
@@ -329,6 +336,7 @@ int		do_op(t_pw_var *stvar, char *str, char c, int num)
 		// 	print_stack_b(&stvar->stack_b, 1);
 		// ft_printf("i is:%d\n", i);
 		ret = dispatch_sort(stvar, str, 1);
+		// print_tail(stvar->stack_a->tail);
 		// print_stack(&stvar->stack_a, 1);
 		// print_stack_list(stvar->stack_a, 'a');
 		// print_stack_list(stvar->stack_b, 'b');
@@ -515,14 +523,19 @@ void	update_stack(t_pw_var *stvar, char c)
 		find_distance(temp, temp->num, stvar->sorted);
 		temp = temp->next;
 	}
-	if (c == 'a' && temp)
-	{
-		// ft_printf("add tail in a\n");
-		add_tail(&stvar->stack_a);
-	}
-	else if (c == 'b' && temp)
-		add_tail(&stvar->stack_b);
-	// print_tail(stvar->stack_a->tail);
+	add_tail(&stvar->stack_a);
+	add_tail(&stvar->stack_b);
+	// if (c == 'a' && temp)
+	// {
+	// 	// ft_printf("add tail in a\n");
+	// 	add_tail(&stvar->stack_a);
+	// }
+	// else if (c == 'b' && temp)
+	// 	add_tail(&stvar->stack_b);
+	ft_printf("c is:%c\n", c);
+	print_tail(stvar->stack_a->tail);
+	if (stvar->stack_b)
+		print_tail(stvar->stack_b->tail);
 	// print_stack_list(stvar->stack_a, 'a');
 }
 
