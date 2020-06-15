@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/15 17:52:41 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/15 17:59:44 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ void	push_back_part(t_pw_var *stvar)
 	total = (stvar->argc - 3) - 1;
 	ft_printf("index is:%i\n", stvar->sort_index);
 	stack = stvar->stack_b;
-	
 	while (total)
 	{
 		ft_printf("total is:%i\n", total);
@@ -165,10 +164,11 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 		ft_printf("median is:%i\n", stvar->median);
 	}
 	// i = stvar->argc - stvar->index;
+	// ft_printf("sort opt now:\n");
 	sort_short_opts(stvar);
-	push_back_part(stvar);
-	// // print_stack_list(stvar->stack_a, 'a');
-	// // print_stack_list(stvar->stack_b, 'b');
+	// push_back_part(stvar);
+	// print_stack_list(stvar->stack_a, 'a');
+	// print_stack_list(stvar->stack_b, 'b');
 	// // ft_printf("here\n");
 	// // ft_printf("last opt is:%i\n", i);
 	// dispatch_sort(stvar, PA, i);
