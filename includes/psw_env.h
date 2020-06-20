@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/11 17:28:31 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/20 13:30:51 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct		s_stack
 	int				dist;
 	int				dist_top;
 	int				index;
+	int				part_id;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 	struct s_stack	*tail;

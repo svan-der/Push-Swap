@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/11 11:54:59 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/20 15:48:51 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,19 +140,19 @@ void				print_stack_list(t_stack *stack, char c)
 
 	temp = stack;
 	ft_printf("\n         Linked List with stack_%c numbers       \n", c);
-	ft_printf("-----------------------------------------------------");
-	ft_printf("--------------------\n");
-	ft_printf("|num\tdist\tindex\t\tcurr\t\tprev\t\tnext|");
+	ft_printf("--------------------------------------------------------");
+	ft_printf("------------------------------------------\n");
+	ft_printf("|num\tdist\ttop\tindex\tpart_id\t\tcurr\t\tprev\t\tnext|");
 	ft_printf("\n");
 	while (temp != NULL)
 	{
-		ft_printf("|%d\t%d\t%d\t\t%p\t%p\t%p|", temp->num, temp->dist, temp->index, temp, temp->prev, temp->next);
+		ft_printf("|\033[01;33m%d\033[0m\t\e[1;31m%d\t\e[0m%d\t%d\t\e[1;92m%d\e[0m\t\t%p\t%p\t%p|", temp->num, temp->dist, temp->dist_top, temp->index, temp->part_id, temp, temp->prev, temp->next);
 		ft_printf("\n");
 		temp = temp->next;
 	}
-	ft_printf("------------------------------------");
-	ft_printf("------------------------------------\n");
-	ft_printf("									   \n");
+	ft_printf("------------------------------------------------------");
+	ft_printf("--------------------------------------------\n");
+	ft_printf("									           \n");
 }
 
 void				print_pw_var(t_pw_var *stvar)
