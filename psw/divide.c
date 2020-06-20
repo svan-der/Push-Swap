@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/20 16:16:56 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/06/20 17:01:56 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,28 @@ void	set_partitions(t_pw_var *stvar, int partitions, int part_len)
 	{
 		if (j == part_len)
 		{
+			ft_printf("\e[1;93mj is:%i\e[0m\n", j);
 			j = 0;
 			partitions -= 1;
 			part_index += 1;
-			part_len = (stvar->argc - part_len);
+			if (partitions == 1)
+			{
+				ft_printf("part_len before:%i\n", part_len);
+				part_len = (stvar->argc - i);
+				ft_printf("\e[1;92mstvar->argc:%i\tpart_len:%i\e[0m\n", stvar->argc, part_len);
+			}
 			ft_printf("i:%i\tj:%i\n", i, j);
 			ft_printf("\e[1;91mpartitions:%i\t\tpart_len:%i\tpart_index:%i\e[0m\n", partitions, part_len, part_index);
 		}
 		if (temp->num == stvar->sorted[i])
 		{
+			ft_printf("\e[1;94mstvar->sorted[i]:%i\e[0m\n", stvar->sorted[i]);
 			ft_printf("temp->num:%i\tindex sorted:%i\t\tpart_index:%i\t\tsorted:%i\n", temp->num, i, part_index, stvar->sorted[i]);
 			temp->part_id = part_index;
 			ft_printf("temp->part_id:%i\n", temp->part_id);
-			print_stack_list(stvar->stack_a, 'a');
+			// print_stack_list(stvar->stack_a, 'a');
 			i++;
 			j++;
-			ft_printf("\e[1;94mstvar->sorted[i]:%i\e[0m\n", stvar->sorted[i]);
 		}
 		temp = temp->next;
 		if (temp == NULL)
@@ -109,13 +115,16 @@ int	assign_partitions(t_pw_var *stvar, int *part_num)
 			partitions++;
 		}
 		ft_printf("amount of partitions:%i\n", partitions);
-		set_partitions(stvar, partitions, (stvar->argc / *part_num));
+		num = ((stvar->argc % partitions)) ? 1 : 0;
+		ft_printf("num is:%i\n", num);
+		num += (stvar->argc / partitions);
+		set_partitions(stvar, partitions, num);
 	}
 	else if (num >= 100)
 	{
-		// partitions = 5;
+		partitions = 5;
 		*part_num = 5;
-		set_partitions(stvar, partitions, *part_num);
+		set_partitions(stvar, partitions, (stvar->argc / partitions));
 	}
 	else if (num == 500)
 	{
