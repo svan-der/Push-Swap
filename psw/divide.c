@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/20 17:14:08 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/01 15:51:28 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,15 +197,21 @@ void	push_back_part(t_pw_var *stvar)
 
 int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 {
-	int i;
-	// int argc;
+	int part_index;
 	int	part_num;
+	int	i;
 	// int ret;
-	
-	i = assign_partitions(stvar, &part_num);
-	// ft_printf("argc:%i\t amount of partitions:%i divided by %i \n", stvar->argc, i, part_num);
+
+	i = 1;
+	part_index = assign_partitions(stvar, &part_num);
+	// find_distance(stvar->stack_a, stvar->stack_a->num, stvar->sorted);
+	print_stack_list(stvar->stack_a, 'a');
+	ft_printf("argc:%i\t amount of partitions:%i with %i num \n", stvar->argc, part_index, part_num);
+	do_op(stvar, RRA, 'a', 1);
+	// part_sort(stvar, part_num, i);
+	print_stack_list(stvar->stack_a, 'a');
+	// print_stack_list(stvar->stack_b, 'b');
 	// ft_printf("median:%i\n", stvar->median);
-	// argc = (stvar->index / part_num);
 	// ft_printf("argc:%i\tstvar->index:%i\n", argc, stvar->index);
 	// part_sort(stvar, argc);
 	// ft_printf("stvar->index:%i\tindex_b:%i\n", stvar->index, stvar->argc - stvar->index);

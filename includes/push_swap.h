@@ -6,13 +6,24 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/11 18:06:02 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/01 15:36:55 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "psw_env.h"
+
+//Regular text
+#define BLK "\e[0;30m"
+#define RED "\e[0;31m"
+#define GRN "\e[0;32m"
+#define YEL "\e[0;33m"
+#define BLU "\e[0;34m"
+#define MAG "\e[0;35m"
+#define CYN "\e[0;36m"
+#define WHT "\e[0;37m"
+#define RESET "\e[0m"
 
 typedef struct		s_part
 {
@@ -29,6 +40,7 @@ char	*fastest_rotate(t_pw_var *stvar, char c, int index);
 int		sort_short_stack(t_pw_var *stvar, int argc);
 int		do_op(t_pw_var *stvar, char *str, char c, int i);
 int		presort_list(t_pw_var *stvar);
+void	find_dist_top(t_stack *stack, int num);
 void	find_distance(t_stack *stack_a, int num, int *sorted);
 char	*find_low(t_pw_var *stvar, char c, int *index);
 void	update_stack(t_pw_var *stvar, char c);
@@ -45,7 +57,7 @@ void    insertion_sort(int *list, int argc, int *min, int *max);
 int		part_addnew(t_part **part_var, int *list, int argc);
 void	ft_addpart(t_part **part_var, t_part *new);
 t_part	*create_part(int argc, int *list);
-void	part_sort(t_pw_var *stvar, int argc);
+void	part_sort(t_pw_var *stvar, int argc, int i);
 int		sort_five_stack(t_pw_var *stvar, char c, int argc);
 void    sort_three_part(t_stack **stack, t_pw_var *stvar, int min, int max);
 void	sort_short(t_pw_var *stvar, char c, int len);
