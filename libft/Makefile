@@ -6,12 +6,12 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/11 15:22:00 by svan-der      #+#    #+#                  #
-#    Updated: 2020/06/02 17:35:28 by svan-der      ########   odam.nl          #
+#    Updated: 2020/07/02 19:17:39 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 INCL = ../includes/
 PRINTF_DIR = ft_printf

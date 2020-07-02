@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/01 15:49:40 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/02 18:11:39 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,28 +121,6 @@ void	*ft_calloc(size_t count, size_t size)
 		return (NULL);
 	ft_bzero(res, count * size);
 	return (res);
-}
-
-void		add_tail(t_stack **stack)
-{
-	t_stack *tail;
-
-	tail = *stack;
-	// print_stack_list(*stack, 'a');
-	while (tail && tail->next != NULL)
-	{
-		// ft_printf("tail:%d\t%p\n", tail->num, tail);
-		tail = tail->next;
-	}
-	if (tail)
-	{
-		if (tail && tail->prev)
-			tail->prev = tail->prev;
-		else
-			tail->prev = NULL;
-		(*stack)->tail = tail;
-	}
-	// print_tail((*stack)->tail);
 }
 
 /*

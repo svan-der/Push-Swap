@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/01 15:53:32 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/02 19:28:20 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -460,10 +460,12 @@ int		do_op(t_pw_var *stvar, char *str, char c, int num)
 		// print_stack(&stvar->stack_a, 1);
 		// print_stack_list(stvar->stack_a, 'a');
 		// print_stack_list(stvar->stack_b, 'b');
-		// ft_printf("return is:%i\n", ret);
+		if (str == PB)
+			ft_printf("return is:%i\n", ret);
 		if (ret == -1)
 			return (-1);
 		update_stack(stvar, c);
+		set_index(&stvar->stack_a, stvar->sorted, stvar->index);
 		i++;
 	}
 	return (ret);

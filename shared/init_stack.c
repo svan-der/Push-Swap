@@ -6,12 +6,12 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/11 18:14:34 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/02 18:07:33 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
-#include "../includes/psw_env.h"
+// #include "../includes/psw_env.h"
 #include "../includes/push_swap.h"
 
 t_stack		*create_stack(int num)

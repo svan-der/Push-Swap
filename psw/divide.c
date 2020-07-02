@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/01 15:51:28 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/02 19:27:04 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	set_partitions(t_pw_var *stvar, int partitions, int part_len)
 	i = 0;
 	j = 0;
 	// print_array(stvar->sorted, stvar->argc);
-	ft_printf("partitions:%i\t\tpart_len:%i\n", partitions, part_len);
+	// ft_printf("partitions:%i\t\tpart_len:%i\n", partitions, part_len);
 	// ft_printf("temp->num:%i\tsorted:%i\n", temp->num, stvar->sorted[i]);
 	while (partitions)
 	{
@@ -74,9 +74,9 @@ void	set_partitions(t_pw_var *stvar, int partitions, int part_len)
 			part_index += 1;
 			if (partitions == 1)
 			{
-				ft_printf("part_len before:%i\n", part_len);
+				// ft_printf("part_len before:%i\n", part_len);
 				part_len = (stvar->argc - i);
-				ft_printf("\e[1;92mstvar->argc:%i\tpart_len:%i\e[0m\n", stvar->argc, part_len);
+				// ft_printf("\e[1;92mstvar->argc:%i\tpart_len:%i\e[0m\n", stvar->argc, part_len);
 			}
 			// ft_printf("i:%i\tj:%i\n", i, j);
 			// ft_printf("\e[1;91mpartitions:%i\t\tpart_len:%i\tpart_index:%i\e[0m\n", partitions, part_len, part_index);
@@ -203,12 +203,16 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 	// int ret;
 
 	i = 1;
+	// ft_printf("argc:%i\t amount of partitions:%i with %i num \n", stvar->argc, part_index, part_num);
 	part_index = assign_partitions(stvar, &part_num);
+	ft_printf("received parts\n");
 	// find_distance(stvar->stack_a, stvar->stack_a->num, stvar->sorted);
 	print_stack_list(stvar->stack_a, 'a');
-	ft_printf("argc:%i\t amount of partitions:%i with %i num \n", stvar->argc, part_index, part_num);
-	do_op(stvar, RRA, 'a', 1);
+	do_op(stvar, RRA, 'a', 3);
 	// part_sort(stvar, part_num, i);
+	print_stack_list(stvar->stack_a, 'a');
+	ft_printf("push it\n");
+	do_op(stvar, PB, 'a', 2);
 	print_stack_list(stvar->stack_a, 'a');
 	// print_stack_list(stvar->stack_b, 'b');
 	// ft_printf("median:%i\n", stvar->median);
@@ -271,9 +275,9 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 int		divide_list(t_pw_var *stvar)
 {
 	stvar->median = find_median_array(stvar->sorted, stvar->index);
+	// ft_printf("stvar->sort_index:%i\n", stvar->sort_index);
 	// print_tail(stvar->stack_a->tail);
 	// ft_printf("median is:%d\n\n", stvar->median);
-	// ft_printf("stvar->sort_index:%i\n", stvar->sort_index);
 	// ft_printf("stvar->index:%i\tstvar->argc:%i\n", stvar->index, stvar->argc);
 	if (stvar->argc < 6)
 		return (sort_five_stack(stvar, 'a', stvar->index - stvar->sort_index));
