@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/03 17:38:56 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/03 18:02:06 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ void	push_back_part(t_pw_var *stvar)
 {
 	t_stack *stack;
 	int		total;
-	char 	*instr;
+	char	*instr;
 
 	total = (stvar->argc - 3) - 1;
 	ft_printf("index is:%i\n", stvar->sort_index);
@@ -206,75 +206,33 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 	part_index = assign_partitions(stvar, &part_num);
 	ft_printf("argc:%i\t amount of partitions:%i with %i num \n", stvar->argc, part_index, part_num);
 	ft_printf("received parts\n");
+	// print_stack_list(stvar->stack_a, 'a');
+	// print_stack_list(stvar->stack_b, 'b');
 	ft_printf("part_num:%i index:%i\n", part_num, i);
-	part_sort(stvar, part_num, i);
-	print_stack_list(stvar->stack_a, 'a');
-	print_stack_list(stvar->stack_b, 'b');
-	i++;
-	ft_printf("part_num:%i index:%i\n", part_num, i);
-	// part_num = 1;
-	part_sort(stvar, part_num, i);
-	print_stack_list(stvar->stack_a, 'a');
-	print_stack_list(stvar->stack_b, 'b');
-	// part_sort(stvar, stvar->argc - part_num, i);
-	// print_stack_list(stvar->stack_a, 'a');
-	// print_stack_list(stvar->stack_b, 'b');
-	// while (part_index != 0)
-	// {
-	// 	part_index--;
-	// 	i++;
-	// 	ft_printf(BLU"ITERATION:%i\n"RESET, part_index);
-	// 	part_sort(stvar, part_num, i);
-	// 	print_stack_list(stvar->stack_a, 'a');
-	// }
-	// ft_printf("push it\n");
-	// print_stack_list(stvar->stack_b, 'b');
-	// ft_printf("argc:%i\tstvar->index:%i\n", argc, stvar->index);
-	// ft_printf("stvar->index:%i\tindex_b:%i\n", stvar->index, stvar->argc - stvar->index);
-	// print_stack_list(stvar->stack_a, 'a');
-	// print_stack_list(stvar->stack_b, 'b');
-	// argc = (stvar->argc / part_num);
-	// ft_printf("argc:%i\tstvar->index:%i\n", argc, stvar->index);
-	// ft_memset(stvar->sorted, 0, stvar->argc * sizeof(*stvar->sorted));
-	// stvar->sorted = lst_cpy(stvar);
-	// insertion_sort(stvar->sorted, stvar->index, &stvar->min, &stvar->max);
-	// set_index(&(stvar)->stack_a, stvar->sorted, stvar->index);
-	// stvar->median = find_median_array(stvar->sorted, stvar->index);
-	// ft_printf("median is:%i\n", stvar->median);
-	// part_sort(stvar, argc);
-	// ft_printf("stvar->index:%i\tindex_b:%i\n", stvar->index, stvar->argc - stvar->index);
-	// print_stack_list(stvar->stack_a, 'a');
-	// print_stack_list(stvar->stack_b, 'b');
-	// part_sort(stvar, argc);
-	// sort_short(stvar, 'a', stvar->index);
-	// print_stack_list(stvar->stack_a, 'a');
-	// print_array(stvar->sorted, stvar->argc);
-	// print_tail(stvar->stack_a->tail);
+	while (part_index != 0)
+	{
+		part_index--;
+		ft_printf(BLU"ITERATION:%i\n"RESET, part_index);
+		if (part_index == 0)
+		{
+			part_num = stvar->index;
+			ft_printf(YEL"part_num:%i\n", part_num);
+		}
+		part_sort(stvar, part_num, i);
+		if (part_index == 0)
+		{
+			print_stack_list(stvar->stack_a, 'a');
+			print_stack_list(stvar->stack_b, 'b');
+		}
+		i++;
+	}
 	(void)sorted_list;
-	// part_sort(stvar, ft_min_size(stvar->index, stvar->argc));
-	// while (i)
-	// {
-	// 	i--;
-	// 	ft_printf("going to part_sort\n");
-	// 	// ft_printf("res is:%i\n", ft_min_size(stvar->index, stvar->argc));
-		// part_sort(stvar, argc);
-		// argc = (stvar->index / part_num);
-		// ft_printf("argc:%i\n", argc);
-		// ft_memset(stvar->sorted, 0, stvar->argc * sizeof(*stvar->sorted));
-		// stvar->sorted = lst_cpy(stvar);
-	// 	ft_printf("stvar->index:%i\n", stvar->index);
-		// insertion_sort(stvar->sorted, stvar->index, &stvar->min, &stvar->max);
-		// print_array(stvar->sorted, stvar->argc);
-		// set_index(&(stvar)->stack_a, stvar->sorted, stvar->index);
-		// stvar->median = find_median_array(stvar->sorted, stvar->index);
-		// ft_printf("median is:%i\n", stvar->median);
-	// }
 	// i = stvar->argc - stvar->index;
 	// ft_printf("sort opt now:\n");
 	// sort_short_opts(stvar);
-	// push_back_part(stvar);
-	// print_stack_list(stvar->stack_a, 'a');
-	// print_stack_list(stvar->stack_b, 'b');
+	push_back_part(stvar);
+	print_stack_list(stvar->stack_a, 'a');
+	print_stack_list(stvar->stack_b, 'b');
 	// // ft_printf("here\n");
 	// // ft_printf("last opt is:%i\n", i);
 	// dispatch_sort(stvar, PA, i);

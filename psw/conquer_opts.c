@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/03 17:38:30 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/03 17:57:53 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,17 @@ int	 calc_dist_top_b(t_pw_var *stvar, t_stack *top, t_stack *bottom)
 			return (1);
 	}
 	current = stvar->stack_b;
-	ft_printf("\n\n");
-	ft_printf("actual index order calculate closest to dist top b\n");
-	ft_printf(RED"num in b:%i\n"RESET, current->num);
+	// ft_printf("\n\n");
+	// ft_printf("actual index order calculate closest to dist top b\n");
+	// ft_printf(RED"num in b:%i\n"RESET, current->num);
 	// dist_top = ft_abs(num) - ft_abs(top);
 	// dist_top = num - top;
-	ft_printf("current->index:%i\ttop_index:%i\n", current->index, top->index);
+	// ft_printf("current->index:%i\ttop_index:%i\n", current->index, top->index);
 	dist_top = ft_abs(current->index - top->index);
-	ft_printf("dist top:%i\n", dist_top);
-	// dist_bottom = ft_abs(num) - ft_abs(bottom);
-	ft_printf("current->index:%i\tbottom_index:%i\n", current->index, bottom->index);
+	// ft_printf("dist top:%i\n", dist_top);
+	// ft_printf("current->index:%i\tbottom_index:%i\n", current->index, bottom->index);
 	dist_bottom = ft_abs(current->index - bottom->index);
-	ft_printf("dist bottom:%i\n", dist_bottom);
+	// ft_printf("dist bottom:%i\n", dist_bottom);
 	if (dist_top < dist_bottom)
 		return (0);
 	else
@@ -135,11 +134,11 @@ void	find_part(t_pw_var *stvar, int i)
 	int ret;
 	char *instr;
 
-	ft_printf("in find part\n");
+	// ft_printf("in find part\n");
 	top = find_top_part(stvar, i);
-	ft_printf(CYN"  top_num:%i part_id:%i dist_top:%i\n"RESET, top->num, top->part_id, top->dist_top);
+	// ft_printf(CYN"  top_num:%i part_id:%i dist_top:%i\n"RESET, top->num, top->part_id, top->dist_top);
 	bottom = find_bottom_part(stvar, i);
-	ft_printf(CYN"  bottom-num:%i part_id:%i dist_top:%i\n"RESET, bottom->num, bottom->part_id, bottom->dist_top);
+	// ft_printf(CYN"  bottom-num:%i part_id:%i dist_top:%i\n"RESET, bottom->num, bottom->part_id, bottom->dist_top);
 	ret = calc_dist_top_b(stvar, top, bottom);
 	// ft_printf("ret is:%i\n", ret);
 	if (ret == 0)
@@ -162,10 +161,10 @@ void	find_part(t_pw_var *stvar, int i)
 		{
 			do_op(stvar, instr, 'a', bottom->dist_top);
 		}
-		ft_printf("instr is:%s\tnum is:%i\n", instr, bottom->dist_top);
+		// ft_printf("instr is:%s\tnum is:%i\n", instr, bottom->dist_top);
 	}
 	do_op(stvar, PB, 'b', 1);
-	ft_printf("after finding part\n");
+	// ft_printf("after finding part\n");
 	// print_stack_list(stvar->stack_b, 'b');
 	// print_stack_list(stvar->stack_a, 'a');
 }
@@ -225,11 +224,9 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 	// ft_printf("argc:%i index:%i\n", j, i);
 	while (j)
 	{
-		ft_printf("\n\n");
-		ft_printf("j is:%i\n", j);
+		// ft_printf("\n\n");
+		// ft_printf("j is:%i\n", j);
 		res = 0;
-		if (instr)
-			ft_printf("instr begin is:%s\n", instr);
 		// ft_printf("index is:%i\n", stvar->index);
 		// print_stack_list(stvar->stack_a, 'a');
 		top = stvar->stack_a;
@@ -249,12 +246,12 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 					instr = fastest_rotate(stvar, 'a', bottom->index);
 					if (ft_strnequ(instr, RR, 2))
 					{
-						ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);
+						// ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);
 						do_op(stvar, instr, 'a', stvar->index - bottom->dist_top);
 					}
 					else
 					{
-						ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);
+						// ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);
 						do_op(stvar, instr, 'a', bottom->dist_top);
 					}
 				}
@@ -265,19 +262,19 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 			}
 			else
 			{
-				ft_printf("\n\n");
-				ft_printf("option 2\n");
+				// ft_printf("\n\n");
+				// ft_printf("option 2\n");
 				if (bottom->part_id == i)
 				{
 					instr = fastest_rotate(stvar, 'a', bottom->index);
 					if (ft_strnequ(instr, RR, 2))
 					{
-						ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);
+						// ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);
 						do_op(stvar, instr, 'a', stvar->index - bottom->dist_top);
 					}
 					else
 					{
-						ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);
+						// ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);
 						do_op(stvar, instr, 'a', bottom->dist_top);
 					}
 						// bottom->index);
