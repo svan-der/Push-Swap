@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/02 19:27:04 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/03 17:38:56 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,21 +203,33 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 	// int ret;
 
 	i = 1;
-	// ft_printf("argc:%i\t amount of partitions:%i with %i num \n", stvar->argc, part_index, part_num);
 	part_index = assign_partitions(stvar, &part_num);
+	ft_printf("argc:%i\t amount of partitions:%i with %i num \n", stvar->argc, part_index, part_num);
 	ft_printf("received parts\n");
-	// find_distance(stvar->stack_a, stvar->stack_a->num, stvar->sorted);
+	ft_printf("part_num:%i index:%i\n", part_num, i);
+	part_sort(stvar, part_num, i);
 	print_stack_list(stvar->stack_a, 'a');
-	do_op(stvar, RRA, 'a', 3);
-	// part_sort(stvar, part_num, i);
+	print_stack_list(stvar->stack_b, 'b');
+	i++;
+	ft_printf("part_num:%i index:%i\n", part_num, i);
+	// part_num = 1;
+	part_sort(stvar, part_num, i);
 	print_stack_list(stvar->stack_a, 'a');
-	ft_printf("push it\n");
-	do_op(stvar, PB, 'a', 2);
-	print_stack_list(stvar->stack_a, 'a');
+	print_stack_list(stvar->stack_b, 'b');
+	// part_sort(stvar, stvar->argc - part_num, i);
+	// print_stack_list(stvar->stack_a, 'a');
 	// print_stack_list(stvar->stack_b, 'b');
-	// ft_printf("median:%i\n", stvar->median);
+	// while (part_index != 0)
+	// {
+	// 	part_index--;
+	// 	i++;
+	// 	ft_printf(BLU"ITERATION:%i\n"RESET, part_index);
+	// 	part_sort(stvar, part_num, i);
+	// 	print_stack_list(stvar->stack_a, 'a');
+	// }
+	// ft_printf("push it\n");
+	// print_stack_list(stvar->stack_b, 'b');
 	// ft_printf("argc:%i\tstvar->index:%i\n", argc, stvar->index);
-	// part_sort(stvar, argc);
 	// ft_printf("stvar->index:%i\tindex_b:%i\n", stvar->index, stvar->argc - stvar->index);
 	// print_stack_list(stvar->stack_a, 'a');
 	// print_stack_list(stvar->stack_b, 'b');
