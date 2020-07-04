@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/03 17:57:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/04 17:28:37 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,13 @@ t_stack	*find_top_part(t_pw_var *stvar, int i)
 
 	temp = stvar->stack_a;
 	j = 0;
-	ft_printf("i:%i\n", i);
+	// ft_printf("i:%i\n", i);
 	while (temp)
 	{
 		if (temp->part_id == i)
 		{
 			temp->dist_top = j;
-			ft_printf("dist_top:%i\n", temp->dist_top);
+			// ft_printf("dist_top:%i\n", temp->dist_top);
 			return (temp);
 		}
 		temp = temp->next;
@@ -228,19 +228,17 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 		// ft_printf("j is:%i\n", j);
 		res = 0;
 		// ft_printf("index is:%i\n", stvar->index);
-		// print_stack_list(stvar->stack_a, 'a');
 		top = stvar->stack_a;
-		ft_printf(GRN"|top:%i part_id:%i top->index:%i|\n"RESET, top->num, top->part_id, top->index);
+		// ft_printf(GRN"|top:%i part_id:%i top->index:%i|\n"RESET, top->num, top->part_id, top->index);
 		bottom = stvar->stack_a->tail;
-		// print_tail(stvar->stack_a->tail);
-		ft_printf(YEL"|bottom:%i part_id:%i bottom->index:%i|\n"RESET, bottom->num, bottom->part_id, bottom->index);
+		// ft_printf(YEL"|bottom:%i part_id:%i bottom->index:%i|\n"RESET, bottom->num, bottom->part_id, bottom->index);
 		if (top->part_id == i || bottom->part_id == i)
 		{
 			if (top->part_id == i && bottom->part_id == i)
 			{
-				ft_printf(CYN"option 1\n"RESET);
+				// ft_printf(CYN"option 1\n"RESET);
 				res = calc_dist_top_b(stvar, top, bottom);
-				ft_printf("res is:%i\n", res);
+				// ft_printf("res is:%i\n", res);
 				if (res != 0)
 				{
 					instr = fastest_rotate(stvar, 'a', bottom->index);
@@ -255,7 +253,7 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 						do_op(stvar, instr, 'a', bottom->dist_top);
 					}
 				}
-				ft_printf("instr is:%s\n", instr);
+				// ft_printf("instr is:%s\n", instr);
 				do_op(stvar, (instr = PB), 'b', 1);
 				// if (j == 1 && stvar->index == stvar->argc / 2)
 				// 	exit(1);
@@ -279,7 +277,7 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 					}
 						// bottom->index);
 				}
-				ft_printf("instr is:%s\n", instr);
+				// ft_printf("instr is:%s\n", instr);
 				do_op(stvar, (instr = PB), 'b', 1);
 				// print_stack_list(stvar->stack_b, 'b');
 			}
@@ -287,11 +285,8 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 		else
 		{
 			// ft_printf("\n\n");
-			ft_printf("option 3\n");
-			// ft_printf("find part\t j:%i\n", j);
+			// ft_printf("option 3\n");
 			find_part(stvar, i);
-			// if (j > 1)
-			// 	find_part(stvar);
 			instr = PB;
 		}
 		if (ft_strequ(instr, PB))
@@ -309,7 +304,6 @@ int		do_op(t_pw_var *stvar, char *str, char c, int num)
 	// ft_printf("instr is:%s\n", str);
 	while (i < num)
 	{
-		// ft_printf("i is:%i\n", i);
 		// if (str == PA)
 		// 	print_stack_b(&stvar->stack_b, 1);
 		// ft_printf("i is:%d\n", i);
@@ -318,8 +312,8 @@ int		do_op(t_pw_var *stvar, char *str, char c, int num)
 		// print_stack(&stvar->stack_a, 1);
 		// print_stack_list(stvar->stack_a, 'a');
 		// print_stack_list(stvar->stack_b, 'b');
-		if (str == PB)
-			ft_printf("return is:%i\n", ret);
+		// if (str == PB)
+			// ft_printf("return is:%i\n", ret);
 		if (ret == -1)
 			return (-1);
 		update_stack(stvar, c);
@@ -435,8 +429,8 @@ char	*fastest_rotate(t_pw_var *stvar, char c, int index)
 
 	len = (c == 'a') ? stvar->index : (stvar->argc - stvar->index);
 	i = (len % 2) ? ((len + 1) / 2) : len / 2;
-	ft_printf("len:%i\t i:%i\n", len, i);
-	ft_printf("char:%c\tindex:%i\n", c, index);
+	// ft_printf("len:%i\t i:%i\n", len, i);
+	// ft_printf("char:%c\tindex:%i\n", c, index);
 	if (index <= i)
 		return (c == 'a' ? RA : RB);
 	else
