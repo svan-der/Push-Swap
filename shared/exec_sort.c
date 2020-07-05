@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/12 11:56:55 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/05 12:04:53 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/05 16:57:03 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void 	update_size(t_pw_var *stvar, char *str, int instr)
 	stvar->index += mod;
 	stvar->sort_index = stvar->index;
 	stvar->total_ins += instr;
-	ft_printf("|\e[1;35m inst:%s\t\e[1;33m total:%i -> \e[1;32m %i|\n"RESET, str, stvar->total_ins - instr, stvar->total_ins);
-	ft_printf("stvar->index:%i\n", stvar->index);
+	// ft_printf("|\e[1;35m inst:%s\t\e[1;33m total:%i -> \e[1;32m %i|\n"RESET, str, stvar->total_ins - instr, stvar->total_ins);
+	// ft_printf("stvar->index:%i\n", stvar->index);
 // 	ft_printf("stvar->sort_index:%i\n", stvar->index);
 }
 

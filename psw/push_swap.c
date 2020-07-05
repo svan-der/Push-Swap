@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/05 12:18:34 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/05 18:43:50 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,6 @@ int		presort_list(t_pw_var *stvar)
 	insertion_sort(stvar->sorted, stvar->argc, &stvar->min, &stvar->max);
 	// print_array(stvar->sorted, stvar->argc);
 	set_index(&(stvar)->stack_a, stvar->sorted, stvar->argc);
-	print_stack_list(stvar->stack_a, 'a');
 	// print_stack_list(stvar->stack_a, 'a');
 	// print_tail(stvar->stack_a->tail);
 	return (1);
@@ -257,12 +256,12 @@ int		main(int argc, char **argv)
 		error_handler(ret);
 		return (ft_exit(&stvar));
 	}
-	// print_inst(stvar.inst_lst);
-	ft_printf(GRN"TOTAL:%d\n"RESET, stvar.total_ins);
+	print_inst(stvar.inst_lst);
+	// ft_printf(GRN"TOTAL:%d\n"RESET, stvar.total_ins);
+	// print_instructions(stvar.inst_lst, ret);
 	// print_stack_list(stvar.stack_a, 'a');
 	// print_stack_list(stvar.stack_b, 'b');
 	ft_exit(&stvar);
-	print_instructions(stvar.inst_lst, ret);
-	print_stack_list(stvar.stack_b, 'b');
+	// print_stack_list(stvar.stack_b, 'b');
 	return (1);
 }

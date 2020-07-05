@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/05 16:03:57 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/05 18:27:16 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,7 +231,15 @@ void	push_back_part(t_pw_var *stvar)
 		current = find_high(stvar, 'b', &total);
 		// ft_printf(GRN"dist_top:%i\n"RESET, current->dist_top);
 		if (current->dist_top == 1)
-			do_op(stvar, SB, 'b', 1);
+		{
+			instr = SB;
+			if (current->prev && current->next)
+			{
+				// ft_printf(RED"prev:%i next:%i\n"RESET, current->prev->num, current->next->num);
+				instr = (current->prev->num < current->next->num) ? RB : SB;
+			}
+			do_op(stvar, instr, 'b', 1);
+		}
 		else if (current->dist_top > 1)
 		{
 			instr = fastest_rotate(stvar, 'b', current->dist_top);
@@ -250,13 +258,11 @@ void	push_back_part(t_pw_var *stvar)
 		// ft_printf(GRN"instr:%s current->dist_top:%i\n"RESET, instr, current->dist_top);
 		// do_op(stvar, instr, 'b', current->dist_top);
 		do_op(stvar, PA, 'b', 1);
-		// print_stack_list(stvar->stack_b, 'b');
-		// print_stack_list(stvar->stack_a, 'a');
 		total--;
 		argc--;
+		// print_stack_list(stvar->stack_a, 'a');
+		// print_stack_list(stvar->stack_b, 'b');
 	}
-	// print_stack_list(stvar->stack_b, 'b');
-	// print_stack_list(stvar->stack_a, 'a');
 }
 
 int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
@@ -264,34 +270,33 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 	int part_index;
 	int	part_num;
 	int	i;
-	// int ret;
 
 	i = 1;
 	part_index = assign_partitions(stvar, &part_num);
 	// ft_printf("argc:%i\t amount of partitions:%i with %i num \n", stvar->argc, part_index, part_num);
 	// ft_printf("received parts\n");
 	// ft_printf("part_num:%i index:%i\n", part_num, i);
-	print_stack_list(stvar->stack_a, 'a');
+	// print_stack_list(stvar->stack_a, 'a');
 	while (part_index != 0)
 	{
 		part_index--;
-		ft_printf(BLU"ITERATION:%i\n"RESET, part_index);
+		// ft_printf(BLU"ITERATION:%i\n"RESET, part_index);
 		if (part_index == 0)
 		{
 			part_num = stvar->index;
 			// ft_printf(YEL"part_num:%i\n"RESET, part_num);
 		}
 		part_sort(stvar, part_num, i);
-		if (part_index == 0)
-		{
-			print_stack_list(stvar->stack_a, 'a');
-			print_stack_list(stvar->stack_b, 'b');
-		}
+		// if (part_index == 0)
+		// {
+			// print_stack_list(stvar->stack_a, 'a');
+		// 	print_stack_list(stvar->stack_b, 'b');
+		// }
 		i++;
 	}
 	(void)sorted_list;
 	// ft_printf(GRN"total ins after presort:%i\n"RESET, stvar->total_ins);
-	// push_back_part(stvar);
+	push_back_part(stvar);
 	// print_stack_list(stvar->stack_a, 'a');
 	// print_stack_list(stvar->stack_b, 'b');
 	return (1);
