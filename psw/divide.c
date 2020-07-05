@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/04 18:48:49 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/05 16:03:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,9 @@ int	assign_partitions(t_pw_var *stvar, int *part_num)
 		partitions = 5;
 	else if (num == 500)
 		partitions = 11;
-	ft_printf("amount of partitions:%i\n", partitions);
+	// ft_printf("amount of partitions:%i\n", partitions);
 	*part_num = ((stvar->argc % partitions)) ? 1 : 0;
-	ft_printf("num is:%i\n", *part_num);
+	// ft_printf("num is:%i\n", *part_num);
 	*part_num += (stvar->argc / partitions);
 	set_partitions(stvar, partitions, *part_num);
 	return (partitions);
@@ -181,11 +181,11 @@ t_stack 	*find_high(t_pw_var *stvar, char c, int *index)
 
 	current = (c == 'a') ? stvar->stack_a : stvar->stack_b;
 	// print_stack_list(current, c);
-	ft_printf("index find high:%i\n", *index);
+	// ft_printf("index find high:%i\n", *index);
 	dist_top = 0;
 	while (current)
 	{
-		ft_printf("num is:%i\n", current->num);
+		// ft_printf("num is:%i\n", current->num);
 		if (current->index == *index)
 			return (current);
 		dist_top++;
@@ -221,15 +221,15 @@ void	push_back_part(t_pw_var *stvar)
 	t_stack	*current;
 
 	total = stvar->argc - 1;
-	ft_printf("total:%i\n", total);
-	ft_printf("index is:%i\n", stvar->sort_index);
-	ft_printf("amount in stack_a:%i\n", stvar->index);
+	// ft_printf("total:%i\n", total);
+	// ft_printf("index is:%i\n", stvar->sort_index);
+	// ft_printf("amount in stack_a:%i\n", stvar->index);
 	argc = stvar->argc;
 	while (argc)
 	{
-		ft_printf(YEL"TOTAL IS:%i\n"RESET, total);
+		// ft_printf(YEL"TOTAL IS:%i\n"RESET, total);
 		current = find_high(stvar, 'b', &total);
-		ft_printf(GRN"dist_top:%i\n"RESET, current->dist_top);
+		// ft_printf(GRN"dist_top:%i\n"RESET, current->dist_top);
 		if (current->dist_top == 1)
 			do_op(stvar, SB, 'b', 1);
 		else if (current->dist_top > 1)
@@ -237,26 +237,26 @@ void	push_back_part(t_pw_var *stvar)
 			instr = fastest_rotate(stvar, 'b', current->dist_top);
 			if (ft_strnequ(instr, RR, 2))
 			{
-				ft_printf("instr:%s index:%i\n", instr, total - (current->dist_top - 1));
+				// ft_printf("instr:%s index:%i\n", instr, total - (current->dist_top - 1));
 				do_op(stvar, instr, 'a', total - (current->dist_top - 1));
-				print_stack_list(stvar->stack_b, 'b');
+				// print_stack_list(stvar->stack_b, 'b');
 			}
 			else
 			{
-				ft_printf(CYN"instr:%s index:%i dist_top:%i\n"RESET, instr, current->dist_top);
+				// ft_printf(CYN"instr:%s index:%i dist_top:%i\n"RESET, instr, current->dist_top);
 				do_op(stvar, instr, 'a', current->dist_top);
 			}
 		}
 		// ft_printf(GRN"instr:%s current->dist_top:%i\n"RESET, instr, current->dist_top);
 		// do_op(stvar, instr, 'b', current->dist_top);
 		do_op(stvar, PA, 'b', 1);
-		print_stack_list(stvar->stack_b, 'b');
-		print_stack_list(stvar->stack_a, 'a');
+		// print_stack_list(stvar->stack_b, 'b');
+		// print_stack_list(stvar->stack_a, 'a');
 		total--;
 		argc--;
 	}
-	print_stack_list(stvar->stack_b, 'b');
-	print_stack_list(stvar->stack_a, 'a');
+	// print_stack_list(stvar->stack_b, 'b');
+	// print_stack_list(stvar->stack_a, 'a');
 }
 
 int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
@@ -271,6 +271,7 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 	// ft_printf("argc:%i\t amount of partitions:%i with %i num \n", stvar->argc, part_index, part_num);
 	// ft_printf("received parts\n");
 	// ft_printf("part_num:%i index:%i\n", part_num, i);
+	print_stack_list(stvar->stack_a, 'a');
 	while (part_index != 0)
 	{
 		part_index--;
@@ -278,7 +279,7 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 		if (part_index == 0)
 		{
 			part_num = stvar->index;
-			ft_printf(YEL"part_num:%i\n"RESET, part_num);
+			// ft_printf(YEL"part_num:%i\n"RESET, part_num);
 		}
 		part_sort(stvar, part_num, i);
 		if (part_index == 0)
@@ -289,19 +290,11 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 		i++;
 	}
 	(void)sorted_list;
-	// i = stvar->argc - stvar->index;
-	// ft_printf("sort opt now:\n");
-	// sort_short_opts(stvar);
-	push_back_part(stvar);
-	print_stack_list(stvar->stack_a, 'a');
-	print_stack_list(stvar->stack_b, 'b');
-	// // ft_printf("here\n");
-	// // ft_printf("last opt is:%i\n", i);
-	// dispatch_sort(stvar, PA, i);
+	// ft_printf(GRN"total ins after presort:%i\n"RESET, stvar->total_ins);
+	// push_back_part(stvar);
 	// print_stack_list(stvar->stack_a, 'a');
 	// print_stack_list(stvar->stack_b, 'b');
 	return (1);
-	// return (conquer_list(stvar, sorted_list));
 }
 
 int		divide_list(t_pw_var *stvar)

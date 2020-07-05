@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/03 17:59:22 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/05 12:18:34 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,8 +257,8 @@ int		main(int argc, char **argv)
 		error_handler(ret);
 		return (ft_exit(&stvar));
 	}
-	print_inst(stvar.inst_lst);
-	// ft_printf("total inst:%d\n", stvar.total_ins);
+	// print_inst(stvar.inst_lst);
+	ft_printf(GRN"TOTAL:%d\n"RESET, stvar.total_ins);
 	// print_stack_list(stvar.stack_a, 'a');
 	// print_stack_list(stvar.stack_b, 'b');
 	ft_exit(&stvar);
