@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/05 18:40:59 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/06 07:17:49 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,16 +147,20 @@ void	find_part(t_pw_var *stvar, int i)
 	// {
 	// 	ret = 0;
 	// }
-	ret = 0;
+	// ret = 0;
 	// ft_printf("ret is:%i\n", ret);
 	if (ret == 0)
 	{
 		instr = fastest_rotate(stvar, 'a', top->dist_top);
 		// ft_printf("instr is:%s\tnum is:%i\n", instr, top->dist_top);
 		if (ft_strnequ(instr, RR, 2))
+		{
+			instr = check_double(stvar, instr, stvar->index - top->dist_top);
 			do_op(stvar, instr, 'a', stvar->index - top->dist_top);
+		}
 		else
 		{
+			instr = check_double(stvar, instr, top->dist_top);
 			do_op(stvar, instr, 'a', top->dist_top);
 		}
 	}
@@ -164,9 +168,13 @@ void	find_part(t_pw_var *stvar, int i)
 	{
 		instr = fastest_rotate(stvar, 'a', bottom->dist_top);
 		if (ft_strnequ(instr, RR, 2))
+		{
+			instr = check_double(stvar, instr, stvar->index - bottom->dist_top);
 			do_op(stvar, instr, 'a', stvar->index - bottom->dist_top);
+		}
 		else
 		{
+			instr = check_double(stvar, instr, bottom->dist_top);
 			do_op(stvar, instr, 'a', bottom->dist_top);
 		}
 		// ft_printf("instr is:%s\tnum is:%i\n", instr, bottom->dist_top);
@@ -217,24 +225,72 @@ void	find_part(t_pw_var *stvar, int i)
 // 	// print_tail(stvar->stack_a->tail);
 // }
 
+
+t_stack *return_bottom_position(t_pw_var *stvar, t_stack *temp, char *instr, int i)
+{
+	t_stack *bottom;
+	int		j;
+
+	j = 1;
+	bottom = stvar->stack_b->tail;
+	if (temp->num && stvar->stack_b->next)
+	{
+		while (bottom && j < i)
+		{
+			bottom = bottom->prev;
+			if (bottom == NULL)
+				bottom = stvar->stack_b->tail;
+			j++;
+		}
+	}
+	return (bottom);
+}
+
+
+t_stack *return_top_position(t_pw_var *stvar, t_stack *temp, char *instr, int i)
+{
+	t_stack *top;
+	int		j;
+
+	j = 1;
+	top = stvar->stack_b;
+	while (j < i && temp)
+	{
+		temp = temp->next;
+		j++;
+		if (temp == NULL)
+			temp = stvar->stack_b;
+	}
+	if (temp->num && stvar->stack_b->next)
+	{
+		if (temp->next)
+			top = temp->next;
+		else
+			top = stvar->stack_b;
+	}
+	return (top);
+}
+
+
 char	*check_double(t_pw_var *stvar, char *instr, int i)
 {
 	t_stack *temp;
+	t_stack *bottom;
+	t_stack	*top;
 	int		j;
 
-	j = 0;
+	j = 1;
 	temp = stvar->stack_b;
-	while (j < i)
-	{
-		temp = temp->next;
-	}
+	// ft_printf(YEL"IN CHECK DOUBLE %s %i\n", instr, i);
 	if (temp != NULL)
 	{
 		if (instr == RA)
 		{
 			if (temp->num && stvar->stack_b->next)
 			{
-				if (temp->num < stvar->stack_b->next->num)
+				top = return_top_position(stvar, temp, instr, i);
+				// ft_printf("top:%i top next:%i\n", temp->num, top->num);
+				if (temp->num < top->num)
 					instr = RR;
 			}
 		}
@@ -242,11 +298,14 @@ char	*check_double(t_pw_var *stvar, char *instr, int i)
 		{
 			if (temp && stvar->stack_b->tail)
 			{
-				if (stvar->stack_b->tail->num > temp->num)
+				bottom = return_bottom_position(stvar, temp, instr, i);
+				// ft_printf("top:%i top next:%i\n", temp->num, bottom->num);
+				if (bottom->num > temp->num)
 					instr = RRR;
 			}
 		}
 	}
+	// ft_printf("INSTR:%s\n"RESET, instr);
 	return (instr);
 }
 
@@ -278,7 +337,7 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 					res = calc_dist_top_b(stvar, top, bottom);
 				// if (stvar->argc != 500)
 				// 	res = 0;
-				res = 0;
+				// res = 0;
 				// ft_printf("res is:%i\n", res);
 				if (res != 0)
 				{
@@ -286,7 +345,9 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 					instr = fastest_rotate(stvar, 'a', bottom->dist_top);
 					if (ft_strnequ(instr, RR, 2))
 					{
-						// ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);
+						print_stack_list(stvar->stack_a, 'a');
+						print_stack_list(stvar->stack_b, 'b');
+						ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, stvar->index - bottom->dist_top);
 						instr = check_double(stvar, instr, stvar->index - bottom->dist_top);
 						do_op(stvar, instr, 'a', stvar->index - bottom->dist_top);
 					}
@@ -338,8 +399,8 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 	}
 	if (ft_strequ(instr, PB))
 		j--;
-	// print_stack_list(stvar->stack_a, 'a');
-	// print_stack_list(stvar->stack_b, 'b');
+	print_stack_list(stvar->stack_a, 'a');
+	print_stack_list(stvar->stack_b, 'b');
 	}
 }
 
