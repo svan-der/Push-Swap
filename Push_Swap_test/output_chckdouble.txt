@@ -1,0 +1,17 @@
+Test   1	[ OK ]	for 100   random numbers with  869 (< 900)    operations
+Test   2	[ OK ]	for 100   random numbers with  805 (< 900)    operations
+Test   3	[ OK ]	for 100   random numbers with  851 (< 900)    operations
+Test   4	[ OK ]	for 100   random numbers with  847 (< 900)    operations
+Test   5	[ OK ]	for 100   random numbers with  944 (< 1100)    operations
+Test   6	[ OK ]	for 100   random numbers with  881 (< 900)    operations
+Test   7	[ OK ]	for 100   random numbers with  861 (< 900)    operations
+Test   8	[ OK ]	for 100   random numbers with  918 (< 1100)    operations
+Test   9	[ OK ]	for 100   random numbers with  876 (< 900)    operations
+Test   10	[ OK ]	for 100   random numbers with  918 (< 1100)    operations
+Max operations : 944 in Test 5
+Yellow tests for 100 : 7
+Green tests for 100 : 0
+Red tests for 500 : 0
+Yellow tests for 500 : 0
+Green tests for 500 : 0
+
