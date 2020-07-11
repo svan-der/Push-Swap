@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
 #include "../includes/psw_env.h"
+#include "../includes/push_swap.h"
 
 void	set_min_maxarray(t_pw_var *stvar, int *list, int len)
 {

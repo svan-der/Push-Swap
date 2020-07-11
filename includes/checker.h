@@ -12,8 +12,7 @@
 
 #ifndef CHECKER_H
 # define CHECKER_H
-# include "psw_env.h"
-# include "push_swap.h"
+# include "./push_swap.h"
 # include "psw_env.h"
 
 int		main(int argc, char **argv);

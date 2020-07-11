@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 t_stack	*find_bottom_part(t_pw_var *stvar, int i)
 {
@@ -122,7 +122,10 @@ void	sort_based_on_top(t_pw_var *stvar, t_stack *top)
 	}
 	rest = presort_stack_b(stvar, top, instr, i);
 	if (rest > 0)
+	{
+		ft_printf(YEL"do_op rest INSTR:%s NUM:%i\n"RESET, instr, rest);
 		do_op(stvar, instr, 'a', rest);
+	}
 }
 
 void	sort_based_on_bottom(t_pw_var *stvar, t_stack *bottom)
@@ -137,8 +140,12 @@ void	sort_based_on_bottom(t_pw_var *stvar, t_stack *bottom)
 		i = stvar->index - bottom->dist_top;
 	else
 		i = bottom->dist_top;
+	rest = presort_stack_b(stvar, bottom, instr, i);
 	if (rest > 0)
+	{
+		ft_printf(YEL"do_op rest INSTR:%s NUM:%i\n"RESET, instr, rest);
 		do_op(stvar, instr, 'a', rest);
+	}
 }
 
 void	find_part(t_pw_var *stvar, int i)
@@ -157,20 +164,33 @@ void	find_part(t_pw_var *stvar, int i)
 	ret = calc_dist_top_b(stvar, top, bottom);
 	// ft_printf(CYN"ret is:%i\n"RESET, ret);
 	if (ret == 0)
+	{
+		ft_printf("SORT BASED ON TOP:%i\n", top->num);
 		sort_based_on_top(stvar, top);
+	}
 	else if (ret != 0)
+	{
+		ft_printf("SORT BASED ON BOTTOM:%i\n", bottom->num);
 		sort_based_on_bottom(stvar, bottom);
-	if (ret == 1)
-		j = presort_stack_b(stvar, top, NULL, 0);
+	}
+	// if (i == 1)
+	// 	j = presort_stack_b(stvar, top, NULL, 0);
 	do_op(stvar, PB, 'b', 1);
 }
 
 void	f_double_solution(t_pw_var *stvar, char *instr, int i)
 {
+	ft_printf("instr:%s i:%i\n", instr, i);
 	if (ft_strnequ(instr, RR, 2))
+	{
+		ft_printf(CYN"INSTR:RRR num:%i\n"RESET, i);
 		do_op(stvar, RRR, 'a', i);
+	}
 	else if (ft_strnequ(instr, "R", 1))
+	{
+		ft_printf(CYN"INSTR:RR num:%i\n"RESET, i);
 		do_op(stvar, RR, 'a', i);
+	}
 }
 
 int		check_dble(t_pw_var *stvar, char *oper_a, char *oper_b, int tot)
@@ -178,8 +198,11 @@ int		check_dble(t_pw_var *stvar, char *oper_a, char *oper_b, int tot)
 	int ret;
 
 	ret = 0;
-	if ((oper_b == RB && oper_a == RA) || (oper_b == RRB && oper_a == RRA))
+	ft_printf(GRN"oper_a:%s oper_b:%s tot:%i\n"RESET, oper_a, oper_b, tot);
+	if ((ft_strequ(oper_a, RRA) && ft_strequ(oper_b, RRB)) || (ft_strequ(oper_a, RA)
+		&& ft_strequ(oper_b, RB)))
 		ret = tot;
+	// ft_printf("ret is:%i\n", ret);
 	if (ret > 0)
 		f_double_solution(stvar, oper_b, ret);
 	return (ret);

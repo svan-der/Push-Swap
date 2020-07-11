@@ -10,24 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	find_max(t_stack *current, int max, int *j)
 {
-	// ft_printf("BIGGER THAN MAX\n");
+	ft_printf("BIGGER THAN MAX\n");
 	while (current && current->num != max)
 	{
-		j++;
+		*j += 1;
+		ft_printf("j is:%i\n", *j);
 		current = current->next;
 	}
 }
 
 void	find_min(t_stack *current, int min, int *j)
 {
-	// ft_printf("SMALLER THAN MIN\n");
+	ft_printf("SMALLER THAN MIN\n");
 	while (current && current->num != min)
 	{
-		j++;
+		*j += 1;
+		ft_printf("j is:%i\n", *j);
 		current = current->next;
 	}
 }
@@ -42,10 +44,10 @@ char	*find_pos(t_pw_var *stvar, t_stack *current, t_stack *temp, int *j)
 		if (temp->num > current->num && temp->next->num < current->num)
 		{
 			instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));
-			// ft_printf(YEL"INSL:%s J:%i\n"RESET, instr, j);
+			ft_printf(YEL"INSL:%s J:%i\n"RESET, instr, *j);
 			return (instr);
 		}
-		j++;
+		*j += 1;
 		temp = temp->next;
 	}
 	return (instr);

@@ -35,6 +35,8 @@ typedef struct		s_part
 	struct s_part	*next;
 }					t_part;
 
+void	sort_short_opts(t_pw_var *stvar);
+
 void	f_double_solution(t_pw_var *stvar, char *instr, int i);
 int		check_dble(t_pw_var *stvar, char *op_a, char *op_b, int i);
 int		presort_stack_b(t_pw_var *stvar, t_stack *current, char *oper_a, int i);
