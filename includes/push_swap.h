@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/11 08:32:32 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/11 18:33:14 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,15 @@ typedef struct		s_part
 	struct s_part	*next;
 }					t_part;
 
-void	presort_stack_b(t_pw_var *stvar, t_stack *current, char *ins, int i);
+void	f_double_solution(t_pw_var *stvar, char *instr, int i);
+int		check_dble(t_pw_var *stvar, char *op_a, char *op_b, int i);
+int		presort_stack_b(t_pw_var *stvar, t_stack *current, char *oper_a, int i);
+
+int		calc_dist_top_b(t_pw_var *stvar, t_stack *top, t_stack *bottom);
+void	find_part(t_pw_var *stvar, int i);
+char	*find_pos(t_pw_var *stvar, t_stack *current, t_stack *temp, int *j);
+void	find_min(t_stack *current, int min, int *j);
+void	find_max(t_stack *current, int max, int *j);
 char	*check_double(t_pw_var *stvar, char *instr, int i, t_stack *n);
 void	set_index(t_stack **stack_a, int *sorted, int argc);
 char	*fastest_rotate(t_pw_var *stvar, char c, int index);
