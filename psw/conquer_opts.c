@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/11 18:31:56 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/13 22:38:55 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,10 +182,12 @@ int		presort_stack_b(t_pw_var *stvar, t_stack *current, char *oper_a, int i)
 	ret = 0;
 	temp = stvar->stack_b;
 	instr = NULL;
+	ft_printf("oper_a:%s i:%i\n", oper_a, i);
 	if (temp && temp->next)
 	{
 		// ft_printf("temp:%i temp->next:%i\n", temp->num, temp->next->num);
 		ft_printf(CYN"IN PRESORT STACK_B\n"RESET);
+		print_stack_list(stvar->stack_b, 'b');
 		set_min_max(stvar, 'b');
 		ft_printf("min:%i max:%i current:%i\n", stvar->min, stvar->max, current->num);
 		if (current->num < stvar->min)
@@ -198,7 +200,8 @@ int		presort_stack_b(t_pw_var *stvar, t_stack *current, char *oper_a, int i)
 	ft_printf(MAG"J is:%i\n"RESET, j);
 	if (j > 0)
 	{
-		instr = (NULL) ? fastest_rotate(stvar, 'b', j) : instr;
+		if (!instr)
+			instr = fastest_rotate(stvar, 'b', j);
 		ret = check_dble(stvar, oper_a, instr, ft_min(i, j));
 		ft_printf(MAG"RET:%i OPER_A:%s INS:%s I:%i J:%i\n"RESET, ret, oper_a, instr, i, j);
 		if (j > i && ret > 0)
@@ -208,8 +211,11 @@ int		presort_stack_b(t_pw_var *stvar, t_stack *current, char *oper_a, int i)
 		}
 		else if (j > 0)
 		{
+			ft_printf("instr:%s j:%i\n", instr, j);
+			// print_stack_list(stvar->stack_b, 'b');
 			do_op(stvar, instr, 'b', j);
-			ft_printf("j:%i\n", j);
+			// print_stack_list(stvar->stack_b, 'b');
+			// ft_printf("j:%i\n", j);
 		}
 		ft_printf("ret:%i i:%i  i - ret = %i\n", ret, i, (i - ret));
 	}
@@ -343,15 +349,27 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 	while (j)
 	{
 		ft_printf("\n\n");
+<<<<<<< HEAD
 		print_stack_list(stvar->stack_a, 'a');
 		print_stack_list(stvar->stack_b, 'b');
 		ft_printf("j is:%i\n", j);
+=======
+		// print_stack_list(stvar->stack_a, 'a');
+		// print_stack_list(stvar->stack_b, 'b');
+		print_stack(&stvar->stack_a, 1);
+		print_stack_b(&stvar->stack_b, 1);
+		ft_printf("\n");
+>>>>>>> b010f318bbccb06c56a10dacb3dfc12257f63979
 		res = 0;
 		top = stvar->stack_a;
-		ft_printf(GRN"|i:%i top:%i part_id:%i top->index:%i|\n"RESET, i, top->num, top->part_id, top->index);
+		ft_printf(GRN"|i:%i top:%i part_id:%i top->index:%i dist_top:%i|\n"RESET, i, top->num, top->part_id, top->index, top->dist_top);
 		bottom = stvar->stack_a->tail;
+<<<<<<< HEAD
 		check_top_b(stvar);
 		ft_printf(YEL"|i:%i bottom:%i part_id:%i bottom->index:%i|\n"RESET, i, bottom->num, bottom->part_id, bottom->index);
+=======
+		ft_printf(YEL"|i:%i bottom:%i part_id:%i bottom->index:%i dist_top:%i|\n"RESET, i, bottom->num, bottom->part_id, bottom->index, bottom->dist_top);
+>>>>>>> b010f318bbccb06c56a10dacb3dfc12257f63979
 		if (top->part_id == i || bottom->part_id == i)
 		{
 			if (top->part_id == i && bottom->part_id == i)
@@ -412,7 +430,7 @@ char	*fastest_rotate(t_pw_var *stvar, char c, int index)
 	// i = (len % 2) ? ((len + 1) / 2) : len / 2;
 	i = (len % 2) ? ((len / 2) + 1) : len / 2;
 	// ft_printf("len:%i\t i:%i\n", len, i);
-	// ft_printf("char:%c\tindex:%i\n", c, index);
+	ft_printf("char:%c\tindex:%i\t i:%i\n", c, index, i);
 	// if (index <= i)
 	if (index < i)
 		return (c == 'a' ? RA : RB);

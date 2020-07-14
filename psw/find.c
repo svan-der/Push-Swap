@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:07:02 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/11 17:24:15 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/13 22:53:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,21 @@ char	*find_pos(t_pw_var *stvar, t_stack *current, t_stack *temp, int *j)
 	instr = NULL;
 	while (temp && temp->next)
 	{
+		ft_printf("j is:%i\n", *j);
+		ft_printf("temp->num:%i temp->next->num:%i total:%i\n", temp->num, temp->next->num, stvar->argc - stvar->index);
 		if (temp->num > current->num && temp->next->num < current->num)
 		{
+			ft_printf("num is:%i\n", ((stvar->argc - stvar->index) - *j));
+			// instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));
+			// instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));
 			instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));
-			ft_printf(YEL"INSL:%s J:%i\n"RESET, instr, *j);
+			ft_printf(YEL"INSL:%s index:%i j:%i\n"RESET, instr, ((stvar->argc - stvar->index) - *j), *j);
 			return (instr);
 		}
 		*j += 1;
 		temp = temp->next;
 	}
+	*j = 0;
 	return (instr);
 }
 

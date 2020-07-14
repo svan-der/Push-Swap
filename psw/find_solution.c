@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:14:33 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/11 18:34:24 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/13 22:04:46 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,11 +194,17 @@ void	f_double_solution(t_pw_var *stvar, char *instr, int i)
 	ft_printf("instr:%s i:%i\n", instr, i);
 	if (ft_strnequ(instr, RR, 2))
 	{
+		ft_printf("FOUND RRR\n");
+		print_stack_list(stvar->stack_a, 'a');
+		print_stack_list(stvar->stack_b, 'b');
 		ft_printf(CYN"INSTR:RRR num:%i\n"RESET, i);
 		do_op(stvar, RRR, 'a', i);
+		print_stack_list(stvar->stack_b, 'b');
+		print_stack_list(stvar->stack_a, 'a');
 	}
-	else if (ft_strnequ(instr, "R", 1))
+	else if (instr[0] == 'r')
 	{
+		ft_printf("FOUND RR\n");
 		ft_printf(CYN"INSTR:RR num:%i\n"RESET, i);
 		do_op(stvar, RR, 'a', i);
 	}
@@ -209,7 +215,7 @@ int		check_dble(t_pw_var *stvar, char *oper_a, char *oper_b, int tot)
 	int ret;
 
 	ret = 0;
-	ft_printf(GRN"oper_a:%s oper_b:%s tot:%i\n"RESET, oper_a, oper_b, tot);
+	// ft_printf(GRN"oper_a:%s oper_b:%s tot:%i\n"RESET, oper_a, oper_b, tot);
 	if ((ft_strequ(oper_a, RRA) && ft_strequ(oper_b, RRB)) || (ft_strequ(oper_a, RA)
 		&& ft_strequ(oper_b, RB)))
 		ret = tot;
