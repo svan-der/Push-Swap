@@ -35,6 +35,11 @@ typedef struct		s_part
 	struct s_part	*next;
 }					t_part;
 
+
+
+char	*find_solution(t_pw_var *stvar, t_stack *current, char *oper);
+t_stack *find_high(t_pw_var *stvar, char c, int *index);
+void	check_top_b(t_pw_var *stvar);
 void	sort_short_opts(t_pw_var *stvar);
 
 void	f_double_solution(t_pw_var *stvar, char *instr, int i);

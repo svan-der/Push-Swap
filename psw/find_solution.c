@@ -86,7 +86,7 @@ char	*find_solution(t_pw_var *stvar, t_stack *current, char *oper)
 		// ft_printf("ret is:%i\n", ret);
 		if (ret == top_next && ret != top)
 		{
-			// ft_printf("SWAP\n");
+			ft_printf("SWAP\n");
 			if (oper == SA)
 				return (RRR);
 			do_op(stvar, SB, 'b', 1);
@@ -97,7 +97,7 @@ char	*find_solution(t_pw_var *stvar, t_stack *current, char *oper)
 				i = stvar->index - current->dist_top;
 			if (i == 1)
 				return (RRR);
-			// ft_printf("REVERSE ROT\n");
+			ft_printf("REVERSE ROT\n");
 			do_op(stvar, RRB, 'b', 1);
 			return (RR);
 		}
@@ -152,6 +152,7 @@ void	find_part(t_pw_var *stvar, int i)
 {
 	t_stack *bottom;
 	t_stack *top;
+	char	*instr;
 	int ret;
 	int j;
 
@@ -165,17 +166,27 @@ void	find_part(t_pw_var *stvar, int i)
 	// ft_printf(CYN"ret is:%i\n"RESET, ret);
 	if (ret == 0)
 	{
+		instr = fastest_rotate(stvar, 'a', top->dist_top);
+		print_stack_list(stvar->stack_a, 'a');
+		do_op(stvar, instr, 'a', top->dist_top);
+		print_stack_list(stvar->stack_a, 'a');
+		do_op(stvar, PB, 'a', top->dist_top);
 		ft_printf("SORT BASED ON TOP:%i\n", top->num);
-		sort_based_on_top(stvar, top);
+		// sort_based_on_top(stvar, top);
 	}
 	else if (ret != 0)
 	{
+		instr = fastest_rotate(stvar, 'a', bottom->dist_top);
+		print_stack_list(stvar->stack_a, 'a');
+		do_op(stvar, instr, 'b', stvar->argc - stvar->index);
+		print_stack_list(stvar->stack_a, 'a');
+		do_op(stvar, PB, 'b', 1);
 		ft_printf("SORT BASED ON BOTTOM:%i\n", bottom->num);
-		sort_based_on_bottom(stvar, bottom);
+		// sort_based_on_bottom(stvar, bottom);
 	}
+	find_solution(stvar, stvar->stack_b, NULL);
 	// if (i == 1)
 	// 	j = presort_stack_b(stvar, top, NULL, 0);
-	do_op(stvar, PB, 'b', 1);
 }
 
 void	f_double_solution(t_pw_var *stvar, char *instr, int i)

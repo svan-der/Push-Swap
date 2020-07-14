@@ -232,27 +232,39 @@ void	sort_top_bottom(t_pw_var *stvar, int i, t_stack *top, t_stack *bottom)
 		{
 			// ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, stvar->index - bottom->dist_top);
 			j = stvar->index - bottom->dist_top;
+			do_op(stvar, instr, 'a', j);
+			do_op(stvar, PB, 'a', 1);
+			find_solution(stvar, bottom, instr);
 			// instr = check_double(stvar, instr, stvar->index - bottom->dist_top, bottom);
 			// do_op(stvar, instr, 'a', stvar->index - bottom->dist_top);
 		}
 		else if (i == 1)
 		{
-			// find_solution(stvar, top, NULL);
-			ret = presort_stack_b(stvar, top, NULL, 0);
+			do_op(stvar, PB, 'a', 1);
+			find_solution(stvar, top, NULL);
+			// ret = presort_stack_b(stvar, top, NULL, 0);
 		}
 		else
 		{
 			// ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);
-			// find_solution(stvar, bottom, instr);
 			j = bottom->dist_top;
-		}
-		ret = presort_stack_b(stvar, bottom, instr, j);
-		if (ret > 0)
-		{
-			ft_printf(YEL"do_op rest INSTR:%s NUM:%i\n"RESET, instr, j);
 			do_op(stvar, instr, 'a', j);
+			do_op(stvar, PB, 'a', 1);
+			find_solution(stvar, bottom, instr);
 		}
+		// ret = presort_stack_b(stvar, bottom, instr, j);
+		// if (ret > 0)
+		// {
+		// 	ft_printf(YEL"do_op rest INSTR:%s NUM:%i\n"RESET, instr, j);
+		// 	do_op(stvar, instr, 'a', j);
+		// }
 	}
+	else
+	{
+		do_op(stvar, PB, 'a', 1);
+		find_solution(stvar, top, NULL);
+	}
+	
 }
 
 void	sort_bottom(t_pw_var *stvar, t_stack *bottom)
@@ -263,27 +275,59 @@ void	sort_bottom(t_pw_var *stvar, t_stack *bottom)
 
 	j = 0;
 	instr = fastest_rotate(stvar, 'a', bottom->dist_top);
-	// ft_printf(RED"instr is:%s\n"RESET, instr);
+	ft_printf(RED"instr is:%s dist_top:%i\n"RESET, instr, bottom->dist_top);
 	if (ft_strnequ(instr, RR, 2))
 	{
+		print_stack_list(stvar->stack_b, 'b');
+		do_op(stvar, instr, 'a', stvar->index - bottom->dist_top);
+		print_stack_list(stvar->stack_a, 'a');
+		do_op(stvar, PB, 'a', 1);
+		print_stack_list(stvar->stack_b, 'b');
+		find_solution(stvar, bottom, NULL);
+		print_stack_list(stvar->stack_a, 'a');
 		// find_solution(stvar, bottom, RR);
-		i = stvar->index - bottom->dist_top;
+		// i = stvar->index - bottom->dist_top;
 		// instr = check_double(stvar, instr, stvar->index - bottom->dist_top, bottom);
 		// do_op(stvar, instr, 'a', stvar->index - bottom->dist_top);
 	}
 	else
 	{
+		do_op(stvar, instr, 'a', bottom->dist_top);
+		do_op(stvar, PB, 'a', 1);
 		// ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);
-		// find_solution(stvar, bottom, instr);
-		i = bottom->dist_top;
+		find_solution(stvar, bottom, instr);
+		// i = bottom->dist_top;
 		// instr = check_double(stvar, instr, bottom->dist_top, bottom);
 		// do_op(stvar, instr, 'a', bottom->dist_top);
 	}
-	j = presort_stack_b(stvar, bottom, instr, i);
-	if (j > 0)
+	// j = presort_stack_b(stvar, bottom, instr, i);
+	// if (j > 0)
+	// {
+	// 	ft_printf(YEL"do_op rest INSTR:%s NUM:%i\n"RESET, instr, j);
+	// 	do_op(stvar, instr, 'a', j);
+	// }
+}
+
+void	check_top_b(t_pw_var *stvar)
+{
+	int i;
+	t_stack *temp;
+
+	if (stvar->stack_b && stvar->stack_b->next)
 	{
-		ft_printf(YEL"do_op rest INSTR:%s NUM:%i\n"RESET, instr, j);
-		do_op(stvar, instr, 'a', j);
+		i = stvar->argc - stvar->index;
+		set_min_max(stvar, 'b');
+		if (stvar->stack_b->num == stvar->max)
+			return ;
+		else
+		{
+			// temp = find_max(stvar->stack_b, stvar->max, &i);
+			print_stack_b(&stvar->stack_b, 1);
+			temp = find_high(stvar, 'b', &i);
+			ft_printf("num:%i temp->dist_top:%i\n", temp->num, temp->dist_top);
+			print_stack_b(&stvar->stack_b, 1);
+			fastest_rotate(stvar, 'b', temp->dist_top);
+		}
 	}
 }
 
@@ -301,10 +345,12 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 		ft_printf("\n\n");
 		print_stack_list(stvar->stack_a, 'a');
 		print_stack_list(stvar->stack_b, 'b');
+		ft_printf("j is:%i\n", j);
 		res = 0;
 		top = stvar->stack_a;
 		ft_printf(GRN"|i:%i top:%i part_id:%i top->index:%i|\n"RESET, i, top->num, top->part_id, top->index);
 		bottom = stvar->stack_a->tail;
+		check_top_b(stvar);
 		ft_printf(YEL"|i:%i bottom:%i part_id:%i bottom->index:%i|\n"RESET, i, bottom->num, bottom->part_id, bottom->index);
 		if (top->part_id == i || bottom->part_id == i)
 		{
@@ -313,6 +359,7 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 				ft_printf(CYN"OPTION 1\n"RESET);
 				if (j != 1)
 					res = calc_dist_top_b(stvar, top, bottom);
+				do_op(stvar, (instr = PB), 'b', 1);
 				sort_top_bottom(stvar, res, top, bottom);
 				// print_stack_list(stvar->stack_b, 'b');
 			}
@@ -321,7 +368,6 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 				ft_printf(BLU"OPTION 2\n"RESET);
 				sort_bottom(stvar, bottom);
 			}
-			do_op(stvar, (instr = PB), 'b', 1);
 			// print_stack_list(stvar->stack_b, 'b');
 		}
 		else if (top->part_id != i && bottom->part_id != i)
