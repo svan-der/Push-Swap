@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/11 18:33:14 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/15 20:58:16 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ typedef struct		s_part
 }					t_part;
 
 
-
+void	sort_top(t_pw_var *stvar, t_stack *top);
+void	sort_bottom(t_pw_var *stvar, t_stack *bottom);
+int		calc_shortest_dist_top(t_pw_var *stvar, t_stack *top, t_stack *bottom);
 char	*find_solution(t_pw_var *stvar, t_stack *current, char *oper);
 t_stack *find_high(t_pw_var *stvar, char c, int *index);
 void	check_top_b(t_pw_var *stvar);

@@ -28,7 +28,7 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 			{
 				ft_printf(CYN"OPTION 1\n"RESET);
 				if (j != 1)
-					res = calc_dist_top_b(stvar, top, bottom);
+					res = calc_shortest_dist_top(stvar, top, bottom);
 				sort_top_bottom(stvar, res, top, bottom);
 				// print_stack_list(stvar->stack_b, 'b');
 			}

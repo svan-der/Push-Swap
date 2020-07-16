@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:10:56 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/11 17:23:16 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/15 16:25:43 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ int			sort_short_stack(t_pw_var *stvar, int argc)
 	while (stvar->index != j)
 	{
 		if (stvar->stack_a->num < stvar->median)
-			ret = do_op(stvar, PB, 'a', 1);
+			ret = do_op(stvar, PB, 'b', 1);
 		else
 			ret = do_op(stvar, RA, 'a', 1);
 	}

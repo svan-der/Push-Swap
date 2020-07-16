@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/05 18:27:16 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/15 16:26:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,6 @@ void	sort_short_opts(t_pw_var *stvar)
 // 	}
 // }
 
-
 t_stack 	*find_high(t_pw_var *stvar, char c, int *index)
 {
 	t_stack	*current;
@@ -181,7 +180,7 @@ t_stack 	*find_high(t_pw_var *stvar, char c, int *index)
 
 	current = (c == 'a') ? stvar->stack_a : stvar->stack_b;
 	// print_stack_list(current, c);
-	// ft_printf("index find high:%i\n", *index);
+	ft_printf("index find high:%i\n", *index);
 	dist_top = 0;
 	while (current)
 	{
