@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/15 20:58:16 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/20 10:59:41 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	sort_short_opts(t_pw_var *stvar);
 
 void	f_double_solution(t_pw_var *stvar, char *instr, int i);
 int		check_dble(t_pw_var *stvar, char *op_a, char *op_b, int i);
-int		presort_stack_b(t_pw_var *stvar, t_stack *current, char *oper_a, int i);
+char	*presort_stack_b(t_pw_var *stvar, t_stack *current, int *i);
 
 int		calc_dist_top_b(t_pw_var *stvar, t_stack *top, t_stack *bottom);
 void	find_part(t_pw_var *stvar, int i);

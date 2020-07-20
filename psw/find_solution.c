@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:14:33 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/16 00:08:12 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/20 12:40:42 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,45 +75,39 @@ char	*find_solution(t_pw_var *stvar, t_stack *current, char *oper)
 		top_next = stvar->stack_b->next->num;
 		if (stvar->stack_b->next->next != NULL)
 			top_next_next = stvar->stack_b->next->next->num;
-		print_stack_b(&stvar->stack_b, 1);
-		ft_printf(YEL"top:%i, bottom:%i, top->next:%i\n"RESET, stvar->stack_b->num, bottom, top_next);
 		bottom = ft_abs(current->num - bottom);
 		top_next = ft_abs(current->num - top_next);
 		top_next_next = ft_abs(current->num - top_next_next);
-		ft_printf(GRN"bottom dist:%i, top->next dist:%i\n"RESET, bottom, top_next);
+		// ft_printf(GRN"bottom dist:%i, top->next dist:%i\n"RESET, bottom, top_next);
 		ret = top_next;
-		ft_printf("ret is:%i\n", ret);
-		ft_printf("top_next:%i\n", top_next);
-		if (stvar->stack_b->next->next != NULL)
-			ft_printf("top_next_next:%i\n", top_next_next);
-		ft_printf("bottom:%i\n", bottom);
+		// ft_printf("top_next:%i\n", top_next);
+		// if (stvar->stack_b->next->next != NULL)
+		// 	ft_printf("top_next_next:%i\n", top_next_next);
+		// ft_printf("bottom:%i\n", bottom);
 		if (stvar->stack_b->next->next != NULL && ret > top_next_next)
 		{
 			ret = top_next_next;
-			ft_printf("ret is:%i\n", ret);
+			// ft_printf("ret is:%i\n", ret);
 		}
 		if (ret > bottom)
 		{
 			ret = bottom;
-			ft_printf("ret is:%i\n", ret);
+			// ft_printf("ret is:%i\n", ret);
 		}
-		ft_printf("ret is:%i\n", ret);
+		// ft_printf("ret is:%i\n", ret);
 		if (ret == bottom && ret != stvar->stack_b->num && ret != top_next)
 		{
 			if (oper == RR)
 				i = stvar->index - current->dist_top;
-			// if (i == 1)
-			// 	return (RRR);
-			ft_printf("ROT\n");
+			// ft_printf("ROT\n");
 			do_op(stvar, RB, 'b', 1);
-			return (RR);
+			// print_stack_list(stvar->stack_b, 'b');
+			return (NULL);
 		}
 		else if (stvar->stack_b->next->next != NULL && ret == top_next_next && ret != top_next)
 		{
-			print_stack_b(&stvar->stack_b, 1);
-			ft_printf("SWAP\n");
-			if (oper)
-				ft_printf("oper:%s\n", oper);
+			// print_stack_b(&stvar->stack_b, 1);
+			// ft_printf("SWAP\n");
 			if (oper == SA)
 				return (RRR);
 			do_op(stvar, SB, 'b', 1);
@@ -137,10 +131,10 @@ void	sort_based_on_top(t_pw_var *stvar, t_stack *top)
 		// i = stvar->index - top->dist_top;
 		i = top->dist_top;
 	}
-	rest = presort_stack_b(stvar, top, instr, i);
+	// rest = presort_stack_b(stvar, top, instr, i);
 	if (rest > 0)
 	{
-		ft_printf(YEL"do_op rest INSTR:%s NUM:%i\n"RESET, instr, rest);
+		// ft_printf(YEL"do_op rest INSTR:%s NUM:%i\n"RESET, instr, rest);
 		do_op(stvar, instr, 'a', rest);
 	}
 }
@@ -157,10 +151,10 @@ void	sort_based_on_bottom(t_pw_var *stvar, t_stack *bottom)
 		i = stvar->index - bottom->dist_top;
 	else
 		i = bottom->dist_top;
-	rest = presort_stack_b(stvar, bottom, instr, i);
+	// rest = presort_stack_b(stvar, bottom, instr, i);
 	if (rest > 0)
 	{
-		ft_printf(YEL"do_op rest INSTR:%s NUM:%i\n"RESET, instr, rest);
+		// ft_printf(YEL"do_op rest INSTR:%s NUM:%i\n"RESET, instr, rest);
 		do_op(stvar, instr, 'a', rest);
 	}
 }
@@ -176,11 +170,11 @@ void	find_part(t_pw_var *stvar, int i)
 	j = 0;
 	// ft_printf("in find part\n");
 	top = find_top_part(stvar, i);
-	ft_printf(CYN"  top_num:%i part_id:%i dist_top:%i\n"RESET, top->num, top->part_id, top->dist_top);
+	// ft_printf(CYN"  top_num:%i part_id:%i dist_top:%i\n"RESET, top->num, top->part_id, top->dist_top);
 	bottom = find_bottom_part(stvar, i);
-	ft_printf(CYN"  bottom-num:%i part_id:%i dist_top:%i\n"RESET, bottom->num, bottom->part_id, bottom->dist_top);
+	// ft_printf(CYN"  bottom-num:%i part_id:%i dist_top:%i\n"RESET, bottom->num, bottom->part_id, bottom->dist_top);
 	ret = calc_shortest_dist_top(stvar, top, bottom);
-	ft_printf(CYN"ret is:%i\n"RESET, ret);
+	// ft_printf(CYN"dist_top < dist_bottom if ret == 0:%i\n"RESET, ret);
 	if (ret == 0)
 	{
 		sort_top(stvar, top);
@@ -192,7 +186,7 @@ void	find_part(t_pw_var *stvar, int i)
 		// ft_printf("push\n");
 		// do_op(stvar, PB, 'b', 1);
 		// print_stack_list(stvar->stack_a, 'a');
-		ft_printf("SORT BASED ON TOP:%i\n", top->num);
+		// ft_printf("SORT BASED ON TOP:%i\n", top->num);
 		// sort_based_on_top(stvar, top);
 	}
 	else if (ret != 0)
@@ -212,28 +206,28 @@ void	find_part(t_pw_var *stvar, int i)
 		// sort_based_on_bottom(stvar, bottom);
 	}
 	// find_solution(stvar, stvar->stack_b, NULL);
-	ft_printf("finished\n");
+	// ft_printf("finished\n");
 	// if (i == 1)
 	// 	j = presort_stack_b(stvar, top, NULL, 0);
 }
 
 void	f_double_solution(t_pw_var *stvar, char *instr, int i)
 {
-	ft_printf("instr:%s i:%i\n", instr, i);
+	// ft_printf("instr:%s i:%i\n", instr, i);
 	if (ft_strnequ(instr, RR, 2))
 	{
-		ft_printf("FOUND RRR\n");
-		print_stack_list(stvar->stack_a, 'a');
-		print_stack_list(stvar->stack_b, 'b');
-		ft_printf(CYN"INSTR:RRR num:%i\n"RESET, i);
+		// ft_printf("FOUND RRR\n");
+		// print_stack_list(stvar->stack_a, 'a');
+		// print_stack_list(stvar->stack_b, 'b');
+		// ft_printf(CYN"INSTR:RRR num:%i\n"RESET, i);
 		do_op(stvar, RRR, 'a', i);
-		print_stack_list(stvar->stack_b, 'b');
-		print_stack_list(stvar->stack_a, 'a');
+		// print_stack_list(stvar->stack_b, 'b');
+		// print_stack_list(stvar->stack_a, 'a');
 	}
 	else if (instr[0] == 'r')
 	{
-		ft_printf("FOUND RR\n");
-		ft_printf(CYN"INSTR:RR num:%i\n"RESET, i);
+		// ft_printf("FOUND RR\n");
+		// ft_printf(CYN"INSTR:RR num:%i\n"RESET, i);
 		do_op(stvar, RR, 'a', i);
 	}
 }
@@ -243,10 +237,13 @@ int		check_dble(t_pw_var *stvar, char *oper_a, char *oper_b, int tot)
 	int ret;
 
 	ret = 0;
-	// ft_printf(GRN"oper_a:%s oper_b:%s tot:%i\n"RESET, oper_a, oper_b, tot);
+	if (oper_a && oper_b)
+		// ft_printf(GRN"oper_a:%s oper_b:%s tot:%i\n"RESET, oper_a, oper_b, tot);
 	if ((ft_strequ(oper_a, RRA) && ft_strequ(oper_b, RRB)) || (ft_strequ(oper_a, RA)
 		&& ft_strequ(oper_b, RB)))
 		ret = tot;
+	else
+		ret = -1;
 	// ft_printf("ret is:%i\n", ret);
 	if (ret > 0)
 		f_double_solution(stvar, oper_b, ret);

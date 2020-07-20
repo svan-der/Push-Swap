@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/15 16:26:13 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/17 18:56:30 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ t_stack 	*find_high(t_pw_var *stvar, char c, int *index)
 
 	current = (c == 'a') ? stvar->stack_a : stvar->stack_b;
 	// print_stack_list(current, c);
-	ft_printf("index find high:%i\n", *index);
+	// ft_printf("index find high:%i\n", *index);
 	dist_top = 0;
 	while (current)
 	{
@@ -276,20 +276,21 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 	// ft_printf("received parts\n");
 	// ft_printf("part_num:%i index:%i\n", part_num, i);
 	// print_stack_list(stvar->stack_a, 'a');
+	part_index == 1;
 	while (part_index != 0)
 	{
-		part_index--;
 		// ft_printf(BLU"ITERATION:%i\n"RESET, part_index);
+		part_index--;
+		// ft_printf(YEL"part_num:%i i:%i\n"RESET, part_num, i);
 		if (part_index == 0)
 		{
 			part_num = stvar->index;
-			// ft_printf(YEL"part_num:%i\n"RESET, part_num);
 		}
 		part_sort(stvar, part_num, i);
 		// if (part_index == 0)
 		// {
 			// print_stack_list(stvar->stack_a, 'a');
-		// 	print_stack_list(stvar->stack_b, 'b');
+			// print_stack_list(stvar->stack_b, 'b');
 		// }
 		i++;
 	}
