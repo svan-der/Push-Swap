@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/05 17:03:01 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/20 23:35:56 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,18 +92,46 @@ void				print_inst_list(t_inst *instr)
 	t_inst			*temp;
 
 	temp = instr;
-	// ft_printf("ptr instructions is:%p\n", instr);
 	// ft_printf("instruction is:%s\n", instr->operation);
 	ft_printf("Linked List with instructions\n");
-	ft_printf("-------------------------------\n");
-	ft_printf("|operation\tcur\t\tprev\t\tnext\t\t\toption\n");
-	ft_printf("--------------------------|\n");
+	ft_printf("------------------------------------------------------------------------------------------------\n");
+	ft_printf("|operation\tcur\tprev\t\tnext\t\toption|\n");
+	ft_printf("------------------------------------------------------------------------------------------------\n");
 	while (temp != NULL)
 	{
-		ft_printf("|%s\t\t%p\t%p\t\t%p\t\t\t%d|\n", temp->operation, temp, temp->prev, temp->next, temp->option);
+		ft_printf("|\033[01;33m%s\033[0m\t%p\t%p\t\t%p\t\t%d|\n", temp->operation, temp, temp->prev, temp->next, temp->option);
 		temp = temp->next;
 	}
-	ft_printf("-----------\n");
+	ft_printf("------------------------------------------------------------------------------------------------\n");
+}
+
+void				print_tail_inst(t_inst *tail)
+{
+	t_inst *temp;
+
+	temp = tail;
+	// ft_printf("going to print tail\n");
+	// ft_printf("temp->num:%d\n", temp->num);
+	ft_printf("\n     Tail instruction list and prev       \n");
+	ft_printf("--------------------------------------------");
+	ft_printf("--------------------------------------------\n");
+	ft_printf("|tail->prev\t\toperation\ttail\t\t\toperation|");
+	ft_printf("\n");
+	while (temp != NULL)
+	{
+		if (temp->prev)
+			ft_printf("|\033[01;33m%p\033[0m\t\t\e[1;31m%s\033[0m\t\t\e[1;92m%p\033[0m\t\t\e[1;34m%s\033[0m|", temp->prev, temp->prev->operation, temp, temp->operation);
+		else
+		{
+			ft_printf("|\033[01;33m%p\033[0m\t\t\e[1;31m%p\033[0m\t\t\e[1;92m%p\033[0m\t\t\e[1;34m%s\033[0m|", NULL, NULL, temp, temp->operation);
+		}
+		ft_printf("\n");
+		temp = temp->prev;
+		// ft_printf("temp:%p oper:%s\n", temp, temp->operation);
+	}
+	ft_printf("---------------------------------------------");
+	ft_printf("---------------------------------------------\n");
+	ft_printf("									   \n");
 }
 
 void				print_tail(t_stack *tail)

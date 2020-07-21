@@ -6,56 +6,87 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:07:02 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/20 12:42:27 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/21 03:28:07 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+// // Last good one
+// void	find_min(t_stack *current, int min, int *j)
+// {
+// 	// ft_printf("SMALLER THAN MIN\n");
+// 	while (current && current->num != min)
+// 	{
+// 		*j += 1;
+// 		// ft_printf("current num:%i max:%i\n", current->num, min);
+// 		// ft_printf("j is:%i\n", *j);
+// 		current = current->next;
+// 	}
+// }
+
+// // last good one
+// void	find_max(t_stack *current, int max, int *j)
+// {
+// 	// ft_printf("BIGGER THAN MAX\n");
+// 	// ft_printf("current num:%i max:%i\n", current->num, max);
+// 	while (current && current->num != max)
+// 	{
+// 		*j += 1;
+// 		// ft_printf("j is:%i\n", *j);
+// 		current = current->next;
+// 	}
+// }
+
 void	find_max(t_stack *current, int max, int *j)
 {
 	// ft_printf("BIGGER THAN MAX\n");
 	// ft_printf("current num:%i max:%i\n", current->num, max);
-	while (current && current->num != max)
+	*j = 1;
+	while (current && current->next)
 	{
 		*j += 1;
 		// ft_printf("j is:%i\n", *j);
+		if (current->num == max)
+			return ;
 		current = current->next;
 	}
+	*j = 0;
 }
 
 void	find_min(t_stack *current, int min, int *j)
 {
 	// ft_printf("SMALLER THAN MIN\n");
-	while (current && current->num != min)
+	*j = 1;
+	while (current && current->next)
 	{
 		*j += 1;
+		// ft_printf("current num:%i max:%i\n", current->num, min);
 		// ft_printf("j is:%i\n", *j);
+		if (current->num == min)
+			return ;
 		current = current->next;
 	}
+	*j = 0;
 }
 
 char	*find_pos(t_pw_var *stvar, t_stack *current, t_stack *temp, int *j)
 {
 	char *instr;
+	int		i;
 
 	instr = NULL;
 	// ft_printf("FIND POSITION\n");
 	// ft_printf("j is:%i\n", *j);
+	*j = 1;
 	while (temp && temp->next)
 	{
 		// ft_printf("temp->num:%i temp->next->num:%i total:%i\n", temp->num, temp->next->num, stvar->argc - stvar->index);
 		if (temp->num > current->num && temp->next->num < current->num)
 		{
-			// ft_printf("num is:%i\n", ((stvar->argc - stvar->index) - *j));
-			// instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));
-			// instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));
 			// ft_printf("j is:%i\n", *j);
-			if (*j == 1)
-				return (SB);
-				// instr = SB;
-			instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));
-			// ft_printf(YEL"INSL:%s index:%i j:%i\n"RESET, instr, ((stvar->argc - stvar->index) - *j), *j);
+			instr = fastest_rotate(stvar, 'b', j);
+			// ft_printf(YEL"INSL:%s index:%i j:%i\n"RESET, instr, i, *j);
 			return (instr);
 		}
 		*j += 1;
@@ -131,6 +162,6 @@ char	*find_low(t_pw_var *stvar, char c, int *index)
 	{
 		if (dist_top == 1)
 			return (c == 'a' ? SA : SB);
-		return (fastest_rotate(stvar, c, dist_top));
+		return (fastest_rotate(stvar, c, &dist_top));
 	}
 }

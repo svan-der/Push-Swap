@@ -6,13 +6,33 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/02 18:10:20 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/20 23:16:31 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 #include "../includes/psw_env.h"
 
+void		add_inst_tail(t_inst **inst_lst)
+{
+	t_inst *tail;
+
+	tail = *inst_lst;
+	while (tail && tail->next != NULL)
+	{
+		// ft_printf("ins:%s\n", tail->operation);
+		tail = tail->next;
+	}
+	if (tail)
+	{
+		if (tail && tail->prev)
+			tail->prev = tail->prev;
+		else
+			tail->prev = NULL;
+		(*inst_lst)->tail = tail;
+		// ft_printf("ins:%s\n", (*inst_lst)->tail->operation);
+	}
+}
 
 void		add_tail(t_stack **stack)
 {

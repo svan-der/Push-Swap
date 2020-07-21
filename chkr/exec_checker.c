@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:34:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/29 11:42:15 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/21 11:43:04 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		execute_instruction(t_pw_var *stvar)
 		// 	ft_printf("option is:%d\n", temp->option);
 		// ft_printf("ptr temp is:%p\n", temp);
 	}
+	ft_printf("return exec is:%i\n", ret);
 	return (ret);
 }
 
@@ -100,8 +101,10 @@ int		get_instruction(t_pw_var *stvar)
 		ret = get_next_line(0, &line);
 		// ft_printf("ret is:%d\n", ret);
 		check_instruction(&index, line, &valid);
+		if (line)
+			ft_printf("line is:%s\n", line);
 		// ft_printf("instr is:%s\n\n", stvar->inst_lst->option);
-		// ft_printf("valid is:%d\n", valid);
+		ft_printf("valid is:%d\n", valid);
 		if (ret == 0 || valid == 0)
 			break ;
 		if (ret == -1 || valid == -1)
@@ -109,10 +112,11 @@ int		get_instruction(t_pw_var *stvar)
 		// if (index)
 		// 	ft_printf("option is:%d\n", index);
 		ret = put_instruction(&stvar->inst_lst, index, line);
+		// ft_printf("ret is:%i\n", ret);
 		// ft_printf("option is:%d\n", (*inst)->option);
 		// ft_printf("instr is:%s\n", inst->operation);
 		// if (stvar->inst_lst->option)
-		// 	ft_printf("instr is:%s\n", stvar->inst_lst->operation);
+		// ft_printf("instr is:%s\n", stvar->inst_lst->operation);
 		free(line);
 		index = 0;
 		line = NULL;
@@ -121,7 +125,7 @@ int		get_instruction(t_pw_var *stvar)
 	}
 	if (ret >= 0 && valid >= 0)
 		ret = execute_instruction(stvar);
-	// ft_printf("return is:%d\n", ret);
+	ft_printf("return is:%d\n", ret);
 	// ft_printf("ptr inst is:%p\n", inst);
 	// ft_printf("ptr inst is:%p\n", *inst);
 	// ft_printf("ptr inst is:%p\n", stvar->inst_lst);

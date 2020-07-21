@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/17 18:56:30 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/20 18:55:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,12 +241,12 @@ void	push_back_part(t_pw_var *stvar)
 		}
 		else if (current->dist_top > 1)
 		{
-			instr = fastest_rotate(stvar, 'b', current->dist_top);
+			instr = fastest_rotate(stvar, 'b', &current->dist_top);
+			// print_stack_list(stvar->stack_b, 'b');
+			// ft_printf("num:%i dist_top:%i\n", current->num, current->dist_top);
 			if (ft_strnequ(instr, RR, 2))
 			{
-				// ft_printf("instr:%s index:%i\n", instr, total - (current->dist_top - 1));
-				do_op(stvar, instr, 'a', total - (current->dist_top - 1));
-				// print_stack_list(stvar->stack_b, 'b');
+				do_op(stvar, instr, 'a', current->dist_top);
 			}
 			else
 			{

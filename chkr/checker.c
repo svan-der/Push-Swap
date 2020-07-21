@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:44:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/04 17:36:23 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/21 04:23:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int		main(int argc, char **argv)
 	{
 		str = argv[i];
 		valid = check_argv(str, &stvar);
-		// ft_printf("stvar->stack:num:%d\n", stvar.stack_a->num);
 		if (valid == -1)
 		{
 			error_handler(valid);
@@ -39,7 +38,6 @@ int		main(int argc, char **argv)
 		i++;
 	}
 	valid = check_dup(&(stvar.stack_a));
-	// ft_printf("Valid is:%d\n", valid);
 	// print_stack_list(stvar.stack_a, 'a');
 	// ft_printf("valid is:%d\n", valid);
 	// print_stack_list(stvar.stack_a, 'a');
@@ -49,7 +47,8 @@ int		main(int argc, char **argv)
 		return (ft_exit(&stvar));
 	}
 	ret = get_instruction(&stvar);
-	// ft_printf("ret is:%d\n", ret);
+	ft_printf("ret is:%d\n", ret);
+	// ft_putstr_fd("ret is s", 2);
 	if (ret == -1)
 	{
 		error_handler(ret);

@@ -1,0 +1,16 @@
+Test   1	[[0;32m OK [0m]	for 100   random numbers with  [1;33m756 (< 900) [0m   operations
+Test   2	[[0;32m OK [0m]	for 100   random numbers with  [1;33m767 (< 900) [0m   operations
+Test   3	[[0;32m OK [0m]	for 100   random numbers with  [1;33m733 (< 900) [0m   operations
+Test   4	[[0;32m OK [0m]	for 100   random numbers with  [1;33m736 (< 900) [0m   operations
+Test   5	[[0;32m OK [0m]	for 100   random numbers with  [1;33m743 (< 900) [0m   operations
+Test   6	[[0;32m OK [0m]	for 100   random numbers with  [1;33m771 (< 900) [0m   operations
+Test   7	[[0;32m OK [0m]	for 100   random numbers with  [1;33m789 (< 900) [0m   operations
+Test   8	[[0;32m OK [0m]	for 100   random numbers with  [1;33m701 (< 900) [0m   operations
+Test   9	[[0;32m OK [0m]	for 100   random numbers with  [1;33m759 (< 900) [0m   operations
+Test   10	[[0;32m OK [0m]	for 100   random numbers with  [1;33m749 (< 900) [0m   operations
+Max operations : 789 in Test 7
+Yellow tests for 100 : 10
+Green tests for 100 : 0
+Red tests for 500 : 0
+Yellow tests for 500 : 0
+Green tests for 500 : 0
