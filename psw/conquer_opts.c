@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/21 03:59:31 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/21 13:55:47 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,7 +324,8 @@ void	sort_top(t_pw_var *stvar, t_stack *top)
 	char	*instr_b;
 	int		i;
 	int		j;
-	
+	int		ret;
+
 	instr = fastest_rotate(stvar, 'a', &top->dist_top);
 	// ft_printf("top->dist_top:%i\n", top->dist_top);
 	// ft_printf("rotate\n");
@@ -338,10 +339,12 @@ void	sort_top(t_pw_var *stvar, t_stack *top)
 	// 	// ft_printf("instr_b:%s i:%i\n", instr_b, i);
 	// 	// ft_printf("instr_b:%s j:%i instr:%s i:%i\n", instr_b, j, instr, i);
 	// 	do_op(stvar, instr_b, 'b', j);
-	// 	check_dble(stvar, instr, instr_b, ft_min(i, j));
+	// 	ret = check_dble(stvar, instr, instr_b, ft_min(i, j));
 	// }
+	if (ret != -1)
+		instr = NULL;
 	do_op(stvar, PB, 'b', 1);
-	find_solution(stvar, stvar->stack_b, instr);
+	find_solution(stvar, stvar->stack_b, NULL);
 	// print_stack_list(stvar->stack_b, 'b');
 }
 
@@ -410,7 +413,9 @@ void	sort_bottom(t_pw_var *stvar, t_stack *bottom)
 	// 	// if (ret == -1 && instr_b != NULL)
 	// }
 	do_op(stvar, PB, 'b', 1);
-	find_solution(stvar, stvar->stack_b, instr);
+	// if (ret != -1)
+	// 	instr = NULL;
+	find_solution(stvar, stvar->stack_b, NULL);
 	// print_stack_list(stvar->stack_b, 'b');
 	// find_solution(stvar, stvar->stack_b, NULL);
 
@@ -475,13 +480,14 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 			{
 				// ft_printf(BLU"=================== OPTION 2 ==============\n\n"RESET);
 				sort_top(stvar, top);
+				// find_part(stvar, i);
 			}
 			else if (bottom->part_id == i)
 			{
 				// ft_printf("\n");
 				// ft_printf(YEL"=================== OPTION 3 ==============\n\n"RESET);
-				sort_bottom(stvar, bottom);
-				// find_part(stvar, i);
+				// sort_bottom(stvar, bottom);
+				find_part(stvar, i);
 			}
 			// print_stack_list(stvar->stack_b, 'b');
 		}

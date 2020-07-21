@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:44:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/21 04:23:13 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/21 12:45:38 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		main(int argc, char **argv)
 		return (ft_exit(&stvar));
 	}
 	ret = get_instruction(&stvar);
-	ft_printf("ret is:%d\n", ret);
+	// ft_printf("ret is:%d\n", ret);
 	// ft_putstr_fd("ret is s", 2);
 	if (ret == -1)
 	{
