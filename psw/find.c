@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:07:02 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/20 12:42:27 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/22 15:35:30 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,32 +30,30 @@ void	find_min(t_stack *current, int min, int *j)
 	while (current && current->num != min)
 	{
 		*j += 1;
-		// ft_printf("j is:%i\n", *j);
+		// ft_printf("current->num:%i min:%i j is:%i\n", current->num, min, *j);
 		current = current->next;
 	}
 }
 
 char	*find_pos(t_pw_var *stvar, t_stack *current, t_stack *temp, int *j)
 {
-	char *instr;
+	char 	*instr;
 
 	instr = NULL;
 	// ft_printf("FIND POSITION\n");
 	// ft_printf("j is:%i\n", *j);
+	*j = 1;
 	while (temp && temp->next)
 	{
 		// ft_printf("temp->num:%i temp->next->num:%i total:%i\n", temp->num, temp->next->num, stvar->argc - stvar->index);
 		if (temp->num > current->num && temp->next->num < current->num)
 		{
-			// ft_printf("num is:%i\n", ((stvar->argc - stvar->index) - *j));
-			// instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));
-			// instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));
 			// ft_printf("j is:%i\n", *j);
-			if (*j == 1)
-				return (SB);
-				// instr = SB;
-			instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));
-			// ft_printf(YEL"INSL:%s index:%i j:%i\n"RESET, instr, ((stvar->argc - stvar->index) - *j), *j);
+			// if (*j == 1)
+			// 	return (SB);
+			instr = fastest_rotate(stvar, 'b', j);
+			// instr = fastest_rotate(stvar, 'b', j);
+			// ft_printf(YEL"INSL:%s j:%i\n"RESET, instr, *j);
 			return (instr);
 		}
 		*j += 1;
@@ -131,6 +129,6 @@ char	*find_low(t_pw_var *stvar, char c, int *index)
 	{
 		if (dist_top == 1)
 			return (c == 'a' ? SA : SB);
-		return (fastest_rotate(stvar, c, dist_top));
+		return (fastest_rotate(stvar, c, &dist_top));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/20 10:59:41 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/22 15:31:10 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	find_min(t_stack *current, int min, int *j);
 void	find_max(t_stack *current, int max, int *j);
 char	*check_double(t_pw_var *stvar, char *instr, int i, t_stack *n);
 void	set_index(t_stack **stack_a, int *sorted, int argc);
-char	*fastest_rotate(t_pw_var *stvar, char c, int index);
+char	*fastest_rotate(t_pw_var *stvar, char c, int *index);
+char	*fastest_rotate_b(t_pw_var *stvar, char c, int *index);
 int		sort_short_stack(t_pw_var *stvar, int argc);
 int		do_op(t_pw_var *stvar, char *str, char c, int i);
 int		presort_list(t_pw_var *stvar);

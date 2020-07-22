@@ -1,0 +1,104 @@
+[1mdiff --git a/psw/find.c b/psw/find.c[m
+[1mindex ae3b599..e97e0d2 100644[m
+[1m--- a/psw/find.c[m
+[1m+++ b/psw/find.c[m
+[36m@@ -6,56 +6,87 @@[m
+/*   By: svan-der <svan-der@student.codam.nl>         +#+                     */[m
+/*                                                   +#+                      */[m
+/*   Created: 2020/07/11 17:07:02 by svan-der      #+#    #+#                 */[m
+/*   Updated: [31m[-2020/07/20 12:42:27-][m[32m{+2020/07/21 03:28:07+}[m by svan-der      ########   odam.nl         */
+/*                                                                            */[m
+/* ************************************************************************** */[m
+
+#include "../includes/push_swap.h"[m
+
+[32m{+// // Last good one+}[m
+[32m{+// void	find_min(t_stack *current, int min, int *j)+}[m
+[32m{+// {+}[m
+[32m{+// 	// ft_printf("SMALLER THAN MIN\n");+}[m
+[32m{+// 	while (current && current->num != min)+}[m
+[32m{+// 	{+}[m
+[32m{+// 		*j += 1;+}[m
+[32m{+// 		// ft_printf("current num:%i max:%i\n", current->num, min);+}[m
+[32m{+// 		// ft_printf("j is:%i\n", *j);+}[m
+[32m{+// 		current = current->next;+}[m
+[32m{+// 	}+}[m
+[32m{+// }+}[m
+
+[32m{+// // last good one+}[m
+[32m{+// void	find_max(t_stack *current, int max, int *j)+}[m
+[32m{+// {+}[m
+[32m{+// 	// ft_printf("BIGGER THAN MAX\n");+}[m
+[32m{+// 	// ft_printf("current num:%i max:%i\n", current->num, max);+}[m
+[32m{+// 	while (current && current->num != max)+}[m
+[32m{+// 	{+}[m
+[32m{+// 		*j += 1;+}[m
+[32m{+// 		// ft_printf("j is:%i\n", *j);+}[m
+[32m{+// 		current = current->next;+}[m
+[32m{+// 	}+}[m
+[32m{+// }+}[m
+
+void	find_max(t_stack *current, int max, int *j)[m
+{[m
+	// ft_printf("BIGGER THAN MAX\n");[m
+	// ft_printf("current num:%i max:%i\n", current->num, max);[m
+	[32m{+*j = 1;+}[m
+	while (current && [31m[-current->num != max)-][m[32m{+current->next)+}[m
+	{[m
+		*j += 1;[m
+		// ft_printf("j is:%i\n", *j);[m
+		[32m{+if (current->num == max)+}[m
+[32m{+			return ;+}[m
+		current = current->next;[m
+	}[m
+	[32m{+*j = 0;+}[m
+}[m
+
+void	find_min(t_stack *current, int min, int *j)[m
+{[m
+	// ft_printf("SMALLER THAN MIN\n");[m
+	[32m{+*j = 1;+}[m
+	while (current && [31m[-current->num != min)-][m[32m{+current->next)+}[m
+	{[m
+		*j += 1;[m
+		[32m{+// ft_printf("current num:%i max:%i\n", current->num, min);+}[m
+		// ft_printf("j is:%i\n", *j);[m
+		[32m{+if (current->num == min)+}[m
+[32m{+			return ;+}[m
+		current = current->next;[m
+	}[m
+	[32m{+*j = 0;+}[m
+}[m
+
+char	*find_pos(t_pw_var *stvar, t_stack *current, t_stack *temp, int *j)[m
+{[m
+	char *instr;[m
+	[32m{+int		i;+}[m
+
+	instr = NULL;[m
+	// ft_printf("FIND POSITION\n");[m
+	// ft_printf("j is:%i\n", *j);[m
+	[32m{+*j = 1;+}[m
+	while (temp && temp->next)[m
+	{[m
+		// ft_printf("temp->num:%i temp->next->num:%i total:%i\n", temp->num, temp->next->num, stvar->argc - stvar->index);[m
+		if (temp->num > current->num && temp->next->num < current->num)[m
+		{[m
+[31m[-			// ft_printf("num is:%i\n", ((stvar->argc - stvar->index) - *j));-][m
+[31m[-			// instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));-][m
+[31m[-			// instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));-][m
+			// ft_printf("j is:%i\n", *j);[m
+[31m[-if (*j == 1)-][m
+[31m[-				return (SB);-][m
+[31m[-				// instr = SB;-][m			instr = fastest_rotate(stvar, 'b', [31m[-((stvar->argc - stvar->index) - *j));-][m[32m{+j);+}[m
+			// ft_printf(YEL"INSL:%s index:%i j:%i\n"RESET, instr, [31m[-((stvar->argc - stvar->index) - *j),-][m[32m{+i,+}[m *j);
+			return (instr);[m
+		}[m
+		*j += 1;[m
+[36m@@ -131,6 +162,6 @@[m [mchar	*find_low(t_pw_var *stvar, char c, int *index)[m
+	{[m
+		if (dist_top == 1)[m
+			return (c == 'a' ? SA : SB);[m
+		return (fastest_rotate(stvar, c, [31m[-dist_top));-][m[32m{+&dist_top));+}[m
+	}[m
+}[m

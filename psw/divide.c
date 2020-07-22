@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/17 18:56:30 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/22 15:59:58 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,11 +241,11 @@ void	push_back_part(t_pw_var *stvar)
 		}
 		else if (current->dist_top > 1)
 		{
-			instr = fastest_rotate(stvar, 'b', current->dist_top);
+			instr = fastest_rotate(stvar, 'b', &current->dist_top);
 			if (ft_strnequ(instr, RR, 2))
 			{
 				// ft_printf("instr:%s index:%i\n", instr, total - (current->dist_top - 1));
-				do_op(stvar, instr, 'a', total - (current->dist_top - 1));
+				do_op(stvar, instr, 'a', current->dist_top);
 				// print_stack_list(stvar->stack_b, 'b');
 			}
 			else
@@ -269,6 +269,7 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 	int part_index;
 	int	part_num;
 	int	i;
+	int	j;
 
 	i = 1;
 	part_index = assign_partitions(stvar, &part_num);
@@ -277,9 +278,16 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 	// ft_printf("part_num:%i index:%i\n", part_num, i);
 	// print_stack_list(stvar->stack_a, 'a');
 	part_index == 1;
+	j = (part_num - 1) / 2;
+	// ft_printf("j is:%i\n", j);
 	while (part_index != 0)
 	{
 		// ft_printf(BLU"ITERATION:%i\n"RESET, part_index);
+		stvar->median = (stvar->sorted[j]);
+		// print_array(stvar->sorted, stvar->argc);
+		// print_stack_list(stvar->stack_a, 'a');
+		// stvar->median = stvar->sorted[j];
+		// ft_printf("median:%i\n", stvar->median);
 		part_index--;
 		// ft_printf(YEL"part_num:%i i:%i\n"RESET, part_num, i);
 		if (part_index == 0)
@@ -293,6 +301,7 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 			// print_stack_list(stvar->stack_b, 'b');
 		// }
 		i++;
+		j += (part_num);
 	}
 	(void)sorted_list;
 	// ft_printf(GRN"total ins after presort:%i\n"RESET, stvar->total_ins);
