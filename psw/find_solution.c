@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:14:33 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/20 12:40:42 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/22 18:30:24 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ char	*find_solution(t_pw_var *stvar, t_stack *current, char *oper)
 		{
 			if (oper == RR)
 				i = stvar->index - current->dist_top;
+			// if (current->num > stvar->median)
+			// 	return (NULL);
 			// ft_printf("ROT\n");
 			do_op(stvar, RB, 'b', 1);
 			// print_stack_list(stvar->stack_b, 'b');
@@ -108,6 +110,8 @@ char	*find_solution(t_pw_var *stvar, t_stack *current, char *oper)
 		{
 			// print_stack_b(&stvar->stack_b, 1);
 			// ft_printf("SWAP\n");
+			if (current->num < stvar->median)
+				return (NULL);
 			if (oper == SA)
 				return (RRR);
 			do_op(stvar, SB, 'b', 1);
@@ -118,7 +122,7 @@ char	*find_solution(t_pw_var *stvar, t_stack *current, char *oper)
 
 void	sort_based_on_top(t_pw_var *stvar, t_stack *top)
 {
-	char 	*instr;
+	char	*instr;
 	int		rest;
 	int		i;
 

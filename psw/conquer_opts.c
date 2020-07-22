@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:49:34 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/20 12:59:40 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/22 18:30:51 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -342,7 +342,6 @@ void	sort_top(t_pw_var *stvar, t_stack *top)
 	// 	if (ret == -1 && instr_b != NULL)
 	// 		do_op(stvar, instr_b, 'b', i);
 	// }
-	
 	find_solution(stvar, top, instr);
 	// print_stack_list(stvar->stack_a, 'a');
 	// ft_printf("push\n");
@@ -520,6 +519,7 @@ void	part_sort(t_pw_var *stvar, int argc, int i)
 				// ft_printf("\n");
 				// ft_printf(YEL"=================== OPTION 3 ==============\n\n"RESET);
 				sort_bottom(stvar, bottom);
+				// find_part(stvar, i);
 			}
 			// print_stack_list(stvar->stack_b, 'b');
 		}
