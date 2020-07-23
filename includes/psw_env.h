@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/20 13:30:51 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/23 08:05:15 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct		s_inst
 	t_sort			option;
 	struct s_inst	*prev;
 	struct s_inst	*next;
-	// struct s_inst	*tail;
+	struct s_inst	*tail;
 }					t_inst;
 
 typedef struct		s_stack
@@ -121,6 +121,8 @@ t_stack				*fill_stack_begin(t_stack **stack, t_stack *new);
 ** instruction handling functions
 */
 
+void				print_tail_inst(t_inst *tail);
+void				add_inst_tail(t_inst **inst_lst);
 // int					get_instruction(t_pw_var *stvar);
 // void				put_instruction(t_inst **inst_lst, char *line);
 int					print_instructions(t_inst *inst_lst, int ret);
@@ -132,6 +134,8 @@ t_inst				*create_instruction(int i, char *line);
 ** print functions
 */
 
+
+t_inst				*inst_tail_delone(t_inst **inst_lst, char *instr, int i, int *j);
 void				add_tail(t_stack **stack);
 void				print_tail(t_stack *tail);
 

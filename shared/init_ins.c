@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:50:30 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/26 17:33:42 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/22 18:40:27 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,18 @@ t_inst	*create_instruction(int index, char *line)
 	inst->option = index;
 	inst->next = NULL;
 	return (inst);
+}
+
+void	ft_instaddend(t_inst **inst_lst, t_inst *new)
+{
+	t_inst *temp;
+
+	temp = *inst_lst;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp->next = new;
+	temp->next->prev = temp;
+	// new->prev = temp;
 }
 
 int		put_instruction(t_inst **inst_lst, int index, char *line)

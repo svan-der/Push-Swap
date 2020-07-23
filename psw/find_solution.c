@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:14:33 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/22 18:30:24 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/23 08:49:30 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,27 +94,28 @@ char	*find_solution(t_pw_var *stvar, t_stack *current, char *oper)
 			ret = bottom;
 			// ft_printf("ret is:%i\n", ret);
 		}
+		if (stvar->stack_b->next->next != NULL && ret == top_next_next)
+		{
+			// print_stack_b(&stvar->stack_b, 1);
+			// ft_printf("SWAP\n");
+			if (current->num <= stvar->median)
+				return (NULL);
+			if (oper == SA)
+				return (RRR);
+			do_op(stvar, SB, 'b', 1);
+		}
+		// && ret != top_next
 		// ft_printf("ret is:%i\n", ret);
-		if (ret == bottom && ret != stvar->stack_b->num && ret != top_next)
+		else if (ret == bottom && ret != top_next)
 		{
 			if (oper == RR)
 				i = stvar->index - current->dist_top;
-			// if (current->num > stvar->median)
+			// if (current->num >= stvar->median)
 			// 	return (NULL);
 			// ft_printf("ROT\n");
 			do_op(stvar, RB, 'b', 1);
 			// print_stack_list(stvar->stack_b, 'b');
 			return (NULL);
-		}
-		else if (stvar->stack_b->next->next != NULL && ret == top_next_next && ret != top_next)
-		{
-			// print_stack_b(&stvar->stack_b, 1);
-			// ft_printf("SWAP\n");
-			if (current->num < stvar->median)
-				return (NULL);
-			if (oper == SA)
-				return (RRR);
-			do_op(stvar, SB, 'b', 1);
 		}
 	}
 	return (NULL);
@@ -215,41 +216,193 @@ void	find_part(t_pw_var *stvar, int i)
 	// 	j = presort_stack_b(stvar, top, NULL, 0);
 }
 
+// void	f_double_solution(t_pw_var *stvar, char *instr, int i)
+// {
+// 	// ft_printf("instr:%s i:%i\n", instr, i);
+// 	if (ft_strnequ(instr, RR, 2))
+// 	{
+// 		// ft_printf("FOUND RRR\n");
+// 		// print_stack_list(stvar->stack_a, 'a');
+// 		// print_stack_list(stvar->stack_b, 'b');
+// 		// ft_printf(CYN"INSTR:RRR num:%i\n"RESET, i);
+// 		do_op(stvar, RRR, 'a', i);
+// 		// print_stack_list(stvar->stack_b, 'b');
+// 		// print_stack_list(stvar->stack_a, 'a');
+// 	}
+// 	else if (instr[0] == 'r')
+// 	{
+// 		// ft_printf("FOUND RR\n");
+// 		// ft_printf(CYN"INSTR:RR num:%i\n"RESET, i);
+// 		do_op(stvar, RR, 'a', i);
+// 	}
+// }
+
+void	ft_double_oper_lst(t_inst **tail, char *oper, int tot, int j)
+{
+	t_inst *temp;
+	char	*oper_b;
+	char	*oper_a;
+
+	temp = *tail;
+	if (ft_strequ(oper, RRR))
+	{
+		oper_a = RRA;
+		oper_b = RRB;
+	}
+	else if (ft_strequ(oper, RR))
+	{
+		oper_a = RA;
+		oper_b = RB;
+	}
+	else if (ft_strequ(oper, SS))
+	{
+		oper_a = SA;
+		oper_b = SB;
+	}
+	// ft_printf("temp->operation:%s oper_a:%s oper_b:%s oper:%s tot:%i j:%i\n", temp->operation, oper_a, oper_b, oper, tot, j);
+	while (tot && temp)
+	{
+		// ft_printf("i:%i\n", i);
+		if (ft_strequ(temp->operation, oper_b))
+		{
+			// ft_printf("equal to oper_b\n");
+			// ft_printf("temp->operation:%s oper_b:%s j:%i\n", temp->operation, oper_b, j);
+			if (j > 0)
+				j--;
+			else while (!ft_strequ(temp->operation, oper_a))
+			{
+				temp = temp->prev;
+				// ft_printf("temp->operation:%s oper_a:%s\n", temp->operation, oper_a);
+			}
+		}
+		else
+		{
+			// ft_printf("equal to oper_a\n");
+			// ft_printf("temp->operation:%s oper_a:%s j:%i\n", temp->operation, oper_a, j);
+			if (j > 0)
+			{
+				while (!ft_strequ(temp->operation, oper_b))
+					temp = temp->prev;
+				// ft_printf("temp->operation:%s oper_a:%s\n", temp->operation, oper_a);
+				j--;
+			}
+		}
+		// ft_printf("temp->operation:%s\n", temp->operation);
+		ft_strcpy(temp->operation, oper);
+		tot--;
+		temp = temp->prev;
+	}
+}
+
 void	f_double_solution(t_pw_var *stvar, char *instr, int i)
 {
+	t_inst 	*tail;
+	t_inst	*prev;
+	int		j;
+
+	tail = stvar->inst_lst->tail;
+	j = i;
 	// ft_printf("instr:%s i:%i\n", instr, i);
 	if (ft_strnequ(instr, RR, 2))
 	{
-		// ft_printf("FOUND RRR\n");
-		// print_stack_list(stvar->stack_a, 'a');
-		// print_stack_list(stvar->stack_b, 'b');
-		// ft_printf(CYN"INSTR:RRR num:%i\n"RESET, i);
-		do_op(stvar, RRR, 'a', i);
-		// print_stack_list(stvar->stack_b, 'b');
-		// print_stack_list(stvar->stack_a, 'a');
+		// ft_printf(YEL"FOUND RRR i:%i\n"RESET, i);
+		// print_inst_list(stvar->inst_lst);
+		// ft_printf("temp->prev:%s\n", temp->prev->operation);
+		tail = inst_tail_delone(&(stvar)->inst_lst->tail, instr, i, &j);
+		// ft_printf("j is:%i\n", j);
+		// print_inst_list(stvar->inst_lst);
+		ft_double_oper_lst(&stvar->inst_lst->tail, RRR, i, j);
+		// print_inst_list(stvar->inst_lst);
 	}
 	else if (instr[0] == 'r')
 	{
-		// ft_printf("FOUND RR\n");
-		// ft_printf(CYN"INSTR:RR num:%i\n"RESET, i);
-		do_op(stvar, RR, 'a', i);
+		// ft_printf(BLU"FOUND RR\n"RESET, i);
+		// print_inst_list(stvar->inst_lst);
+		tail = inst_tail_delone(&(stvar)->inst_lst->tail, instr, i, &j);
+		// ft_printf("j is:%i\n", j);
+		// print_inst_list(stvar->inst_lst);
+		ft_double_oper_lst(&stvar->inst_lst->tail, RR, i, j);
+		// print_inst_list(stvar->inst_lst);
+	}
+	else if (instr[0] == 's')
+	{
+		// ft_printf(MAG"FOUND SS\n"RESET, i);
+		// print_inst_list(stvar->inst_lst);
+		// ft_printf("temp->prev:%s\n", temp->prev->operation);
+		tail = inst_tail_delone(&(stvar)->inst_lst->tail, instr, i, &j);
+		// ft_printf("j is:%i\n", j);
+		// print_inst_list(stvar->inst_lst);
+		ft_double_oper_lst(&stvar->inst_lst->tail, SS, i, j);
+		// print_inst_list(stvar->inst_lst);
 	}
 }
+
+// void	check_list(t_pw_var *stvar, char *oper_b, int i)
+// {
+// 	t_inst *temp;
+// 	int		i;
+
+// 	temp = stvar->inst_lst;
+// 	if (ft_strnequ(oper_b, RR, 2))
+// 	{
+// 		ft_printf("FOUND RRR i:%i\n", i);
+// 		while (temp->prev != NULL && ft_strnequ(temp->prev->operation, RRA, 3))
+// 		{
+// 			i++;
+// 			temp = temp->prev;
+// 		}
+
+// 		// print_stack_list(stvar->stack_a, 'a');
+// 		// print_stack_list(stvar->stack_b, 'b');
+// 		// ft_printf(CYN"INSTR:RRR num:%i\n"RESET, i);
+// 		// do_op(stvar, RRR, 'a', i);
+// 		// print_stack_list(stvar->stack_b, 'b');
+// 		// print_stack_list(stvar->stack_a, 'a');
+// 	}
+// 	else if (oper_b[0] == 'r')
+// 	{
+
+// 	}
+// 	else if (ft_strnequ(oper_b, SB, 2)
+// 	{
+
+// 	}
 
 int		check_dble(t_pw_var *stvar, char *oper_a, char *oper_b, int tot)
 {
 	int ret;
 
 	ret = 0;
-	if (oper_a && oper_b)
-		// ft_printf(GRN"oper_a:%s oper_b:%s tot:%i\n"RESET, oper_a, oper_b, tot);
+	// if (oper_a && oper_b)
+	// 	ft_printf(GRN"oper_a:%s oper_b:%s tot:%i\n"RESET, oper_a, oper_b, tot);
 	if ((ft_strequ(oper_a, RRA) && ft_strequ(oper_b, RRB)) || (ft_strequ(oper_a, RA)
-		&& ft_strequ(oper_b, RB)))
+		&& ft_strequ(oper_b, RB)) || (ft_strequ(oper_a, SA) && ft_strequ(oper_b, SB)))
 		ret = tot;
 	else
 		ret = -1;
+		// check_list(stvar, oper_b, i);
 	// ft_printf("ret is:%i\n", ret);
 	if (ret > 0)
 		f_double_solution(stvar, oper_b, ret);
 	return (ret);
 }
+
+
+
+// int		check_dble(t_pw_var *stvar, char *oper_a, char *oper_b, int tot)
+// {
+// 	int ret;
+
+// 	ret = 0;
+// 	if (oper_a && oper_b)
+// 		// ft_printf(GRN"oper_a:%s oper_b:%s tot:%i\n"RESET, oper_a, oper_b, tot);
+// 	if ((ft_strequ(oper_a, RRA) && ft_strequ(oper_b, RRB)) || (ft_strequ(oper_a, RA)
+// 		&& ft_strequ(oper_b, RB)))
+// 		ret = tot;
+// 	else
+// 		ret = -1;
+// 	// ft_printf("ret is:%i\n", ret);
+// 	if (ret > 0)
+// 		f_double_solution(stvar, oper_b, ret);
+// 	return (ret);
+// }
