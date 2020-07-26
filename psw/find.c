@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:07:02 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/20 12:42:27 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/26 22:25:14 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	find_max(t_stack *current, int max, int *j)
 
 void	find_min(t_stack *current, int min, int *j)
 {
-	// ft_printf("SMALLER THAN MIN\n");
+	ft_printf("SMALLER THAN MIN\n");
 	while (current && current->num != min)
 	{
 		*j += 1;
@@ -40,8 +40,9 @@ char	*find_pos(t_pw_var *stvar, t_stack *current, t_stack *temp, int *j)
 	char *instr;
 
 	instr = NULL;
-	// ft_printf("FIND POSITION\n");
+	ft_printf("FIND POSITION\n");
 	// ft_printf("j is:%i\n", *j);
+	*j = 1;
 	while (temp && temp->next)
 	{
 		// ft_printf("temp->num:%i temp->next->num:%i total:%i\n", temp->num, temp->next->num, stvar->argc - stvar->index);
@@ -54,7 +55,7 @@ char	*find_pos(t_pw_var *stvar, t_stack *current, t_stack *temp, int *j)
 			if (*j == 1)
 				return (SB);
 				// instr = SB;
-			instr = fastest_rotate(stvar, 'b', ((stvar->argc - stvar->index) - *j));
+			instr = fastest_rotate(stvar, 'b', j);
 			// ft_printf(YEL"INSL:%s index:%i j:%i\n"RESET, instr, ((stvar->argc - stvar->index) - *j), *j);
 			return (instr);
 		}
@@ -117,11 +118,13 @@ char	*find_low(t_pw_var *stvar, char c, int *index)
 	dist_top = 0;
 	while (current)
 	{
+		// ft_printf("current->index:%i index:%i dist_top:%i\n", current->index, *index, dist_top);
 		if (current->index == *index)
 			break ;
 		dist_top++;
 		current = current->next;
 	}
+	// ft_printf("dist_top:%i\n", dist_top);
 	if (dist_top == 0)
 	{
 		*index = ((c == 'a')) ? *index + 1 : *index - 1;
@@ -131,6 +134,6 @@ char	*find_low(t_pw_var *stvar, char c, int *index)
 	{
 		if (dist_top == 1)
 			return (c == 'a' ? SA : SB);
-		return (fastest_rotate(stvar, c, dist_top));
+		return (fastest_rotate(stvar, c, &dist_top));
 	}
 }

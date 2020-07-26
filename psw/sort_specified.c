@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:10:56 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/15 16:25:43 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/26 22:26:30 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int		sort_five_stack(t_pw_var *stvar, char c, int argc)
 		ret = do_op(stvar, instr, c, 1);
 		if (ret == -1)
 			return (-1);
-		if (instr == PB || instr == PA)
+		if (ft_strnequ(instr, PB, 2) || ft_strnequ(instr, PA, 2))
 			j--;
 	}
 	if (c == 'b' && stvar->argc - stvar->index == 3)
@@ -144,7 +144,7 @@ int		sort_five_stack(t_pw_var *stvar, char c, int argc)
 	if (argc > 3 || c == 'b')
 	{
 		instr = (c == 'a' || stvar->sort_index == stvar->index) ? PA : PB;
-		argc = (c == 'a') ? argc - 3 : argc;
+		argc = (c == 'a') ? argc - 3 : stvar->argc - stvar->index;
 		ret = do_op(stvar, instr, c, argc);
 	}
 	return (ret);
@@ -158,18 +158,26 @@ int			sort_short_stack(t_pw_var *stvar, int argc)
 	ret = 1;
 	j = (argc % 2) ? ((argc + 1) / 2) : argc / 2;
 	argc = j;
+	// print_stack_list(stvar->stack_a, 'a');
 	while (stvar->index != j)
 	{
+		// ft_printf("index:%i j:%i\n", stvar->index, j);
 		if (stvar->stack_a->num < stvar->median)
 			ret = do_op(stvar, PB, 'b', 1);
 		else
 			ret = do_op(stvar, RA, 'a', 1);
 	}
+	// print_stack_list(stvar->stack_b, 'b');
+	// print_stack_list(stvar->stack_a, 'a');
 	ret = sort_five_stack(stvar, 'a', stvar->index);
+	// print_stack_list(stvar->stack_b, 'b');
+	// print_stack_list(stvar->stack_a, 'a');
 	if (ret != 1)
 		return (ret);
 	set_min_max(stvar, 'b');
 	ret = sort_five_stack(stvar, 'b', stvar->argc - stvar->index);
+	// print_stack_list(stvar->stack_b, 'b');
+	// print_stack_list(stvar->stack_a, 'a');
 	if (ret != 1)
 		return (ret);
 	return (ret);

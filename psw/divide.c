@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/22 17:40:07 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/26 20:56:05 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,11 +241,11 @@ void	push_back_part(t_pw_var *stvar)
 		}
 		else if (current->dist_top > 1)
 		{
-			instr = fastest_rotate(stvar, 'b', current->dist_top);
+			instr = fastest_rotate(stvar, 'b', &current->dist_top);
 			if (ft_strnequ(instr, RR, 2))
 			{
 				// ft_printf("instr:%s index:%i\n", instr, total - (current->dist_top - 1));
-				do_op(stvar, instr, 'a', total - (current->dist_top - 1));
+				do_op(stvar, instr, 'a', current->dist_top);
 				// print_stack_list(stvar->stack_b, 'b');
 			}
 			else
@@ -359,6 +359,8 @@ int		divide_list(t_pw_var *stvar)
 	// ft_printf("stvar->index:%i\tstvar->argc:%i\n", stvar->index, stvar->argc);
 	if (stvar->argc < 6)
 		return (sort_five_stack(stvar, 'a', stvar->index - stvar->sort_index));
+	// if (stvar->argc < 6)
+	// 	return (sort_five_stack(stvar, 'a', stvar->index));
 	// ft_printf("return after sorting:%i\n", ret);
 	else if (stvar->argc < 11)
 		return (sort_short_stack(stvar, ft_min_size(stvar->index, stvar->argc)));

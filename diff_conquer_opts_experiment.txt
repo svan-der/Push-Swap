@@ -1,0 +1,259 @@
+[1m[0m[1m───────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[1mmodified: psw/conquer_opts.c
+[1m───────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[36m[1m[38;5;13m@ psw/conquer_opts.c:12 @[1m[0m
+[1m[38;5;1m[1;31m/*   Updated: 2020/07/2[m[1;31;48;5;52m3 08:53:42[m[1;31m by svan-der      ########   odam.nl         */[m
+[0m[1m[38;5;2m[1;32m/*   Updated: 2020/07/2[m[1;32;48;5;22m2 16:11:05[m[1;32m by svan-der      ########   odam.nl         */[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:226 @[1m[1m[38;5;146m char	*presort_stack_b(t_pw_var *stvar, t_stack *current, int *i)[0m
+[1m[38;5;1m[1;31m	[m[1;31;48;5;52m*i = 0[m[1;31m;[m
+[0m[1m[38;5;2m[1;32m	[m[1;32;48;5;22m// ft_printf(MAG"IN PRESORT STACK_B\n"RESET)[m[1;32m;[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:229 @[1m[1m[38;5;146m char	*presort_stack_b(t_pw_var *stvar, t_stack *current, int *i)[0m
+[1m[38;5;2m[32m[m		[32m// ft_printf("\n\n");[m
+[0m[1m[38;5;2m[32m[m		[32m// ft_printf("go presort!!\n");[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:231 @[1m[1m[38;5;146m char	*presort_stack_b(t_pw_var *stvar, t_stack *current, int *i)[0m
+[1m[38;5;1m[31m		// ft_printf(CYN"IN PRESORT STACK_B\n"RESET);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:234 @[1m[1m[38;5;146m char	*presort_stack_b(t_pw_var *stvar, t_stack *current, int *i)[0m
+[1m[38;5;1m[1;31m		[m[1;31;48;5;52m// [m[1;31mset_min_max(stvar, 'b');[m
+[0m[1m[38;5;2m[1;32m		[m[1;32;48;5;22m[m[1;32mset_min_max(stvar, 'b');[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:245 @[1m[1m[38;5;146m char	*presort_stack_b(t_pw_var *stvar, t_stack *current, int *i)[0m
+[1m[38;5;1m[31m	if (*i == 1)[m
+[0m[1m[38;5;1m[31m		return (SB);[m
+[0m[1m[38;5;2m[32m[m	[32m// if (oper_b != NULL)[m
+[0m[1m[38;5;2m[32m[m	[32m// 	ft_printf(BLU" i is:%i oper_b:%s\n"RESET, *i, oper_b);[m
+[0m[1m[38;5;2m[32m[m	[32m// else[m
+[0m[1m[38;5;2m[32m[m	[32m// {[m
+[0m[1m[38;5;2m[32m[m	[32m// 	ft_printf(GRN" j:%i oper_b is NULL\n"RESET, j);[m
+[0m[1m[38;5;2m[32m[m	[32m// }[m
+[0m[1m[38;5;2m[32m[m	[32m// if (*i == 1)[m
+[0m[1m[38;5;2m[32m[m	[32m// 	return (SB);[m
+[0m[1m[38;5;2m[32m[m	[32m// ft_printf("median:%i\n", stvar->median);[m
+[0m[1m[38;5;2m[32m[m	[32mif (*i < 4)[m
+[0m[1m[38;5;2m[32m[m		[32mreturn (NULL);[m
+[0m[1m[38;5;2m[32m[m	[32mif (current->num < stvar->median)[m
+[0m[1m[38;5;2m[32m[m		[32mreturn (NULL);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:259 @[1m[1m[38;5;146m char	*presort_stack_b(t_pw_var *stvar, t_stack *current, int *i)[0m
+[1m[38;5;1m[31m		oper_b = fastest_rotate(stvar, 'b', stvar->index);[m
+[0m[1m[38;5;1m[31m	// if (oper_b)[m
+[0m[1m[38;5;1m[31m	// 	ft_printf("oper_b:%s i:%i\n", oper_b, *i);[m
+[0m[1m[38;5;2m[32m[m	[32m{[m
+[0m[1m[38;5;2m[32m[m		[32mif (*i == ((stvar->argc - stvar->index) - 1))[m
+[0m[1m[38;5;2m[32m[m		[32m{[m
+[0m[1m[38;5;2m[32m[m			[32m// ft_printf("equal to length\n");[m
+[0m[1m[38;5;2m[32m[m			[32mreturn (NULL);[m
+[0m[1m[38;5;2m[32m[m		[32m}[m
+[0m[1m[38;5;2m[32m[m		[32mif (oper_b == NULL)[m
+[0m[1m[38;5;2m[32m[m			[32moper_b = fastest_rotate_b(stvar, 'b', i);[m
+[0m[1m[38;5;2m[32m[m		[32m// ft_printf("i is:%i oper_b:%s\n", *i, oper_b);[m
+[0m[1m[38;5;2m[32m[m	[32m}[m
+[0m[1m[38;5;2m[32m[m	[32mif (*i == 1 && oper_b == NULL)[m
+[0m[1m[38;5;2m[32m[m		[32mreturn (SB);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:354 @[1m[1m[38;5;146m void	sort_top(t_pw_var *stvar, t_stack *top)[0m
+[1m[38;5;2m[32m[m	[32mint		j;[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:356 @[1m[1m[38;5;146m void	sort_top(t_pw_var *stvar, t_stack *top)[0m
+[1m[38;5;1m[1;31m	instr = fastest_rotate(stvar, 'a', [m[1;31;48;5;52m[m[1;31mtop->dist_top);[m
+[0m[1m[38;5;1m[1;31m	// ft_printf("[m[1;31;48;5;52mrotate\n"[m[1;31m);[m
+[0m[1m[38;5;2m[1;32m	instr = fastest_rotate(stvar, 'a', [m[1;32;48;5;22m&[m[1;32mtop->dist_top);[m
+[0m[1m[38;5;2m[1;32m	// ft_printf("[m[1;32;48;5;22mtop:%i dist_top:%i\n", top->num, top->dist_top[m[1;32m);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:359 @[1m[1m[38;5;146m void	sort_top(t_pw_var *stvar, t_stack *top)[0m
+[1m[38;5;1m[31m	do_op(stvar, PB, 'b', 1);[m
+[0m[1m[38;5;1m[31m	// print_stack_list(stvar->stack_b, 'b');[m
+[0m[7m[31m [m
+[1m[38;5;1m[31m	// instr_b = presort_stack_b(stvar, top, &i);[m
+[0m[1m[38;5;1m[31m	// if (instr_b != NULL)[m
+[0m[1m[38;5;1m[31m	// {[m
+[0m[1m[38;5;1m[31m	// 	ret = check_dble(stvar, instr, instr_b, ft_min(top->dist_top, i));[m
+[0m[1m[38;5;1m[31m	// 	if (ret == -1 && instr_b != NULL)[m
+[0m[1m[38;5;1m[31m	// 		do_op(stvar, instr_b, 'b', i);[m
+[0m[1m[38;5;1m[31m	// }[m
+[0m[1m[38;5;1m[31m	find_solution(stvar, top, instr);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:361 @[1m[1m[38;5;146m void	sort_top(t_pw_var *stvar, t_stack *top)[0m
+[1m[38;5;2m[32m[m	[32m// do_op(stvar, PB, 'b', 1);[m
+[0m[1m[38;5;2m[32m[m	[32mi = top->dist_top;[m
+[0m[1m[38;5;2m[32m[m	[32mj = 0;[m
+[0m[1m[38;5;2m[32m[m	[32minstr_b = presort_stack_b(stvar, top, &j);[m
+[0m[1m[38;5;2m[32m[m	[32m// ft_printf("j is:%i\n", j);[m
+[0m[1m[38;5;2m[32m[m	[32mif (instr_b != NULL)[m
+[0m[1m[38;5;2m[32m[m	[32m{[m
+[0m[1m[38;5;2m[32m[m		[32mret = check_dble(stvar, instr, instr_b, ft_min(i, j));[m
+[0m[1m[38;5;2m[32m[m		[32m// ft_printf("instr_b:%s j:%i instr:%s i:%i\n", instr_b, j, instr, i);[m
+[0m[1m[38;5;2m[32m[m	[32m// 	do_op(stvar, instr_b, 'b', [-i);-]{+j);[m
+[0m[1m[38;5;2m[32m[m		[32mdo_op(stvar, instr_b, 'b', j);[m
+[0m[1m[38;5;2m[32m[m		[32m// ft_printf("=================after presort==============\n");[m
+[0m[1m[38;5;2m[32m[m		[32m// print_stack_list(stvar->stack_b, 'b');[m
+[0m[1m[38;5;2m[32m[m	[32m}[m
+[0m[1m[38;5;2m[32m[m	[32mif (ret != -1)[m
+[0m[1m[38;5;2m[32m[m		[32minstr = NULL;[m
+[0m[1m[38;5;2m[32m[m	[32mdo_op(stvar, PB, 'a', 1);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:380 @[1m[1m[38;5;146m void	sort_top(t_pw_var *stvar, t_stack *top)[0m
+[1m[38;5;1m[1;31m	[m[1;31;48;5;52m// instr = finar *oper_a, d_solution(stvar, stvar->stack_b, NULL[m[1;31m);[m
+[0m[1m[38;5;1m[1;31m	// [m[1;31;48;5;52mif (instr != NULL)[m[1;31m[m
+[0m[1m[38;5;1m[1;31m	// [m[1;31;48;5;52m	do_op(stvar, instr, 'b', 1[m[1;31m);[m
+[0m[1m[38;5;2m[1;32m	[m[1;32;48;5;22mfind_solution(stvar, top, instr[m[1;32m);[m
+[0m[1m[38;5;2m[1;32m	// [m[1;32;48;5;22mft_printf("============= after find solution ============\n");[m[1;32m[m
+[0m[1m[38;5;2m[1;32m	// [m[1;32;48;5;22mprint_stack_list(stvar->stack_b, 'b'[m[1;32m);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:394 @[1m[1m[38;5;146m void	sort_top_bottom(t_pw_var *stvar, int i, t_stack *top, t_stack *bottom)[0m
+[1m[38;5;1m[31m		// instr = fastest_rotate(stvar, 'a', bottom->dist_top);[m
+[0m[1m[38;5;1m[31m		// ft_printf("instr:%s\n", instr);[m
+[0m[1m[38;5;1m[31m		// if (ft_strnequ(instr, RR, 2))[m
+[0m[1m[38;5;1m[31m		// {[m
+[0m[1m[38;5;1m[31m		// 	// ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, stvar->index - bottom->dist_top);[m
+[0m[1m[38;5;1m[31m		// 	j = stvar->index - bottom->dist_top;[m
+[0m[1m[38;5;1m[31m		// 	do_op(stvar, instr, 'a', j);[m
+[0m[1m[38;5;1m[31m		// 	do_op(stvar, PB, 'b', 1);[m
+[0m[1m[38;5;1m[31m		// 	// find_solution(stvar, bottom, instr);[m
+[0m[1m[38;5;1m[31m		// 	// instr = check_double(stvar, instr, stvar->index - bottom->dist_top, bottom);[m
+[0m[1m[38;5;1m[31m		// 	// do_op(stvar, instr, 'a', stvar->index - bottom->dist_top);[m
+[0m[1m[38;5;1m[31m		// }[m
+[0m[1m[38;5;1m[31m		// else[m
+[0m[1m[38;5;1m[31m		// {[m
+[0m[1m[38;5;1m[31m		// 	// ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);[m
+[0m[1m[38;5;1m[31m		// 	j = bottom->dist_top;[m
+[0m[1m[38;5;1m[31m		// 	do_op(stvar, instr, 'a', j);[m
+[0m[1m[38;5;1m[31m		// 	do_op(stvar, PB, 'b', 1);[m
+[0m[1m[38;5;1m[31m		// 	// find_solution(stvar, bottom, instr);[m
+[0m[1m[38;5;1m[31m		// }[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:413 @[1m[1m[38;5;146m void	sort_bottom(t_pw_var *stvar, t_stack *bottom)[0m
+[1m[38;5;1m[31m	instr = fastest_rotate(stvar, 'a', bottom->dist_top);[m
+[0m[1m[38;5;2m[32m[m	[32m// ft_printf("bottom->dist_top:%i\n", bottom->dist_top);[m
+[0m[1m[38;5;2m[32m[m	[32minstr = fastest_rotate(stvar, 'a', &bottom->dist_top);[m
+[0m[1m[38;5;2m[32m[m	[32m// ft_printf("bottom:%i bottom->dist_top:%i instr:%s\n", bottom->num, bottom->dist_top, instr);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:417 @[1m[1m[38;5;146m void	sort_bottom(t_pw_var *stvar, t_stack *bottom)[0m
+[1m[38;5;1m[31m	if (ft_strnequ(instr, RR, 2))[m
+[0m[1m[38;5;2m[32m[m	[32mi = bottom->dist_top;[m
+[0m[1m[38;5;2m[32m[m	[32mj = 0;[m
+[0m[1m[38;5;2m[32m[m	[32mif (i != 0)[m
+[0m[1m[38;5;2m[32m[m		[32mdo_op(stvar, instr, 'a', i);[m
+[0m[1m[38;5;2m[32m[m	[32m// print_stack_list(stvar->stack_a, 'a');[m
+[0m[1m[38;5;2m[32m[m	[32m// do_op(stvar, PB, 'b', 1);[m
+[0m[1m[38;5;2m[32m[m	[32m// print_stack_list(stvar->stack_b, 'b');[m
+[0m[1m[38;5;2m[32m[m	[32minstr_b = presort_stack_b(stvar, bottom, &j);[m
+[0m[1m[38;5;2m[32m[m	[32mif (instr_b != NULL)[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:427 @[1m[1m[38;5;146m void	sort_bottom(t_pw_var *stvar, t_stack *bottom)[0m
+[1m[38;5;1m[31m		i = stvar->index - bottom->dist_top;[m
+[0m[1m[38;5;1m[31m		if (i != 0)[m
+[0m[1m[38;5;1m[31m			do_op(stvar, instr, 'a', i);[m
+[0m[1m[38;5;1m[31m		do_op(stvar, PB, 'b', 1);[m
+[0m[1m[38;5;2m[32m[m		[32mdo_op(stvar, instr_b, 'b', j);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:429 @[1m[1m[38;5;146m void	sort_bottom(t_pw_var *stvar, t_stack *bottom)[0m
+[7m[31m [m
+[1m[38;5;1m[31m		// instr_b = presort_stack_b(stvar, bottom, &j);[m
+[0m[1m[38;5;1m[31m		// if (instr_b != NULL)[m
+[0m[1m[38;5;1m[31m		// {[m
+[0m[1m[38;5;1m[31m		// 	ret = check_dble(stvar, instr, instr_b, ft_min(i, j));[m
+[0m[1m[38;5;1m[31m		// 	if (ret == -1 && instr_b != NULL)[m
+[0m[1m[38;5;1m[31m		// 		do_op(stvar, instr_b, 'b', i);[m
+[0m[1m[38;5;1m[31m		// }[m
+[0m[7m[31m [m
+[1m[38;5;1m[31m		// if (instr_b != NULL)[m
+[0m[1m[38;5;1m[31m		// 	ret = check_dble(stvar, instr, instr_b, ft_min(i, j));[m
+[0m[1m[38;5;1m[31m		// print_stack_list(stvar->stack_a, 'a');[m
+[0m[1m[38;5;1m[31m		// find_solution(stvar, bottom, NULL);[m
+[0m[1m[38;5;1m[31m	}[m
+[0m[1m[38;5;1m[31m	else[m
+[0m[1m[38;5;1m[31m	{[m
+[0m[1m[38;5;1m[31m		i = bottom->dist_top;[m
+[0m[1m[38;5;1m[31m		if (i != 0)[m
+[0m[1m[38;5;1m[31m			do_op(stvar, instr, 'a', i);[m
+[0m[1m[38;5;1m[31m		do_op(stvar, PB, 'b', 1);[m
+[0m[7m[31m [m
+[1m[38;5;1m[31m		// instr_b = presort_stack_b(stvar, bottom, &j);[m
+[0m[1m[38;5;1m[31m		// if (instr_b != NULL)[m
+[0m[1m[38;5;1m[31m		// {[m
+[0m[1m[38;5;1m[31m		// 	ret = check_dble(stvar, instr, instr_b, ft_min(i, j));[m
+[0m[1m[38;5;1m[31m		// 	if (ret == -1 && instr_b != NULL)[m
+[0m[1m[38;5;1m[31m		// 		do_op(stvar, instr_b, 'b', i);[m
+[0m[1m[38;5;1m[31m		// }[m
+[0m[1m[38;5;1m[31m		[m
+[0m[1m[38;5;1m[31m		// ret = check_dble(stvar, instr, instr_b, ft_min(i, j));[m
+[0m[1m[38;5;1m[31m		// do_op(stvar, instr, 'a', bottom->dist_top);[m
+[0m[1m[38;5;1m[31m		// ft_printf("bottom->index:%i bottom->dist_top:%i\n", bottom->index, bottom->dist);[m
+[0m[1m[38;5;1m[31m		// find_solution(stvar, bottom, instr);[m
+[0m[1m[38;5;1m[31m		// i = bottom->dist_top;[m
+[0m[1m[38;5;1m[31m		// instr = check_double(stvar, instr, bottom->dist_top, bottom);[m
+[0m[1m[38;5;1m[31m		// do_op(stvar, instr, 'a', bottom->dist_top);[m
+[0m[1m[38;5;2m[32m[m		[32mret = check_dble(stvar, instr, instr_b, ft_min(i, j));[m
+[0m[1m[38;5;2m[32m[m		[32m// ft_printf("instr_b:%s j:%i instr:%s i:%i\n", instr_b, j, instr, i);[m
+[0m[1m[38;5;2m[32m[m		[32m// ft_printf("=================after presort==============\n");[m
+[0m[1m[38;5;2m[32m[m		[32m// print_stack_list(stvar->stack_b, 'b');[m
+[0m[1m[38;5;2m[32m[m		[32m// if (ret == -1 && instr_b != NULL)[m
+[0m[1m[38;5;2m[32m[m		[32m// 	do_op(stvar, PB, 'b', 1);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:436 @[1m[1m[38;5;146m void	sort_bottom(t_pw_var *stvar, t_stack *bottom)[0m
+[1m[38;5;2m[32m[m	[32mdo_op(stvar, PB, 'a', 1);[m
+[0m[1m[38;5;2m[32m[m	[32m// print_stack_list(stvar->stack_b, 'b');[m
+[0m[1m[38;5;2m[32m[m	[32mfind_solution(stvar, stvar->stack_b, instr);[m
+[0m[1m[38;5;2m[32m[m	[32m// ft_printf("============= after find solution ============\n");[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:440 @[1m[1m[38;5;146m void	sort_bottom(t_pw_var *stvar, t_stack *bottom)[0m
+[1m[38;5;1m[31m	find_solution(stvar, stvar->stack_b, NULL);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:458 @[1m[1m[38;5;146m void	check_top_b(t_pw_var *stvar)[0m
+[1m[38;5;1m[31m			// temp = find_max(stvar->stack_b, stvar->max, &i);[m
+[0m[1m[38;5;1m[31m			// ft_printf("i is:%i\n", i);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:465 @[1m[1m[38;5;146m void	check_top_b(t_pw_var *stvar)[0m
+[1m[38;5;1m[1;31m			str = fastest_rotate(stvar, 'b', [m[1;31;48;5;52m[m[1;31mi);[m
+[0m[1m[38;5;2m[1;32m			str = fastest_rotate(stvar, 'b', [m[1;32;48;5;22m&[m[1;32mi);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:469 @[1m[1m[38;5;146m void	check_top_b(t_pw_var *stvar)[0m
+[1m[38;5;2m[32m[m			[32m// print_stack_list(stvar->stack_a, 'a');[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:483 @[1m[1m[38;5;146m void	part_sort(t_pw_var *stvar, int argc, int i)[0m
+[1m[38;5;2m[32m[m	[32m// j = 1;[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:492 @[1m[1m[38;5;146m void	part_sort(t_pw_var *stvar, int argc, int i)[0m
+[1m[38;5;1m[1;31m		// ft_printf(YEL"|i:%i bottom:%i part_id:%i bottom->index:%i dist_top:%i|\n[m[1;31;48;5;52m[m[1;31m"RESET, i, bottom->num, bottom->part_id, bottom->index, bottom->dist_top);[m
+[0m[1m[38;5;2m[1;32m		// ft_printf(YEL"|i:%i bottom:%i part_id:%i bottom->index:%i dist_top:%i|\n[m[1;32;48;5;22m\n[m[1;32m"RESET, i, bottom->num, bottom->part_id, bottom->index, bottom->dist_top);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:498 @[1m[1m[38;5;146m void	part_sort(t_pw_var *stvar, int argc, int i)[0m
+[1m[38;5;1m[1;31m				// ft_printf(CYN"=========== OPTION 1 [m[1;31;48;5;52m[m[1;31m===========\n\n"RESET);[m
+[0m[1m[38;5;2m[1;32m				// ft_printf(CYN"=========== OPTION 1 [m[1;32;48;5;22msort_top_bottom [m[1;32m===========\n\n"RESET);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:502 @[1m[1m[38;5;146m void	part_sort(t_pw_var *stvar, int argc, int i)[0m
+[1m[38;5;2m[32m[m				[32m// sort_top(stvar, top);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:506 @[1m[1m[38;5;146m void	part_sort(t_pw_var *stvar, int argc, int i)[0m
+[1m[38;5;1m[1;31m				// ft_printf(BLU"=================== OPTION 2 [m[1;31;48;5;52m[m[1;31m==============\n\n"RESET);[m
+[0m[1m[38;5;2m[1;32m				// ft_printf(BLU"=================== OPTION 2 [m[1;32;48;5;22msort_top [m[1;32m==============\n\n"RESET);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:512 @[1m[1m[38;5;146m void	part_sort(t_pw_var *stvar, int argc, int i)[0m
+[1m[38;5;1m[31m				// ft_printf(YEL"=================== OPTION 3 ==============\n\n"RESET);[m
+[0m[1m[38;5;1m[31m				sort_bottom(stvar, bottom);[m
+[0m[1m[38;5;2m[32m[m				[32m// ft_printf(YEL"=================== OPTION 3 sort_bottom ==============\n\n"RESET);[m
+[0m[1m[38;5;2m[32m[m				[32mfind_part(stvar, i);[m
+[0m[1m[38;5;2m[32m[m				[32m// sort_bottom(stvar, bottom);[m
+[0m[1m[38;5;2m[32m[m				[32m// find_part(stvar, i);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:522 @[1m[1m[38;5;146m void	part_sort(t_pw_var *stvar, int argc, int i)[0m
+[1m[38;5;1m[1;31m			// ft_printf(RED"================== OPTION 4 [m[1;31;48;5;52m[m[1;31m=================\n\n"RESET);[m
+[0m[1m[38;5;2m[1;32m			// ft_printf(RED"================== OPTION 4 [m[1;32;48;5;22mfind_part [m[1;32m=================\n\n"RESET);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:527 @[1m[1m[38;5;146m void	part_sort(t_pw_var *stvar, int argc, int i)[0m
+[1m[38;5;2m[32m[m		[32m// print_stack_list(stvar->stack_a, 'a');[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:552 @[1m[1m[38;5;146m int		do_op(t_pw_var *stvar, char *str, char c, int num)[0m
+[1m[38;5;1m[1;31mchar	*fastest_rotate[m[1;31;48;5;52m(t_pw_var *stvar, char c, int [m[1;31mindex)[m
+[0m[1m[38;5;2m[1;32mchar	*fastest_rotate[m[1;32;48;5;22m_b(t_pw_var *stvar, char c, int *[m[1;32mindex)[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:557 @[1m[1m[38;5;146m char	*fastest_rotate(t_pw_var *stvar, char c, int index)[0m
+[1m[38;5;2m[32m[m	[32m// ft_printf(YEL"FASTEft_printf("SWAP\n");ST ROTATE B\n"RESET);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:562 @[1m[1m[38;5;146m char	*fastest_rotate(t_pw_var *stvar, char c, int index)[0m
+[1m[38;5;1m[1;31m	// ft_printf("char:%c\tindex:%i\t i:%i[m[1;31;48;5;52m\n", c, index, i[m[1;31m);[m
+[0m[1m[38;5;2m[1;32m	// ft_printf("char:%c\tindex:%i\t i:%i[m[1;32;48;5;22m len:%i\n", c, *index, i, len[m[1;32m);[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:564 @[1m[1m[38;5;146m char	*fastest_rotate(t_pw_var *stvar, char c, int index)[0m
+[1m[38;5;1m[31m	if (index < i)[m
+[0m[1m[38;5;2m[32m[m	[32mreturn (c == 'a' ? RA : RB);[m
+[0m[1m[38;5;2m[32m[m	[32m// if (*index > i)[m
+[0m[1m[38;5;2m[32m[m	[32m// {[m
+[0m[1m[38;5;2m[32m[m	[32m// 	*index = len - *index;[m
+[0m[1m[38;5;2m[32m[m	[32m// 	return (c == 'a' ? RA : RB);[m
+[0m[1m[38;5;2m[32m[m	[32m// }[m
+[0m[1m[38;5;2m[32m[m	[32m// else[m
+[0m[1m[38;5;2m[32m[m	[32m// {[m
+[0m[1m[38;5;2m[32m[m	[32m// 	return (c == 'a' ? RRA : RRB);[m
+[0m[1m[38;5;2m[32m[m	[32m// }[m
+[0m[1m[38;5;2m[32m[m[32m}[m
+[0m[7m[32m [m
+[1m[38;5;2m[32m[m[32mchar	*fastest_rotate(t_pw_var *stvar, char c, int *index)[m
+[0m[1m[38;5;2m[32m[m[32m{[m
+[0m[1m[38;5;2m[32m[m	[32mint i;[m
+[0m[1m[38;5;2m[32m[m	[32mint len;[m
+[0m[7m[32m [m
+[1m[38;5;2m[32m[m	[32mlen = (c == 'a') ? stvar->index : (stvar->argc - stvar->index);[m
+[0m[1m[38;5;2m[32m[m	[32mi = (len % 2) ? ((len / 2) + 1) : len / 2;[m
+[0m[1m[38;5;2m[32m[m	[32m// ft_printf("len:%i\t i:%i\n", len, i);[m
+[0m[1m[38;5;2m[32m[m	[32m// ft_printf("char:%c\tindex:%i\t i:%i\n", c, *index, i);[m
+[0m[1m[38;5;2m[32m[m	[32m// ft_printf("index:%i\n", *index);[m
+[0m[1m[38;5;2m[32m[m	[32mif (*index < i)[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:589 @[1m[1m[38;5;146m char	*fastest_rotate(t_pw_var *stvar, char c, int index)[0m
+[1m[38;5;2m[32m[m	[32m{[m
+[0m[1m[38;5;2m[32m[m		[32m// ft_printf("index:%i len:%i\n", *index, len);[m
+[0m[1m[38;5;2m[32m[m		[32m*index = len - *index;[m
+[0m[36m[1m[38;5;13m@ psw/conquer_opts.c:593 @[1m[1m[38;5;146m char	*fastest_rotate(t_pw_var *stvar, char c, int index)[0m
+[1m[38;5;2m[32m[m	[32m}[m
+[0m
