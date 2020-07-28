@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/23 20:13:03 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/28 18:12:20 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #define CYN "\e[0;36m"
 #define WHT "\e[0;37m"
 #define RESET "\e[0m"
+#define MAGHB "\e[1;45m"
 
 typedef struct		s_part
 {
@@ -44,8 +45,9 @@ t_stack *find_high(t_pw_var *stvar, char c, int *index);
 void	check_top_b(t_pw_var *stvar);
 void	sort_short_opts(t_pw_var *stvar);
 
-void	f_double_solution(t_pw_var *stvar, char *instr, int i);
-int		check_dble(t_pw_var *stvar, char *op_a, char *op_b, int i);
+void	f_double_solution(t_pw_var *stvar, char *oper_a, char *oper_b, int i);
+// int		check_dble(t_pw_var *stvar, char *op_a, char *op_b, int i);
+int		check_dble(t_pw_var *stvar, char *instr);
 char	*presort_stack_b(t_pw_var *stvar, t_stack *current, int *i);
 
 int		calc_dist_top_b(t_pw_var *stvar, t_stack *top, t_stack *bottom);

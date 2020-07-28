@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/28 06:48:35 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/28 21:24:19 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ int		run_pw(t_pw_var *stvar)
 	// print_stack_list(stvar->stack_a, 'a');
 	// ft_printf("stvar->index:%i\n", stvar->index);
 	ret = check_sorted(&(stvar->stack_a), &(stvar->stack_b));
+	// print_array(stvar->sorted, 1);
 	// ft_printf("ret is:%d\n", ret);
 	if (ret == 1)
 		return (0);
@@ -206,9 +207,6 @@ int		run_pw(t_pw_var *stvar)
 		ret = sort_three(stvar, stvar->min, stvar->max);
 	if (stvar->argc == 2)
 		sort_two('a', stvar);
-	// ft_printf("return is:%i\n", ret);
-	// ft_printf("total number of instructions:|%i|\n\n", stvar->total_ins);
-	// print_stack_list(stvar->stack_a, 'a');
 	return (ret);
 }
 
@@ -258,6 +256,7 @@ int		main(int argc, char **argv)
 		error_handler(ret);
 		return (ft_exit(&stvar));
 	}
+	// optim_inst(stvar.inst_lst);
 	print_inst(stvar.inst_lst);
 	// ft_printf(GRN"TOTAL:%d\n"RESET, stvar.total_ins);
 	// print_instructions(stvar.inst_lst, ret);

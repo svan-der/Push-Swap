@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:07:02 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/26 22:25:14 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/28 21:22:39 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	find_max(t_stack *current, int max, int *j)
 
 void	find_min(t_stack *current, int min, int *j)
 {
-	ft_printf("SMALLER THAN MIN\n");
+	// ft_printf("SMALLER THAN MIN\n");
 	while (current && current->num != min)
 	{
 		*j += 1;
@@ -40,7 +40,7 @@ char	*find_pos(t_pw_var *stvar, t_stack *current, t_stack *temp, int *j)
 	char *instr;
 
 	instr = NULL;
-	ft_printf("FIND POSITION\n");
+	// ft_printf("FIND POSITION\n");
 	// ft_printf("j is:%i\n", *j);
 	*j = 1;
 	while (temp && temp->next)

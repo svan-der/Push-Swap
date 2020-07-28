@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/23 23:26:40 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/28 16:29:40 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ void	print_input_list(t_stack *stack_a, int *list)
 // 	ft_printf("----------------------------------------\n");
 // }
 
+// void				optim_inst(t_inst *instr)
+// {
+	
+// }
+
 void				print_inst(t_inst *instr)
 {
 	t_inst	*temp;
@@ -111,8 +116,8 @@ void				print_tail_inst(t_inst *tail)
 	t_inst *temp;
 
 	temp = tail;
-	ft_printf("here\n");
-	ft_printf("tail:%p\n", tail);
+	// ft_printf("here\n");
+	// ft_printf("tail:%p\n", tail);
 	// ft_printf("going to print tail\n");+}
 	// ft_printf("temp->num:%d\n", temp->num);+}
 	ft_printf("\n     Tail instruction list and prev       \n");

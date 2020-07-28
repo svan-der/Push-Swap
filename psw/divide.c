@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/26 20:56:05 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/28 21:23:54 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,34 +272,19 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 	int	j;
 
 	i = 1;
+	// print_array(stvar->sorted, 1);
 	part_index = assign_partitions(stvar, &part_num);
 	// ft_printf("argc:%i\t amount of partitions:%i with %i num \n", stvar->argc, part_index, part_num);
-	// ft_printf("received parts\n");
-	// ft_printf("part_num:%i index:%i\n", part_num, i);
-	// print_stack_list(stvar->stack_a, 'a');
-	part_index == 1;
 	j = (part_num - 1) / 2;
-	// ft_printf("j is:%i\n", j);
 	while (part_index != 0)
 	{
-		// ft_printf(BLU"ITERATION:%i\n"RESET, part_index);
 		stvar->median = (stvar->sorted[j]);
-		// print_array(stvar->sorted, stvar->argc);
-		// print_stack_list(stvar->stack_a, 'a');
-		// stvar->median = stvar->sorted[j];
-		// ft_printf("median:%i\n", stvar->median);
 		part_index--;
-		// ft_printf(YEL"part_num:%i i:%i\n"RESET, part_num, i);
 		if (part_index == 0)
 		{
 			part_num = stvar->index;
 		}
 		part_sort(stvar, part_num, i);
-		// if (part_index == 0)
-		// {
-			// print_stack_list(stvar->stack_a, 'a');
-			// print_stack_list(stvar->stack_b, 'b');
-		// }
 		i++;
 		j += (part_num);
 	}
@@ -311,45 +296,6 @@ int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
 	return (1);
 }
 
-
-// int		divide_and_presort(t_pw_var *stvar, int *sorted_list)
-// {
-// 	int part_index;
-// 	int	part_num;
-// 	int	i;
-
-// 	i = 1;
-// 	part_index = assign_partitions(stvar, &part_num);
-// 	// ft_printf("argc:%i\t amount of partitions:%i with %i num \n", stvar->argc, part_index, part_num);
-// 	// ft_printf("received parts\n");
-// 	// ft_printf("part_num:%i index:%i\n", part_num, i);
-// 	// print_stack_list(stvar->stack_a, 'a');
-// 	part_index == 1;
-// 	while (part_index != 0)
-// 	{
-// 		// ft_printf(BLU"ITERATION:%i\n"RESET, part_index);
-// 		part_index--;
-// 		// ft_printf(YEL"part_num:%i i:%i\n"RESET, part_num, i);
-// 		if (part_index == 0)
-// 		{
-// 			part_num = stvar->index;
-// 		}
-// 		part_sort(stvar, part_num, i);
-// 		// if (part_index == 0)
-// 		// {
-// 			// print_stack_list(stvar->stack_a, 'a');
-// 			// print_stack_list(stvar->stack_b, 'b');
-// 		// }
-// 		i++;
-// 	}
-// 	(void)sorted_list;
-// 	// ft_printf(GRN"total ins after presort:%i\n"RESET, stvar->total_ins);
-// 	push_back_part(stvar);
-// 	// print_stack_list(stvar->stack_a, 'a');
-// 	// print_stack_list(stvar->stack_b, 'b');
-// 	return (1);
-// }
-
 int		divide_list(t_pw_var *stvar)
 {
 	stvar->median = find_median_array(stvar->sorted, stvar->index);
@@ -359,9 +305,6 @@ int		divide_list(t_pw_var *stvar)
 	// ft_printf("stvar->index:%i\tstvar->argc:%i\n", stvar->index, stvar->argc);
 	if (stvar->argc < 6)
 		return (sort_five_stack(stvar, 'a', stvar->index - stvar->sort_index));
-	// if (stvar->argc < 6)
-	// 	return (sort_five_stack(stvar, 'a', stvar->index));
-	// ft_printf("return after sorting:%i\n", ret);
 	else if (stvar->argc < 11)
 		return (sort_short_stack(stvar, ft_min_size(stvar->index, stvar->argc)));
 	else
