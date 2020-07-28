@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/02 18:07:33 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/28 06:25:26 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,25 +77,34 @@ int			check_dup(t_stack **stack_a)
 	return (1);
 }
 
-int			add_num(char *str, int sign, t_pw_var *stvar)
+int			add_num(char *str, t_llong sign, t_pw_var *stvar)
 {
-	long long int	num;
+	t_llong			num;
+	int				j;
 	int				ret;
 	int				i;
 
 	num = 0;
 	i = 0;
-	if (!ft_isdigit(str[i]))
+	j = 0;
+	while (!ft_isdigit(str[i]) || str[i] == '0')
+	{
+		if (str[i] == '0')
+			j++;
 		i++;
+	}
 	while (str[i] != '\0' && ft_isdigit(str[i]))
 	{
+		// ft_printf("num:%lld\n", num);
 		num *= 10;
 		num += str[i] - '0';
 		i++;
 	}
+	// ft_printf("i:%i j:%i\n", i, j);
+	i -= j;
+	// ft_printf("num after is:%lld i:%i\n", num, i);
 	num *= sign;
-	// ft_printf("num is:%i\n", num);
-	if (num > 2147483647 || num < -2147483648)
+	if (num > 2147483647 || num < -2147483648 || i > 11)
 		return (-1);
 	ret = stack_addnew(&(stvar)->stack_a, num);
 	// ft_printf("ret is:%i\n", ret);
@@ -105,7 +114,7 @@ int			add_num(char *str, int sign, t_pw_var *stvar)
 int			check_argv(char *str, t_pw_var *stvar)
 {
 	int i;
-	int sign;
+	t_llong sign;
 
 	sign = 1;
 	i = 0;
@@ -124,5 +133,6 @@ int			check_argv(char *str, t_pw_var *stvar)
 			return (-1);
 		i++;
 	}
+	// ft_printf("sign:%lld\n", sign);
 	return (add_num(str, sign, stvar));
 }

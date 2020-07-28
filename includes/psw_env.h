@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/23 08:05:15 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/27 15:53:25 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void				initialize_operations(t_operates function_array[10]);
 int					print_stack(t_stack **stack_a, int ret);
 int					print_stack_b(t_stack **stack_b, int ret);
 void				ft_stackaddend(t_stack **stack_lst, t_stack *new);
-int					add_num(char *str, int sign, t_pw_var *stvar);
+int					add_num(char *str, t_llong sign, t_pw_var *stvar);
 int					stack_new(t_stack **stack_a, int num);
 void				stack_push(t_stack **stack, t_stack *new);
 int					stack_addnew(t_stack **stack, int num);

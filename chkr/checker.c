@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 14:44:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/23 23:47:37 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/28 06:29:18 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		main(int argc, char **argv)
 	}
 	ret = check_sorted(&stvar.stack_a, &stvar.stack_b);
 	// ft_putstr_fd("ret\n", 1);
-	print_stack(&stvar.stack_a, 1);
+	// print_stack(&stvar.stack_a, 1);
 	if (ret == 1)
 		ft_putstr_fd("OK\n", 1);
 	else

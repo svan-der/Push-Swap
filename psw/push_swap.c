@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/26 22:26:47 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/28 06:48:35 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,6 +252,7 @@ int		main(int argc, char **argv)
 	// print_inst(stvar.inst_lst);
 	// ft_printf("ret is:%i\n", ret);
 	// print_stack_list(stvar.stack_a, 'a');
+	// print_stack(&stvar.stack_a, 1);
 	if (ret == -1)
 	{
 		error_handler(ret);
