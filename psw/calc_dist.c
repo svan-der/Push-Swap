@@ -1,0 +1,121 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   calc_dist.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/07/30 12:40:08 by svan-der      #+#    #+#                 */
+/*   Updated: 2020/07/30 15:47:59 by svan-der      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/push_swap.h"
+#include "../includes/psw_env.h"
+
+void	find_dist_top(t_stack *stack, int num)
+{
+	t_stack *temp;
+	int		j;
+
+	temp = stack;
+	j = 0;
+	while (temp)
+	{
+		if (temp->num == num)
+		{
+			temp->dist_top = j;
+			return ;
+		}
+		temp = temp->next;
+		j++;
+	}
+}
+
+void	find_distance(t_stack *stack, int num, int *sorted)
+{
+	t_stack *temp;
+	int		i;
+	int		j;
+
+	temp = stack;
+	i = 0;
+	j = 0;
+	while (temp != NULL && temp->num != num)
+	{
+		temp = temp->next;
+		j++;
+	}
+	while (sorted[i] != num)
+		i++;
+	temp->dist = j - i;
+	temp->dist_top = j;
+	stack = temp;
+}
+
+void	find_part(t_pw_var *stvar, int i)
+{
+	t_stack *bottom;
+	t_stack *top;
+	int		ret;
+	int		j;
+
+	j = 0;
+	top = find_top_part(stvar, i);
+	bottom = find_bottom_part(stvar, i);
+	ret = shortest_dist(stvar, top, bottom);
+	if (ret == 0)
+		sort_top(stvar, top);
+	else if (ret != 0)
+		sort_bottom(stvar, bottom);
+}
+
+/*
+** Calculates and returns shortest dist to top in current stack
+*/
+
+int		shortest_dist(t_pw_var *stvar, t_stack *top, t_stack *bottom)
+{
+	t_stack *current;
+	int		dist_top;
+	int		dist_bottom;
+	int		len;
+	int		i;
+
+	if (stvar->stack_b == NULL)
+		return (0);
+	current = stvar->stack_b;
+	len = stvar->index;
+	i = (len % 2) ? ((len / 2) + 1) : len / 2;
+	if (bottom->dist_top > i)
+		dist_bottom = stvar->index - bottom->dist_top;
+	else
+		dist_bottom = bottom->dist_top;
+	if (top->dist_top > i)
+		dist_top = stvar->index - top->dist_top;
+	else
+		dist_top = top->dist_top;
+	if (dist_top == dist_bottom && top->dist_top > bottom->dist_top)
+		return (1);
+	if (dist_top < dist_bottom)
+		return (0);
+	return (1);
+}
+
+char	*fastest_rotate(t_pw_var *stvar, char c, int *index)
+{
+	int i;
+	int len;
+
+	len = (c == 'a') ? stvar->index : (stvar->argc - stvar->index);
+	i = (len % 2) ? ((len / 2) + 1) : len / 2;
+	if (*index < i)
+	{
+		return (c == 'a' ? RA : RB);
+	}
+	else
+	{
+		*index = len - *index;
+		return (c == 'a' ? RRA : RRB);
+	}
+}

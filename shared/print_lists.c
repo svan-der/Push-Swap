@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 18:17:07 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/28 16:29:40 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/29 17:23:23 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	print_array(int *list, int argc)
 
 void	print_input_list(t_stack *stack_a, int *list)
 {
-	int i;
+	int		i;
 	t_stack *temp;
 
 	i = 0;
@@ -51,35 +51,7 @@ void	print_input_list(t_stack *stack_a, int *list)
 	ft_printf("				 		\n");
 }
 
-
-// void				print_input_list(t_list *argv)
-// {
-// 	t_list *temp;
-
-// 	temp = argv;
-// 	ft_printf("\n      Linked List with input numbers      \n");
-// 	ft_printf("-----------------------------------------\n");
-// 	ft_printf("|input_num\t\t\tnext_input_num|\n");
-// 	ft_printf("|-------------------------------");
-// 	ft_printf("-----|\n");
-// 	while (temp != NULL)
-// 	{
-// 		ft_printf("|%p\t\t", temp->content);
-// 		if (temp->next != NULL)
-// 			ft_printf("\t-> %p\t|\n", temp->next->content);
-// 		else
-// 			ft_printf("\t-> NULL\t|\n");
-// 		temp = temp->next;
-// 	}
-// 	ft_printf("----------------------------------------\n");
-// }
-
-// void				optim_inst(t_inst *instr)
-// {
-	
-// }
-
-void				print_inst(t_inst *instr)
+void	print_inst(t_inst *instr)
 {
 	t_inst	*temp;
 
@@ -92,13 +64,11 @@ void				print_inst(t_inst *instr)
 	}
 }
 
-void				print_inst_list(t_inst *instr)
+void	print_inst_list(t_inst *instr)
 {
 	t_inst			*temp;
 
 	temp = instr;
-	// ft_printf("ptr instructions is:%p\n", instr);
-	// ft_printf("instruction is:%s\n", instr->operation);
 	ft_printf("Linked List with instructions\n");
 	ft_printf("------------------------------------------------------------------------------------------------\n");
 	ft_printf("|operation\tcur\tprev\t\tnext\t\toption|\n");
@@ -111,15 +81,11 @@ void				print_inst_list(t_inst *instr)
 	ft_printf("------------------------------------------------------------------------------------------------\n");
 }
 
-void				print_tail_inst(t_inst *tail)
+void	print_tail_inst(t_inst *tail)
 {
 	t_inst *temp;
 
 	temp = tail;
-	// ft_printf("here\n");
-	// ft_printf("tail:%p\n", tail);
-	// ft_printf("going to print tail\n");+}
-	// ft_printf("temp->num:%d\n", temp->num);+}
 	ft_printf("\n     Tail instruction list and prev       \n");
 	ft_printf("--------------------------------------------");
 	ft_printf("--------------------------------------------\n");
@@ -130,26 +96,20 @@ void				print_tail_inst(t_inst *tail)
 		if (temp->prev)
 			ft_printf("|\033[01;33m%p\033[0m\t\t\e[1;31m%s\033[0m\t\t\e[1;92m%p\033[0m\t\t\e[1;34m%s\033[0m|", temp->prev, temp->prev->operation, temp, temp->operation);
 		else
-		{
 			ft_printf("|\033[01;33m%p\033[0m\t\t\e[1;31m%p\033[0m\t\t\e[1;92m%p\033[0m\t\t\e[1;34m%s\033[0m|", NULL, NULL, temp, temp->operation);
-		}
 		ft_printf("\n");
 		temp = temp->prev;
-		// ft_printf("temp:%p oper:%s\n", temp, temp->operation);+}
 	}
 	ft_printf("---------------------------------------------");
 	ft_printf("---------------------------------------------\n");
 	ft_printf("									   \n");
 }
 
-
-void				print_tail(t_stack *tail)
+void	print_tail(t_stack *tail)
 {
 	t_stack *temp;
 
 	temp = tail;
-	// ft_printf("going to print tail\n");
-	// ft_printf("temp->num:%d\n", temp->num);
 	ft_printf("\n     Bottom and bottom prev       \n");
 	ft_printf("-------------------------------------");
 	ft_printf("--------------------\n");
@@ -160,9 +120,7 @@ void				print_tail(t_stack *tail)
 		if (temp->prev)
 			ft_printf("|%p\t\t%d\t%p\t%d|", temp->prev, temp->prev->num, temp, temp->num);
 		else
-		{
 			ft_printf("|%p\t\t\t%d\t%p\t%d|", NULL, 0, temp, temp->num);
-		}
 		ft_printf("\n");
 		temp = temp->prev;
 	}
@@ -171,7 +129,7 @@ void				print_tail(t_stack *tail)
 	ft_printf("									   \n");
 }
 
-void				print_stack_list(t_stack *stack, char c)
+void	print_stack_list(t_stack *stack, char c)
 {
 	t_stack	*temp;
 
@@ -192,7 +150,7 @@ void				print_stack_list(t_stack *stack, char c)
 	ft_printf("									           \n");
 }
 
-void				print_pw_var(t_pw_var *stvar)
+void	print_pw_var(t_pw_var *stvar)
 {
 	t_pw_var		*temp;
 
@@ -212,23 +170,4 @@ void				print_pw_var(t_pw_var *stvar)
 	}
 	ft_printf("------------------------------------");
 	ft_printf("--------------------\n");
-}
-
-void				print_partition_list(t_part *partition)
-{
-	t_part			*temp;
-
-	temp = partition;
-	ft_printf("\n partition list and the min & max of that partition \n");
-	ft_printf("--------------------------\n");
-	ft_printf("|part_num\tmax\tmin\npart_len\n");
-	while (temp != NULL)
-	{
-		ft_printf("%i\t\t", *temp->parts);
-		ft_printf("%i->", temp->max);
-		ft_printf("%i", temp->min);
-		ft_printf("%zu", temp->len);
-		temp = temp->next;
-	}
-	ft_printf("-------------------------\n");
 }

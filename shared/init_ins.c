@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:50:30 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/23 23:24:00 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 12:12:04 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ t_inst	*create_instruction(int index, char *line)
 	inst->operation = ft_strnew(sizeof(line));
 	inst->content_size = ft_strlen(line);
 	ft_memcpy(inst->operation, line, inst->content_size);
+	inst->opt_double = 0;
+	inst->opt_dble_a = 0;
+	inst->opt_dble_b = 0;
 	inst->option = index;
 	inst->next = NULL;
 	inst->tail = NULL;
@@ -53,14 +56,12 @@ void	ft_instaddend(t_inst **inst_lst, t_inst *new)
 		temp = temp->next;
 	temp->next = new;
 	temp->next->prev = temp;
-	// new->prev = temp;
 }
 
 int		put_instruction(t_inst **inst_lst, int index, char *line)
 {
 	t_inst *new_node;
 
-	// ft_printf("line is:%s\n", line);
 	new_node = create_instruction(index, line);
 	if (new_node == NULL)
 		return (-1);
@@ -74,6 +75,22 @@ int		put_instruction(t_inst **inst_lst, int index, char *line)
 	}
 	ft_instaddend(inst_lst, new_node);
 	add_inst_tail(inst_lst);
-	// print_tail_inst((*inst_lst)->tail);
 	return (1);
+}
+
+void		add_inst_tail(t_inst **inst_lst)
+{
+	t_inst *tail;
+
+	tail = *inst_lst;
+	while (tail && tail->next != NULL)
+		tail = tail->next;
+	if (tail)
+	{
+		if (tail && tail->prev)
+			tail->prev = tail->prev;
+		else
+			tail->prev = NULL;
+		(*inst_lst)->tail = tail;
+	}
 }

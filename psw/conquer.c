@@ -6,135 +6,171 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:35:59 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/06/02 11:07:54 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/30 16:27:54 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// void    ft_stackdelone(t_stack **alst, void (*del)(int *, size_t))
-// {
-//     if (alst)
-//     {
-//         del((*alst)->num, (*alst)->len);
-//      }
-// 	(void)((*alst)->len);
-// 	free(*alst);
-//     *alst = NULL;
-// }
-
-// void	ft_stackdel(t_stack **stack_lst, void (*del)(int *, size_t))
-// {
-// 	t_stack *temp;
-
-// 	if (!stack_lst)
-// 		return ;
-// 	temp = (*stack_lst)->next;
-// 	ft_stackdelone(stack_lst, del);
-// 	if (temp)
-// 		ft_stackdel(&temp, del);
-// }
-
-// void	ft_stackpop(t_stack **aparent, t_stack *elem)
-// {
-// 	t_stack *next;
-
-// 	if (aparent && elem)
-// 	{
-// 		next = (*aparent)->next;
-// 		if (*aparent == elem)
-// 		{
-// 			ft_stackdelone(aparent, content_delete);
-// 			*aparent = next;
-// 			if (*aparent && (*aparent)->next != NULL)
-// 				(*aparent)->prev = NULL;
-// 		}
-// 		else
-// 			ft_stackpop(&(*aparent)->next, elem);
-// 	}
-// }
-
-// void 	sort_unsorted(t_pw_var *stvar, char c, int argc)
-// {
-// 	t_stack *stack;
-// 	int min;
-// 	int max;
-// 	int i;
-
-// 	i = 0;
-// 	min = stvar->min;
-// 	max = stvar->max;
-// 	if (c == 'a')
-// 		stack = stvar->stack_a;
-// 	else
-// 		stack = stvar->stack_b;
-// 	if ((*stack->num) == min && (*stack->next->num) != max)
-// 		dispatch_sort(stvar, NULL, 0);
-// 	if ((*stack->num) == min && (*stack->next->num) == max)
-
-// }
-
-void	sort_and_pushback(t_pw_var *stvar)
+char	*presort_stack_b(t_pw_var *stvar, t_stack *current, int *i)
 {
-	if (stvar->stack_b == NULL)
-		return ;
-	while (stvar->argc - stvar->index > 3)
+	t_stack *temp;
+	char	*oper_b;
+
+	temp = stvar->stack_b;
+	oper_b = NULL;
+	*i = 0;
+	if (temp && temp->next)
 	{
-		if ((stvar->stack_b->num) > stvar->median)
-			dispatch_sort(stvar, PA, 1);
+		// ft_printf("temp:%i temp->next:%i\n", temp->num, temp->next->num);
+		// ft_printf(CYN"IN PRESORT STACK_B\n"RESET);
+		// print_stack_list(stvar->stack_b, 'b');
+
+		// set_min_max(stvar, 'b');
+		// ft_printf(CYN"min:%i max:%i current:%i i:%i\n"RESET, stvar->min, stvar->max, current->num, *i);
+		if (current->num < stvar->min)
+			find_min(temp, stvar->min, i);
+		else if (current->num > stvar->max)
+			find_max(temp, stvar->max, i);
+		else if (current->num > stvar->min && current->num < stvar->max)
+			oper_b = find_pos(stvar, current, temp, i);
+		// if (*i == (stvar->argc - stvar->index))
+		// 	*i = 0;
+	}
+	if (*i > 1)
+		oper_b = fastest_rotate(stvar, 'b', i);
+	// if (oper_b)
+	// 	ft_printf("oper_b:%s i:%i\n", oper_b, *i);
+	return (oper_b);
+}
+
+int			sort_short_stack(t_pw_var *stvar, int argc)
+{
+	int ret;
+	int j;
+
+	ret = 1;
+	j = (argc % 2) ? ((argc + 1) / 2) : argc / 2;
+	argc = j;
+	while (stvar->index != j)
+	{
+		if (stvar->stack_a->num < stvar->median)
+			ret = do_op(stvar, PB, 'b', 1);
 		else
-			dispatch_sort(stvar, RB, 1);
+			ret = do_op(stvar, RA, 'a', 1);
+		if (ret == -1)
+			error_handling(stvar, NULL, -1);
+	}
+	ret = sort_five_stack(stvar, 'a', stvar->index);
+	if (ret == -1)
+		error_handling(stvar, NULL, -1);
+	set_min_max(stvar, 'b');
+	ret = sort_five_stack(stvar, 'b', stvar->argc - stvar->index);
+	if (ret == 1)
+		return (ret);
+	else
+		error_handling(stvar, NULL, -1);
+}
+
+void	push_back_part(t_pw_var *stvar, int argc)
+{
+	int		total;
+	char	*instr;
+	t_stack	*current;
+
+	total = stvar->argc - 1;
+	while (argc)
+	{
+		current = find_high(stvar, 'b', &total);
+		if (current->dist_top == 1)
+		{
+			instr = SB;
+			if (current->prev && current->next)
+				instr = (current->prev->num < current->next->num) ? RB : SB;
+			do_op(stvar, instr, 'b', 1);
+		}
+		else if (current->dist_top > 1)
+		{
+			instr = fastest_rotate(stvar, 'b', &current->dist_top);
+			do_op(stvar, instr, 'a', current->dist_top);
+		}
+		do_op(stvar, PA, 'b', 1);
+		argc--;
+		total--;
 	}
 }
 
-void	push_short(t_pw_var *stvar, int *list, int b_len)
+void	part_sort(t_pw_var *stvar, int argc, int i)
 {
-	int part_len;
-	int argc;
-	int index;
+	char *instr;
+	int j;
+	t_stack *top;
+	t_stack *bottom;
+	int res;
 
-	argc = stvar->argc - stvar->sort_index;
-	index = stvar->argc - stvar->sort_index - 1;
-	// lst_cpy(&(stvar)->stack_b, list);
-	insertion_sort(list, argc, &stvar->min, &stvar->max);
-	stvar->median = find_median_array(list, index);
-	sort_and_pushback(stvar);
-	part_len = ((b_len) / 2);
-	set_min_maxarray(stvar, list + part_len, part_len);
-	// sort_unsorted(stvar, 'a');
-	// if (part_len <= 3)
-	// 	sort_short(stvar, 'b', part_len);
-}
-
-void	push_half(t_pw_var *stvar, int *list, int b_len)
-{
-	int part_len;
-	int argc;
-	int index;
-
-	argc = stvar->argc - stvar->sort_index;
-	index = stvar->argc - stvar->sort_index - 1;
-	// lst_cpy(&(stvar)->stack_b, list);
-	insertion_sort(list, argc, &stvar->min, &stvar->max);
-	stvar->median = find_median_array(list, index);
-	sort_and_pushback(stvar);
-	part_len = ((b_len) / 2);
-	set_min_maxarray(stvar, list + part_len, part_len);
-}
-
-int		conquer_list(t_pw_var *stvar, int *list)
-{
-	int b_len;
-
-	while (stvar->index != stvar->argc)
+	j = argc;
+	while (j)
 	{
-		b_len = stvar->argc - stvar->sort_index;
-		if (b_len > 3)
-			push_half(stvar, list, b_len);
-		else if (stvar->index == stvar->sort_index && b_len <= 3)
-			sort_short(stvar, 'b', b_len);
-		else
-			push_short(stvar, list, b_len);
+		// ft_printf("j is:%i\n", j);
+		res = 0;
+		top = stvar->stack_a;
+		// ft_printf(GRN"|i:%i top:%i    part_id:%i top->index:%i    dist_top:%i|\n"RESET, i, top->num, top->part_id, top->index, top->dist_top);
+		bottom = stvar->stack_a->tail;
+		// ft_printf(YEL"|i:%i bottom:%i part_id:%i bottom->index:%i dist_top:%i|\n"RESET, i, bottom->num, bottom->part_id, bottom->index, bottom->dist_top);
+		if (top->part_id == i || bottom->part_id == i)
+		{
+			if (top->part_id == i && bottom->part_id == i)
+			{
+				// ft_printf("\n");
+				// ft_printf(CYN"=========== OPTION 1 ===========\n\n"RESET);
+				if (j != 1)
+					res = shortest_dist(stvar, top, bottom);
+				sort_top_bottom(stvar, res, top, bottom);
+			}
+			else if (top->part_id == i)
+			{
+				// ft_printf(BLU"=================== OPTION 2 ==============\n\n"RESET);
+				sort_top(stvar, top);
+			}
+			else if (bottom->part_id == i)
+			{
+				// ft_printf("\n");
+				// ft_printf(YEL"=================== OPTION 3 ==============\n\n"RESET);
+				sort_bottom(stvar, bottom);
+				// find_part(stvar, i);
+			}
+			// print_stack_list(stvar->stack_b, 'b');
+		}
+		else if (top->part_id != i && bottom->part_id != i)
+		{
+			// ft_printf("\n");
+			// ft_printf(RED"================== OPTION 4 =================\n\n"RESET);
+			find_part(stvar, i);
+		}
+		check_top_b(stvar);
+		// print_stack_list(stvar->stack_b, 'b');
+		j -= 1;
 	}
-	return (1);
+	// ft_printf("END\n\n");
+}
+
+void	insertion_sort(int *list, int argc, int *min, int *max)
+{
+	int i;
+	int j;
+	int temp;
+
+	i = 1;
+	while (i < argc)
+	{
+		temp = list[i];
+		j = i - 1;
+		while (j >= 0 && list[j] > temp)
+		{
+			list[j + 1] = list[j];
+			j--;
+		}
+		list[j + 1] = temp;
+		i++;
+	}
 }
