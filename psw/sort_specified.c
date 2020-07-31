@@ -6,17 +6,13 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:10:56 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/30 13:14:22 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 18:00:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/**
-** Sorts three in reverse order
-*/
-
-int			sort_three_rpart(t_stack **temp, t_pw_var *stvar, int min, int max)
+static int	sort_three_rpart(t_stack **temp, t_pw_var *stvar, int min, int max)
 {
 	t_stack *stack;
 

@@ -6,11 +6,10 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 11:32:31 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/30 14:42:57 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 19:16:23 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
 #include "../includes/psw_env.h"
 
 void	ft_exit(t_pw_var *stvar, int ret)

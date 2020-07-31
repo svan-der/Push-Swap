@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/30 14:08:00 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/30 14:30:50 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 20:09:40 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int		find_median_array(int *list, int index)
 
 void	set_min_max(t_pw_var *stvar, char c)
 {
-	int		i;
 	int		min;
 	int		max;
 	t_stack *temp;
@@ -35,7 +34,6 @@ void	set_min_max(t_pw_var *stvar, char c)
 		temp = stvar->stack_a;
 	if (c == 'b')
 		temp = stvar->stack_b;
-	i = 0;
 	min = temp->num;
 	max = temp->num;
 	while (temp != NULL && temp->next != NULL)
@@ -54,7 +52,7 @@ void	set_min_max(t_pw_var *stvar, char c)
 ** function sets for unsorted list the sorted index per number
 */
 
-void			set_index(t_stack **stack_a, int *sorted, int argc)
+void	set_index(t_stack **stack_a, int *sorted, int argc)
 {
 	int		i;
 	int		j;
@@ -83,14 +81,13 @@ void			set_index(t_stack **stack_a, int *sorted, int argc)
 	}
 }
 
-
-
 int		do_op(t_pw_var *stvar, char *str, char c, int num)
 {
 	int i;
 	int ret;
 
 	i = 0;
+	ret = 0;
 	while (i < num)
 	{
 		ret = dispatch_sort(stvar, str, 1);

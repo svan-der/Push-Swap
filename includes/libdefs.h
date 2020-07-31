@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/12 15:35:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/02 18:34:14 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 19:29:22 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # define FALSE 0
 # define MAX_UINT -1U
 # define MAX_SIZE_T -1UL
-# define MAX_INT -1U / 2
-# define MIN_INT -MAX_INT - 1
 
 typedef unsigned long long			t_ull;
 typedef unsigned char				t_byte;

@@ -6,7 +6,7 @@
 #    By: svan-der <svan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/11 15:22:00 by svan-der      #+#    #+#                  #
-#    Updated: 2020/07/02 19:17:39 by svan-der      ########   odam.nl          #
+#    Updated: 2020/07/31 16:27:43 by svan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,6 @@ INCL = ../includes/
 PRINTF_DIR = ft_printf
 LIB_OBJDIR = objects
 PRINTF_OBJDIR = ft_printf/objects
-# AR = $(Push_swap)/bin/libft.a-ar
-# RANLIB = $(Push_swap)/bin/libft.a-ranlib
 
 LIB_SRC = ft_memchr.c ft_putnbr_fd.c ft_striter.c\
 	ft_strnew.c ft_atoi.c ft_abs.c ft_pow.c\

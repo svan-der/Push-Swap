@@ -6,12 +6,11 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:12:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/29 23:43:15 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 19:14:43 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
-#include "../includes/push_swap.h"
+#include "../includes/psw_env.h"
 
 void	add_tail(t_stack **stack)
 {

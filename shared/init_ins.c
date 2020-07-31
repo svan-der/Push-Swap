@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:50:30 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/31 12:12:04 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 19:36:37 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ t_inst	*create_instruction(int index, char *line)
 	inst->operation = ft_strnew(sizeof(line));
 	inst->content_size = ft_strlen(line);
 	ft_memcpy(inst->operation, line, inst->content_size);
-	inst->opt_double = 0;
-	inst->opt_dble_a = 0;
-	inst->opt_dble_b = 0;
 	inst->option = index;
 	inst->next = NULL;
 	inst->tail = NULL;
@@ -78,7 +75,7 @@ int		put_instruction(t_inst **inst_lst, int index, char *line)
 	return (1);
 }
 
-void		add_inst_tail(t_inst **inst_lst)
+void	add_inst_tail(t_inst **inst_lst)
 {
 	t_inst *tail;
 

@@ -6,11 +6,10 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/30 15:11:05 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/30 15:40:41 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 19:37:17 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
 #include "../includes/psw_env.h"
 
 int		check_sorted(t_stack **stack_a, t_stack **stack_b)
@@ -20,12 +19,10 @@ int		check_sorted(t_stack **stack_a, t_stack **stack_b)
 
 	temp = *stack_a;
 	valid = 1;
-	// print_stack(stack_a, 1);
 	if (*stack_b != NULL)
 		valid = 0;
 	while (temp != NULL && temp->next != NULL)
 	{
-
 		if (temp->num > temp->next->num)
 			valid = 0;
 		temp = temp->next;

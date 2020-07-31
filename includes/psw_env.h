@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/31 13:20:44 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 19:40:03 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,6 @@ typedef struct		s_inst
 {
 	char			*operation;
 	size_t			content_size;
-	int				opt_double;
-	int				opt_dble_a;
-	int				opt_dble_b;
 	t_sort			option;
 	struct s_inst	*prev;
 	struct s_inst	*next;
@@ -121,7 +118,6 @@ void				update_stack(t_pw_var *stvar, char c);
 */
 
 t_inst				*create_instruction(int i, char *line);
-t_inst				*inst_tail_del(t_inst **inst_lst, char *ins_a, char *ins_b, int i);
 void				add_inst_tail(t_inst **inst_lst);
 int					dispatch_sort(t_pw_var *stvar, char *str, int ins);
 
@@ -129,19 +125,10 @@ int					dispatch_sort(t_pw_var *stvar, char *str, int ins);
 ** Print functions
 */
 
-void				print_array(int *list, int argc);
-int					print_stack(t_stack **stack_a, int ret);
-int					print_stack_b(t_stack **stack_b, int ret);
-void				print_stack_list(t_stack *stack, char c);
-
 int					print_instructions(t_inst *inst_lst, int ret);
-void				print_tail_inst(t_inst *tail);
-void				print_tail(t_stack *tail);
 void				print_inst(t_inst *instr);
-void				print_inst_list(t_inst *instr);
 
 void				print_input_list(t_stack *stack, int *list);
-void				print_pw_var(t_pw_var *stvar);
 
 /*
 ** Free functions

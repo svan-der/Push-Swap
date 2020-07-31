@@ -6,11 +6,10 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:51:18 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/30 15:21:33 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 19:15:36 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
 #include "../includes/psw_env.h"
 
 int		swap_a(t_pw_var *stvar)

@@ -6,21 +6,20 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/30 13:05:19 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 19:24:05 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/psw_env.h"
 #include "../includes/push_swap.h"
 
-static void	set_part_id(t_stack *stack, int index, int *i, int *j)
+static void		set_part_id(t_stack *stack, int index, int *i, int *j)
 {
 	stack->part_id = index;
 	*i += 1;
 	*j += 1;
 }
 
-void	set_partitions(t_pw_var *stvar, int partitions, int part_len, int index)
+static void		set_partitions(t_pw_var *stvar, int parts, int len, int index)
 {
 	t_stack *temp;
 	int		i;
@@ -29,15 +28,15 @@ void	set_partitions(t_pw_var *stvar, int partitions, int part_len, int index)
 	i = 0;
 	j = 0;
 	temp = stvar->stack_a;
-	while (partitions)
+	while (parts)
 	{
-		if (j == part_len)
+		if (j == len)
 		{
 			j = 0;
-			partitions -= 1;
+			parts -= 1;
 			index += 1;
-			if (partitions == 1)
-				part_len = (stvar->argc - i);
+			if (parts == 1)
+				len = (stvar->argc - i);
 		}
 		if (temp->num == stvar->sorted[i])
 			set_part_id(temp, index, &i, &j);
@@ -47,7 +46,7 @@ void	set_partitions(t_pw_var *stvar, int partitions, int part_len, int index)
 	}
 }
 
-int		assign_partitions(t_pw_var *stvar, int *part_num)
+static int		assign_partitions(t_pw_var *stvar, int *part_num)
 {
 	int partitions;
 	int num;
@@ -72,7 +71,7 @@ int		assign_partitions(t_pw_var *stvar, int *part_num)
 	return (partitions);
 }
 
-int		divide_and_presort(t_pw_var *stvar)
+int				divide_and_presort(t_pw_var *stvar)
 {
 	int part_index;
 	int	part_num;
@@ -96,7 +95,7 @@ int		divide_and_presort(t_pw_var *stvar)
 	return (1);
 }
 
-int		divide_list(t_pw_var *stvar, int argc, int index)
+int				divide_list(t_pw_var *stvar, int argc, int index)
 {
 	if (argc < 11)
 		return (sort_short_stack(stvar, ft_min_size(index, argc)));

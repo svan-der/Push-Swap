@@ -6,12 +6,11 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:15:26 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/30 15:41:25 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 19:16:09 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/psw_env.h"
-#include "../includes/checker.h"
 
 int		rotate_rrr(t_pw_var *stvar)
 {

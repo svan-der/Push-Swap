@@ -6,12 +6,11 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/30 15:53:37 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/30 15:54:37 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 19:11:35 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../includes/psw_env.h"
 
 t_stack	*find_bottom_part(t_pw_var *stvar, int i)
 {

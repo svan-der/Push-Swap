@@ -6,31 +6,11 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/30 12:40:08 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/30 15:47:59 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 19:08:57 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../includes/psw_env.h"
-
-void	find_dist_top(t_stack *stack, int num)
-{
-	t_stack *temp;
-	int		j;
-
-	temp = stack;
-	j = 0;
-	while (temp)
-	{
-		if (temp->num == num)
-		{
-			temp->dist_top = j;
-			return ;
-		}
-		temp = temp->next;
-		j++;
-	}
-}
 
 void	find_distance(t_stack *stack, int num, int *sorted)
 {
@@ -58,9 +38,7 @@ void	find_part(t_pw_var *stvar, int i)
 	t_stack *bottom;
 	t_stack *top;
 	int		ret;
-	int		j;
 
-	j = 0;
 	top = find_top_part(stvar, i);
 	bottom = find_bottom_part(stvar, i);
 	ret = shortest_dist(stvar, top, bottom);
@@ -70,13 +48,8 @@ void	find_part(t_pw_var *stvar, int i)
 		sort_bottom(stvar, bottom);
 }
 
-/*
-** Calculates and returns shortest dist to top in current stack
-*/
-
 int		shortest_dist(t_pw_var *stvar, t_stack *top, t_stack *bottom)
 {
-	t_stack *current;
 	int		dist_top;
 	int		dist_bottom;
 	int		len;
@@ -84,7 +57,6 @@ int		shortest_dist(t_pw_var *stvar, t_stack *top, t_stack *bottom)
 
 	if (stvar->stack_b == NULL)
 		return (0);
-	current = stvar->stack_b;
 	len = stvar->index;
 	i = (len % 2) ? ((len / 2) + 1) : len / 2;
 	if (bottom->dist_top > i)
