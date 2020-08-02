@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:39:14 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/31 19:32:52 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/08/01 17:49:13 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct		s_part
 ** Sort short stack functions
 */
 
-int					sort_five_stack(t_pw_var *stvar, char c, int argc);
+void				sort_five_stack(t_pw_var *stvar, char c, int argc);
 void				sort_two(char c, t_pw_var *stvar);
 int					sort_three(t_pw_var *stvar, int min, int max);
 void				sort_short_opts(t_pw_var *stvar);
@@ -45,11 +45,11 @@ void				insertion_sort(int *list, int argc);
 ** Divide and presort in partitions
 */
 
-int					divide_list(t_pw_var *stvar, int argc, int index);
-int					divide_and_presort(t_pw_var *stvar);
+void				divide_list(t_pw_var *stvar, int argc, int index);
+void				divide_and_presort(t_pw_var *stvar);
 void				part_sort(t_pw_var *stvar, int argc, int i);
 void				push_back_part(t_pw_var *stvar, int argc);
-int					sort_short_stack(t_pw_var *stvar, int argc);
+void				sort_short_stack(t_pw_var *stvar, int argc);
 
 char				*presort_simple(t_pw_var *stvar, t_stack *current);
 void				sort_top(t_pw_var *stvar, t_stack *top);

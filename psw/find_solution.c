@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:14:33 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/31 19:26:58 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/08/02 16:10:41 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,20 @@ void	find_solution(t_pw_var *stvar, t_stack *current)
 
 	bottom = stvar->stack_b->tail->num;
 	top_next = stvar->stack_b->next->num;
-	if (stvar->stack_b->next->next != NULL)
-		top_next_next = stvar->stack_b->next->next->num;
 	bottom = ft_abs(current->num - bottom);
 	top_next = ft_abs(current->num - top_next);
-	top_next_next = ft_abs(current->num - top_next_next);
-	ret = top_next;
-	if (stvar->stack_b->next->next != NULL && ret > top_next_next)
-		ret = top_next_next;
-	if (ret > bottom)
-		ret = bottom;
-	if (stvar->stack_b->next->next != NULL && ret == top_next_next)
+	ret = ft_min_size(top_next, bottom);
+	if (stvar->stack_b->next->next != NULL)
 	{
-		if (current->num < stvar->median)
-			return ;
-		do_op(stvar, SB, 'b', 1);
+		top_next_next = stvar->stack_b->next->next->num;
+		top_next_next = ft_abs(current->num - top_next_next);
+		if (ret > top_next_next)
+		{
+			ret = top_next_next;
+			if (current->num < stvar->median)
+				return ;
+			do_op(stvar, SB, 'b', 1);
+		}
 	}
 	else if (ret == bottom && ret != top_next)
 		do_op(stvar, RB, 'b', 1);

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/30 14:08:00 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/31 20:09:40 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/08/01 17:48:32 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ int		do_op(t_pw_var *stvar, char *str, char c, int num)
 	{
 		ret = dispatch_sort(stvar, str, 1);
 		if (ret == -1)
-			return (-1);
+			error_handling(stvar, NULL, -1);
 		update_stack(stvar, c);
 		set_index(&stvar->stack_a, stvar->sorted, stvar->index);
 		set_index(&stvar->stack_b, stvar->sorted, stvar->argc - stvar->index);
 		i++;
 	}
-	return (ret);
+	return (1);
 }
 
 void	update_stack(t_pw_var *stvar, char c)

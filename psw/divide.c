@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:15:57 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/31 19:24:05 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/08/01 17:45:30 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int		assign_partitions(t_pw_var *stvar, int *part_num)
 	return (partitions);
 }
 
-int				divide_and_presort(t_pw_var *stvar)
+void			divide_and_presort(t_pw_var *stvar)
 {
 	int part_index;
 	int	part_num;
@@ -92,13 +92,12 @@ int				divide_and_presort(t_pw_var *stvar)
 		j += (part_num);
 	}
 	push_back_part(stvar, stvar->argc);
-	return (1);
 }
 
-int				divide_list(t_pw_var *stvar, int argc, int index)
+void			divide_list(t_pw_var *stvar, int argc, int index)
 {
 	if (argc < 11)
-		return (sort_short_stack(stvar, ft_min_size(index, argc)));
+		sort_short_stack(stvar, ft_min_size(index, argc));
 	else
-		return (divide_and_presort(stvar));
+		divide_and_presort(stvar);
 }

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/31 19:28:14 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/08/01 17:43:46 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,16 @@ static int	*lst_cpy(t_pw_var *stvar)
 	return (stvar->sorted);
 }
 
-static int	presort_list(t_pw_var *stvar)
+static void	presort_list(t_pw_var *stvar)
 {
 	stvar->sorted = (int *)malloc(stvar->argc * sizeof(int));
 	if (stvar->sorted == NULL)
-		return (0);
+		error_handling(stvar, NULL, -1);
 	stvar->sorted = lst_cpy(stvar);
 	insertion_sort(stvar->sorted, stvar->argc);
 	set_index(&(stvar)->stack_a, stvar->sorted, stvar->argc);
 	set_min_maxarray(stvar, stvar->sorted, stvar->argc);
 	stvar->median = find_median_array(stvar->sorted, stvar->index);
-	return (1);
 }
 
 int			run_pw(t_pw_var *stvar)
@@ -67,14 +66,12 @@ int			run_pw(t_pw_var *stvar)
 	ret = check_sorted(&(stvar->stack_a), &(stvar->stack_b));
 	if (ret == 1)
 		return (0);
-	ret = presort_list(stvar);
-	if (ret == 0)
-		return (0);
+	presort_list(stvar);
 	if (stvar->argc > 0 && stvar->argc < 6)
 		sort_short_opts(stvar);
 	else if (stvar->argc > 3)
-		ret = divide_list(stvar, stvar->argc, stvar->index);
-	return (ret);
+		divide_list(stvar, stvar->argc, stvar->index);
+	return (0);
 }
 
 int			main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/11 17:10:56 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/31 18:00:57 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/08/01 17:47:37 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,9 @@ void		sort_two(char c, t_pw_var *stvar)
 	}
 }
 
-static int	sort_rest(t_pw_var *stvar, char c, int argc)
+static void	sort_rest(t_pw_var *stvar, char c, int argc)
 {
 	char	*instr;
-	int		ret;
 
 	if (c == 'b' && stvar->argc - stvar->index == 3)
 	{
@@ -91,30 +90,25 @@ static int	sort_rest(t_pw_var *stvar, char c, int argc)
 	{
 		instr = (c == 'a' || stvar->sort_index == stvar->index) ? PA : PB;
 		argc = (c == 'a') ? argc - 3 : stvar->argc - stvar->index;
-		ret = do_op(stvar, instr, c, argc);
+		do_op(stvar, instr, c, argc);
 	}
-	return (ret);
 }
 
-int			sort_five_stack(t_pw_var *stvar, char c, int argc)
+void		sort_five_stack(t_pw_var *stvar, char c, int argc)
 {
 	char	*instr;
-	int		ret;
 	int		j;
 	int		i;
 
-	ret = 1;
 	instr = NULL;
 	i = (c == 'a') ? (stvar->argc - argc) : (argc - 1);
 	j = argc;
 	while (j > 3)
 	{
 		instr = find_low(stvar, c, &i);
-		ret = do_op(stvar, instr, c, 1);
-		if (ret == -1)
-			return (-1);
+		do_op(stvar, instr, c, 1);
 		if (ft_strnequ(instr, PB, 2) || ft_strnequ(instr, PA, 2))
 			j--;
 	}
-	return (sort_rest(stvar, c, argc));
+	sort_rest(stvar, c, argc);
 }

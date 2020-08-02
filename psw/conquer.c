@@ -6,37 +6,28 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 17:35:59 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/31 19:05:55 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/08/01 17:38:10 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		sort_short_stack(t_pw_var *stvar, int argc)
+void	sort_short_stack(t_pw_var *stvar, int argc)
 {
-	int ret;
 	int j;
 
-	ret = 1;
 	j = (argc % 2) ? ((argc + 1) / 2) : argc / 2;
 	argc = j;
 	while (stvar->index != j)
 	{
 		if (stvar->stack_a->num < stvar->median)
-			ret = do_op(stvar, PB, 'b', 1);
+			do_op(stvar, PB, 'b', 1);
 		else
-			ret = do_op(stvar, RA, 'a', 1);
-		if (ret == -1)
-			error_handling(stvar, NULL, -1);
+			do_op(stvar, RA, 'a', 1);
 	}
-	ret = sort_five_stack(stvar, 'a', stvar->index);
-	if (ret == -1)
-		error_handling(stvar, NULL, -1);
+	sort_five_stack(stvar, 'a', stvar->index);
 	set_min_max(stvar, 'b');
-	ret = sort_five_stack(stvar, 'b', stvar->argc - stvar->index);
-	if (ret != 1)
-		error_handling(stvar, NULL, -1);
-	return (ret);
+	sort_five_stack(stvar, 'b', stvar->argc - stvar->index);
 }
 
 void	push_back_part(t_pw_var *stvar, int argc)

@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/31 19:40:03 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/08/01 20:32:05 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,6 @@ int					dispatch_sort(t_pw_var *stvar, char *str, int ins);
 
 int					print_instructions(t_inst *inst_lst, int ret);
 void				print_inst(t_inst *instr);
-
-void				print_input_list(t_stack *stack, int *list);
 
 /*
 ** Free functions
