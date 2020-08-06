@@ -6,27 +6,11 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:50:30 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/20 23:46:24 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/08/05 13:13:10 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/psw_env.h"
-
-int		print_instructions(t_inst *inst_lst, int ret)
-{
-	t_inst *temp;
-	t_inst *next;
-
-	temp = inst_lst;
-	while (temp != NULL)
-	{
-		next = temp->next;
-		if (ret != -1)
-			ft_printf("%s\n", temp->operation);
-		temp = next;
-	}
-	return (1);
-}
 
 t_inst	*create_instruction(int index, char *line)
 {
@@ -53,14 +37,12 @@ void	ft_instaddend(t_inst **inst_lst, t_inst *new)
 		temp = temp->next;
 	temp->next = new;
 	temp->next->prev = temp;
-	// new->prev = temp;
 }
 
 int		put_instruction(t_inst **inst_lst, int index, char *line)
 {
 	t_inst *new_node;
 
-	// ft_printf("line is:%s\n", line);
 	new_node = create_instruction(index, line);
 	if (new_node == NULL)
 		return (-1);
@@ -69,13 +51,27 @@ int		put_instruction(t_inst **inst_lst, int index, char *line)
 		*inst_lst = new_node;
 		new_node->prev = NULL;
 		new_node->tail = new_node;
-		// ft_printf("oper:%s\n", new_node->tail->operation);
 		new_node->tail->next = NULL;
 		return (1);
 	}
 	ft_instaddend(inst_lst, new_node);
 	add_inst_tail(inst_lst);
-	// print_inst_list(*inst_lst);
-	// print_tail_inst((*inst_lst)->tail);
 	return (1);
+}
+
+void	add_inst_tail(t_inst **inst_lst)
+{
+	t_inst *tail;
+
+	tail = *inst_lst;
+	while (tail && tail->next != NULL)
+		tail = tail->next;
+	if (tail)
+	{
+		if (tail && tail->prev)
+			tail->prev = tail->prev;
+		else
+			tail->prev = NULL;
+		(*inst_lst)->tail = tail;
+	}
 }

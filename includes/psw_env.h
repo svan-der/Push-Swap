@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 14:43:24 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/21 01:57:34 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/08/05 13:13:31 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,60 +104,44 @@ int					rotate_rrr(t_pw_var *stvar);
 ** Stack handling functions
 */
 
-void				print_tail_inst(t_inst *tail);
-void				add_inst_tail(t_inst **inst_lst);
 void				initialize_operations(t_operates function_array[10]);
-int					print_stack(t_stack **stack_a, int ret);
-int					print_stack_b(t_stack **stack_b, int ret);
 void				ft_stackaddend(t_stack **stack_lst, t_stack *new);
-int					add_num(char *str, int sign, t_pw_var *stvar);
-int					stack_new(t_stack **stack_a, int num);
-void				stack_push(t_stack **stack, t_stack *new);
+int					add_num(char *str, t_llong sign, t_pw_var *stvar);
 int					stack_addnew(t_stack **stack, int num);
-void				ft_stackpop(t_stack **aparent, t_stack *elem);
+void				add_tail(t_stack **stack);
 t_stack				*create_stack(int num);
 t_stack				*fill_stack_begin(t_stack **stack, t_stack *new);
-// t_stack				*ft_stackpop(t_stack **stack_lst);
+void				update_stack(t_pw_var *stvar, char c);
 
 /*
-** instruction handling functions
+** Instruction handling functions
 */
 
-// int					get_instruction(t_pw_var *stvar);
-// void				put_instruction(t_inst **inst_lst, char *line);
-int					print_instructions(t_inst *inst_lst, int ret);
-// int					check_instruction(t_stack **stack_a, t_stack **stack_b,
-// 					char *line);
 t_inst				*create_instruction(int i, char *line);
+void				add_inst_tail(t_inst **inst_lst);
+int					dispatch_sort(t_pw_var *stvar, char *str, int ins);
+void				print_inst(t_inst *instr);
 
 /*
-** print functions
+** Free functions
 */
 
-void				add_tail(t_stack **stack);
-void				print_tail(t_stack *tail);
-
-void				print_input_list(t_stack *stack, int *list);
-void				print_inst_list(t_inst *instr);
-void				print_stack_list(t_stack *stack, char c);
-void				print_pw_var(t_pw_var *stvar);
-
-int					execute_instruction(t_pw_var *stvar);
-void				print_inst(t_inst *instr);
 void				free_inst_list(t_inst **inst_lst);
 void				free_stack_list(t_stack **stack_a, t_stack **stack_b);
-int 				dispatch_sort(t_pw_var *stvar, char *str, int ins);
-void				sort_and_check(t_inst *inst_lst, int ret);
-void				print_backwards(t_stack *stack);
-t_inst				*inst_tail_delone(t_inst **inst_lst, char *instr, int i, int *j);
-void				content_delete(int *content, size_t size);
-t_stack				*reverse_list(t_stack **new);
+
+/*
+** Validation and check argument functions
+*/
+
 int					check_sorted(t_stack **stack_a, t_stack **stack_b);
 int					check_argv(char *str, t_pw_var *stvar);
 int					check_dup(t_stack **stack_a);
-// void				debug(t_stack **stack_a, t_stack **stack_b);
-int					error_handler(int ret);
-void				debug(t_pw_var *stvar);
-int					run_checker(t_pw_var *stvar);
-int					ft_exit(t_pw_var *stvar);
+
+/*
+** Terminating program functions
+*/
+
+void				error_handling(t_pw_var *stvar, char *line, int ret);
+void				ft_exit(t_pw_var *stvar, int ret);
+
 #endif

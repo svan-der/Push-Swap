@@ -6,20 +6,17 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/10 15:52:42 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/07/21 12:45:51 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/08/01 17:43:46 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/psw_env.h"
 #include "../includes/push_swap.h"
 
-void	set_min_maxarray(t_pw_var *stvar, int *list, int len)
+static void	set_min_maxarray(t_pw_var *stvar, int *list, int len)
 {
 	int i;
-	int num;
 
 	i = 0;
-	num = list[i];
 	stvar->min = list[i];
 	stvar->max = list[i];
 	while (i < len)
@@ -32,67 +29,7 @@ void	set_min_maxarray(t_pw_var *stvar, int *list, int len)
 	}
 }
 
-void	set_min_max(t_pw_var *stvar, char c)
-{
-	int 	i;
-	int 	min;
-	int 	max;
-	t_stack *temp;
-
-	if (c == 'a')
-		temp = stvar->stack_a;
-	if (c == 'b')
-		temp = stvar->stack_b;
-	i = 0;
-	min = temp->num;
-	max = temp->num;
-	// ft_printf("min:%i\n", temp->num);
-	while (temp != NULL && temp->next != NULL)
-	{
-		if (min > temp->next->num)
-			min = temp->next->num;
-		if (max < temp->next->num)
-			max = temp->next->num;
-		temp = temp->next;
-	}
-	stvar->min = min;
-	stvar->max = max;
-	// ft_printf("min:%i\n", min);
-	// ft_printf("max:%i\n", max);
-}
-
-// void	set_min_max(t_part *part_var)
-// {
-// 	int i;
-// 	int	len;
-
-// 	i = 0;
-// 	len = (int)part_var->len;
-// 	part_var->min = 0;
-// 	part_var->max = 0;
-// 	while (i < len)
-// 	{
-// 		if (part_var->min > part_var->parts[i] || !part_var->min)
-// 			part_var->min = part_var->parts[i];
-// 		if (part_var->max < part_var->parts[i] || !part_var->max)
-// 			part_var->max = part_var->parts[i];
-// 		i++;
-// 	}
-// }
-
-int		find_median_array(int *list, int index)
-{
-	int		i;
-	double	j;
-	int		median;
-
-	j = (double)index / 2;
-	i = j;
-	median = list[i];
-	return (median);
-}
-
-int		*lst_cpy(t_pw_var *stvar)
+static int	*lst_cpy(t_pw_var *stvar)
 {
 	t_stack *current;
 	int		i;
@@ -102,120 +39,44 @@ int		*lst_cpy(t_pw_var *stvar)
 	while (current != NULL)
 	{
 		stvar->sorted[i] = current->num;
-		// ft_printf("%d\t%d\n", current->num, stvar->sorted[i]);
 		current = current->next;
 		i++;
 	}
-	// print_array(stvar->sorted, stvar->argc);
-	// add_tail(&stvar->stack_a);
-	// print_stack_list(stvar->stack_a, 'a');
 	return (stvar->sorted);
 }
 
-void	*ft_calloc(size_t count, size_t size)
+static void	presort_list(t_pw_var *stvar)
 {
-	void *res;
-
-	res = (char *)malloc(size * count);
-	if (!res)
-		return (NULL);
-	ft_bzero(res, count * size);
-	return (res);
-}
-
-/*
-** function sets for unsorted list the right index per number
-*/
-
-void			set_index(t_stack **stack_a, int *sorted, int argc)
-{
-	int		i;
-	int 	j;
-	t_stack *temp;
-
-	i = 0;
-	j = 0;
-	temp = *stack_a;
-	while (argc)
-	{
-		// ft_printf("sorted num is:%d\n\n", sorted[i]);
-		if ((temp)->num == sorted[i])
-		{
-			(temp)->dist = j - i;
-			temp->dist_top = j;
-			temp->index = i;
-			// ft_printf("number distance is:%d\n\n", (temp)->dist);
-			if ((temp)->next != NULL)
-				(temp) = (temp)->next;
-			else
-				break ;
-			i = 0;
-			j += 1;
-			argc -= 1;
-		}
-		else
-			i++;
-		// ft_printf("stack num is:%d\n\n", (temp)->num);
-		// ft_printf("i is::%d\t j is:%d\n", i, j);
-		// ft_printf("stvar->argc is:%d\n", argc);
-	}
-}
-
-int		presort_list(t_pw_var *stvar)
-{
-	int i;
-	int num;
-
-	num = stvar->argc;
-	i = 0;
 	stvar->sorted = (int *)malloc(stvar->argc * sizeof(int));
 	if (stvar->sorted == NULL)
-		return (0);
+		error_handling(stvar, NULL, -1);
 	stvar->sorted = lst_cpy(stvar);
-	// ft_printf("stvar->index:%i\n", stvar->index);
-	insertion_sort(stvar->sorted, stvar->argc, &stvar->min, &stvar->max);
-	// print_array(stvar->sorted, stvar->argc);
+	insertion_sort(stvar->sorted, stvar->argc);
 	set_index(&(stvar)->stack_a, stvar->sorted, stvar->argc);
-	// print_stack_list(stvar->stack_a, 'a');
-	// print_tail(stvar->stack_a->tail);
-	return (1);
+	set_min_maxarray(stvar, stvar->sorted, stvar->argc);
+	stvar->median = find_median_array(stvar->sorted, stvar->index);
 }
 
-int		run_pw(t_pw_var *stvar)
+int			run_pw(t_pw_var *stvar)
 {
 	int ret;
 
-	// print_stack_list(stvar->stack_a, 'a');
-	// ft_printf("stvar->index:%i\n", stvar->index);
+	stvar->argc -= 1;
+	stvar->index = stvar->argc;
 	ret = check_sorted(&(stvar->stack_a), &(stvar->stack_b));
-	// ft_printf("ret is:%d\n", ret);
 	if (ret == 1)
 		return (0);
-	ret = presort_list(stvar);
-	// ft_printf("ret:%i\n", ret);
-	if (ret == 0)
-		return (0);
-	// print_input_list(stvar->stack_a, stvar->sorted);
-	// print_stack_list(stvar->stack_a, 'a');
-	// ft_printf("stvar->argc:%d\n\n", stvar->argc);
-	// ft_printf("min:%d\n", stvar->min);
-	// ft_printf("max:%d\n", stvar->max);
-	if (stvar->argc > 3)
-		ret = divide_list(stvar);
-	if (stvar->argc == 3)
-		ret = sort_three(stvar, stvar->min, stvar->max);
-	if (stvar->argc == 2)
-		sort_two('a', stvar);
-	// ft_printf("return is:%i\n", ret);
-	// ft_printf("total number of instructions:|%i|\n\n", stvar->total_ins);
-	// print_stack_list(stvar->stack_a, 'a');
-	return (ret);
+	presort_list(stvar);
+	if (stvar->argc > 0 && stvar->argc < 6)
+		sort_short_opts(stvar);
+	else if (stvar->argc > 3)
+		divide_list(stvar, stvar->argc, stvar->index);
+	return (0);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_pw_var	stvar;
-	int			valid;
 	char		*str;
 	int			ret;
 	int			i;
@@ -228,43 +89,15 @@ int		main(int argc, char **argv)
 	while (i < argc)
 	{
 		str = argv[i];
-		valid = check_argv(str, &stvar);
-		// ft_printf("valid:%i\n", valid);
-		if (valid == -1)
-		{
-			error_handler(valid);
-			return (ft_exit(&stvar));
-		}
+		check_argv(str, &stvar);
 		i++;
 	}
-	// print_stack(&stvar.stack_a, 1);
-	valid = check_dup(&(stvar.stack_a));
-	// ft_printf("valid is:%i\n", valid);
-	if (valid == -1)
-	{
-		error_handler(valid);
-		return (ft_exit(&stvar));
-	}
-	stvar.argc -= 1;
-	stvar.index = stvar.argc;
-	// ft_printf("stvar->index:%i\n", stvar.index);
-	// print_stack(&stvar.stack_a, 1);
-	ret = run_pw(&stvar);
-	// ft_printf("ret is:%i\n", ret);
-	// print_stack_list(stvar.stack_a, 'a');
-	ret = check_sorted(&(stvar.stack_a), &(stvar.stack_b));
-	// ft_printf("ret is:%i\n", ret);
+	ret = check_dup(&(stvar.stack_a));
 	if (ret == -1)
-	{
-		error_handler(ret);
-		return (ft_exit(&stvar));
-	}
+		error_handling(&stvar, NULL, ret);
+	ret = run_pw(&stvar);
+	if (ret == -1)
+		error_handling(&stvar, NULL, ret);
 	print_inst(stvar.inst_lst);
-	// ft_printf(GRN"TOTAL:%d\n"RESET, stvar.total_ins);
-	// print_instructions(stvar.inst_lst, ret);
-	// print_stack_list(stvar.stack_a, 'a');
-	// print_stack_list(stvar.stack_b, 'b');
-	ft_exit(&stvar);
-	// print_stack_list(stvar.stack_b, 'b');
-	return (1);
+	ft_exit(&stvar, 0);
 }

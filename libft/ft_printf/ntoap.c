@@ -6,7 +6,7 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/22 17:57:12 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/12 17:07:07 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/29 16:26:59 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int		ft_utoap_base(char **argv, t_ull n, t_uint base, t_ntoa *pref)
 	total = len[0] + ft_max_size(pref->prec, len[1]) + len[2];
 	if (!*argv)
 		if (!ft_strpnew(argv, total))
-			return (error_handler(-1));
+			return (-1);
 	make(*argv + total, n, base, pref);
 	if (pref->pref && (pref->pre == 2 || pref->pre == 3))
 		ft_memcpy(*argv, pref->prefix, len[0] + 1);

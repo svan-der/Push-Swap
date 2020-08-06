@@ -6,16 +6,13 @@
 /*   By: svan-der <svan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 17:54:21 by svan-der      #+#    #+#                 */
-/*   Updated: 2020/05/12 17:11:22 by svan-der      ########   odam.nl         */
+/*   Updated: 2020/07/31 19:35:27 by svan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef NTOA_H
 # define NTOA_H
 # include "ft_printf.h"
-// # include "libft.h"
-// # include "mathlib.h"
-
 
 typedef struct	s_ntoa
 {
